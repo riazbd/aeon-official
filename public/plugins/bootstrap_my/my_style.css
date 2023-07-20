@@ -217,6 +217,13 @@ table tbody tr td.id-t
     height: 100px;
 }
 
+.layout-navbar-fixed.sidebar-mini-md.sidebar-collapse .wrapper .brand-link,
+.layout-navbar-fixed.sidebar-mini-xs.sidebar-collapse .wrapper .brand-link,
+.layout-navbar-fixed.sidebar-mini.sidebar-collapse .wrapper .brand-link {
+    height: 100px;
+}
+
+
 .brand-link .brand-image {
     margin-top: 7px;
     max-height: max-content;
@@ -236,8 +243,46 @@ table tbody tr td.id-t
 }
 
 .layout-navbar-fixed .wrapper .content-wrapper {
-    margin-top: calc(100px + 1px);
+    /* margin-top: calc(100px + 1px); */
 }
+
+.content-wrapper-container {
+    max-height: calc(100vh - 151px) !important;
+    position: relative;
+    margin-top: 101px;
+    overflow-y: scroll;
+}
+
+.content-wrapper {
+    /* min-height: 100vh !important; */
+    height: 100% !important;
+
+}
+
+.main-footer {
+    border-top: 0px !important;
+    padding: 15px !important;
+    margin-left: 0px !important;
+    z-index: 99999;
+    width: 100%;
+    height: 50px !important;
+    background-color: #A3D949 !important;
+    text-align: center;
+    color: #073D1C;
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Styling the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color: #073D1C;
+    border-radius: 5px;
+  }
 
 @media (min-width: 768px) {
     body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper,

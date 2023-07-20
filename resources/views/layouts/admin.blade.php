@@ -127,25 +127,20 @@
         </aside>
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Main content -->
-            @yield('content')
-            <!-- /.content -->
+        <div class="content-wrapper-container">
+            <div class="content-wrapper">
+                <!-- Main content -->
+                @yield('content')
+                <!-- /.content -->
+            </div>
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; {{ date('Y') }} <a href="#">DREAM DIVER
-                </a>.</strong>
-            All rights reserved.
+            <strong>&copy; {{ date('Y') }} POWERED BY DREAM DIVER</strong>
             {{-- <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.0
             </div> --}}
         </footer>
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
