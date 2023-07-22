@@ -87,19 +87,50 @@
             </ul>
         </li>
     </ul> --}}
-    <ul class="nav nav-sidebar">
-        <li class="nav-item">
-            <a href="{{ route('po-management') }}" class="nav-link">PO management</a>
+    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+        data-accordion="false">
+        <li class="nav-item has-treeview">
+            <a href="#"
+                class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
+                <i class="fas fa-users-cog"></i>
+                <p>
+                    Purchage Orders
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('po-create') }}" class="nav-link">create new po</a>
+                </li>
+            </ul>
         </li>
     </ul>
-    <ul class="nav nav-sidebar">
-        <li class="nav-item">
-            <a href="" class="nav-link">critical path</a>
-        </li>
-    </ul>
-    <ul class="nav nav-sidebar">
-        <li class="nav-item">
-            <a href="" class="nav-link">Buyers</a>
+    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+        data-accordion="false">
+        <li class="nav-item has-treeview">
+            <a href="#"
+                class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
+                <i class="fas fa-users-cog"></i>
+                <p>
+                    Buyer
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('buyer-create') }}" class="nav-link">Create new buyer</a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="" class="nav-link">Buyers</a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="" class="nav-link">Buyer departments</a>
+                </li>
+            </ul>
         </li>
     </ul>
     <ul class="nav nav-sidebar">

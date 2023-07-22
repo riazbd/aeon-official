@@ -6,6 +6,7 @@ use App\Http\Controllers\Blade\RoleController;
 use App\Http\Controllers\Blade\PermissionController;
 use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
+use Faker\Guesser\Name;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/po-management', function () {
         return view('pages.poManagement');
     })->name('po-management');
+    Route::get('/po-management-create', function () {
+        return view('pages.po.create');
+    })->name('po-create');
+    Route::get('buyer-create', function () {
+        return view('pages.buyer.create');
+    })->name('buyer-create');
+    Route::get('vendor-create', function () {
+        return view('pages.vendor.create');
+    });
 });
 
 // Change language session condition

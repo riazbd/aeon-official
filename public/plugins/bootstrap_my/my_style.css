@@ -278,11 +278,18 @@ table tbody tr td.id-t
     width: 5px;
   }
 
+
   /* Styling the scrollbar thumb */
-  ::-webkit-scrollbar-thumb {
-    background-color: #073D1C;
-    border-radius: 5px;
+::-webkit-scrollbar-thumb {
+background-color: #073D1C;
+border-radius: 5px;
+}
+
+.table::-webkit-scrollbar {
+    width: auto; /* Width of the scrollbar */
+    height: 5px;
   }
+
 
 @media (min-width: 768px) {
     body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper,
