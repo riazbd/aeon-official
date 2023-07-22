@@ -66,6 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/api-user/update/{id}', [ApiUserController::class, 'update'])->name('api-userUpdate');
     Route::delete('/api-user/delete/{id}', [ApiUserController::class, 'destroy'])->name('api-userDestroy');
     Route::delete('/api-user-token/delete/{id}', [ApiUserController::class, 'destroyToken'])->name('api-tokenDestroy');
+    Route::get('/po-management', function () {
+        return view('pages.poManagement');
+    })->name('po-management');
 });
 
 // Change language session condition

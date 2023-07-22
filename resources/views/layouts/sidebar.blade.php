@@ -56,7 +56,7 @@
         @endcan --}}
     </ul>
 
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    {{-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item has-treeview">
             <a href="" class="nav-link">
                 <i class="fas fa-palette"></i>
@@ -85,6 +85,26 @@
                     </a>
                 </li>
             </ul>
+        </li>
+    </ul> --}}
+    <ul class="nav nav-sidebar">
+        <li class="nav-item">
+            <a href="{{ route('po-management') }}" class="nav-link">PO management</a>
+        </li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="nav-item">
+            <a href="" class="nav-link">critical path</a>
+        </li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="nav-item">
+            <a href="" class="nav-link">Buyers</a>
+        </li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="nav-item">
+            <a href="" class="nav-link">vendors</a>
         </li>
     </ul>
     {{--    @can('card.main') --}}
