@@ -1,23 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-
     <!-- Content Header (Page header) -->
     <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>@lang('cruds.userManagement.title')</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">@lang('global.home')</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('userIndex') }}">@lang('cruds.user.title')</a></li>
-                        <li class="breadcrumb-item active">@lang('global.add')</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
+        <!-- ... -->
     </section>
     <!-- Main content -->
 
@@ -30,57 +16,137 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-
                         <form action="{{ route('userCreate') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label>@lang('cruds.user.fields.name')</label>
-                                <input type="text" name="name" class="form-control {{ $errors->has('name') ? "is-invalid":"" }}" value="{{ old('name') }}" required>
-                                @if($errors->has('name'))
+                                <input type="text" name="name"
+                                    class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                                    value="{{ old('name') }}" required>
+                                @if ($errors->has('name'))
                                     <span class="error invalid-feedback">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label>@lang('cruds.user.fields.email')</label>
-                                <input type="email" name="email" class="form-control {{ $errors->has('email') ? "is-invalid":"" }}" value="{{ old('email') }}" required>
-                                @if($errors->has('email'))
+                                <input type="email" name="email"
+                                    class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+                                    value="{{ old('email') }}" required>
+                                @if ($errors->has('email'))
                                     <span class="error invalid-feedback">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label>@lang('cruds.role.fields.roles')</label>
-                                <select class="select2" multiple="multiple" name="roles[]" data-placeholder="@lang('pleaseSelect')" style="width: 100%;">
-                                    @foreach($roles as $role)
+                                <select class="form-control select2" multiple="multiple" name="roles[]"
+                                    data-placeholder="@lang('pleaseSelect')" style="width: 100%;">
+                                    @foreach ($roles as $role)
                                         <option value="{{ $role->name }}">{{ $role->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>@lang('cruds.user.fields.password')</label>
-                                <input type="password" name="password" id="password-field" class="form-control {{ $errors->has('password') ? "is-invalid":"" }}" required>
-                                <span toggle="#password-field" class="fa fa-fw fa-eye toggle-password field-icon"></span>
-                                @if($errors->has('password'))
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password-field"
+                                        class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" required>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-fw fa-eye toggle-password"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                @if ($errors->has('password'))
                                     <span class="error invalid-feedback">{{ $errors->first('password') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
                                 <label>@lang('global.login_password_confirmation')</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                <span toggle="#password-confirm" class="fa fa-fw fa-eye toggle-password field-icon"></span>
-                                @if($errors->has('password_confirmation'))
-                                    <span class="error invalid-feedback">{{ $errors->first('password_confirmation') }}</span>
+                                <div class="input-group">
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-fw fa-eye toggle-password"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                @if ($errors->has('password_confirmation'))
+                                    <span
+                                        class="error invalid-feedback">{{ $errors->first('password_confirmation') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="buyerCheckbox"
+                                        name="buyerCheckbox">
+                                    <label class="custom-control-label" for="buyerCheckbox">Buyer</label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="vendorCheckbox"
+                                        name="vendorCheckbox">
+                                    <label class="custom-control-label" for="vendorCheckbox">Vendor</label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="buyerSelectBox" style="display: none;">
+                                <label>Select Buyer Role</label>
+                                <select class="form-control select2" name="buyer_role" data-placeholder="@lang('pleaseSelect')"
+                                    style="width: 100%;">
+                                    <!-- Add options for buyer roles here -->
+                                </select>
+                            </div>
+                            <div class="form-group" id="vendorSelectBox" style="display: none;">
+                                <label>Select Vendor Role</label>
+                                <select class="form-control select2" name="vendor_role" data-placeholder="@lang('pleaseSelect')"
+                                    style="width: 100%;">
+                                    <!-- Add options for vendor roles here -->
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-success float-right">@lang('global.save')</button>
-                                <a href="{{ route('userIndex') }}" class="btn btn-default float-left">@lang('global.cancel')</a>
+                                <a href="{{ route('userIndex') }}"
+                                    class="btn btn-default float-left">@lang('global.cancel')</a>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <style>
+        /* Add custom styles for eye toggle icons */
+        .input-group-append .input-group-text {
+            cursor: pointer;
+        }
+    </style>
+@endsection
+
+@section('scripts')
+    <script>
+        // Toggle the visibility of select boxes based on checkbox selection
+        const buyerCheckbox = document.getElementById('buyerCheckbox');
+        const vendorCheckbox = document.getElementById('vendorCheckbox');
+        const buyerSelectBox = document.getElementById('buyerSelectBox');
+        const vendorSelectBox = document.getElementById('vendorSelectBox');
+
+        buyerCheckbox.addEventListener('change', function() {
+            buyerSelectBox.style.display = this.checked ? 'block' : 'none';
+        });
+
+        vendorCheckbox.addEventListener('change', function() {
+            vendorSelectBox.style.display = this.checked ? 'block' : 'none';
+        });
+
+        // Toggle password visibility
+        const togglePassword = document.querySelectorAll('.toggle-password');
+        togglePassword.forEach(icon => {
+            icon.addEventListener('click', function() {
+                const input = this.closest('.input-group').querySelector('input');
+                const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                input.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+    </script>
 @endsection

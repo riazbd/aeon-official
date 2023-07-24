@@ -19,9 +19,14 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('theme',30)->default('default');
+            $table->string('theme', 30)->default('default');
+            $table->unsignedBigInteger('buyer_id')->nullable();
+            $table->unsignedBigInteger('vendor_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('buyer_id')->references('id')->on('buyers')->onDelete('CASCADE');
+            $table->foreign('vendor_id')->references('id')->on('vendors')->onDelete('CASCADE');
         });
     }
 

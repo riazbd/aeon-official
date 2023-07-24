@@ -116,19 +116,19 @@
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
-            <ul class="nav nav-treeview">
+            {{-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('buyer-create') }}" class="nav-link">Create new buyer</a>
                 </li>
-            </ul>
+            </ul> --}}
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="" class="nav-link">Buyers</a>
+                    <a href="{{ route('buyer-list') }}" class="nav-link">Buyers</a>
                 </li>
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="" class="nav-link">Buyer departments</a>
+                    <a href="" class="nav-link">departments</a>
                 </li>
             </ul>
         </li>

@@ -80,4 +80,14 @@ class User extends Authenticatable
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function buyer()
+    {
+        return $this->belongsTo(Buyer::class);
+    }
+
+    public function vendor()
+    {
+        return $this->belongsTo(Vendor::class);
+    }
 }

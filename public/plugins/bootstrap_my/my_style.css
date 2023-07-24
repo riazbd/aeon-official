@@ -291,6 +291,90 @@ border-radius: 5px;
   }
 
 
+/* button card design */
+.card-list-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card-box-container{
+    gap: 40px;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+}
+
+.card-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 320px; */
+    flex: 0 0 360px; /* Flexible width with a minimum of 300px */
+    min-height: 150px;
+    height: 100%;
+    position: relative;
+    border-radius: 5px;
+    overflow:hidden
+  }
+
+  .card-element-first {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #A3D949;
+    width: 50%;
+    min-height: 150px;
+    height: 100%;
+    position: relative; /* Added for positioning the pseudo-element */
+    z-index: 2; /* Added to ensure the content is on top of the pseudo-element */
+    padding-left: 20px;
+    padding-right: 20px;
+    word-wrap: break-word;
+  }
+
+  .card-element-first p {
+    font-weight: bold;
+    color: #073D1C;
+    font-size: 20px;
+    max-width: 100%;
+    text-transform: uppercase;
+
+  }
+
+
+
+  .card-element-first::after {
+    content: '';
+    line-height: 0;
+    font-size: 0;
+    width: 0;
+    height: 100%;
+    border-top: 150px solid #A3D949;
+    border-bottom: 0px solid transparent;
+    border-left: 0px solid transparent;
+    border-right: 40px solid transparent;
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+
+  .card-element-second {
+  /*   background-color: red; */
+    background: linear-gradient(#B2E064, #8EBD3F);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    min-height: 150px;
+    height: 100%;
+    padding-left: 20px
+  }
+
+  .card-element-second img {
+    width: 60%;
+    border-radius: 5px;
+  }
+/* end */
+
 @media (min-width: 768px) {
     body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper,
     body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer,
