@@ -79,6 +79,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('buyer-list', function () {
         return view('pages.buyer.index');
     })->name('buyer-list');
+    Route::get('buyer-manage', function () {
+        return view('pages.buyer.manage');
+    })->name('buyer-manage');
+
+    // departments
+    Route::get('department-manage', function () {
+        return view('pages.buyer.department_manage');
+    })->name('department-manage');
 
     // vendor
     Route::get('vendor-create', function () {

@@ -116,11 +116,11 @@
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
-            {{-- <ul class="nav nav-treeview">
+            <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="{{ route('buyer-create') }}" class="nav-link">Create new buyer</a>
+                    <a href="{{ route('buyer-manage') }}" class="nav-link">Buyer Management</a>
                 </li>
-            </ul> --}}
+            </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('buyer-list') }}" class="nav-link">Buyers</a>
@@ -136,6 +136,18 @@
     <ul class="nav nav-sidebar">
         <li class="nav-item">
             <a href="" class="nav-link">vendors</a>
+        </li>
+    </ul>
+
+    <ul class="nav nav-sidebar">
+        <li class="nav-item">
+            <a href="" class="nav-link">Contacts</a>
+        </li>
+    </ul>
+
+    <ul class="nav nav-sidebar">
+        <li class="nav-item">
+            <a href="" class="nav-link">Certificates</a>
         </li>
     </ul>
     {{--    @can('card.main') --}}
