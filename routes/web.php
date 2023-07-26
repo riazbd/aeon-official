@@ -6,6 +6,7 @@ use App\Http\Controllers\Blade\RoleController;
 use App\Http\Controllers\Blade\PermissionController;
 use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
+use App\Http\Controllers\BuyerController;
 use Faker\Guesser\Name;
 
 /*
@@ -79,9 +80,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('buyer-list', function () {
         return view('pages.buyer.index');
     })->name('buyer-list');
-    Route::get('buyer-manage', function () {
-        return view('pages.buyer.manage');
-    })->name('buyer-manage');
+    Route::get('buyer-manage', [BuyerController::class, 'manageIndex'])->name('buyer-manage');
+    Route::post('/buyer-create', [BuyerController::class, 'store'])->name('save-buyer');
+    Route::delete('/buyer-delete/{id}', [BuyerController::class, 'destroy'])->name('delete-buyer');
+    Route::put('buyer-manage/{id}', [BuyerController::class, 'update'])->name('update-buyer');
 
     // departments
     Route::get('department-manage', function () {

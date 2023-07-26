@@ -375,6 +375,22 @@ border-radius: 5px;
   }
 /* end */
 
+/* datatable */
+
+table.dataTable {
+    table-layout: fixed;
+    width: 100%;
+}
+
+table.dataTable th,
+table.dataTable td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* end datatable */
+
 @media (min-width: 768px) {
     body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper,
     body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer,
