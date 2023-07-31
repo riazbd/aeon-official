@@ -1,7 +1,5 @@
 @extends('layouts.admin')
 
-@section('content')
-    @extends('layouts.admin')
 
 @section('content')
     <!-- Main content -->
@@ -12,7 +10,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Departments</h3>
                         @can('user.add')
-                            <p class="btn btn-success btn-sm float-right">
+                            <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#create-department">
                                 <span class="fas fa-plus-circle"></span>
                                 @lang('global.add')
                             </p>
@@ -27,33 +25,38 @@
                             <thead>
                                 <tr>
                                     <th class="w-25">@lang('global.actions')</th>
-                                    <th>@lang('cruds.user.fields.id')</th>
+                                    <th>Buyer</th>
                                     <th>@lang('cruds.user.fields.name')</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($departments as $department)
                                 <tr>
                                     <td class="text-center">
                                         @can('user.delete')
-                                            <form action="" method="post">
-                                                @csrf
-                                                <div class="btn-group">
-                                                    @can('user.edit')
-                                                        <p class="btn btn-info btn-sm"> @lang('global.edit')</p>
-                                                    @endcan
+                                            <div class="btn-group">
+                                                @can('user.edit')
+                                                    <p class="btn btn-info btn-sm" data-toggle="modal" data-target="{{'#edit-department-'.$department->id}}"> @lang('global.edit')</p>
+                                                @endcan<form action="{{ route('delete-department', ['id' => $department->id]) }}"
+                                                    method="POST">
+                                                    @csrf
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <p class="btn btn-danger btn-sm"
-                                                        onclick="if (confirm('Вы уверены?')) { this.form.submit() } ">
-                                                        @lang('global.delete')</p>
-                                                </div>
-                                            </form>
+                                                        onclick="if (confirm('Are you sure you want to delete this buyer?')) { this.parentElement.submit() }">
+                                                        @lang('global.delete')
+                                                    </p>
+                                                </form>
+                                            </div>
                                         @endcan
                                     </td>
-                                    <td>#</td>
-                                    <td>Name</td>
+                                    <td>{{ App\Models\Buyer::where('id', $department->buyer_id)->first()->name }}</td>
+                                    <td>{{ $department->name }}</td>
 
 
                                 </tr>
+                                @include('pages.buyer.modals.department_edit')
+                                @endforeach
+
                             </tbody>
                         </table>
                     </div>
@@ -66,6 +69,7 @@
         <!-- /.row -->
     </section>
     <!-- /.content -->
+
+    @include('pages.buyer.modals.department_create')
 @endsection
 
-@endsection

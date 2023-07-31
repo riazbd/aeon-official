@@ -128,14 +128,37 @@
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="" class="nav-link">departments</a>
+                    <a href="{{ route('department-manage') }}" class="nav-link">Departments</a>
                 </li>
             </ul>
         </li>
     </ul>
-    <ul class="nav nav-sidebar">
-        <li class="nav-item">
-            <a href="" class="nav-link">vendors</a>
+    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+        data-accordion="false">
+        <li class="nav-item has-treeview">
+            <a href="#"
+                class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
+                <i class="fas fa-users-cog"></i>
+                <p>
+                    Vendor
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('vendor-manage') }}" class="nav-link">Vendor Management</a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="" class="nav-link">Vendors</a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="" class="nav-link">Manufacturers</a>
+                </li>
+            </ul>
         </li>
     </ul>
 
