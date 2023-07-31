@@ -7,6 +7,8 @@ use App\Http\Controllers\Blade\PermissionController;
 use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
 use App\Http\Controllers\BuyerController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\VendorController;
 use Faker\Guesser\Name;
 
 /*
@@ -86,14 +88,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('buyer-manage/{id}', [BuyerController::class, 'update'])->name('update-buyer');
 
     // departments
-    Route::get('department-manage', function () {
-        return view('pages.buyer.department_manage');
-    })->name('department-manage');
+    Route::get('department-manage', [DepartmentController::class, 'manageIndex'])->name('department-manage');
+    Route::post('/department-create', [DepartmentController::class, 'store'])->name('save-department');
+    Route::delete('/department-delete/{id}', [DepartmentController::class, 'destroy'])->name('delete-department');
+    Route::put('department-manage/{id}', [DepartmentController::class, 'update'])->name('update-department');
 
     // vendor
-    Route::get('vendor-create', function () {
-        return view('pages.vendor.create');
-    });
+    Route::get('vendor-manage', [VendorController::class, 'manageIndex'])->name('vendor-manage');
+    Route::post('/vendor-create', [VendorController::class, 'store'])->name('save-vendor');
+    Route::delete('/vendor-delete/{id}', [VendorController::class, 'destroy'])->name('delete-vendor');
+    Route::put('vendor-manage/{id}', [VendorController::class, 'update'])->name('update-vendor');
 });
 
 // Change language session condition
