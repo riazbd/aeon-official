@@ -8,6 +8,8 @@ use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ManufacturerController;
+use App\Http\Controllers\VendorContactController;
 use App\Http\Controllers\VendorController;
 use Faker\Guesser\Name;
 
@@ -98,6 +100,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/vendor-create', [VendorController::class, 'store'])->name('save-vendor');
     Route::delete('/vendor-delete/{id}', [VendorController::class, 'destroy'])->name('delete-vendor');
     Route::put('vendor-manage/{id}', [VendorController::class, 'update'])->name('update-vendor');
+
+    // manufacturers
+    Route::get('manufacturer-manage', [ManufacturerController::class, 'manageIndex'])->name('manufacturer-manage');
+    Route::post('/manufacturer-create', [manufacturerController::class, 'store'])->name('save-manufacturer');
+    Route::delete('/manufacturer-delete/{id}', [manufacturerController::class, 'destroy'])->name('delete-manufacturer');
+    Route::put('manufacturer-manage/{id}', [manufacturerController::class, 'update'])->name('update-manufacturer');
+
+    //Vendor Contacts
+    // manufacturers
+    Route::get('vendor_contact-manage', [VendorContactController::class, 'manageIndex'])->name('vendor_contact-manage');
+    Route::post('/vendor_contact-create', [VendorContactController::class, 'store'])->name('save-vendor_contact');
+    Route::delete('/vendor_contact-delete/{id}', [VendorContactController::class, 'destroy'])->name('delete-vendor_contact');
+    Route::put('vendor_contact-manage/{id}', [VendorContactController::class, 'update'])->name('update-vendor_contact');
 });
 
 // Change language session condition

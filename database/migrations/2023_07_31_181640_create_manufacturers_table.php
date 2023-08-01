@@ -15,7 +15,11 @@ class CreateManufacturersTable extends Migration
     {
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('vendor_id')->nallable();
+            $table->string('name')->nullable();
             $table->timestamps();
+
+            $table->foreign('vendor_id')->references('id')->on('vendors');
         });
     }
 

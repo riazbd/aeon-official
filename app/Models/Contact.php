@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
+
+    public function manufacturer()
+    {
+        $this->belongsTo(Manufacturer::class);
+    }
+
+    public function department()
+    {
+        $this->belongsTo(Department::class);
+    }
 }

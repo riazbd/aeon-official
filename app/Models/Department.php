@@ -13,4 +13,9 @@ class Department extends Model
     {
         $this->belongsTo(Buyer::class);
     }
+
+    public function contacts()
+    {
+        $this->hasMany(Contact::class);
+    }
 }

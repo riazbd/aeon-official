@@ -156,7 +156,12 @@
             </ul>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="" class="nav-link">Manufacturers</a>
+                    <a href="{{ route('manufacturer-manage') }}" class="nav-link">Manufacturers</a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('vendor_contact-manage') }}" class="nav-link">Contacts</a>
                 </li>
             </ul>
         </li>

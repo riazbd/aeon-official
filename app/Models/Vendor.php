@@ -13,4 +13,9 @@ class Vendor extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function manufacturers()
+    {
+        return $this->hasMany(Manufacturer::class);
+    }
 }
