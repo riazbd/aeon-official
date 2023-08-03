@@ -15,13 +15,13 @@ class CreateContactsTable extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('buyer_department_id');
-            $table->unsignedBigInteger('vendor_manufacturer_id');
+            $table->unsignedBigInteger('buyer_department_id')->nullable();
+            $table->unsignedBigInteger('vendor_manufacturer_id')->nullable();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
-            $table->string('Department')->nullable();
-            $table->string('Designation')->nullable();
+            $table->string('department')->nullable();
+            $table->string('designation')->nullable();
             $table->timestamps();
 
             $table->foreign('buyer_department_id')->references('id')->on('departments')->onDelete('CASCADE');

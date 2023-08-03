@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buyer;
 use App\Models\Contact;
-use App\Models\Manufacturer;
-use App\Models\Vendor;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class VendorContactController extends Controller
+class BuyerContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,26 +17,26 @@ class VendorContactController extends Controller
      */
     public function index()
     {
-        //
     }
 
     public function manageIndex()
     {
         if (Auth::User()->hasRole('Super Admin')) {
-            $vendors = Vendor::all();
-            $contacts = Contact::where('vendor_manufacturer_id', !null)->where('buyer_department_id', null)->get();
+            $buyers = Buyer::all();
+            $contacts = Contact::where('vendor_manufacturer_id', null)->where('buyer_department_id', !null)->get();
         } else {
-            $vendors = Vendor::where('id', Auth::User()->vendor_id)->get();
+            $buyers = Buyer::where('id', Auth::User()->buyer_id)->get();
             $contacts = [];
         }
 
-        return view('pages.vendor.contact_manage', compact('vendors', 'contacts'));
+        return view('pages.buyer.contact_manage', compact('buyers', 'contacts'));
     }
 
-    public function getManufacturers($id)
+
+    public function getDepartments($id)
     {
-        $manufacturers = Manufacturer::where('vendor_id', $id)->get();
-        return response()->json($manufacturers);
+        $departments = Department::where('buyer_id', $id)->get();
+        return response()->json($departments);
     }
 
     /**
@@ -66,7 +66,7 @@ class VendorContactController extends Controller
         $contact->phone = $data['phone'];
         $contact->department = $data['department'];
         $contact->designation = $data['designation'];
-        $contact->vendor_manufacturer_id = $data['maufacturer'];
+        $contact->buyer_department_id = $data['buyer-department'];
 
         $contact->save();
 

@@ -29,7 +29,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Manufacturer</th>
+                                    <th>Buyer Department</th>
                                     <th>Department</th>
                                     <th>Designation</th>
                                 </tr>
@@ -45,7 +45,7 @@
                                                             data-target="{{ '#edit-contact-' . $contact->id }}">
                                                             @lang('global.edit')</p>
                                                     @endcan
-                                                    <form action="{{ route('delete-vendor_contact', ['id' => $contact->id]) }}"
+                                                    <form action="{{ route('delete-buyer_contact', ['id' => $contact->id]) }}"
                                                         method="POST">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
@@ -61,13 +61,13 @@
                                         <td>{{ $contact->name }}</td>
                                         <td>{{ $contact->email }}</td>
                                         <td>{{ $contact->phone }}</td>
-                                        <td>{{ App\Models\Manufacturer::where('id', $contact->vendor_manufacturer_id)->first()->name }}
+                                        <td>{{ App\Models\Department::where('id', $contact->buyer_department_id)->first()->name }}
                                         </td>
                                         <td>{{ $contact->department }}</td>
                                         <td>{{ $contact->designation }}</td>
 
                                     </tr>
-                                    @include('pages.vendor.modals.contact_edit')
+                                    @include('pages.buyer.modals.contact_edit')
                                 @endforeach
 
 
@@ -84,24 +84,24 @@
     </section>
     <!-- /.content -->
 
-    @include('pages.vendor.modals.contact_create')
+    @include('pages.buyer.modals.contact_create')
 @endsection
 
 @section('scripts')
     <script>
-        // Add an event listener to the "Vendor" dropdown
-        $('#vendor').on('change', function() {
-            // Get the selected vendor ID
-            var vendorId = $(this).val();
+        // Add an event listener to the "buyer" dropdown
+        $('#buyer').on('change', function() {
+            // Get the selected buyer ID
+            var buyerId = $(this).val();
 
-            // Make an AJAX request to fetch the manufacturers for the selected vendor
+            // Make an AJAX request to fetch the manufacturers for the selected buyer
             $.ajax({
-                url: '/get-manufacturers/' + vendorId,
+                url: '/get-departments/' + buyerId,
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
                     // Get the "Manufacturer" dropdown element
-                    var manufacturerDropdown = $('#maufacturer');
+                    var manufacturerDropdown = $('#buyer-department');
 
                     // Clear existing options
                     manufacturerDropdown.empty();
@@ -113,7 +113,7 @@
                     });
                 },
                 error: function(xhr, status, error) {
-                    console.error('Error fetching manufacturers:', error);
+                    console.error('Error fetching departments:', error);
                 }
             });
         });

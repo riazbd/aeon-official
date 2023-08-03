@@ -87,12 +87,6 @@
                         <i class="fa fa-angle-down" aria-hidden="true"></i>
                         <div class="triangle"></div>
                         <ul>
-                            <li><a href="/language/uz"><i class="sl-flag flag-uz">
-                                        <div id="uzbek"></div>
-                                    </i> <span>Uz</span></a></li>
-                            <li><a href="/language/ru"><i class="sl-flag flag-ru">
-                                        <div id="russian"></div>
-                                    </i> <span>Ru</span></a></li>
                             <li><a href="/language/en"><i class="sl-flag flag-en">
                                         <div id="english"></div>
                                     </i> <span>En</span></a></li>

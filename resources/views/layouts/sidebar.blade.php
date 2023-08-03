@@ -131,6 +131,11 @@
                     <a href="{{ route('department-manage') }}" class="nav-link">Departments</a>
                 </li>
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('buyer_contact-manage') }}" class="nav-link">Contacts</a>
+                </li>
+            </ul>
         </li>
     </ul>
     <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"

@@ -6,6 +6,7 @@ use App\Http\Controllers\Blade\RoleController;
 use App\Http\Controllers\Blade\PermissionController;
 use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
+use App\Http\Controllers\BuyerContactController;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ManufacturerController;
@@ -95,6 +96,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/department-delete/{id}', [DepartmentController::class, 'destroy'])->name('delete-department');
     Route::put('department-manage/{id}', [DepartmentController::class, 'update'])->name('update-department');
 
+    //Buyer Contacts
+    Route::get('buyer_contact-manage', [BuyerContactController::class, 'manageIndex'])->name('buyer_contact-manage');
+    Route::post('/buyer_contact-create', [BuyerContactController::class, 'store'])->name('save-buyer_contact');
+    Route::delete('/buyer_contact-delete/{id}', [BuyerContactController::class, 'destroy'])->name('delete-buyer_contact');
+    Route::put('buyer_contact-manage/{id}', [BuyerContactController::class, 'update'])->name('update-buyer_contact');
+    Route::get('/get-departments/{id}', [BuyerContactController::class, 'getDepartments'])->name('get-departments-for-contact');
+
     // vendor
     Route::get('vendor-manage', [VendorController::class, 'manageIndex'])->name('vendor-manage');
     Route::post('/vendor-create', [VendorController::class, 'store'])->name('save-vendor');
@@ -108,17 +116,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('manufacturer-manage/{id}', [manufacturerController::class, 'update'])->name('update-manufacturer');
 
     //Vendor Contacts
-    // manufacturers
     Route::get('vendor_contact-manage', [VendorContactController::class, 'manageIndex'])->name('vendor_contact-manage');
     Route::post('/vendor_contact-create', [VendorContactController::class, 'store'])->name('save-vendor_contact');
     Route::delete('/vendor_contact-delete/{id}', [VendorContactController::class, 'destroy'])->name('delete-vendor_contact');
     Route::put('vendor_contact-manage/{id}', [VendorContactController::class, 'update'])->name('update-vendor_contact');
+    Route::get('/get-manufacturers/{id}', [VendorContactController::class, 'getManufacturers'])->name('get-manufacturers-for-contact');
 });
 
 // Change language session condition
 Route::get('/language/{lang}', function ($lang) {
     $lang = strtolower($lang);
-    if ($lang == 'en' || $lang == 'ru' || $lang == 'uz') {
+    if ($lang == 'en') {
         session([
             'locale' => $lang
         ]);

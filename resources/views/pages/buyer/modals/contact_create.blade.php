@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('save-vendor_contact') }}" method="POST" id="contact-create-form"
+                <form action="{{ route('save-buyer_contact') }}" method="POST" id="contact-create-form"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -42,18 +42,18 @@
                         <input type="file" class="file-input" id="logo" name="logo">
                     </div> --}}
                     <div class="form-group">
-                        <label for="vendor">Vendor</label>
-                        <select name="vendor" id="vendor" class="form-control form-control-sm">
-                            <option value="">Select vendor</option>
-                            @foreach ($vendors as $vendor)
-                                <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                        <label for="buyer">Buyer</label>
+                        <select name="buyer" id="buyer" class="form-control form-control-sm">
+                            <option value="">Select Buyer</option>
+                            @foreach ($buyers as $buyer)
+                                <option value="{{ $buyer->id }}">{{ $buyer->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="maufacturer">Manufacturer</label>
-                        <select name="maufacturer" id="maufacturer" class="form-control form-control-sm">
-                            <option value="">Select Maufacturer</option>
+                        <label for="buyer-department">Depertment</label>
+                        <select name="buyer-department" id="buyer-department" class="form-control form-control-sm">
+                            <option value="">Select Department</option>
                             {{-- @foreach ($maufacturers as $maufacturer)
                                 <option value="{{ $maufacturer->id }}">{{ $maufacturer->name }}</option>
                             @endforeach --}}
