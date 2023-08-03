@@ -18,4 +18,9 @@ class Buyer extends Model
     {
         return $this->hasMany(Department::class);
     }
+
+    public function purchageOrders()
+    {
+        return $this->hasMany(PurchageOrder::class);
+    }
 }

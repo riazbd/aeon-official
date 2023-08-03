@@ -11,11 +11,11 @@ class Manufacturer extends Model
 
     public function vendor()
     {
-        $this->belongsTo(Vendor::class);
+        return $this->belongsTo(Vendor::class);
     }
 
     public function contacts()
     {
-        $this->hasMany(Contact::class);
+        return $this->hasMany(Contact::class);
     }
 }

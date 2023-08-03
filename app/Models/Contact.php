@@ -11,11 +11,11 @@ class Contact extends Model
 
     public function manufacturer()
     {
-        $this->belongsTo(Manufacturer::class);
+        return $this->belongsTo(Manufacturer::class);
     }
 
     public function department()
     {
-        $this->belongsTo(Department::class);
+        return $this->belongsTo(Department::class);
     }
 }

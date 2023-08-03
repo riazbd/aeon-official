@@ -10,6 +10,7 @@ use App\Http\Controllers\BuyerContactController;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ManufacturerController;
+use App\Http\Controllers\PurchageOrderController;
 use App\Http\Controllers\VendorContactController;
 use App\Http\Controllers\VendorController;
 use Faker\Guesser\Name;
@@ -73,12 +74,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/api-user/update/{id}', [ApiUserController::class, 'update'])->name('api-userUpdate');
     Route::delete('/api-user/delete/{id}', [ApiUserController::class, 'destroy'])->name('api-userDestroy');
     Route::delete('/api-user-token/delete/{id}', [ApiUserController::class, 'destroyToken'])->name('api-tokenDestroy');
+    // purchage order
     Route::get('/po-management', function () {
         return view('pages.poManagement');
     })->name('po-management');
-    Route::get('/po-management-create', function () {
-        return view('pages.po.create');
-    })->name('po-create');
+    Route::get('/po-management-create', [PurchageOrderController::class, 'create'])->name('po-create');
+    Route::post('/po-management-store', [PurchageOrderController::class, 'store'])->name('po-store');
+
+    Route::get('/po-view', [PurchageOrderController::class, 'pdfView'])->name('pdf-view');
+
+    // buyer
     Route::get('buyer-create', function () {
         return view('pages.buyer.create');
     })->name('buyer-create');

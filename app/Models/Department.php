@@ -11,11 +11,16 @@ class Department extends Model
 
     public function buyer()
     {
-        $this->belongsTo(Buyer::class);
+        return $this->belongsTo(Buyer::class);
     }
 
     public function contacts()
     {
-        $this->hasMany(Contact::class);
+        return $this->hasMany(Contact::class);
+    }
+
+    public function purchageOrders()
+    {
+        return $this->hasMany(PurchageOrder::class);
     }
 }

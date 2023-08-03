@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="px-5">
-        <form method="POST" action="" id="create-patient-form" class="">
+        <form method="POST" action="{{ route('po-store') }}" id="create-patient-form" class=""
+            enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-between">
                 <div class="col-md-6 justify-content-end">
@@ -10,34 +11,39 @@
                         <label for="select_buyer" class="col-5 text-right">Select Buyer:</label>
                         <div class="col-7">
                             <select class="form-control form-control-sm" id="select_buyer" name="select_buyer">
-                                <option value="type1">File Type 1</option>
-                                <option value="type2">File Type 2</option>
-                                <option value="type3">File Type 3</option>
+                                <option value="">Select Buyer</option>
+                                @foreach ($buyers as $buyer)
+                                    <option value="{{ $buyer->id }}">{{ $buyer->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="supplier_price" class="col-5 text-right">Supplier Price:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="supplier_price"
-                                name="supplier_price"></div>
+                        <label for="department" class="col-5 text-right">Department:</label>
+                        <div class="col-7">
+                            <select name="department" id="department" class="form-control form-control-sm">
+                                <option value="">Select Department</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="buyer_price" class="col-5 text-right">Buyer Price:</label>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="buyer_price"
+                                name="buyer_price"></div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="date" class="col-5 text-right">Date:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="date"
-                                name="date"></div>
+                        <label for="buyer-date" class="col-5 text-right">Buyer Date:</label>
+                        <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
+                                id="buyer-date" name="buyer-date"></div>
                     </div>
                     <div class="form-group row">
-                        <label for="ww_po_no" class="col-5 text-right">ww po no:</label>
+                        <label for="ww_po_no" class="col-5 text-right">PO NO.:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm" id="ww_po_no"
                                 name="ww_po_no">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="department" class="col-5 text-right">Department:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="department"
-                                name="department"></div>
-                    </div>
+
                     <div class="form-group row">
                         <label for="plm" class="col-5 text-right">PLM:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm" id="plm"
@@ -78,14 +84,10 @@
                         <div class="col-7"><input type="text" class="form-control form-control-sm"
                                 id="payment_terms" name="payment_terms"></div>
                     </div>
-                    <div class="form-group row">
-                        <label for="ex_factory" class="col-5 text-right">Ex Factory:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="ex_factory"
-                                name="ex_factory"></div>
-                    </div>
+
                     <div class="form-group row">
                         <label for="care_label_date" class="col-5 text-right">Care Label Date:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm"
+                        <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                 id="care_label_date" name="care_label_date"></div>
                     </div>
                     <div class="form-group row">
@@ -102,9 +104,10 @@
                         <label for="select_vendor" class="col-5 text-right">Select Vendor:</label>
                         <div class="col-7">
                             <select class="form-control form-control-sm" id="select_vendor" name="select_vendor">
-                                <option value="type1">File Type 1</option>
-                                <option value="type2">File Type 2</option>
-                                <option value="type3">File Type 3</option>
+                                <option value="">Select Vendor</option>
+                                @foreach ($vendors as $vendor)
+                                    <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -112,6 +115,21 @@
                         <label for="vendor_price" class="col-5 text-right">Vendor Price:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm" id="vendor_price"
                                 name="vendor_price"></div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-5"></div>
+                        <div class="col-7" id="vendor_price_difference"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="ex_factory_date" class="col-5 text-right">Ex Factory Date:</label>
+                        <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
+                                id="ex_factory_date" name="ex_factory_date"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-5"></div>
+                        <div class="col-7" id="ex_factory_date_difference"></div>
                     </div>
 
                     <div class="form-group row">
@@ -153,19 +171,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="upload_photo" class="col-5 text-right">Upload Photo:</label>
-                        <div class="col-7"><input type="file" class="form-control form-control-sm" id="upload_photo"
-                                name="upload_photo"></div>
-                    </div>
-
-                    <div class="form-group row">
                         <label for="upload_picture_germent" class="col-5 text-right">Upload Picture germent:</label>
                         <div class="col-7"><input type="file" class="form-control form-control-sm"
                                 id="upload_picture_germent" name="upload_picture_germent"></div>
                     </div>
                     <div class="form-group row">
                         <label for="upload_artwork" class="col-5 text-right">Upload Artwork:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm"
+                        <div class="col-7"><input type="file" class="form-control form-control-sm"
                                 id="upload_artwork" name="upload_artwork"></div>
                     </div>
                     <div class="form-group row">
@@ -221,21 +233,24 @@
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
-                            <td><input type="text"></td>
+                            <td><input type="text" name="items[0][plm]"></td>
+                            <td><input type="text" name="items[0][colour]"></td>
+                            <td><input type="text" name="items[0][item_no]"></td>
+                            <td><input type="text" name="items[0][size]"></td>
+                            <td><input type="text" name="items[0][qty_ordered]"></td>
+                            <td><input type="text" name="items[0][inner_qty]"></td>
+                            <td><input type="text" name="items[0][outer_case_qty]"></td>
+                            <td><input type="text" name="items[0][supplier_price]"></td>
+                            <td><input type="text" name="items[0][value]"></td>
+                            <td><input type="text" name="items[0][selling_price]"></td>
                         </tr>
 
                     </tbody>
                 </table>
             </div>
+            <hr>
+            <button type="submit" class="btn btn-primary btn-sm">Save PO</button>
+            <a href="{{ route('pdf-view') }}" class="btn btn-info btn-sm">Download PO</a>
         </form>
 
 
@@ -253,16 +268,16 @@
                 const newRow = `
                 <tr>
                     <td>${slNo}</td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
-                    <td><input type="text"></td>
+                    <td><input type="text" name="items[${slNo}][plm]"></td>
+                    <td><input type="text" name="items[${slNo}][colour]"></td>
+                    <td><input type="text" name="items[${slNo}][item_no]"></td>
+                    <td><input type="text" name="items[${slNo}][size]"></td>
+                    <td><input type="text" name="items[${slNo}][qty_ordered]"></td>
+                    <td><input type="text" name="items[${slNo}][inner_qty]"></td>
+                    <td><input type="text" name="items[${slNo}][outer_case_qty]"></td>
+                    <td><input type="text" name="items[${slNo}][supplier_price]"></td>
+                    <td><input type="text" name="items[${slNo}][value]"></td>
+                    <td><input type="text" name="items[${slNo}][selling_price]"></td>
                 </tr>
             `;
                 $('table tbody').append(newRow);
@@ -270,6 +285,116 @@
 
             // Add event listener to the "Add row" button
             $('#add-row').on('click', addNewRow);
+
+            // getting departments
+            $('#select_buyer').on('change', function() {
+                // Get the selected buyer ID
+                var buyerId = $(this).val();
+
+                // Make an AJAX request to fetch the manufacturers for the selected buyer
+                $.ajax({
+                    url: '/get-departments/' + buyerId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        // Get the "Manufacturer" dropdown element
+                        var departmentDropdown = $('#department');
+
+                        // Clear existing options
+                        departmentDropdown.empty();
+
+                        // Populate the "Manufacturer" dropdown with the fetched data
+                        $.each(data, function(index, department) {
+                            departmentDropdown.append('<option value="' + department
+                                .id + '">' +
+                                department.name + '</option>');
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching departments:', error);
+                    }
+                });
+            });
+
+            // Function to update the difference note
+            function updateDifferenceNote() {
+                const buyerDate = new Date($('#buyer-date').val());
+                const exFactoryDate = new Date($('#ex_factory_date').val());
+                const differenceInDays = Math.floor((exFactoryDate - buyerDate) / (1000 * 60 * 60 * 24));
+
+                // Get the element
+                const differenceElement = $('#ex_factory_date_difference');
+
+                // Update the text content of the element with the difference note
+                differenceElement.text(`* ${differenceInDays} days earlier than Buyer Date`);
+
+                // Add the "text-danger" class to make the text red
+                if (differenceInDays < 0) {
+                    differenceElement.addClass('text-danger');
+                } else {
+                    differenceElement.removeClass('text-danger');
+                }
+            }
+
+            // Add event listener to the "Ex Factory Date" input to update the difference note
+            $('#ex_factory_date').on('change', updateDifferenceNote);
+
+            // Add event listener to the "Buyer Date" input to update the "Ex Factory Date" and difference note
+            $('#buyer-date').on('change', function() {
+                const buyerDate = new Date($(this).val());
+                const exFactoryDate = new Date(buyerDate);
+                exFactoryDate.setDate(exFactoryDate.getDate() - 14); // Subtract 14 days
+
+                const exFactoryDateFormatted = exFactoryDate.toISOString().split('T')[
+                    0]; // Convert date to YYYY-MM-DD format
+                $('#ex_factory_date').val(exFactoryDateFormatted);
+                updateDifferenceNote();
+            });
+
+
+            // Function to update the Vendor Price and Vendor Price Difference note
+            function updateVendorPriceAndDifference() {
+                const buyerPrice = parseFloat($('#buyer_price').val());
+                let vendorPrice = parseFloat($('#vendor_price').val());
+
+                // If Vendor Price is not provided, calculate it as 5% less than the Buyer Price
+                if (isNaN(vendorPrice)) {
+                    vendorPrice = buyerPrice * 0.95; // 5% less than the Buyer Price
+                }
+
+                // Calculate the percentage difference between Buyer Price and Vendor Price
+                const percentageDifference = ((buyerPrice - vendorPrice) / buyerPrice) * 100;
+
+                // Round the percentageDifference to 2 decimal places
+                const roundedPercentageDifference = parseFloat(percentageDifference.toFixed(2));
+
+                // Get the elements
+                const vendorPriceElement = $('#vendor_price');
+                const vendorPriceDifferenceElement = $('#vendor_price_difference');
+
+                // Update the value of the Vendor Price field
+                vendorPriceElement.val(vendorPrice);
+
+                // Update the text content of the Vendor Price Difference note
+                vendorPriceDifferenceElement.text(
+                    `*Vendor Price is ${roundedPercentageDifference}% less than Buyer Price.`);
+
+
+                vendorPriceDifferenceElement.addClass('text-danger');
+
+            }
+
+            // Add event listener to the "Buyer Price" input to update the Vendor Price and Vendor Price Difference note
+            $('#buyer_price').on('input', function() {
+                updateVendorPriceAndDifference();
+            });
+
+            // Add event listener to the "Vendor Price" input to update the Vendor Price and Vendor Price Difference note
+            $('#vendor_price').on('input', function() {
+                updateVendorPriceAndDifference();
+            });
+
+
         });
     </script>
 @endsection
