@@ -20,6 +20,7 @@ class CreatePurchageOrdersTable extends Migration
             $table->unsignedBigInteger('vendor_id')->nullable();
             $table->string('buyer_price')->nullable();
             $table->string('vendor_price')->nullable();
+            $table->string('earliest_buyer_date')->nullable();
             $table->string('buyer_date')->nullable();
             $table->string('ex_factory_date')->nullable();
             $table->string('po_no')->nullable();

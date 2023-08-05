@@ -2,7 +2,23 @@
 
 @section('content')
     <div class="px-5">
-        <form method="POST" action="{{ route('po-store') }}" id="create-patient-form" class=""
+        <div class="row justify-content-between">
+            <div class="col-md-6 justify-content-end align-atems-center">
+                <form method="POST" action="{{ route('upload-pdf') }}" id="upload-pdf-form" class="mb-5"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group row">
+                        <label for="pdf_file" class="col-md-4 col-form-label text-md-right">Upload PDF:</label>
+                        <div class="col-md-6">
+                            <input type="file" class="form-control-file" id="pdf_file" name="pdf_file" accept=".pdf">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="extract-text-btn">Upload PDF</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6 justify-content-end"></div>
+        </div>
+        <form method="POST" action="{{ route('po-store') }}" id="create-patient-form" class="mb-5"
             enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-between">
@@ -33,7 +49,13 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="buyer-date" class="col-5 text-right">Buyer Date:</label>
+                        <label for="early-buyer-date" class="col-5 text-right">Earliest Buyer Date:</label>
+                        <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
+                                id="early-buyer-date" name="early-buyer-date"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="buyer-date" class="col-5 text-right">Latest Buyer Date:</label>
                         <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                 id="buyer-date" name="buyer-date"></div>
                     </div>
@@ -61,8 +83,8 @@
                     </div>
                     <div class="form-group row">
                         <label for="fabric_content" class="col-5 text-right">fabric Content:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="fabric_content"
-                                name="fabric_content"></div>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm"
+                                id="fabric_content" name="fabric_content"></div>
                     </div>
                     <div class="form-group row">
                         <label for="supplier_no" class="col-5 text-right">supplier No:</label>
@@ -71,8 +93,8 @@
                     </div>
                     <div class="form-group row">
                         <label for="supplier_name" class="col-5 text-right">Supplier Name:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="supplier_name"
-                                name="supplier_name"></div>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm"
+                                id="supplier_name" name="supplier_name"></div>
                     </div>
                     <div class="form-group row">
                         <label for="currency" class="col-5 text-right">Currency:</label>
@@ -392,6 +414,60 @@
             // Add event listener to the "Vendor Price" input to update the Vendor Price and Vendor Price Difference note
             $('#vendor_price').on('input', function() {
                 updateVendorPriceAndDifference();
+            });
+
+            // Handle form submission via AJAX
+            $('#upload-pdf-form').on('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Assuming the response contains the extracted data in JSON format
+                        // Update the form fields with the extracted data
+                        // $('#extracted-data').html(
+                        //     `<pre>${JSON.stringify(response, null, 2)}</pre>`
+                        // );
+                        console.log(response);
+                        const extractedText = response;
+
+                        const poNo = extractedText.match(/WW PO No:\s*(\d+)/)?.[1] ?? '';
+                        const price = extractedText.match(
+                            /Total Selling Value excl VAT:([\d,.]+) ZAR/)?.[1] ?? '';
+                        const supplierNo = extractedText.match(/Supplier No:\s*(\d+)/)?.[1] ??
+                            '';
+
+                        // Update the supplierName using the correct regular expression
+                        const supplierNameRegex =
+                            /Supplier Name:\s*([^:\n]+(?:\s+\w+)*(?=\s*Supplier Reference Number:))/;
+                        const supplierNameMatch = extractedText.match(supplierNameRegex);
+                        const supplierName = supplierNameMatch ? supplierNameMatch[1].trim() :
+                            '';
+
+                        const currency = extractedText.match(/Currency:\s*([A-Z]+)/)?.[1] ?? '';
+
+                        // Update the form fields with the extracted data
+                        $('#ww_po_no').val(poNo);
+                        $('#price').val(price);
+                        $('#supplier_no').val(supplierNo);
+                        $('#supplier_name').val(supplierName);
+                        $('#currency').val(currency);
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error uploading PDF:', error);
+                    },
+                    complete: function() {
+                        // Re-enable the submit button when the AJAX request is completed (either success or error)
+                        $('#extract-text-btn').prop('disabled', false);
+                        $('.spinner-border').hide();
+                    }
+                });
             });
 
 

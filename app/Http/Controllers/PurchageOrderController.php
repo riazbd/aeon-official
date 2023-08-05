@@ -48,6 +48,7 @@ class PurchageOrderController extends Controller
         $purchaseOrder->vendor_id = $request->input('select_vendor');
         $purchaseOrder->buyer_price = $request->input('buyer_price');
         $purchaseOrder->vendor_price = $request->input('vendor_price');
+        $purchaseOrder->earliest_buyer_date = $request->input('early-buyer-date');
         $purchaseOrder->buyer_date = $request->input('buyer-date');
         $purchaseOrder->ex_factory_date = $request->input('ex_factory_date');
         $purchaseOrder->po_no = $request->input('ww_po_no');

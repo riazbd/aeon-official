@@ -10,6 +10,7 @@ use App\Http\Controllers\BuyerContactController;
 use App\Http\Controllers\BuyerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ManufacturerController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PurchageOrderController;
 use App\Http\Controllers\VendorContactController;
 use App\Http\Controllers\VendorController;
@@ -82,6 +83,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/po-management-store', [PurchageOrderController::class, 'store'])->name('po-store');
 
     Route::get('/po-view', [PurchageOrderController::class, 'pdfView'])->name('pdf-view');
+    Route::post('/upload-pdf', [PdfController::class, 'uploadPdf'])->name('upload-pdf');
+
 
     // buyer
     Route::get('buyer-create', function () {
