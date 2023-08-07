@@ -389,6 +389,13 @@ table.dataTable td {
     text-overflow: ellipsis;
 }
 
+/* Add a class to style the disabled select as if it is read-only */
+.select-readonly {
+    pointer-events: none; /* Disable mouse events on the element */
+    touch-action: none; /* Disable touch events on the element */
+    background-color: #f8f9fa; /* Apply a different background color to indicate read-only */
+}
+
 /* end datatable */
 
 @media (min-width: 768px) {

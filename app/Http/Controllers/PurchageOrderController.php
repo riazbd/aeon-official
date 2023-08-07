@@ -45,6 +45,7 @@ class PurchageOrderController extends Controller
         $purchaseOrder = new PurchageOrder();
         $purchaseOrder->buyer_id = $request->input('select_buyer');
         $purchaseOrder->department_id = $request->input('department');
+        $purchaseOrder->po_department = $request->input('po_department');
         $purchaseOrder->vendor_id = $request->input('select_vendor');
         $purchaseOrder->buyer_price = $request->input('buyer_price');
         $purchaseOrder->vendor_price = $request->input('vendor_price');
@@ -122,6 +123,7 @@ class PurchageOrderController extends Controller
                 $orderItem = new OrderItem();
                 $orderItem->po_id = $purchaseOrder->id;
                 $orderItem->plm = $itemData['plm'];
+                $orderItem->style_no = $itemData['style_no'];
                 $orderItem->colour = $itemData['colour'];
                 $orderItem->item_no = $itemData['item_no'];
                 $orderItem->size = $itemData['size'];
@@ -136,14 +138,20 @@ class PurchageOrderController extends Controller
             }
         }
 
+        if ($request->input('download_pdf') == 'yes') {
+            $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
+            $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+            return $pdf->stream(time() . 'po.pdf');
+        }
+
         // Redirect to a success page or do anything else you need after successful submission
         return redirect()->back();
     }
 
     public function pdfView()
     {
-        $data = [];
-        $pdf = PDF::loadView('pages.po.pdf');
+        $pdf = PDF::loadView('pages.po.pdf')->setPaper('b4', 'landscape');
 
         return $pdf->stream(time() . 'po.pdf');
     }

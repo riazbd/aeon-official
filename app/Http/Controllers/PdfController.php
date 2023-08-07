@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Spatie\PdfToText\Pdf;
 
 class PdfController extends Controller
@@ -83,33 +86,67 @@ class PdfController extends Controller
         //
     }
 
+    // public function uploadPdf(Request $request)
+    // {
+    //     $request->validate([
+    //         'pdf_file' => 'required|mimes:pdf|max:2048', // Adjust max file size as needed
+    //     ]);
+
+    //     $pdfFilePath = $request->file('pdf_file')->path();
+
+    //     // Set the path to the pdftotext binary using the configured path in config/pdf.php
+    //     $poppler = 'C:\Users\nuruddin\Downloads\xpdf-tools-win-4.04\xpdf-tools-win-4.04\bin64\pdftotext.exe';
+
+    //     $pdfContent = Pdf::getText($pdfFilePath, $poppler);
+
+    //     // Now you need to parse the $pdfContent variable to extract the required data
+    //     // You can use regex or any other parsing logic based on your specific PDF structure
+
+    //     // Example: Extracting data from lines in the PDF
+    //     // $data = [];
+    //     // $lines = explode("\n", $pdfContent);
+    //     // foreach ($lines as $line) {
+    //     //     // Implement your data extraction logic here
+    //     //     // Assuming you extract the data into an associative array with keys matching the input field names
+    //     //     $data['plm'] = 'extracted_plm_data';
+    //     //     $data['colour'] = 'extracted_colour_data';
+    //     //     // ... and so on
+    //     // }
+
+    //     return response()->json($pdfContent);
+    // }
+
     public function uploadPdf(Request $request)
     {
         $request->validate([
             'pdf_file' => 'required|mimes:pdf|max:2048', // Adjust max file size as needed
         ]);
 
-        $pdfFilePath = $request->file('pdf_file')->path();
+        $pdfFilePath = $request->file('pdf_file')->store('uploads', 'public');
 
-        // Set the path to the pdftotext binary using the configured path in config/pdf.php
-        $poppler = 'C:\Users\nuruddin\Downloads\xpdf-tools-win-4.04\xpdf-tools-win-4.04\bin64\pdftotext.exe';
+        // Get the public path of the stored file
+        $publicFilePath = Storage::disk('public')->path($pdfFilePath);
+        Log::info('File path: ' . $pdfFilePath);
 
-        $pdfContent = Pdf::getText($pdfFilePath, $poppler);
+        // Assuming the Flask server is running on http://127.0.0.1:5000
+        $flaskServerUrl = 'http://127.0.0.1:5000/extract_table';
 
-        // Now you need to parse the $pdfContent variable to extract the required data
-        // You can use regex or any other parsing logic based on your specific PDF structure
+        // Make a POST request to the Flask server
+        $client = new Client();
+        $response = $client->post($flaskServerUrl, [
+            'multipart' => [
+                [
+                    'name' => 'file',
+                    'contents' => fopen($publicFilePath, 'r'),
+                    'filename' => basename($publicFilePath),
+                ],
+            ],
+        ]);
 
-        // Example: Extracting data from lines in the PDF
-        // $data = [];
-        // $lines = explode("\n", $pdfContent);
-        // foreach ($lines as $line) {
-        //     // Implement your data extraction logic here
-        //     // Assuming you extract the data into an associative array with keys matching the input field names
-        //     $data['plm'] = 'extracted_plm_data';
-        //     $data['colour'] = 'extracted_colour_data';
-        //     // ... and so on
-        // }
+        // Get the JSON response from the Flask server
+        $jsonResponse = $response->getBody()->getContents();
 
-        return response()->json($pdfContent);
+        // Return the JSON response as the HTTP response
+        return response()->json($jsonResponse);
     }
 }

@@ -163,6 +163,7 @@
     <script src="{{ asset('dist/js/adminlte.js') }}"></script>
     <!-- SweetAlert2 -->
     <script src="{{ asset('plugins/sweetalert2-theme-bootstrap-4/sweet-alerts.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <!-- MyJs -->
     <script src="{{ asset('plugins/bootstrap_my/myScripts.js') }}" type="text/javascript"></script>
