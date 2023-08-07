@@ -92,7 +92,7 @@
         <li class="nav-item has-treeview">
             <a href="#"
                 class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
-                <i class="fas fa-users-cog"></i>
+                <i class="fas fa-file-alt"></i>
                 <p>
                     Purchage Orders
                     <i class="right fas fa-angle-left"></i>
@@ -103,6 +103,23 @@
                     <a href="{{ route('po-create') }}" class="nav-link">create new po</a>
                 </li>
             </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('po-list') }}" class="nav-link">PO List</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="nav-item">
+
+            <a href="{{ route('buyer-list') }}" class="nav-link"><i class="fas fa-building"></i> Buyers</a>
+        </li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li class="nav-item">
+
+            <a href="{{ route('vendor-list') }}" class="nav-link"><i class="fas fa-industry"></i> Vendors</a>
         </li>
     </ul>
     <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
@@ -110,9 +127,9 @@
         <li class="nav-item has-treeview">
             <a href="#"
                 class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
-                <i class="fas fa-users-cog"></i>
+                <i class="fas fa-warehouse"></i>
                 <p>
-                    Buyer
+                    Buyer Manage
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -121,11 +138,7 @@
                     <a href="{{ route('buyer-manage') }}" class="nav-link">Buyer Management</a>
                 </li>
             </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="{{ route('buyer-list') }}" class="nav-link">Buyers</a>
-                </li>
-            </ul>
+
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('department-manage') }}" class="nav-link">Departments</a>
@@ -138,25 +151,21 @@
             </ul>
         </li>
     </ul>
+
     <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
         data-accordion="false">
         <li class="nav-item has-treeview">
             <a href="#"
                 class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
-                <i class="fas fa-users-cog"></i>
+                <i class="fas fa-recycle"></i>
                 <p>
-                    Vendor
+                    Vendor Manage
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('vendor-manage') }}" class="nav-link">Vendor Management</a>
-                </li>
-            </ul>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="" class="nav-link">Vendors</a>
                 </li>
             </ul>
             <ul class="nav nav-treeview">
@@ -169,18 +178,6 @@
                     <a href="{{ route('vendor_contact-manage') }}" class="nav-link">Contacts</a>
                 </li>
             </ul>
-        </li>
-    </ul>
-
-    <ul class="nav nav-sidebar">
-        <li class="nav-item">
-            <a href="" class="nav-link">Contacts</a>
-        </li>
-    </ul>
-
-    <ul class="nav nav-sidebar">
-        <li class="nav-item">
-            <a href="" class="nav-link">Certificates</a>
         </li>
     </ul>
     {{--    @can('card.main') --}}

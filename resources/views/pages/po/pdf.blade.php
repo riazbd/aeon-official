@@ -28,9 +28,10 @@
                 </p> --}}
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.6pt;margin-right:34.0pt;margin-left:34.55pt;'>
-                    <strong><span style="font-size:8px;">CREATION LOYAL HONGKONG
-                            LIMITED</span></strong><strong><span
-                            style="font-size:8px;">&nbsp;</span></strong><strong><span style="font-size:8px;">6/F CNT
+                    {{-- <strong><span style="font-size:8px;">CREATION LOYAL HONGKONG
+                            LIMITED</span></strong> --}}
+                    <strong><span style="font-size:8px;">&nbsp;</span></strong><strong><span style="font-size:8px;">6/F
+                            CNT
                             COMM BLOG NO
                             302&nbsp;QUEEN&apos;S&nbsp;ROAD&nbsp;CENTRAL</span></strong>
                 </p>
@@ -100,7 +101,7 @@
             <td colspan="6" rowspan="13"
                 style="width: 236.85pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;vertical-align: top;">
                 <p style='text-align:center;font-size:15px;font-family:"Calibri",sans-serif;'>
-                    <span style='font-size:13px;font-family:"Times New Roman",serif;'><img width="400"
+                    <span style='font-size:13px;font-family:"Times New Roman",serif;'><img width="300"
                             src="{{ public_path($purchaseOrder->upload_picture_germent) }}" alt="image"
                             style="margin: 0 auto; display: block; "></span>
                 </p>

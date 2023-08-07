@@ -15,7 +15,8 @@ class BuyerController extends Controller
      */
     public function index()
     {
-        //
+        $buyers = Buyer::all();
+        return view('pages.buyer.index', compact('buyers'));
     }
 
     public function manageIndex()

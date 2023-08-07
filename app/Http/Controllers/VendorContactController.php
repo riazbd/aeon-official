@@ -15,9 +15,10 @@ class VendorContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $contacts = Contact::where('vendor_manufacturer_id', $id)->get();
+        return view('pages.vendor.contect_index', compact('contacts'));
     }
 
     public function manageIndex()

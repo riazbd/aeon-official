@@ -15,7 +15,16 @@ class CreateCertificatesTable extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('manufacturer_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('logo')->nullable();
+            $table->string('issue_date')->nullable();
+            $table->string('valid_from')->nullable();
+            $table->string('valid_to')->nullable();
+            $table->string('pdf_file')->nullable();
             $table->timestamps();
+
+            $table->foreign('manufacturer_id')->references('id')->on('manufacturers')->onDelete('CASCADE');
         });
     }
 

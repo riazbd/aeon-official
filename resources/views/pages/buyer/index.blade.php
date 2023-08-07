@@ -2,58 +2,23 @@
 
 @section('content')
     <div class="px-5 card-list-container">
+        <div class="card-box-container d-flex align-items-center">
+            @foreach ($buyers as $buyer)
+                <a href="{{ route('department-index', ['id' => $buyer->id]) }}" class="card-box">
+                    {{-- <div class="card-box"> --}}
 
-        <div>
-            <div class="card-box-container d-flex align-items-center">
-                <div class="card-box">
                     <div class="card-element-first">
-                        <p>mitali furniture</p>
+                        <p>{{ $buyer->name }}</p>
                     </div>
                     <div class="card-element-second">
-                        <img src="https://source.unsplash.com/random/500x200?sig=3">
+                        <img src="{{ asset($buyer->logo) }}">
                     </div>
-                </div>
-                <div class="card-box">
-                    <div class="card-element-first">
-                        <p>mitali furniture</p>
-                    </div>
-                    <div class="card-element-second">
-                        <img src="https://source.unsplash.com/random/500x200?sig=3">
-                    </div>
-                </div>
-                <div class="card-box">
-                    <div class="card-element-first">
-                        <p>mitali furniture</p>
-                    </div>
-                    <div class="card-element-second">
-                        <img src="https://source.unsplash.com/random/500x200?sig=3">
-                    </div>
-                </div>
-                <div class="card-box">
-                    <div class="card-element-first">
-                        <p>mitali furniture</p>
-                    </div>
-                    <div class="card-element-second">
-                        <img src="https://source.unsplash.com/random/500x200?sig=3">
-                    </div>
-                </div>
-                <div class="card-box">
-                    <div class="card-element-first">
-                        <p>mitali furniture</p>
-                    </div>
-                    <div class="card-element-second">
-                        <img src="https://source.unsplash.com/random/500x200?sig=3">
-                    </div>
-                </div>
-                <div class="card-box">
-                    <div class="card-element-first">
-                        <p>mitali furniture</p>
-                    </div>
-                    <div class="card-element-second">
-                        <img src="https://source.unsplash.com/random/500x200?sig=3">
-                    </div>
-                </div>
-            </div>
+
+                    {{-- </div> --}}
+                </a>
+            @endforeach
+
+
         </div>
     </div>
 @endsection

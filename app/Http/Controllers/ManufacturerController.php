@@ -14,9 +14,15 @@ class ManufacturerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $manufacturers = Manufacturer::where('vendor_id', $id)->get();
+        return view('pages.vendor.manufacturers_index', compact('manufacturers'));
+    }
+
+    public function interface($id)
+    {
+        return view('pages.vendor.interface', compact('id'));
     }
 
     public function manageIndex()

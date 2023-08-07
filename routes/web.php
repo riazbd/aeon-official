@@ -79,10 +79,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/po-management', function () {
         return view('pages.poManagement');
     })->name('po-management');
+    Route::get('/po-management-list', [PurchageOrderController::class, 'index'])->name('po-list');
     Route::get('/po-management-create', [PurchageOrderController::class, 'create'])->name('po-create');
     Route::post('/po-management-store', [PurchageOrderController::class, 'store'])->name('po-store');
+    Route::delete('/po-management/{id}', [PurchageOrderController::class, 'destroy'])->name('po-delete');
 
     Route::get('/po-view', [PurchageOrderController::class, 'pdfView'])->name('pdf-view');
+    Route::get('/po-view-single/{id}', [PurchageOrderController::class, 'pdfViewSingle'])->name('pdf-view-single');
     Route::post('/upload-pdf', [PdfController::class, 'uploadPdf'])->name('upload-pdf');
 
 
@@ -90,9 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('buyer-create', function () {
         return view('pages.buyer.create');
     })->name('buyer-create');
-    Route::get('buyer-list', function () {
-        return view('pages.buyer.index');
-    })->name('buyer-list');
+    Route::get('buyer-list', [BuyerController::class, 'index'])->name('buyer-list');
     Route::get('buyer-manage', [BuyerController::class, 'manageIndex'])->name('buyer-manage');
     Route::post('/buyer-create', [BuyerController::class, 'store'])->name('save-buyer');
     Route::delete('/buyer-delete/{id}', [BuyerController::class, 'destroy'])->name('delete-buyer');
@@ -100,12 +101,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     // departments
     Route::get('department-manage', [DepartmentController::class, 'manageIndex'])->name('department-manage');
+    Route::get('department-index/{id}', [DepartmentController::class, 'index'])->name('department-index');
+    Route::get('department-interface/{id}', [DepartmentController::class, 'interface'])->name('department-interface');
     Route::post('/department-create', [DepartmentController::class, 'store'])->name('save-department');
     Route::delete('/department-delete/{id}', [DepartmentController::class, 'destroy'])->name('delete-department');
     Route::put('department-manage/{id}', [DepartmentController::class, 'update'])->name('update-department');
 
     //Buyer Contacts
     Route::get('buyer_contact-manage', [BuyerContactController::class, 'manageIndex'])->name('buyer_contact-manage');
+    Route::get('buyer_contact-index/{id}', [BuyerContactController::class, 'index'])->name('buyer_contact_index');
     Route::post('/buyer_contact-create', [BuyerContactController::class, 'store'])->name('save-buyer_contact');
     Route::delete('/buyer_contact-delete/{id}', [BuyerContactController::class, 'destroy'])->name('delete-buyer_contact');
     Route::put('buyer_contact-manage/{id}', [BuyerContactController::class, 'update'])->name('update-buyer_contact');
@@ -113,22 +117,33 @@ Route::group(['middleware' => 'auth'], function () {
 
     // vendor
     Route::get('vendor-manage', [VendorController::class, 'manageIndex'])->name('vendor-manage');
+    Route::get('vendor-list', [VendorController::class, 'index'])->name('vendor-list');
     Route::post('/vendor-create', [VendorController::class, 'store'])->name('save-vendor');
     Route::delete('/vendor-delete/{id}', [VendorController::class, 'destroy'])->name('delete-vendor');
     Route::put('vendor-manage/{id}', [VendorController::class, 'update'])->name('update-vendor');
 
     // manufacturers
     Route::get('manufacturer-manage', [ManufacturerController::class, 'manageIndex'])->name('manufacturer-manage');
+    Route::get('manufacturer-index/{id}', [ManufacturerController::class, 'index'])->name('manufacturer-index');
+    Route::get('manufacturer-interface/{id}', [ManufacturerController::class, 'interface'])->name('manufacturer-interface');
     Route::post('/manufacturer-create', [manufacturerController::class, 'store'])->name('save-manufacturer');
     Route::delete('/manufacturer-delete/{id}', [manufacturerController::class, 'destroy'])->name('delete-manufacturer');
     Route::put('manufacturer-manage/{id}', [manufacturerController::class, 'update'])->name('update-manufacturer');
 
     //Vendor Contacts
     Route::get('vendor_contact-manage', [VendorContactController::class, 'manageIndex'])->name('vendor_contact-manage');
+    Route::get('vendor_contact-index/{id}', [VendorContactController::class, 'index'])->name('vendor_contact_index');
     Route::post('/vendor_contact-create', [VendorContactController::class, 'store'])->name('save-vendor_contact');
     Route::delete('/vendor_contact-delete/{id}', [VendorContactController::class, 'destroy'])->name('delete-vendor_contact');
     Route::put('vendor_contact-manage/{id}', [VendorContactController::class, 'update'])->name('update-vendor_contact');
     Route::get('/get-manufacturers/{id}', [VendorContactController::class, 'getManufacturers'])->name('get-manufacturers-for-contact');
+
+    //Vendor Certificates
+    Route::get('vendor_certificate-manage', [VendorContactController::class, 'manageIndex'])->name('vendor_certificate-manage');
+    Route::get('vendor_certificate-index/{id}', [VendorContactController::class, 'index'])->name('vendor_certificate');
+    Route::post('/vendor_certificate-create', [VendorContactController::class, 'store'])->name('save-vendor_certificate');
+    Route::delete('/vendor_certificate-delete/{id}', [VendorContactController::class, 'destroy'])->name('delete-vendor_certificate');
+    Route::put('vendor_certificate-manage/{id}', [VendorContactController::class, 'update'])->name('update-vendor_certificate');
 });
 
 // Change language session condition

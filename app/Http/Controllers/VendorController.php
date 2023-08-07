@@ -15,7 +15,8 @@ class VendorController extends Controller
      */
     public function index()
     {
-        //
+        $vendors = Vendor::all();
+        return view('pages.vendor.index', compact('vendors'));
     }
 
     public function manageIndex()

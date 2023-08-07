@@ -18,4 +18,9 @@ class Manufacturer extends Model
     {
         return $this->hasMany(Contact::class);
     }
+
+    public function certificates()
+    {
+        return $this->hasMany(Certificate::class);
+    }
 }

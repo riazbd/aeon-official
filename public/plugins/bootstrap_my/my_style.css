@@ -294,7 +294,8 @@ border-radius: 5px;
 /* button card design */
 .card-list-container {
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    flex-direction: column;
 }
 
 .card-box-container{

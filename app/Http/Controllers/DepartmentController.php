@@ -14,9 +14,10 @@ class DepartmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $departments = Department::where('buyer_id', $id)->get();
+        return view('pages.buyer.department_index', compact('departments'));
     }
 
     public function manageIndex()

@@ -18,7 +18,8 @@ class PurchageOrderController extends Controller
      */
     public function index()
     {
-        //
+        $pos = PurchageOrder::all();
+        return view('pages.poManagement', compact('pos'));
     }
 
     /**
@@ -156,6 +157,15 @@ class PurchageOrderController extends Controller
         return $pdf->stream(time() . 'po.pdf');
     }
 
+    public function pdfViewSingle($id)
+    {
+        $po = PurchageOrder::where('id', $id)->first();
+        $tableDatas = OrderItem::where('po_id', $po->id)->get();
+        $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $po, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+        return $pdf->stream(time() . 'po.pdf');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -198,6 +208,10 @@ class PurchageOrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $po = PurchageOrder::where('id', $id)->first();
+
+        $po->delete();
+
+        return redirect()->back();
     }
 }

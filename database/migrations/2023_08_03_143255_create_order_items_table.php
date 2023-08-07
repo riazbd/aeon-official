@@ -17,6 +17,7 @@ class CreateOrderItemsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('po_id')->nullable();
             $table->string('plm')->nullable();
+            $table->string('style_no')->nullable();
             $table->string('colour')->nullable();
             $table->string('item_no')->nullable();
             $table->string('size')->nullable();
