@@ -20,6 +20,8 @@ class CreatePurchageOrdersTable extends Migration
             $table->unsignedBigInteger('vendor_id')->nullable();
             $table->string('po_department')->nullable();
             $table->string('buyer_price')->nullable();
+            $table->string('access_price')->nullable();
+            $table->string('style_note')->nullable();
             $table->string('vendor_price')->nullable();
             $table->string('earliest_buyer_date')->nullable();
             $table->string('buyer_date')->nullable();
@@ -34,6 +36,7 @@ class CreatePurchageOrdersTable extends Migration
             $table->string('supplier_name')->nullable();
             $table->string('currency')->nullable();
             $table->string('payment_terms')->nullable();
+            $table->string('ship_mode')->nullable();
 
             $table->string('care_lavel_date')->nullable();
             $table->string('stlye_no')->nullable();
@@ -44,7 +47,7 @@ class CreatePurchageOrdersTable extends Migration
             $table->string('inner_qty')->nullable();
             $table->string('outer_case_qty')->nullable();
             $table->string('value')->nullable();
-            $table->string('style_note')->nullable();
+
             $table->string('selling_price')->nullable();
             $table->string('upload_picture_germent')->nullable();
             $table->string('upload_artwork')->nullable();

@@ -48,25 +48,30 @@
                         <div class="col-7"><input type="text" class="form-control form-control-sm" id="buyer_price"
                                 name="buyer_price"></div>
                     </div>
+                    <div class="form-group row">
+                        <label for="vendor_price" class="col-5 text-right">Vendor Price:</label>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="vendor_price"
+                                name="vendor_price"></div>
+                    </div>
 
                     <div class="form-group row">
-                        <label for="early-buyer-date" class="col-5 text-right">Earliest Buyer Date:</label>
+                        <label for="early-buyer-date" class="col-5 text-right">Buyer Date:</label>
                         <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                 id="early-buyer-date" name="early-buyer-date"></div>
                     </div>
 
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label for="buyer-date" class="col-5 text-right">Latest Buyer Date:</label>
                         <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                 id="buyer-date" name="buyer-date"></div>
-                    </div>
+                    </div> --}}
                     <div class="form-group row">
                         <label for="care_label_date" class="col-5 text-right">Care Label Date:</label>
                         <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                 id="care_label_date" name="care_label_date"></div>
                     </div>
                     <div class="form-group row">
-                        <label for="ww_po_no" class="col-5 text-right">PO NO.:</label>
+                        <label for="ww_po_no" class="col-5 text-right">PO Number.:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm" id="ww_po_no"
                                 name="ww_po_no">
                         </div>
@@ -84,12 +89,12 @@
                                 name="fabric_quality"></div>
                     </div>
                     <div class="form-group row">
-                        <label for="fabric_content" class="col-5 text-right">fabric Content:</label>
+                        <label for="fabric_content" class="col-5 text-right">Fabric Content:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm"
                                 id="fabric_content" name="fabric_content"></div>
                     </div>
                     <div class="form-group row">
-                        <label for="supplier_no" class="col-5 text-right">supplier No:</label>
+                        <label for="supplier_no" class="col-5 text-right">supplier Number:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm" id="supplier_no"
                                 name="supplier_no"></div>
                     </div>
@@ -98,28 +103,7 @@
                         <div class="col-7"><input type="text" class="form-control form-control-sm"
                                 id="supplier_name" name="supplier_name"></div>
                     </div>
-                    <div class="form-group row">
-                        <label for="currency" class="col-5 text-right">Currency:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="currency"
-                                name="currency"></div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="payment_terms" class="col-5 text-right">Payment Terms:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                id="payment_terms" name="payment_terms"></div>
-                    </div>
 
-
-                    <div class="form-group row">
-                        <label for="style_no" class="col-5 text-right">Stlye No:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="style_no"
-                                name="style_no"></div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="description" class="col-5 text-right">Description:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="description"
-                                name="description"></div>
-                    </div>
 
 
 
@@ -136,11 +120,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="vendor_price" class="col-5 text-right">Vendor Price:</label>
-                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="vendor_price"
-                                name="vendor_price"></div>
-                    </div>
+
                     <div class="form-group row">
                         <div class="col-5"></div>
                         <div class="col-7" id="vendor_price_difference"></div>
@@ -155,6 +135,12 @@
                     <div class="form-group row">
                         <div class="col-5"></div>
                         <div class="col-7" id="ex_factory_date_difference"></div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="access_price" class="col-5 text-right">Accessories Price:</label>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="access_price"
+                                name="access_price"></div>
                     </div>
 
 
@@ -175,22 +161,49 @@
                         <div class="col-7"><input type="file" class="" id="upload_artwork"
                                 name="upload_artwork"></div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label for="note" class="col-5 text-right">PO Department:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm"
                                 id="po_department" name="po_department"></div>
-                    </div>
+                    </div> --}}
                     <div class="form-group row">
                         <label for="note" class="col-5 text-right">Note:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm" id="note"
                                 name="note"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="currency" class="col-5 text-right">Currency:</label>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="currency"
+                                name="currency"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="payment_terms" class="col-5 text-right">Payment Terms:</label>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm"
+                                id="payment_terms" name="payment_terms"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ship_mode" class="col-5 text-right">Ship Mode:</label>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="ship_mode"
+                                name="ship_mode"></div>
+                    </div>
+
+
+                    {{-- <div class="form-group row">
+                        <label for="style_no" class="col-5 text-right">Stlye No:</label>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="style_no"
+                                name="style_no"></div>
+                    </div> --}}
+                    <div class="form-group row">
+                        <label for="description" class="col-5 text-right">Description:</label>
+                        <div class="col-7"><input type="text" class="form-control form-control-sm" id="description"
+                                name="description"></div>
                     </div>
                     {{-- <div class="form-group row">
                         <label for="terms_condition" class="col-5 text-right">Terms & Condition:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm"
                                 id="terms_condition" name="terms_condition"></div>
                     </div> --}}
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label for="item_no" class="col-5 text-right">Item No:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm" id="item_no"
                                 name="item_no"></div>
@@ -231,7 +244,7 @@
                         <label for="selling_price" class="col-5 text-right">Selling Price:</label>
                         <div class="col-7"><input type="text" class="form-control form-control-sm"
                                 id="selling_price" name="selling_price"></div>
-                    </div>
+                    </div> --}}
 
 
                 </div>
@@ -250,9 +263,9 @@
                         <tr>
                             <th scope="col">Sl</th>
                             <th scope="col">PLM</th>
-                            <th scope="col">Style No</th>
+                            <th scope="col">Style Number</th>
                             <th scope="col">Colour</th>
-                            <th scope="col">Item No</th>
+                            <th scope="col">Item Number</th>
                             <th scope="col">Size</th>
                             <th scope="col">QTY Ordered</th>
                             <th scope="col">Inner QTY</th>

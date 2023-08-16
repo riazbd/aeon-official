@@ -46,12 +46,11 @@ class PurchageOrderController extends Controller
         $purchaseOrder = new PurchageOrder();
         $purchaseOrder->buyer_id = $request->input('select_buyer');
         $purchaseOrder->department_id = $request->input('department');
-        $purchaseOrder->po_department = $request->input('po_department');
+        // $purchaseOrder->po_department = $request->input('po_department');
         $purchaseOrder->vendor_id = $request->input('select_vendor');
         $purchaseOrder->buyer_price = $request->input('buyer_price');
         $purchaseOrder->vendor_price = $request->input('vendor_price');
         $purchaseOrder->earliest_buyer_date = $request->input('early-buyer-date');
-        $purchaseOrder->buyer_date = $request->input('buyer-date');
         $purchaseOrder->ex_factory_date = $request->input('ex_factory_date');
         $purchaseOrder->po_no = $request->input('ww_po_no');
         $purchaseOrder->plm = $request->input('plm');
@@ -62,18 +61,20 @@ class PurchageOrderController extends Controller
         $purchaseOrder->supplier_name = $request->input('supplier_name');
         $purchaseOrder->currency = $request->input('currency');
         $purchaseOrder->payment_terms = $request->input('payment_terms');
+        $purchaseOrder->ship_mode = $request->input('ship_mode');
         $purchaseOrder->care_lavel_date = $request->input('care_label_date');
-        $purchaseOrder->stlye_no = $request->input('style_no');
-        $purchaseOrder->size = $request->input('size');
-        $purchaseOrder->qty_ordered = $request->input('qty_ordered');
-        $purchaseOrder->inner_qty = $request->input('inner_qty');
-        $purchaseOrder->outer_case_qty = $request->input('outer_cas_qty');
-        $purchaseOrder->value = $request->input('value');
+        // $purchaseOrder->stlye_no = $request->input('style_no');
+        // $purchaseOrder->size = $request->input('size');
+        // $purchaseOrder->qty_ordered = $request->input('qty_ordered');
+        // $purchaseOrder->inner_qty = $request->input('inner_qty');
+        // $purchaseOrder->outer_case_qty = $request->input('outer_cas_qty');
+        // $purchaseOrder->value = $request->input('value');
         $purchaseOrder->style_note = $request->input('style_note');
-        $purchaseOrder->selling_price = $request->input('selling_price');
+        $purchaseOrder->access_price = $request->input('access_price');
+        // $purchaseOrder->selling_price = $request->input('selling_price');
         $purchaseOrder->note = $request->input('note');
-        $purchaseOrder->item_no = $request->input('item_no');
-        $purchaseOrder->colour = $request->input('colour');
+        // $purchaseOrder->item_no = $request->input('item_no');
+        // $purchaseOrder->colour = $request->input('colour');
 
         // Save uploaded pictures (if available)
         if ($request->hasFile('upload_picture_germent')) {
