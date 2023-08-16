@@ -51,7 +51,7 @@ class CreatePurchageOrdersTable extends Migration
             $table->string('selling_price')->nullable();
             $table->string('upload_picture_germent')->nullable();
             $table->string('upload_artwork')->nullable();
-            $table->string('note')->nullable();
+            $table->longText('note')->nullable();
             $table->string('item_no')->nullable();
             $table->string('colour')->nullable();
             $table->timestamps();

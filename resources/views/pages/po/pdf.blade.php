@@ -88,17 +88,18 @@
             <td
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
                 <p style='margin:0in;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-left:1.4pt'>
-                    <strong><span style="font-size:9px;">Date:</span></strong>
+                    <strong><span style="font-size:9px; color: green">Print Date:</span></strong>
                 </p>
             </td>
             <td colspan="2"
                 style="width: 139.05pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;vertical-align: top;">
-                <p style="margin:0in;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;">
+                <p
+                    style='margin:0in;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;fornt-weight: 700'>
                     <strong><span
-                            style="font-size:8px;">{{ \Carbon\Carbon::parse($purchaseOrder->created_at)->format('d M, Y') }}</span></strong>
+                            style="font-size:8px;color: green">{{ \Carbon\Carbon::parse($purchaseOrder->created_at)->format('d M, Y') }}</span></strong>
                 </p>
             </td>
-            <td colspan="6" rowspan="13"
+            <td colspan="6" rowspan="14"
                 style="width: 236.85pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;vertical-align: top;">
                 <p style='text-align:center;font-size:15px;font-family:"Calibri",sans-serif;'>
                     <span style='font-size:13px;font-family:"Times New Roman",serif;'><img width="300"
@@ -106,14 +107,18 @@
                             style="margin: 0 auto; display: block; "></span>
                 </p>
             </td>
-            <td colspan="3" rowspan="13"
+            <td colspan="3" rowspan="14"
                 style="width: 149.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;vertical-align: top;">
                 <p style='margin:0in;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;'>
                     <strong><span style="font-size:9px;">Style Notes</span></strong>
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:  left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.55pt;margin-right:  0in;margin-left:1.2pt;'>
-                    <strong><span style="font-size:7px;color:red;">{{ $purchaseOrder->style_note }}</span></strong>
+                    <strong><span style="font-size:7px;">{{ $purchaseOrder->style_note }}</span></strong>
+                </p>
+                <p
+                    style='margin:0in;margin-bottom:.0001pt;text-align:  left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.55pt;margin-right:  0in;margin-left:1.2pt;'>
+                    <strong><span style="font-size:7px;">{{ $purchaseOrder->note }}</span></strong>
                 </p>
             </td>
         </tr>
@@ -122,14 +127,14 @@
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:  left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.65pt;margin-right:  0in;margin-left:1.4pt;line-height:7.85pt;'>
-                    <strong><span style="font-size:9px;color:red;">WW&nbsp;PO&nbsp;No&nbsp;:</span></strong>
+                    <strong><span style="font-size:9px;">WW&nbsp;PO&nbsp;No&nbsp;:</span></strong>
                 </p>
             </td>
             <td colspan="2"
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.65pt;margin-right:53.3pt;margin-left:53.75pt;line-height:7.85pt;'>
-                    <strong><span style="font-size:9px;color:red;">{{ $purchaseOrder->po_no }}</span></strong>
+                    <strong><span style="font-size:9px;">{{ $purchaseOrder->po_no }}</span></strong>
                 </p>
             </td>
         </tr>
@@ -145,7 +150,8 @@
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:  left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:2.25pt;margin-right:  0in;margin-left:21.0pt;line-height:7.25pt;'>
-                    <strong><span style="font-size:9px;">{{ $purchaseOrder->po_department }}</span></strong>
+                    <strong><span
+                            style="font-size:9px;">{{ $purchaseOrder->department()->first()->name }}</span></strong>
                 </p>
             </td>
         </tr>
@@ -237,7 +243,7 @@
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;height: 10.5pt;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:2.8pt;margin-right:0in;margin-left:1.4pt;line-height:6.7pt;'>
-                    <strong><span style="font-size:8px;">Supplier&nbsp;No&nbsp;:</span></strong>
+                    <strong><span style="font-size:8px;">Supplier&nbsp;Number&nbsp;:</span></strong>
                 </p>
             </td>
             <td colspan="2"
@@ -301,7 +307,23 @@
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;height: 10.5pt;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:2.8pt;margin-right:0in;margin-left:1.4pt;line-height:6.7pt;'>
-                    <strong><span style="font-size:8px;color:red;">Ex&nbsp;Factory&nbsp;:</span></strong>
+                    <strong><span style="font-size:8px;">Ship&nbsp;Method&nbsp;:</span></strong>
+                </p>
+            </td>
+            <td colspan="2"
+                style="width: 139.05pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 10.5pt;vertical-align: top;">
+                <p
+                    style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;line-height:6.7pt;margin-top:4.0pt;'>
+                    <strong><span style="font-size:8px;">{{ $purchaseOrder->ship_mode }}</span></strong>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td
+                style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;height: 10.5pt;vertical-align: top;">
+                <p
+                    style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:2.8pt;margin-right:0in;margin-left:1.4pt;line-height:6.7pt;'>
+                    <strong><span style="font-size:8px;">Ex&nbsp;Factory&nbsp;:</span></strong>
                 </p>
             </td>
             <td colspan="2"
@@ -309,7 +331,7 @@
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;line-height:7.25pt;margin-top:4.0pt;'>
                     <strong><span
-                            style="font-size:9px;color:red;">{{ \Carbon\Carbon::parse($purchaseOrder->ex_factory_date)->format('d M, Y') }}</span></strong>
+                            style="font-size:9px;">{{ \Carbon\Carbon::parse($purchaseOrder->ex_factory_date)->format('d M, Y') }}</span></strong>
                 </p>
             </td>
         </tr>
@@ -350,7 +372,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:22.4pt;margin-left:21.25pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Style&nbsp;No</span></strong>
+                    <strong><span style="font-size:8px;">Style&nbsp;Number</span></strong>
                 </p>
             </td>
             <td
