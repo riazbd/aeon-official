@@ -122,31 +122,37 @@ class PdfController extends Controller
             'pdf_file' => 'required|mimes:pdf|max:2048', // Adjust max file size as needed
         ]);
 
-        $pdfFilePath = $request->file('pdf_file')->store('uploads', 'public');
+        if ($request->input('select_buyer_upload') == 1) {
+            $pdfFilePath = $request->file('pdf_file')->store('uploads', 'public');
 
-        // Get the public path of the stored file
-        $publicFilePath = Storage::disk('public')->path($pdfFilePath);
-        Log::info('File path: ' . $pdfFilePath);
+            // Get the public path of the stored file
+            $publicFilePath = Storage::disk('public')->path($pdfFilePath);
+            Log::info('File path: ' . $pdfFilePath);
 
-        // Assuming the Flask server is running on http://127.0.0.1:5000
-        $flaskServerUrl = 'http://127.0.0.1:5000/extract_table';
+            // Assuming the Flask server is running on http://127.0.0.1:5000
+            $flaskServerUrl = 'http://127.0.0.1:5000/extract_table';
 
-        // Make a POST request to the Flask server
-        $client = new Client();
-        $response = $client->post($flaskServerUrl, [
-            'multipart' => [
-                [
-                    'name' => 'file',
-                    'contents' => fopen($publicFilePath, 'r'),
-                    'filename' => basename($publicFilePath),
+            // Make a POST request to the Flask server
+            $client = new Client();
+            $response = $client->post($flaskServerUrl, [
+                'multipart' => [
+                    [
+                        'name' => 'file',
+                        'contents' => fopen($publicFilePath, 'r'),
+                        'filename' => basename($publicFilePath),
+                    ],
                 ],
-            ],
-        ]);
+            ]);
 
-        // Get the JSON response from the Flask server
-        $jsonResponse = $response->getBody()->getContents();
+            // Get the JSON response from the Flask server
+            $jsonResponse = $response->getBody()->getContents();
 
-        // Return the JSON response as the HTTP response
-        return response()->json($jsonResponse);
+            // Return the JSON response as the HTTP response
+            return response()->json($jsonResponse);
+        }
+
+        if ($request->input('select_buyer_upload') == 2) {
+            return response()->json(['data' => null]);
+        }
     }
 }

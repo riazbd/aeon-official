@@ -43,6 +43,7 @@ class PurchageOrderController extends Controller
     public function store(Request $request)
     {
         // Create the Purchase Order record
+
         $purchaseOrder = new PurchageOrder();
         $purchaseOrder->buyer_id = $request->input('select_buyer');
         $purchaseOrder->department_id = $request->input('department');

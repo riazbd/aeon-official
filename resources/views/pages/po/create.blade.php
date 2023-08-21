@@ -44,9 +44,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="plm" class="text-right">PLM:</label>
-                                <div class=""><input type="text" class="form-control form-control-sm"
-                                        id="plm_upload" name="plm_upload" required></div>
+                                <label for="plm" class="text-left" id="plm-label">PLM:</label>
+                                <div class=""><input type="hidden" class="form-control form-control-sm"
+                                        id="plm_upload" name="plm_upload"></div>
                             </div>
                             <div class="form-group">
                                 <label for="access_price_upload" class="text-right">Accessories Price:</label>
@@ -76,7 +76,8 @@
                             <div class="form-group row">
                                 <label for="select_buyer" class="col-5 text-right">Select Buyer:</label>
                                 <div class="col-7">
-                                    <select class="form-control form-control-sm" id="select_buyer" name="select_buyer">
+                                    <select class="form-control form-control-sm" id="select_buyer" name="select_buyer"
+                                        required>
                                         {{-- <option value="">Select Buyer</option>
                                         @foreach ($buyers as $buyer)
                                             <option value="{{ $buyer->id }}">{{ $buyer->name }}</option>
@@ -87,7 +88,7 @@
                             <div class="form-group row">
                                 <label for="department" class="col-5 text-right">Department:</label>
                                 <div class="col-7">
-                                    <select name="department" id="department" class="form-control form-control-sm">
+                                    <select name="department" id="department" class="form-control form-control-sm" required>
                                         <option value="">Select Department</option>
                                     </select>
                                 </div>
@@ -161,7 +162,8 @@
                             <div class="form-group row">
                                 <label for="select_vendor" class="col-5 text-right">Select Vendor:</label>
                                 <div class="col-7">
-                                    <select class="form-control form-control-sm" id="select_vendor" name="select_vendor">
+                                    <select class="form-control form-control-sm" id="select_vendor" name="select_vendor"
+                                        required>
                                         {{-- <option value="">Select Vendor</option> --}}
                                         {{-- @foreach ($vendors as $vendor)
                                             <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
@@ -298,8 +300,8 @@
                         </table>
                     </div>
                     <hr>
-                    <input type="hidden" id="download_pdf" name="download_pdf" value="no">
-                    <button type="submit" class="btn btn-primary btn-sm">Save PO</button>
+                    <input type="hidden" id="download_pdf" name="download_pdf" value="no" required>
+                    <button type="submit" class="btn btn-primary btn-sm" id="save-po">Save PO</button>
                     <button type="submit" class="btn btn-info btn-sm" id="save_and_download">Save and download
                         PO</button>
                     {{-- <a href="{{ route('pdf-view') }}" class="btn btn-info btn-sm">Download PO</a> --}}
@@ -325,6 +327,27 @@
             const selectBuyer = document.getElementById("select_buyer");
             const selectVendor = document.getElementById("select_vendor");
             const accessPrice = document.getElementById("access_price");
+            const savePO = document.getElementById('save-po');
+
+            const plmLabel = document.getElementById("plm-label");
+
+            plmLabel.style.display = "none";
+
+            $('#select_buyer_upload').change(function() {
+                var selectedBuyerValue = $(this).val();
+                var plmField = $('#plm_upload');
+
+                // Check if the selected buyer value is 1
+                if (selectedBuyerValue === '1') {
+                    plmLabel.style.display = "block";
+                    plmField.prop('required', true);
+                    plmField.prop('type', 'text'); // Set the input type to 'text'
+                } else {
+                    plmLabel.style.display = "none";
+                    plmField.prop('required', false);
+                    plmField.prop('type', 'hidden'); // Hide the input
+                }
+            });
 
             plmUpload.addEventListener("change", function() {
                 plm.value = plmUpload.value;
@@ -370,6 +393,12 @@
             let slNo = 1;
 
 
+            // #("#save-po").on('click', function(){
+            //     this.preventDefault();
+
+
+            // })
+
             // save and download
             $('#save_and_download').on('click', function() {
                 $('#download_pdf').val('yes')
@@ -382,17 +411,17 @@
                 const newRow = `
                 <tr>
                     <td>${slNo}</td>
-                    <td><input type="text" name="items[${slNo}][plm]"></td>
-                    <td><input type="text" name="items[${slNo}][style_no]"></td>
-                    <td><input type="text" name="items[${slNo}][colour]"></td>
-                    <td><input type="text" name="items[${slNo}][item_no]"></td>
-                    <td><input type="text" name="items[${slNo}][size]"></td>
-                    <td><input type="text" name="items[${slNo}][qty_ordered]"></td>
-                    <td><input type="text" name="items[${slNo}][inner_qty]"></td>
-                    <td><input type="text" name="items[${slNo}][outer_case_qty]"></td>
-                    <td><input type="text" name="items[${slNo}][supplier_price]"></td>
-                    <td><input type="text" name="items[${slNo}][value]"></td>
-                    <td><input type="text" name="items[${slNo}][selling_price]"></td>
+                    <td><input type="text" name="items[${slNo}][plm]" ></td>
+                    <td><input type="text" name="items[${slNo}][style_no]" ></td>
+                    <td><input type="text" name="items[${slNo}][colour]" ></td>
+                    <td><input type="text" name="items[${slNo}][item_no]" ></td>
+                    <td><input type="text" name="items[${slNo}][size]" ></td>
+                    <td><input type="text" name="items[${slNo}][qty_ordered]" ></td>
+                    <td><input type="text" name="items[${slNo}][inner_qty]" ></td>
+                    <td><input type="text" name="items[${slNo}][outer_case_qty]" ></td>
+                    <td><input type="text" name="items[${slNo}][supplier_price]" ></td>
+                    <td><input type="text" name="items[${slNo}][value]" ></td>
+                    <td><input type="text" name="items[${slNo}][selling_price]" ></td>
                 </tr>
             `;
                 $('table tbody').append(newRow);
@@ -549,117 +578,125 @@
                     processData: false,
                     contentType: false,
                     success: function(response) {
-                        console.log(response);
-
-                        // disable fields
-                        $('#select_buyer, #select_vendor, #plm').addClass('select-readonly');
 
 
-                        const data = JSON.parse(response);
+                        if ($('#select_buyer_upload').val() === '1') {
+                            console.log(response);
 
-                        // Use moment to parse the input date
-                        const dateObject = moment(data.keys['Earliest Ship Date'],
-                            "DD-MMM-YYYY");
+                            // disable fields
+                            $('#select_buyer, #select_vendor, #plm').addClass(
+                                'select-readonly');
 
-                        // Use moment to format the date in "MM/DD/YYYY" format
-                        const formattedDate = dateObject.format("yyyy-MM-DD");
 
-                        const poNo = data.keys['WW PO No'];
-                        const price = data.data[0]["Supplier Foreign \nCost Price"];
-                        const supplierNo = data.keys['Supplier No'];;
-                        const supplierName = data.keys['Supplier Name'];;
+                            const data = JSON.parse(response);
 
-                        const currency = data.keys['Currency'];
-                        const terms = data.keys['Payment Method'].match(/\b(\w)/g).join(
-                            "") + " " + '@' + " " + /@ (\S+)/.exec(data
-                            .keys[
-                                'Terms'])[1];
-                        const poDepartment = data.keys['Department'];
-                        const shipMode = data.keys['Ship Method'];
+                            // Use moment to parse the input date
+                            const dateObject = moment(data.keys['Earliest Ship Date'],
+                                "DD-MMM-YYYY");
 
-                        const targetText = data.keys['Department'];;
+                            // Use moment to format the date in "MM/DD/YYYY" format
+                            const formattedDate = dateObject.format("yyyy-MM-DD");
 
-                        // Find the option with the specified text
-                        const optionToSelect = $('#department option').filter(function() {
-                            return $(this).text().trim() === targetText;
-                        });
+                            const poNo = data.keys['WW PO No'];
+                            const price = data.data[0]["Supplier Foreign \nCost Price"];
+                            const supplierNo = data.keys['Supplier No'];;
+                            const supplierName = data.keys['Supplier Name'];;
 
-                        // Check if the option was found
-                        if (optionToSelect.length > 0) {
-                            // Set the "selected" attribute to true for the found option
-                            optionToSelect.prop('selected', true);
-                        } else {
-                            console.log('Option not found.');
+                            const currency = data.keys['Currency'];
+                            const terms = data.keys['Payment Method'].match(/\b(\w)/g).join(
+                                "") + " " + '@' + " " + /@ (\S+)/.exec(data
+                                .keys[
+                                    'Terms'])[1];
+                            const poDepartment = data.keys['Department'];
+                            const shipMode = data.keys['Ship Method'];
+
+                            const targetText = data.keys['Department'];;
+
+                            // Find the option with the specified text
+                            const optionToSelect = $('#department option').filter(function() {
+                                return $(this).text().trim() === targetText;
+                            });
+
+                            // Check if the option was found
+                            if (optionToSelect.length > 0) {
+                                // Set the "selected" attribute to true for the found option
+                                optionToSelect.prop('selected', true);
+                            } else {
+                                console.log('Option not found.');
+                            }
+
+
+
+                            // Update the form fields with the extracted data
+                            $('#ww_po_no').val(poNo);
+                            $('#buyer_price').val(price);
+                            $('#supplier_no').val(supplierNo);
+                            $('#supplier_name').val(supplierName);
+                            $('#currency').val(currency);
+                            $('#early-buyer-date').val(formattedDate);
+                            $('#payment_terms').val(terms);
+                            $('#ship_mode').val(shipMode);
+
+
+                            updateVendorPriceAndDifference();
+                            // const styleNote = 'Price: ' + (parseFloat($('#vendor_price').val()) -
+                            //         parseFloat(
+                            //             data.keys['hanger'])).toString() + " " + "+" + " " + data
+                            //     .keys[
+                            //         'hanger'] + ' ' + '=' + " " + (parseFloat($('#vendor_price')
+                            //         .val()) - parseFloat(
+                            //         data.keys['hanger']) + parseFloat(
+                            //         data.keys['hanger'])).toString()
+
+                            const accessPriceValue = parseFloat($('#access_price')
+                                .val()); // Get the value of the access_price input field
+
+                            const styleNote = 'Price: ' + (parseFloat($('#vendor_price')
+                                    .val())) +
+                                " " + "+" + " " + accessPriceValue + ' ' + '=' +
+                                " " + (parseFloat($('#vendor_price')
+                                    .val()) + accessPriceValue).toString()
+
+                            $('#style_note').val(styleNote);
+
+                            // ex factory date
+                            const buyerDate = new Date($('#early-buyer-date').val());
+                            const exFactoryDate = new Date(buyerDate);
+                            exFactoryDate.setDate(exFactoryDate.getDate() -
+                                14); // Subtract 14 days
+
+                            const exFactoryDateFormatted = exFactoryDate.toISOString().split(
+                                'T')[
+                                0]; // Convert date to YYYY-MM-DD format
+                            $('#ex_factory_date').val(exFactoryDateFormatted);
+                            updateDifferenceNote();
+
+                            // table work
+                            $('#item-table-body').empty()
+
+                            const tbody = $('#item-table-body');
+
+                            // Iterate through the data and create rows
+                            data.data.forEach((item, index) => {
+                                const newRow = `
+                                    <tr>
+                                        <td>${index+1}</td>
+                                        <td><input type="text" name="items[${index}][plm]" value="${$('#plm').val()}"></td>
+                                        <td><input type="text" name="items[${index}][style_no]" value="${item["TLevel1 Item"]}"></td>
+                                        <td><input type="text" name="items[${index}][colour]" value="${item["Diff 1 Name"]}"></td>
+                                        <td><input type="text" name="items[${index}][item_no]" value="${item["Item No."]}"></td>
+                                        <td><input type="text" name="items[${index}][size]" value="${item["Item Description"].match(/\d+/)}"></td>
+                                        <td><input type="text" name="items[${index}][qty_ordered]" value="${item["Qty Ordered"]}"></td>
+                                        <td><input type="text" name="items[${index}][inner_qty]" value="${item["Inner \nQty"]}"></td>
+                                        <td><input type="text" name="items[${index}][outer_case_qty]" value="${item["Outer Case \nQty"]}"></td>
+                                        <td><input type="text" name="items[${index}][supplier_price]" value="${(parseFloat($('#vendor_price').val())+accessPriceValue).toString()}"></td>
+                                        <td><input type="text" name="items[${index}][value]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue) * parseFloat(item["Qty Ordered"])).toFixed(2)}"></td>
+                                        <td><input type="text" name="items[${index}][selling_price]" value="${item["Selling Price"]}"></td>
+                                    </tr>
+                                `;
+                                tbody.append(newRow);
+                            });
                         }
-
-
-
-                        // Update the form fields with the extracted data
-                        $('#ww_po_no').val(poNo);
-                        $('#buyer_price').val(price);
-                        $('#supplier_no').val(supplierNo);
-                        $('#supplier_name').val(supplierName);
-                        $('#currency').val(currency);
-                        $('#early-buyer-date').val(formattedDate);
-                        $('#payment_terms').val(terms);
-                        $('#ship_mode').val(shipMode);
-
-
-                        updateVendorPriceAndDifference();
-                        // const styleNote = 'Price: ' + (parseFloat($('#vendor_price').val()) -
-                        //         parseFloat(
-                        //             data.keys['hanger'])).toString() + " " + "+" + " " + data
-                        //     .keys[
-                        //         'hanger'] + ' ' + '=' + " " + (parseFloat($('#vendor_price')
-                        //         .val()) - parseFloat(
-                        //         data.keys['hanger']) + parseFloat(
-                        //         data.keys['hanger'])).toString()
-
-                        const accessPriceValue = parseFloat($('#access_price')
-                            .val()); // Get the value of the access_price input field
-
-                        const styleNote = 'Price: ' + (parseFloat($('#vendor_price').val())) +
-                            " " + "+" + " " + accessPriceValue + ' ' + '=' +
-                            " " + (parseFloat($('#vendor_price')
-                                .val()) + accessPriceValue).toString()
-
-                        $('#style_note').val(styleNote);
-
-                        // ex factory date
-                        const buyerDate = new Date($('#early-buyer-date').val());
-                        const exFactoryDate = new Date(buyerDate);
-                        exFactoryDate.setDate(exFactoryDate.getDate() - 14); // Subtract 14 days
-
-                        const exFactoryDateFormatted = exFactoryDate.toISOString().split('T')[
-                            0]; // Convert date to YYYY-MM-DD format
-                        $('#ex_factory_date').val(exFactoryDateFormatted);
-                        updateDifferenceNote();
-
-                        // table work
-                        $('#item-table-body').empty()
-
-                        const tbody = $('#item-table-body');
-
-                        // Iterate through the data and create rows
-                        data.data.forEach((item, index) => {
-                            const newRow = `
-                                <tr>
-                                    <td>${index+1}</td>
-                                    <td><input type="text" name="items[${index}][plm]" value="${$('#plm').val()}"></td>
-                                    <td><input type="text" name="items[${index}][style_no]" value="${item["TLevel1 Item"]}"></td>
-                                    <td><input type="text" name="items[${index}][colour]" value="${item["Diff 1 Name"]}"></td>
-                                    <td><input type="text" name="items[${index}][item_no]" value="${item["Item No."]}"></td>
-                                    <td><input type="text" name="items[${index}][size]" value="${item["Item Description"].match(/\d+/)}"></td>
-                                    <td><input type="text" name="items[${index}][qty_ordered]" value="${item["Qty Ordered"]}"></td>
-                                    <td><input type="text" name="items[${index}][inner_qty]" value="${item["Inner \nQty"]}"></td>
-                                    <td><input type="text" name="items[${index}][outer_case_qty]" value="${item["Outer Case \nQty"]}"></td>
-                                    <td><input type="text" name="items[${index}][supplier_price]" value="${(parseFloat($('#vendor_price').val())+accessPriceValue).toString()}"></td>
-                                    <td><input type="text" name="items[${index}][value]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue) * parseFloat(item["Qty Ordered"])).toFixed(2)}"></td>
-                                    <td><input type="text" name="items[${index}][selling_price]" value="${item["Selling Price"]}"></td>
-                                </tr>
-                            `;
-                            tbody.append(newRow);
-                        });
 
                     },
                     error: function(xhr, status, error) {
