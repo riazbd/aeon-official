@@ -142,10 +142,24 @@ class PurchageOrderController extends Controller
         }
 
         if ($request->input('download_pdf') == 'yes') {
-            $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
-            $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+            if ($request->input('select_buyer') == 1) {
+                $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
+                $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
 
-            return $pdf->stream(time() . 'po.pdf');
+                return $pdf->stream(time() . 'po.pdf');
+            }
+
+            if ($request->input('select_buyer') == 2) {
+                $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
+                $pdf = PDF::loadView('pages.po.mrp_pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+                return $pdf->stream(time() . 'po.pdf');
+            }
+
+            // $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
+            // $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+            // return $pdf->stream(time() . 'po.pdf');
         }
 
         // Redirect to a success page or do anything else you need after successful submission
@@ -162,10 +176,21 @@ class PurchageOrderController extends Controller
     public function pdfViewSingle($id)
     {
         $po = PurchageOrder::where('id', $id)->first();
-        $tableDatas = OrderItem::where('po_id', $po->id)->get();
-        $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $po, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+        if ($po->buyer_id == '1') {
+            // $po = PurchageOrder::where('id', $id)->first();
+            $tableDatas = OrderItem::where('po_id', $po->id)->get();
+            $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $po, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
 
-        return $pdf->stream(time() . 'po.pdf');
+            return $pdf->stream(time() . 'po.pdf');
+        }
+
+        if ($po->buyer_id == '2') {
+            // $po = PurchageOrder::where('id', $id)->first();
+            $tableDatas = OrderItem::where('po_id', $po->id)->get();
+            $pdf = PDF::loadView('pages.po.mrp_pdf', ['purchaseOrder' => $po, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+            return $pdf->stream(time() . 'po.pdf');
+        }
     }
 
     /**

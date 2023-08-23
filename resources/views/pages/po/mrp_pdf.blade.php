@@ -30,9 +30,8 @@
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.6pt;margin-right:34.0pt;margin-left:34.55pt;'>
                     {{-- <strong><span style="font-size:8px;">CREATION LOYAL HONGKONG
                             LIMITED</span></strong> --}}
-                    <strong><span style="font-size:8px;">&nbsp;</span></strong><strong><span style="font-size:8px;">6/F
-                            CNT
-                            COMM BLOG NO
+                    <strong><span style="font-size:8px;">&nbsp;</span></strong><strong><span style="font-size:8px;">6F
+                            CNT COMMERCIAL BUILDING
                             302&nbsp;QUEEN&apos;S&nbsp;ROAD&nbsp;CENTRAL</span></strong>
                 </p>
             </td>
@@ -40,16 +39,16 @@
                 style="width: 60.5pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;vertical-align: top;">
                 <p
                     style='margin:0in;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-right:0in;'>
-                    <strong><span style="font-size:8px;">Tel:&nbsp;852-251237588</span></strong>
+                    <strong><span style="font-size:8px;">Email:&nbsp;emil@aeontrading.co.za</span></strong>
                 </p>
                 {{-- <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.4pt;margin-right:0in;margin-left:10.6pt;'>
                     <strong><span style="font-size:8px;">251237588</span></strong>
                 </p> --}}
-                <p
+                {{-- <p
                     style='margin:0in;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-right:0in;'>
                     <strong><span style="font-size:8px;">Fax:&nbsp;852228156189</span></strong>
-                </p>
+                </p> --}}
                 {{-- <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.4pt;margin-right:0in;margin-left:9.65pt;'>
                     <strong><span style="font-size:8px;">-228156189</span></strong>
@@ -59,8 +58,7 @@
         <tr>
             <td colspan="3"
                 style="width: 583.25pt;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;height: 42.1pt;vertical-align: top;">
-                <img src="{{ public_path('logos/Woolworths-South-Africa-logo.png') }}" alt=""
-                    style="width: 100px;">
+                <img src="{{ public_path('logos/mrp_logo.png') }}" alt="" style="width: 100px; padding: 5px;">
             </td>
             <td colspan="9"
                 style="width: 583.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-image: initial;border-top: none;padding: 0in;height: 42.1pt;vertical-align: top;">
@@ -69,17 +67,11 @@
                     <div>
                         <p
                             style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:4.0pt;margin-right:212.85pt;margin-left:100pt;'>
-                            <strong><span style="font-size:7px;">WOOLWORTHS HOUSE, 93 LONGMARKET STREET CAPE TOWN
-                                    8001,&nbsp;PO&nbsp;BOX&nbsp;680,CAPE&nbsp;TOWN 8000,S.A</span></strong>
+                            <strong><span style="font-size:7px;">Hammarsdale (Primary) , ERF 249 Cliffdale, Keystone
+                                    Park
+                                    3700 ,&nbsp;Hammarsdale&nbsp;South Africa</span></strong>
                         </p>
-                        <p
-                            style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:212.85pt;margin-left:100pt;'>
-                            <strong><span style="font-size:7px;">WOOLWORTHS</span></strong><strong><span
-                                    style="font-size:7px;">&nbsp;</span></strong><strong><span
-                                    style="font-size:7px;">(PROPRIETARY</span></strong><strong><span
-                                    style="font-size:7px;">&nbsp;</span></strong><strong><span
-                                    style="font-size:7px;">LIMITED)</span></strong>
-                        </p>
+
                     </div>
                 </div>
             </td>
@@ -99,7 +91,7 @@
                             style="font-size:8px;color: green">{{ \Carbon\Carbon::parse($purchaseOrder->created_at)->format('d M, Y') }}</span></strong>
                 </p>
             </td>
-            <td colspan="6" rowspan="14"
+            <td colspan="6" rowspan="13"
                 style="width: 236.85pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;vertical-align: top;">
                 <p style='text-align:center;font-size:15px;font-family:"Calibri",sans-serif;'>
                     <span style='font-size:13px;font-family:"Times New Roman",serif;'><img width="300"
@@ -107,7 +99,7 @@
                             style="margin: 0 auto; display: block; "></span>
                 </p>
             </td>
-            <td colspan="3" rowspan="14"
+            <td colspan="3" rowspan="13"
                 style="width: 149.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;vertical-align: top;">
                 <p style='margin:0in;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;'>
                     <strong><span style="font-size:9px;">Style Notes</span></strong>
@@ -127,7 +119,7 @@
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:  left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.65pt;margin-right:  0in;margin-left:1.4pt;line-height:7.85pt;'>
-                    <strong><span style="font-size:9px;">WW&nbsp;PO&nbsp;Number&nbsp;:</span></strong>
+                    <strong><span style="font-size:9px;">MRP&nbsp;PO&nbsp;Number&nbsp;:</span></strong>
                 </p>
             </td>
             <td colspan="2"
@@ -149,28 +141,13 @@
             <td colspan="2"
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
                 <p
-                    style='margin:0in;margin-bottom:.0001pt;text-align: center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:2.25pt;margin-right:  0in;line-height:7.25pt;'>
+                    style='margin:0in;margin-bottom:.0001pt;text-align:  center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:2.25pt;margin-right:  0in;line-height:7.25pt;'>
                     <strong><span
                             style="font-size:9px;">{{ $purchaseOrder->department()->first()->name }}</span></strong>
                 </p>
             </td>
         </tr>
-        <tr>
-            <td
-                style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
-                <p
-                    style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:2.8pt;margin-right:0in;margin-left:1.4pt;line-height:6.7pt;'>
-                    <strong><span style="font-size:8px;">PLM&nbsp;:</span></strong>
-                </p>
-            </td>
-            <td colspan="2"
-                style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
-                <p
-                    style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:2.25pt;margin-right:53.1pt;margin-left:53.95pt;line-height:7.25pt;'>
-                    <strong><span style="font-size:9px;">{{ $purchaseOrder->plm }}</span></strong>
-                </p>
-            </td>
-        </tr>
+
         <tr>
             <td
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
@@ -361,7 +338,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:21.45pt;margin-left:22.4pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">PLM</span></strong>
+                    <strong><span style="font-size:8px;">Line</span></strong>
                 </p>
             </td>
             <td

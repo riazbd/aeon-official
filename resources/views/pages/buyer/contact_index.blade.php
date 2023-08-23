@@ -9,15 +9,25 @@
                     <div class="card">
 
                         <div class="card-body p-0">
-                            <h5 class="text-center" style="background-color: green; color:white">CONTACTS</h5>
+                            <h5 class="text-center" style="background-color: green; color:white">CONTACT</h5>
 
                             <div class="d-flex justify-content-between p-5">
                                 <div>
-                                    <p>Name:</p>
-                                    <p>Designation:</p>
-                                    <p>Department:</p>
-                                    <p>Email:</p>
-                                    <p>Phone:</p>
+                                    <strong>
+                                        <p>Name:</p>
+                                    </strong>
+                                    <strong>
+                                        <p>Designation:</p>
+                                    </strong>
+                                    <strong>
+                                        <p>Department:</p>
+                                    </strong>
+                                    <strong>
+                                        <p>Email:</p>
+                                    </strong>
+                                    <strong>
+                                        <p>Phone:</p>
+                                    </strong>
                                 </div>
                                 <div class="text-right">
                                     <p>{{ $contact->name }}</p>

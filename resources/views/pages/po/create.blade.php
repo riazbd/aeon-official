@@ -96,12 +96,12 @@
                             <div class="form-group row">
                                 <label for="buyer_price" class="col-5 text-right">Buyer Price:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="buyer_price" name="buyer_price"></div>
+                                        id="buyer_price" name="buyer_price" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="vendor_price" class="col-5 text-right">Vendor Price:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="vendor_price" name="vendor_price"></div>
+                                        id="vendor_price" name="vendor_price" required></div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-5"></div>
@@ -111,47 +111,47 @@
                             <div class="form-group row">
                                 <label for="early-buyer-date" class="col-5 text-right">Buyer Date:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
-                                        id="early-buyer-date" name="early-buyer-date"></div>
+                                        id="early-buyer-date" name="early-buyer-date" required></div>
                             </div>
 
 
                             <div class="form-group row">
                                 <label for="care_label_date" class="col-5 text-right">Care Label Date:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
-                                        id="care_label_date" name="care_label_date"></div>
+                                        id="care_label_date" name="care_label_date" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="ww_po_no" class="col-5 text-right">PO Number.:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="ww_po_no" name="ww_po_no">
+                                        id="ww_po_no" name="ww_po_no" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="plm" class="col-5 text-right">PLM:</label>
+                                <label for="plm" class="col-5 text-right" id="plm-label-form">PLM:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="plm" name="plm"></div>
+                                        id="plm" name="plm" required></div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="fabric_quality" class="col-5 text-right">Fabric Quality:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="fabric_quality" name="fabric_quality"></div>
+                                        id="fabric_quality" name="fabric_quality" requred></div>
                             </div>
                             <div class="form-group row">
                                 <label for="fabric_content" class="col-5 text-right">Fabric Content:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="fabric_content" name="fabric_content"></div>
+                                        id="fabric_content" name="fabric_content" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="supplier_no" class="col-5 text-right">Supplier Number:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="supplier_no" name="supplier_no"></div>
+                                        id="supplier_no" name="supplier_no" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="supplier_name" class="col-5 text-right">Supplier Name:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="supplier_name" name="supplier_name"></div>
+                                        id="supplier_name" name="supplier_name" required></div>
                             </div>
 
 
@@ -177,7 +177,7 @@
                             <div class="form-group row">
                                 <label for="ex_factory_date" class="col-5 text-right">Ex Factory Date:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
-                                        id="ex_factory_date" name="ex_factory_date"></div>
+                                        id="ex_factory_date" name="ex_factory_date" required></div>
                             </div>
 
                             <div class="form-group row">
@@ -195,7 +195,7 @@
                             <div class="form-group row">
                                 <label for="style_note" class="col-5 text-right">Final Price:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="style_note" name="style_note"></div>
+                                        id="style_note" name="style_note" required></div>
                             </div>
 
 
@@ -203,12 +203,12 @@
                                 <label for="upload_picture_germent" class="col-5 text-right">Upload Picture
                                     germent:</label>
                                 <div class="col-7"><input type="file" class="" id="upload_picture_germent"
-                                        name="upload_picture_germent"></div>
+                                        name="upload_picture_germent" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="upload_artwork" class="col-5 text-right">Upload Artwork:</label>
                                 <div class="col-7"><input type="file" class="" id="upload_artwork"
-                                        name="upload_artwork"></div>
+                                        name="upload_artwork" required></div>
                             </div>
 
                             {{-- <div class="form-group row">
@@ -219,27 +219,27 @@
                             <div class="form-group row">
                                 <label for="currency" class="col-5 text-right">Currency:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="currency" name="currency"></div>
+                                        id="currency" name="currency" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="payment_terms" class="col-5 text-right">Payment Terms:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="payment_terms" name="payment_terms"></div>
+                                        id="payment_terms" name="payment_terms" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="ship_mode" class="col-5 text-right">Ship Method:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="ship_mode" name="ship_mode"></div>
+                                        id="ship_mode" name="ship_mode" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="description" class="col-5 text-right">Description:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="description" name="description"></div>
+                                        id="description" name="description" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="note" class="col-5 text-right">Special Note:</label>
                                 <div class="col-7">
-                                    <textarea class="form-control form-control-sm" id="note" name="note"></textarea>
+                                    <textarea class="form-control form-control-sm" id="note" name="note" required></textarea>
                                 </div>
                             </div>
 
@@ -265,7 +265,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Sl</th>
-                                    <th scope="col">PLM</th>
+                                    <th scope="col" id="plm_line">PLM</th>
                                     <th scope="col">Style Number</th>
                                     <th scope="col">Colour</th>
                                     <th scope="col">Item Number</th>
@@ -341,7 +341,8 @@
                 if (selectedBuyerValue === '1') {
                     plmLabel.style.display = "block";
                     plmField.prop('required', true);
-                    plmField.prop('type', 'text'); // Set the input type to 'text'
+                    plmField.prop('type', 'text');
+                    plmField.val(Math.floor(100000 + Math.random() * 900000))
                 } else {
                     plmLabel.style.display = "none";
                     plmField.prop('required', false);
@@ -696,6 +697,90 @@
                                 `;
                                 tbody.append(newRow);
                             });
+                        }
+
+                        if ($('#select_buyer_upload').val() === '2') {
+
+                            console.log(response);
+
+                            $('#plm_line').text("Line")
+
+                            // disable fields
+                            $('#select_buyer, #select_vendor, #plm').addClass(
+                                'select-readonly');
+
+
+                            const data = JSON.parse(response);
+
+                            // Use moment to parse the input date
+                            const dateObject = moment(data.keys['Ship From Date'],
+                                "DD-MMM-YYYY");
+
+
+
+                            document.getElementById('plm-label-form').style.display = "none";
+                            $('#plm').prop('required', false);
+                            $('#plm').prop('type', 'hidden');
+
+                            // price update
+                            $('#buyer_price').on('change', function() {
+                                updateVendorPriceAndDifference();
+                                const accessPriceValue = parseFloat($('#access_price')
+                                    .val()
+                                ); // Get the value of the access_price input field
+
+                                const styleNote = 'Price: ' + (parseFloat($(
+                                            '#vendor_price')
+                                        .val())) +
+                                    " " + "+" + " " + accessPriceValue + ' ' + '=' +
+                                    " " + (parseFloat($('#vendor_price')
+                                        .val()) + accessPriceValue).toString()
+
+                                $('#style_note').val(styleNote);
+                            })
+
+                            // Use moment to format the date in "MM/DD/YYYY" format
+                            const formattedDate = dateObject.format("yyyy-MM-DD");
+
+                            const poNo = data.keys['Order No'];
+                            // const price = data.data[0]["Supplier Foreign \nCost Price"];
+                            const supplierNo = data.keys['Supplier'];;
+                            const supplierName = data.keys['Supplier Name'];;
+
+                            const currency = data.keys['Currency'];
+                            const terms = data.keys['Payment Terms'].match(
+                                /^(\w)\w+\s+(\w)\w+\s+at\s+(\w)/i)[1] + data.keys[
+                                'Payment Terms'].match(/^(\w)\w+\s+(\w)\w+\s+at\s+(\w)/i)[
+                                2] + '@' + data.keys['Payment Terms'].match(/at\s+(\w+)/i)[
+                                1];
+
+                            // const shipMode = data.keys['Ship Method'];
+
+
+                            // Update the form fields with the extracted data
+                            $('#ww_po_no').val(poNo);
+                            // $('#buyer_price').val(price);
+                            $('#supplier_no').val(supplierNo);
+                            $('#supplier_name').val(supplierName);
+                            $('#currency').val(currency.match(/^(\w+)\s+(\w+)/i)[1] + " " +
+                                currency.match(/^(\w+)\s+(\w+)/i)[2]);
+                            $('#early-buyer-date').val(formattedDate);
+                            $('#payment_terms').val(terms);
+                            $('#ship_mode').val('Sea');
+
+                            // ex factory date
+                            const buyerDate = new Date($('#early-buyer-date').val());
+                            const exFactoryDate = new Date(buyerDate);
+                            exFactoryDate.setDate(exFactoryDate.getDate() -
+                                14); // Subtract 14 days
+
+                            const exFactoryDateFormatted = exFactoryDate.toISOString().split(
+                                'T')[
+                                0]; // Convert date to YYYY-MM-DD format
+                            $('#ex_factory_date').val(exFactoryDateFormatted);
+                            updateDifferenceNote();
+
+
                         }
 
                     },
