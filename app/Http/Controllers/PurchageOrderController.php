@@ -53,11 +53,13 @@ class PurchageOrderController extends Controller
         $purchaseOrder->vendor_price = $request->input('vendor_price');
         $purchaseOrder->earliest_buyer_date = $request->input('early-buyer-date');
         $purchaseOrder->ex_factory_date = $request->input('ex_factory_date');
+        $purchaseOrder->approved_date = $request->input('approval_date');
         $purchaseOrder->po_no = $request->input('ww_po_no');
         $purchaseOrder->plm = $request->input('plm');
         $purchaseOrder->description = $request->input('description');
         $purchaseOrder->fabric_quality = $request->input('fabric_quality');
         $purchaseOrder->fabric_content = $request->input('fabric_content');
+        $purchaseOrder->fabric_type = $request->input('fabric_type');
         $purchaseOrder->supplier_no = $request->input('supplier_no');
         $purchaseOrder->supplier_name = $request->input('supplier_name');
         $purchaseOrder->currency = $request->input('currency');

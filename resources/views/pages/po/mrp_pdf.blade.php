@@ -338,7 +338,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:21.45pt;margin-left:22.4pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Line</span></strong>
+                    <strong><span style="font-size:8px;">Cat</span></strong>
                 </p>
             </td>
             <td
@@ -349,7 +349,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:22.4pt;margin-left:21.25pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Style&nbsp;Number</span></strong>
+                    <strong><span style="font-size:8px;">Swing Tag</span></strong>
                 </p>
             </td>
             <td
@@ -371,7 +371,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:19.2pt;margin-left:18.15pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Item&nbsp;Number</span></strong>
+                    <strong><span style="font-size:8px;">Item</span></strong>
                 </p>
             </td>
             <td
@@ -389,38 +389,37 @@
                 style="width: 35.6pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.0pt;margin-right:0in;margin-left:11.4pt;'>
-                    <strong><span style="font-size:8px;">QTY</span></strong>
-                </p>
-                <p
-                    style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.4pt;margin-right:0in;margin-left:6.55pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Ordered</span></strong>
+                    <strong><span style="font-size:8px;">Qty Ordered</span></strong>
                 </p>
             </td>
             <td
-                style="width: 33.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top;">
+                style="width: 33.1pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top; background-color:yellow">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.1pt;'>
                     <span style='font-size:10px;font-family:"Times New Roman",serif;'>&nbsp;</span>
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:2.25pt;margin-left:2.25pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Inner&nbsp;QTY</span></strong>
+                    <strong><span style="font-size:8px;">FOB INV</span></strong>
                 </p>
             </td>
+
             <td
-                style="width: 34.75pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top;">
+                style="width: 34.75pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top; background-color:yellowgreen">
                 <p
-                    style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.55pt;margin-right:2.2pt;margin-left:11.75pt;text-indent:-9.75pt;line-height:7.5pt;'>
-                    <strong><span style="font-size:8px;">Outer Case&nbsp;QTY</span></strong>
+                    style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.55pt;margin-right:2.2pt;margin-left:11.75pt;text-indent:-9.75pt;line-height:7.5pt;'>
+                    <strong><span style="font-size:8px;">INV LABELS AND ACCESSORIES</span></strong>
                 </p>
             </td>
+
             <td
                 style="width: 36.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.55pt;margin-right:6.8pt;margin-left:10.75pt;text-indent:-4.3pt;line-height:7.5pt;'>
-                    <strong><span style="font-size:8px;">Supplier&nbsp;Price</span></strong>
+                    <strong><span style="font-size:8px;">FOB INV</span></strong>
                 </p>
             </td>
+
             <td
                 style="width: 57.05pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top;">
                 <p
@@ -429,7 +428,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:20.05pt;margin-left:19.25pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Value</span></strong>
+                    <strong><span style="font-size:8px;">USD AMOUNT</span></strong>
                 </p>
             </td>
             <td colspan="2"

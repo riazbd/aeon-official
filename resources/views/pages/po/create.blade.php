@@ -43,16 +43,16 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="plm" class="text-left" id="plm-label">PLM:</label>
                                 <div class=""><input type="hidden" class="form-control form-control-sm"
                                         id="plm_upload" name="plm_upload"></div>
-                            </div>
-                            <div class="form-group">
+                            </div> --}}
+                            {{-- <div class="form-group">
                                 <label for="access_price_upload" class="text-right">Accessories Price:</label>
                                 <div class=""><input type="text" class="form-control form-control-sm"
                                         id="access_price_upload" name="access_price_upload" required></div>
-                            </div>
+                            </div> --}}
                             <div class="form-group row">
                                 {{-- <label for="pdf_file" class="col-md-4">Upload PDF:</label> --}}
                                 <div class="col-md-9 mt-3">
@@ -109,7 +109,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="early-buyer-date" class="col-5 text-right">Buyer Date:</label>
+                                <label for="early-buyer-date" class="col-5 text-right">Earliest Shipment Date:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                         id="early-buyer-date" name="early-buyer-date" required></div>
                             </div>
@@ -119,6 +119,11 @@
                                 <label for="care_label_date" class="col-5 text-right">Care Label Date:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                         id="care_label_date" name="care_label_date" required></div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="approval_date" class="col-5 text-right">Approval Date:</label>
+                                <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
+                                        id="approval_date" name="approval_date" required></div>
                             </div>
                             <div class="form-group row">
                                 <label for="ww_po_no" class="col-5 text-right">PO Number.:</label>
@@ -142,6 +147,16 @@
                                 <label for="fabric_content" class="col-5 text-right">Fabric Content:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="fabric_content" name="fabric_content" required></div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fabric_type" class="col-5 text-right">Fabric Type:</label>
+                                <div class="col-7"><select class="form-control form-control-sm" id="fabric_type"
+                                        name="fabric_type" required>
+                                        <option value="">Select Fabric Type</option>
+                                        <option value="1">Local Fabric</option>
+                                        <option value="2">Special Yarn/ AOP Fabric</option>
+                                        <option value="3">Imported Fabric</option>
+                                    </select></div>
                             </div>
                             <div class="form-group row">
                                 <label for="supplier_no" class="col-5 text-right">Supplier Number:</label>
@@ -175,7 +190,7 @@
 
 
                             <div class="form-group row">
-                                <label for="ex_factory_date" class="col-5 text-right">Ex Factory Date:</label>
+                                <label for="ex_factory_date" class="col-5 text-right">Factory Ex-Factory Date:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                         id="ex_factory_date" name="ex_factory_date" required></div>
                             </div>
@@ -188,7 +203,7 @@
                             <div class="form-group row">
                                 <label for="access_price" class="col-5 text-right">Accessories Price:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
-                                        id="access_price" name="access_price" readonly></div>
+                                        id="access_price" name="access_price"></div>
                             </div>
 
 
@@ -266,14 +281,15 @@
                                 <tr>
                                     <th scope="col">Sl</th>
                                     <th scope="col" id="plm_line">PLM</th>
-                                    <th scope="col">Style Number</th>
+                                    <th scope="col" id="style_number_line">Style Number</th>
                                     <th scope="col">Colour</th>
                                     <th scope="col">Item Number</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">QTY Ordered</th>
-                                    <th scope="col">Inner QTY</th>
-                                    <th scope="col">Outer Case QTY</th>
+                                    <th scope="col" id="inner_qty">Inner QTY</th>
+                                    <th scope="col" id="outer_qty">Outer Case QTY</th>
                                     <th scope="col">Supplier Price </th>
+
                                     <th scope="col">Value</th>
                                     <th scope="col">Selling Price
                                     </th>
@@ -290,8 +306,9 @@
                                     <td><input type="text" name="items[0][size]"></td>
                                     <td><input type="text" name="items[0][qty_ordered]"></td>
                                     <td><input type="text" name="items[0][inner_qty]"></td>
-                                    <td><input type="text" name="items[0][outer_case_qty]"></td>
+
                                     <td><input type="text" name="items[0][supplier_price]"></td>
+                                    <td><input type="text" name="items[0][outer_case_qty]"></td>
                                     <td><input type="text" name="items[0][value]"></td>
                                     <td><input type="text" name="items[0][selling_price]"></td>
                                 </tr>
@@ -322,40 +339,30 @@
         $(document).ready(function() {
             const selectBuyerUpload = document.getElementById("select_buyer_upload");
             const selectVendorUpload = document.getElementById("select_vendor_upload");
-            const plmUpload = document.getElementById("plm_upload");
+            // const plmUpload = document.getElementById("plm_upload");
             const accessPriceUpload = document.getElementById("access_price_upload");
             const selectBuyer = document.getElementById("select_buyer");
             const selectVendor = document.getElementById("select_vendor");
             const accessPrice = document.getElementById("access_price");
             const savePO = document.getElementById('save-po');
 
-            const plmLabel = document.getElementById("plm-label");
+            // const plmLabel = document.getElementById("plm-label");
 
-            plmLabel.style.display = "none";
+            // plmLabel.style.display = "none";
 
             $('#select_buyer_upload').change(function() {
                 var selectedBuyerValue = $(this).val();
-                var plmField = $('#plm_upload');
+                // var plmField = $('#plm_upload');
 
-                // Check if the selected buyer value is 1
-                if (selectedBuyerValue === '1') {
-                    plmLabel.style.display = "block";
-                    plmField.prop('required', true);
-                    plmField.prop('type', 'text');
-                    plmField.val(Math.floor(100000 + Math.random() * 900000))
-                } else {
-                    plmLabel.style.display = "none";
-                    plmField.prop('required', false);
-                    plmField.prop('type', 'hidden'); // Hide the input
-                }
+
             });
 
-            plmUpload.addEventListener("change", function() {
-                plm.value = plmUpload.value;
-            })
-            accessPriceUpload.addEventListener("change", function() {
-                accessPrice.value = accessPriceUpload.value;
-            })
+            // plmUpload.addEventListener("change", function() {
+            //     plm.value = plmUpload.value;
+            // })
+            // accessPriceUpload.addEventListener("change", function() {
+            //     accessPrice.value = accessPriceUpload.value;
+            // })
 
             // Add event listeners to the upload form dropdowns
             selectBuyerUpload.addEventListener("change", function() {
@@ -419,8 +426,9 @@
                     <td><input type="text" name="items[${slNo}][size]" ></td>
                     <td><input type="text" name="items[${slNo}][qty_ordered]" ></td>
                     <td><input type="text" name="items[${slNo}][inner_qty]" ></td>
-                    <td><input type="text" name="items[${slNo}][outer_case_qty]" ></td>
+
                     <td><input type="text" name="items[${slNo}][supplier_price]" ></td>
+                    <td><input type="text" name="items[${slNo}][outer_case_qty]" ></td>
                     <td><input type="text" name="items[${slNo}][value]" ></td>
                     <td><input type="text" name="items[${slNo}][selling_price]" ></td>
                 </tr>
@@ -516,16 +524,16 @@
 
             // Function to update the Vendor Price and Vendor Price Difference note
             function updateVendorPriceAndDifference() {
-                const buyerPrice = parseFloat($('#buyer_price').val());
-                let vendorPrice = parseFloat($('#vendor_price').val());
+                const buyerPrice = parseFloat($('#buyer_price').val()).toFixed(2);
+                let vendorPrice = parseFloat($('#vendor_price').val()).toFixed(2);
 
-                // If Vendor Price is not provided, calculate it as 5% less than the Buyer Price
+                // If Vendor Price is not provided, calculate it as 8% less than the Buyer Price
                 if (isNaN(vendorPrice)) {
-                    vendorPrice = buyerPrice * 0.90; // 5% less than the Buyer Price
+                    vendorPrice = buyerPrice * 0.92; // 8% less than the Buyer Price
                 }
 
                 // Calculate the percentage difference between Buyer Price and Vendor Price
-                const percentageDifference = ((buyerPrice - vendorPrice) / buyerPrice) * 100;
+                const percentageDifference = ((buyerPrice - vendorPrice.toFixed(2)) / buyerPrice) * 100;
 
                 // Round the percentageDifference to 2 decimal places
                 const roundedPercentageDifference = parseFloat(percentageDifference.toFixed(2));
@@ -535,7 +543,7 @@
                 const vendorPriceDifferenceElement = $('#vendor_price_difference');
 
                 // Update the value of the Vendor Price field
-                vendorPriceElement.val(vendorPrice);
+                vendorPriceElement.val(vendorPrice.toFixed(2));
 
                 // Update the text content of the Vendor Price Difference note
                 vendorPriceDifferenceElement.text(
@@ -585,7 +593,7 @@
                             console.log(response);
 
                             // disable fields
-                            $('#select_buyer, #select_vendor, #plm').addClass(
+                            $('#select_buyer, #select_vendor').addClass(
                                 'select-readonly');
 
 
@@ -595,13 +603,19 @@
                             const dateObject = moment(data.keys['Earliest Ship Date'],
                                 "DD-MMM-YYYY");
 
+                            const approvedDateObject = moment(data.keys['PO Approval Date'],
+                                "DD-MMM-YYYY");
+
                             // Use moment to format the date in "MM/DD/YYYY" format
                             const formattedDate = dateObject.format("yyyy-MM-DD");
 
+                            const formattedApprovedDate = approvedDateObject.format(
+                                "yyyy-MM-DD");
+
                             const poNo = data.keys['WW PO No'];
                             const price = data.data[0]["Supplier Foreign \nCost Price"];
-                            const supplierNo = data.keys['Supplier No'];;
-                            const supplierName = data.keys['Supplier Name'];;
+                            const supplierNo = data.keys['Supplier No'];
+                            const supplierName = data.keys['Supplier Name'];
 
                             const currency = data.keys['Currency'];
                             const terms = data.keys['Payment Method'].match(/\b(\w)/g).join(
@@ -637,6 +651,12 @@
                             $('#early-buyer-date').val(formattedDate);
                             $('#payment_terms').val(terms);
                             $('#ship_mode').val(shipMode);
+                            accessPrice.value = data.keys['hanger'];
+                            $('#approval_date').val(formattedApprovedDate)
+                            $('#plm').val(data.data[0][
+                                'Vendor \nProduct No. / \nRef. Item No.'
+                            ])
+                            $('#description').val(data.data[0]['Item Description'])
 
 
                             updateVendorPriceAndDifference();
@@ -655,8 +675,8 @@
                             const styleNote = 'Price: ' + (parseFloat($('#vendor_price')
                                     .val())) +
                                 " " + "+" + " " + accessPriceValue + ' ' + '=' +
-                                " " + (parseFloat($('#vendor_price')
-                                    .val()) + accessPriceValue).toString()
+                                " " + ((parseFloat($('#vendor_price')
+                                    .val()) + accessPriceValue).toFixed(2)).toString()
 
                             $('#style_note').val(styleNote);
 
@@ -690,23 +710,145 @@
                                         <td><input type="text" name="items[${index}][qty_ordered]" value="${item["Qty Ordered"]}"></td>
                                         <td><input type="text" name="items[${index}][inner_qty]" value="${item["Inner \nQty"]}"></td>
                                         <td><input type="text" name="items[${index}][outer_case_qty]" value="${item["Outer Case \nQty"]}"></td>
-                                        <td><input type="text" name="items[${index}][supplier_price]" value="${(parseFloat($('#vendor_price').val())+accessPriceValue).toString()}"></td>
-                                        <td><input type="text" name="items[${index}][value]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue) * parseFloat(item["Qty Ordered"])).toFixed(2)}"></td>
+                                        <td><input type="text" class="supplier_price" name="items[${index}][supplier_price]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue).toFixed(2)).toString()}"></td>
+
+                                        <td><input type="text" class="total_price" name="items[${index}][value]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue) * parseFloat(item["Qty Ordered"])).toFixed(2)}"></td>
                                         <td><input type="text" name="items[${index}][selling_price]" value="${item["Selling Price"]}"></td>
                                     </tr>
                                 `;
                                 tbody.append(newRow);
                             });
+
+                            const valueInputs = document.querySelectorAll(
+                                '.supplier_price');
+
+                            const totalInputs = document.querySelectorAll(
+                                '.total_price');
+
+                            console.log(valueInputs);
+
+
+                            accessPrice.addEventListener("change", function() {
+                                // Get the new value entered in the changed input field
+
+                                let newAccessPrice = parseFloat($('#access_price')
+                                    .val());
+
+                                const newStyleNote = 'Price: ' + (parseFloat($(
+                                            '#vendor_price')
+                                        .val())) +
+                                    " " + "+" + " " + newAccessPrice + ' ' + '=' +
+                                    " " + ((parseFloat($('#vendor_price').val()) +
+                                        newAccessPrice).toFixed(2)).toString()
+
+                                $('#style_note').val(newStyleNote);
+
+                                Array.prototype.forEach.call(valueInputs, function(
+                                    input, index) {
+                                    let newFinalPrice = (parseFloat($(
+                                            '#vendor_price').val()) +
+                                        newAccessPrice).toString()
+
+                                    input.value = newFinalPrice
+                                });
+
+                                data.data.forEach((item, index) => {
+                                    const totalPrice = totalInputs[index];
+
+                                    let newFinalPrice = (parseFloat($(
+                                            '#vendor_price').val()) +
+                                        newAccessPrice)
+                                    let newFinalTotalPrice = newFinalPrice *
+                                        parseFloat(item[
+                                            "Qty Ordered"])
+
+                                    console.log(parseFloat($(
+                                        '#vendor_price').val()));
+
+                                    console.log(newFinalPrice);
+
+                                    console.log(parseFloat(item[
+                                        "Qty Ordered"]));
+
+                                    totalPrice.value = newFinalTotalPrice
+                                })
+
+                                Array.prototype.forEach.call(totalInputs, function(
+                                    input, index) {
+
+                                });
+                            });
+
+                            document.getElementById('vendor_price').addEventListener("change",
+                                function() {
+                                    // Get the new value entered in the changed input field
+
+                                    let newAccessPrice = parseFloat($('#access_price')
+                                        .val());
+
+                                    let newVendorPrice = parseFloat($('#vendor_price')
+                                        .val()).toFixed(2);
+
+
+
+                                    const newStyleNote = 'Price: ' + (parseFloat($(
+                                                '#vendor_price')
+                                            .val())) +
+                                        " " + "+" + " " + newAccessPrice + ' ' + '=' +
+                                        " " + (parseFloat($('#vendor_price').val()) +
+                                            newAccessPrice).toString()
+
+                                    $('#style_note').val(newStyleNote);
+
+                                    Array.prototype.forEach.call(valueInputs, function(
+                                        input, index) {
+                                        let newFinalPrice = (parseFloat($(
+                                                '#vendor_price').val()) +
+                                            newAccessPrice).toString()
+
+                                        input.value = newFinalPrice
+                                    });
+
+                                    data.data.forEach((item, index) => {
+                                        const totalPrice = totalInputs[index];
+
+                                        let newFinalPrice = (parseFloat($(
+                                                '#vendor_price').val()) +
+                                            newAccessPrice)
+                                        let newFinalTotalPrice = newFinalPrice *
+                                            parseFloat(item[
+                                                "Qty Ordered"])
+
+                                        console.log(parseFloat($(
+                                            '#vendor_price').val()));
+
+                                        console.log(newFinalPrice);
+
+                                        console.log(parseFloat(item[
+                                            "Qty Ordered"]));
+
+                                        totalPrice.value = newFinalTotalPrice
+                                    })
+
+                                    Array.prototype.forEach.call(totalInputs, function(
+                                        input, index) {
+
+                                    });
+                                });
+
                         }
 
                         if ($('#select_buyer_upload').val() === '2') {
 
                             console.log(response);
 
-                            $('#plm_line').text("Line")
+                            $('#plm_line').text("Cat.")
+                            $('#style_number_line').text('Swing Tag')
+                            $('#inner_qty').text('Vendor Price')
+                            $('#outer_qty').text('Accessories Price')
 
                             // disable fields
-                            $('#select_buyer, #select_vendor, #plm').addClass(
+                            $('#select_buyer, #select_vendor').addClass(
                                 'select-readonly');
 
 
@@ -716,31 +858,24 @@
                             const dateObject = moment(data.keys['Ship From Date'],
                                 "DD-MMM-YYYY");
 
+                            const approvedDateObject = moment(data.keys[
+                                'Originally Approved Date'], "DD-MMM-YYYY")
+
 
 
                             document.getElementById('plm-label-form').style.display = "none";
                             $('#plm').prop('required', false);
                             $('#plm').prop('type', 'hidden');
 
-                            // price update
-                            $('#buyer_price').on('change', function() {
-                                updateVendorPriceAndDifference();
-                                const accessPriceValue = parseFloat($('#access_price')
-                                    .val()
-                                ); // Get the value of the access_price input field
+                            $('#access_price').val('0')
 
-                                const styleNote = 'Price: ' + (parseFloat($(
-                                            '#vendor_price')
-                                        .val())) +
-                                    " " + "+" + " " + accessPriceValue + ' ' + '=' +
-                                    " " + (parseFloat($('#vendor_price')
-                                        .val()) + accessPriceValue).toString()
 
-                                $('#style_note').val(styleNote);
-                            })
 
                             // Use moment to format the date in "MM/DD/YYYY" format
                             const formattedDate = dateObject.format("yyyy-MM-DD");
+
+                            const formattedApprovedDate = approvedDateObject.format(
+                                "yyyy-MM-DD");
 
                             const poNo = data.keys['Order No'];
                             // const price = data.data[0]["Supplier Foreign \nCost Price"];
@@ -767,6 +902,9 @@
                             $('#early-buyer-date').val(formattedDate);
                             $('#payment_terms').val(terms);
                             $('#ship_mode').val('Sea');
+                            $('#buyer_price').val(data.inner_table[0]['Cost (Incl VAT)']);
+                            $('#approval_date').val(formattedApprovedDate)
+                            $('#description').val(data.outer_table['Description'])
 
                             // ex factory date
                             const buyerDate = new Date($('#early-buyer-date').val());
@@ -778,7 +916,194 @@
                                 'T')[
                                 0]; // Convert date to YYYY-MM-DD format
                             $('#ex_factory_date').val(exFactoryDateFormatted);
+
+                            updateVendorPriceAndDifference();
+
                             updateDifferenceNote();
+
+                            let accessPriceValue = parseFloat($('#access_price')
+                                .val());
+
+                            const styleNote = 'Price: ' + (parseFloat($('#vendor_price')
+                                    .val())) +
+                                " " + "+" + " " + accessPriceValue + ' ' + '=' +
+                                " " + ((parseFloat($('#vendor_price')
+                                    .val()) + accessPriceValue).toFixed(2)).toString()
+
+                            $('#style_note').val(styleNote);
+                            // price update
+                            // $('#buyer_price').on('change', function() {
+                            //     updateVendorPriceAndDifference();
+                            //     // const accessPriceValue = parseFloat($('#access_price')
+
+                            //     const styleNote = 'Price: ' + (parseFloat($(
+                            //                 '#vendor_price')
+                            //             .val())).toString() +
+                            //         " " + "+" + " " + parseFloat($('#access_price')
+                            //             .val()).toString() + ' ' + '=' +
+                            //         " " + (parseFloat($('#vendor_price')
+                            //             .val()) + parseFloat($('#access_price')
+                            //             .val())).toString()
+
+                            //     $('#style_note').val(styleNote);
+                            // })
+
+                            $('#item-table-body').empty()
+
+                            const tbody = $('#item-table-body');
+
+                            data.inner_table.forEach((item, index) => {
+                                const newRow = `
+                                    <tr>
+                                        <td>${index+1}</td>
+                                        <td><input type="text" name="items[${index}][plm]" value="${data.outer_table['Category']}"></td>
+                                        <td><input type="text" name="items[${index}][style_no]" value="${data.outer_table['Swing Tag']}"></td>
+                                        <td><input type="text" name="items[${index}][colour]" value="${data.outer_table['Colour']}"></td>
+                                        <td><input type="text" name="items[${index}][item_no]" value="${data.outer_table['Item']}"></td>
+                                        <td><input type="text" name="items[${index}][size]" value="${item["Size"]}"></td>
+                                        <td><input type="text" name="items[${index}][qty_ordered]" value="${item["Qty"]}"></td>
+                                        <td><input type="text" name="items[${index}][inner_qty]" value="${$('#vendor_price').val()}"></td>
+                                        <td><input type="text" class="outer_qty" name="items[${index}][outer_case_qty]" value="${accessPriceValue}"></td>
+                                        <td><input type="text" class="supplier_price" name="items[${index}][supplier_price]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue).toFixed()).toString()}"></td>
+
+                                        <td><input type="text" class="total_price" name="items[${index}][value]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue) * parseFloat(item["Qty"])).toFixed(2)}"></td>
+                                        <td><input type="text" name="items[${index}][selling_price]" value="${item["Selling Price"]}"></td>
+                                    </tr>
+                                `;
+                                tbody.append(newRow);
+
+
+                            });
+
+                            const valueInputs = document.querySelectorAll(
+                                '.supplier_price');
+
+                            const accessoriesInputs = document.querySelectorAll(
+                                '.outer_qty');
+
+                            const totalInputs = document.querySelectorAll(
+                                '.total_price');
+
+                            console.log(valueInputs);
+
+
+
+
+                            accessPrice.addEventListener("change", function() {
+                                // Get the new value entered in the changed input field
+
+                                let newAccessPrice = parseFloat($('#access_price')
+                                    .val());
+
+                                const newStyleNote = 'Price: ' + (parseFloat($(
+                                            '#vendor_price')
+                                        .val())).toString() +
+                                    " " + "+" + " " + newAccessPrice.toString() + ' ' +
+                                    '=' +
+                                    " " + ((parseFloat($('#vendor_price').val()) +
+                                        newAccessPrice).toFixed(2)).toString()
+
+                                $('#style_note').val(newStyleNote);
+
+                                Array.prototype.forEach.call(accessoriesInputs,
+                                    function(input, index) {
+                                        input.value = newAccessPrice
+                                    })
+
+                                Array.prototype.forEach.call(valueInputs, function(
+                                    input, index) {
+                                    let newFinalPrice = (parseFloat($(
+                                            '#vendor_price').val()) +
+                                        newAccessPrice).toString()
+
+                                    input.value = newFinalPrice
+                                });
+
+                                data.inner_table.forEach((item, index) => {
+                                    const totalPrice = totalInputs[index];
+
+                                    let newFinalPrice = (parseFloat($(
+                                            '#vendor_price').val()) +
+                                        newAccessPrice)
+                                    let newFinalTotalPrice = newFinalPrice *
+                                        parseFloat(item[
+                                            "Qty"])
+
+                                    console.log(parseFloat($(
+                                        '#vendor_price').val()));
+
+                                    console.log(newFinalPrice);
+
+                                    console.log(parseFloat(item[
+                                        "Qty"]));
+
+                                    totalPrice.value = newFinalTotalPrice
+                                })
+
+                                Array.prototype.forEach.call(totalInputs, function(
+                                    input, index) {
+
+                                });
+                            });
+
+                            document.getElementById('vendor_price').addEventListener("change",
+                                function() {
+                                    // Get the new value entered in the changed input field
+
+                                    let newAccessPrice = parseFloat($('#access_price')
+                                        .val());
+
+                                    const newStyleNote = 'Price: ' + (parseFloat($(
+                                                '#vendor_price')
+                                            .val())).toString() +
+                                        " " + "+" + " " + newAccessPrice.toString() + ' ' +
+                                        '=' +
+                                        " " + ((parseFloat($('#vendor_price').val()) +
+                                            newAccessPrice).toFixed(2)).toString()
+
+                                    $('#style_note').val(newStyleNote);
+
+                                    Array.prototype.forEach.call(accessoriesInputs,
+                                        function(input, index) {
+                                            input.value = newAccessPrice
+                                        })
+
+                                    Array.prototype.forEach.call(valueInputs, function(
+                                        input, index) {
+                                        let newFinalPrice = ((parseFloat($(
+                                                    '#vendor_price').val()) +
+                                                newAccessPrice).toFixed(2))
+                                            .toString()
+
+                                        input.value = newFinalPrice
+                                    });
+
+                                    data.inner_table.forEach((item, index) => {
+                                        const totalPrice = totalInputs[index];
+
+                                        let newFinalPrice = (parseFloat($(
+                                                '#vendor_price').val()) +
+                                            newAccessPrice)
+                                        let newFinalTotalPrice = newFinalPrice *
+                                            parseFloat(item[
+                                                "Qty"])
+
+                                        console.log(parseFloat($(
+                                            '#vendor_price').val()));
+
+                                        console.log(newFinalPrice);
+
+                                        console.log(parseFloat(item[
+                                            "Qty"]));
+
+                                        totalPrice.value = newFinalTotalPrice
+                                    })
+
+                                    Array.prototype.forEach.call(totalInputs, function(
+                                        input, index) {
+
+                                    });
+                                });
 
 
                         }
