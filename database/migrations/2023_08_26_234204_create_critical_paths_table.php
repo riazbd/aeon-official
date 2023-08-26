@@ -58,6 +58,28 @@ class CreateCriticalPathsTable extends Migration
             $table->string('bulk_fabric_knit_down_image')->nullable();
             $table->string('bulk_yarn_fabric_plan_date')->nullable();
             $table->string('bulk_yarn_fabric_actual_date')->nullable();
+            $table->string('development_photo_sample_sent_plan_date')->nullable();
+            $table->string('development_photo_sample_sent_actual_date')->nullable();
+            $table->string('development_photo_sample_dispatch_details')->nullable();
+            $table->string('development_photo_sample_dispatch_sample_image')->nullable();
+            $table->string('fit_approval_plan')->nullable();
+            $table->string('fit_approval_actual')->nullable();
+            $table->string('fit_dispatch')->nullable();
+            $table->string('fit_sample_image')->nullable();
+            $table->string('size_set_approval')->nullable();
+            $table->string('size_set_actual')->nullable();
+            $table->string('size_set_dispatch')->nullable();
+            $table->string('size_set_image')->nullable();
+            $table->string('pp_approval')->nullable();
+            $table->string('pp_actual')->nullable();
+            $table->string('pp_dispatch')->nullable();
+            $table->string('pp_sample_image')->nullable();
+            $table->string('care_label_approval')->nullable();
+            $table->string('care_label_actual')->nullable();
+            $table->string('material_inhouse_plan')->nullable();
+            $table->string('material_inhouse_actual')->nullable();
+            $table->string('pp_meeting_plan')->nullable();
+            $table->string('pp_meeting_actual')->nullable();
             $table->timestamps();
         });
     }
