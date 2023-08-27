@@ -180,6 +180,29 @@
             </ul>
         </li>
     </ul>
+    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+        data-accordion="false">
+        <li class="nav-item has-treeview">
+            <a href="#"
+                class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
+                <i class="fas fa-circle"></i>
+                <p>
+                    Critical  Manage
+                    <i class="right fas fa-angle-left"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('add-critical-path') }}" class="nav-link">Add New</a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('critical-path') }}" class="nav-link">Critical List</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
     {{--    @can('card.main') --}}
 
     {{--    @endcan --}}
