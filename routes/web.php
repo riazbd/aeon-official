@@ -8,6 +8,7 @@ use App\Http\Controllers\Blade\HomeController;
 use App\Http\Controllers\Blade\ApiUserController;
 use App\Http\Controllers\BuyerContactController;
 use App\Http\Controllers\BuyerController;
+use App\Http\Controllers\CriticalController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ManufacturerController;
 use App\Http\Controllers\PdfController;
@@ -144,6 +145,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/vendor_certificate-create', [VendorContactController::class, 'store'])->name('save-vendor_certificate');
     Route::delete('/vendor_certificate-delete/{id}', [VendorContactController::class, 'destroy'])->name('delete-vendor_certificate');
     Route::put('vendor_certificate-manage/{id}', [VendorContactController::class, 'update'])->name('update-vendor_certificate');
+    //Crtical Path
+    Route::get('critical-path-manage', [CriticalController::class, 'index'])->name('critical-path');
+    Route::get('add-critical-path', [CriticalController::class, 'create'])->name('add-critical-path');
 });
 
 // Change language session condition
