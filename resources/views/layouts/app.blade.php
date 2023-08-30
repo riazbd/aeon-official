@@ -75,7 +75,7 @@
                                     <span class="fas fa-close"></span></a>
                             </li>
                         @endguest
-                        <div class="sl-nav">
+                        {{-- <div class="sl-nav">
                             <i class="sl-flag flag-{{ App::getLocale('locale') }}"></i>
                             <ul>
                                 <li class="nav-link" style="padding-left: 0">{{ strtoupper(App::getLocale('locale')) }}
@@ -89,7 +89,7 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </ul>
                 </div>
             </div>
