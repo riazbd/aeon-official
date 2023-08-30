@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Buyer;
 use App\Models\CriticalPath;
+use App\Models\Department;
 use App\Models\PurchageOrder;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class CriticalController extends Controller
@@ -15,8 +18,12 @@ class CriticalController extends Controller
      */
     public function index()
     {
+        $buyerList=Buyer::orderBy('id','desc')->get();
+        $departmentList=Department::orderBy('id','desc')->get();
         $criticalPath = CriticalPath::orderBy('id','desc')->get();
-        return view('pages.critical.index', compact('criticalPath'));
+        $vendor = Vendor::orderBy('id','desc')->get();
+        $purchaseOrder=PurchageOrder::orderBy('id','desc')->get(['id', 'po_no']);
+        return view('pages.critical.index', compact('criticalPath','buyerList','departmentList','vendor','purchaseOrder'));
         //
     }
 

@@ -12,8 +12,7 @@
     <!-- DataTables -->
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
     <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet"
-        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
@@ -31,15 +30,14 @@
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
     <!-- SweetAlert2 -->
     <link rel="stylesheet" href="{{ asset('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
     <link rel="icon" href="/consImages/logoU.png ">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" />
 </head>
 
-<body
-    class="{{ auth()->user()->theme()['body'] ?? '' }} hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+<body class="{{ auth()->user()->theme()['body'] ?? '' }} hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper" style="display: block">
         <!-- Navbar-->
         <nav class="main-header navbar navbar-expand {{ auth()->user()->theme()['navbar'] ?? 'navbar-light' }}">
@@ -54,28 +52,24 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
-                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false" class="nav-link dropdown-toggle"><i class="fas fa-user"></i>
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fas fa-user"></i>
                         @if (auth()->user())
-                            {{ auth()->user()->name }}
+                        {{ auth()->user()->name }}
                         @endif
                     </a>
-                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow"
-                        style="left: 0px; right: inherit;">
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="left: 0px; right: inherit;">
                         <li>
                             @if (auth()->user())
-                                <a href="{{ route('userEdit', auth()->user()->id) }}" class="dropdown-item">
-                                    <i class="fas fa-cogs"></i> @lang('global.settings')
-                                </a>
+                            <a href="{{ route('userEdit', auth()->user()->id) }}" class="dropdown-item">
+                                <i class="fas fa-cogs"></i> @lang('global.settings')
+                            </a>
                             @endif
                         </li>
                         <li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                            <a href="#" class="nav-link" role="button"
-                                onclick="
+                            <a href="#" class="nav-link" role="button" onclick="
                                     event.preventDefault();
                                     document.getElementById('logout-form').submit();">
                                 <i class="fas fa-sign-out-alt"></i> @lang('global.logout')
@@ -110,8 +104,7 @@
             {{-- end redundant --}}
             <!-- Brand Logo -->
             <a href="#" class="brand-link">
-                <img src="{{ asset('consImages/aeon.png') }}" alt="Unired Logo" class="brand-image"
-                    style="opacity: .8">
+                <img src="{{ asset('consImages/aeon.png') }}" alt="Unired Logo" class="brand-image" style="opacity: .8">
                 {{-- <span class="brand-text font-weight-light">@lang('panel.site_title')</span> --}}
             </a>
 
@@ -186,16 +179,20 @@
         }
     </script>
     @if (session('_message'))
-        <script>
-            Swal.fire({
-                position: 'top-end',
-                icon: "{{ session('_type') }}",
-                title: "{{ session('_message') }}",
-                showConfirmButton: false,
-                timer: {{ session('_timer') ?? 5000 }}
-            });
-        </script>
-        @php(message_clear())
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: "{{ session('_type') }}",
+            title: "{{ session('_message') }}",
+            showConfirmButton: false,
+            timer: {
+                {
+                    session('_timer') ?? 5000
+                }
+            }
+        });
+    </script>
+    @php(message_clear())
     @endif
     @yield('scripts')
 </body>
