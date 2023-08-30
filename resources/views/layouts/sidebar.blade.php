@@ -187,7 +187,7 @@
                 class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
                 <i class="fas fa-circle"></i>
                 <p>
-                    Critical  Manage
+                    Critical  Management
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
