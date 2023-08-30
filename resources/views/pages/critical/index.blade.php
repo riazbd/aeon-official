@@ -44,13 +44,38 @@
                                         @endforeach
                                     </select>
                                 </th>
-                                <th>Season</th>
+                                <th>Season<br/>
+                                <select name="season" id="seasonFilter">
+                                        <option value="">Season</option>
+                                        <option value="WW22">WW22</option>
+                                        <option value="WW23">WW23</option>
+                                    </select></th>
                                 
                             </th>
                                 <th>Image</th>
-                                <th>Fabric<br /> Type</th>
-                                <th>BLOCK<br /> (Repeat or initial)</th>
-                                <th>Vendor</th>
+                                <th>Fabric<br /> Type<br/>
+                                <select name="fabric_type" id="fabricFilter">
+                                        <option value="">Fabric Type</option>
+                                        <option value="Import">Import</option>
+                                        <option value="AOP/ Special Yarn">AOP/ Special Yarn</option>
+                                    </select>
+                            </th>
+                                <th>BLOCK<br /> (Repeat or initial)
+                                <br/>
+                                <select name="bLOCK" id="blockFilter">
+                                        <option value="">bLOCK</option>
+                                        <option value="Initial">Initial</option>
+                                        <option value="Repeat">Repeat</option>
+                                    </select></th>
+                            </th>
+                                <th>Vendor<br/>
+                                <select name="buyerFilter" id="VendorFilter">
+                                        <option value="">SELECT Vendor</option>
+                                        @foreach($vendor as $avendor)
+                                        <option value="{{ $avendor->name }}">{{ $avendor->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
                                 <th>Purchase <br /> Order number </th>
@@ -163,9 +188,9 @@
                                 <th>demo</th>
                                 <th>Season</th>
                                 <th>ratul</th>
-                                <th>Fabric<br /> Type</th>
+                                <th>Import</th>
                                 <th>BLOCK<br /> (Repeat or initial)</th>
-                                <th>Vendor</th>
+                                <th>Shourov</th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
                                 <th>Purchase <br /> Order number </th>
@@ -274,10 +299,10 @@
                             <tr>
                                 <th>Woolworths (Pty) Ltd</th>
                                 <th>157 - Y/BOYS OUTERWEAR</th>
-                                <th>Season</th>
+                                <th>WW22</th>
                                 <th>shourov</th>
-                                <th>Fabric<br /> Type</th>
-                                <th>BLOCK<br /> (Repeat or initial)</th>
+                                <th>AOP/ Special Yarn</th>
+                                <th>Initial</th>
                                 <th>Vendor</th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
@@ -417,5 +442,30 @@
             // Use DataTables built-in search() method to filter the table
             table.column(1).search(departmentId).draw();
         });
+        $("#fabricFilter").on("change", function() {
+            var fabric = $(this).val();
+
+            // Use DataTables built-in search() method to filter the table
+            table.column(4).search(fabric).draw();
+        });
+        $("#seasonFilter").on("change", function() {
+            var season = $(this).val();
+
+            // Use DataTables built-in search() method to filter the table
+            table.column(2).search(season).draw();
+        });
+        $("#blockFilter").on("change", function() {
+            var blockFilter = $(this).val();
+
+            // Use DataTables built-in search() method to filter the table
+            table.column(5).search(blockFilter).draw();
+        });
+        $("#VendorFilter").on("change", function() {
+            var VendorFilter = $(this).val();
+
+            // Use DataTables built-in search() method to filter the table
+            table.column(6).search(VendorFilter).draw();
+        });
+        
     });
 </script>

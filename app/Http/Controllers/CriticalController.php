@@ -6,6 +6,7 @@ use App\Models\Buyer;
 use App\Models\CriticalPath;
 use App\Models\Department;
 use App\Models\PurchageOrder;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class CriticalController extends Controller
@@ -20,7 +21,8 @@ class CriticalController extends Controller
         $buyerList=Buyer::orderBy('id','desc')->get();
         $departmentList=Department::orderBy('id','desc')->get();
         $criticalPath = CriticalPath::orderBy('id','desc')->get();
-        return view('pages.critical.index', compact('criticalPath','buyerList','departmentList'));
+        $vendor = Vendor::orderBy('id','desc')->get();
+        return view('pages.critical.index', compact('criticalPath','buyerList','departmentList','vendor'));
         //
     }
 
