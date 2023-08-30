@@ -44,32 +44,34 @@
                                         @endforeach
                                     </select>
                                 </th>
-                                <th>Season<br/>
-                                <select name="season" id="seasonFilter">
+                                <th>Season<br />
+                                    <select name="season" id="seasonFilter">
                                         <option value="">Season</option>
                                         <option value="WW22">WW22</option>
                                         <option value="WW23">WW23</option>
-                                    </select></th>
-                                
-                            </th>
+                                    </select>
+                                </th>
+
+                                </th>
                                 <th>Image</th>
-                                <th>Fabric<br /> Type<br/>
-                                <select name="fabric_type" id="fabricFilter">
+                                <th>Fabric<br /> Type<br />
+                                    <select name="fabric_type" id="fabricFilter">
                                         <option value="">Fabric Type</option>
                                         <option value="Import">Import</option>
                                         <option value="AOP/ Special Yarn">AOP/ Special Yarn</option>
                                     </select>
-                            </th>
+                                </th>
                                 <th>BLOCK<br /> (Repeat or initial)
-                                <br/>
-                                <select name="bLOCK" id="blockFilter">
+                                    <br />
+                                    <select name="bLOCK" id="blockFilter">
                                         <option value="">bLOCK</option>
                                         <option value="Initial">Initial</option>
                                         <option value="Repeat">Repeat</option>
-                                    </select></th>
-                            </th>
-                                <th>Vendor<br/>
-                                <select name="buyerFilter" id="VendorFilter">
+                                    </select>
+                                </th>
+                                </th>
+                                <th>Vendor<br />
+                                    <select name="buyerFilter" id="VendorFilter">
                                         <option value="">SELECT Vendor</option>
                                         @foreach($vendor as $avendor)
                                         <option value="{{ $avendor->name }}">{{ $avendor->name }}</option>
@@ -78,7 +80,15 @@
                                 </th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
-                                <th>Purchase <br /> Order number </th>
+                                <th>Purchase <br /> Order number
+                                    <br />
+                                    <select name="poFilter" id="poFilter">
+                                        <option value="">SELECT PO</option>
+                                        @foreach($purchaseOrder as $po)
+                                        <option value="{{ $po->po_no }}">{{ $po->po_no }}</option>
+                                        @endforeach
+                                    </select>
+                                </th>
                                 <th>Style Number </th>
                                 <th>Order <br />Quantity</th>
                                 <th>Supplier Price/ <br />Product cost</th>
@@ -193,7 +203,7 @@
                                 <th>Shourov</th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
-                                <th>Purchase <br /> Order number </th>
+                                <th>67166531</th>
                                 <th>Style Number </th>
                                 <th>Order <br />Quantity</th>
                                 <th>Supplier Price/ <br />Product cost</th>
@@ -306,8 +316,8 @@
                                 <th>Vendor</th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
-                                <th>Purchase <br /> Order number </th>
-                                <th>Style Number </th>
+                                <th>12345 </th>
+                                <th><input value="8888" type="text" name="style_no" id="style" class="col-md-8"/></th>
                                 <th>Order <br />Quantity</th>
                                 <th>Supplier Price/ <br />Product cost</th>
                                 <th>Total Value</th>
@@ -466,6 +476,18 @@
             // Use DataTables built-in search() method to filter the table
             table.column(6).search(VendorFilter).draw();
         });
-        
+        $("#poFilter").on("change", function() {
+            var poFilter = $(this).val();
+
+            // Use DataTables built-in search() method to filter the table
+            table.column(9).search(poFilter).draw();
+        });
+
+        $('#style').on('keyup', function() {
+            var inputValue = $(this).val();
+            console.log(inputValue);
+           
+        });
+
     });
 </script>
