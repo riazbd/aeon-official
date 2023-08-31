@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+<style>
+    .toplabel{
+        margin-top: 12px;
+    }
+</style>
 <div class="container">
     <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
@@ -9,7 +14,7 @@
                     General information
                 </button>
             </h2>
-            <div id="flush-collapseOne" class=" row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseOne" class=" row accordion-collapse collapse toplabel" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" id="brand" placeholder="brand" class="form-control" />
@@ -157,7 +162,7 @@
                 </button>
             </h2>
 
-            <div id="flush-collapseTwo" class="row accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseTwo" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-3">
                     <div class="form-floating">
@@ -193,7 +198,7 @@
                     Lab dips and Embellishment Information
                 </button>
             </h2>
-            <div id="flush-collapseThree" class="row accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseThree" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-3">
                     <div class="form-floating">
@@ -268,7 +273,7 @@
                     Bulk Fabric Information
                 </button>
             </h2>
-            <div id="flush-collapseFour" class="row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFour" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-4">
                     <div class="form-floating">
@@ -334,7 +339,7 @@
                     Sample Approval Information
                 </button>
             </h2>
-            <div id="flush-collapseFive" class="row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFive" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-3">
                     <div class="form-floating">
@@ -444,7 +449,7 @@
                     PP Meeting Details
                 </button>
             </h2>
-            <div id="flush-collapseSix" class="row accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseSix" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="Care Approval Plan" class="form-control" />
@@ -504,7 +509,7 @@
                     Production Information
                 </button>
             </h2>
-            <div id="flush-collapseSeven" class="row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseSeven" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-3">
                     <div class="form-floating">
@@ -584,66 +589,102 @@
                     Inspection Information
                 </button>
             </h2>
+            <div id="flush-collapseEight" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Sewing Inspection date (Plan)" class="form-control" />
+                        <label for="sewingInspectionDatePlan">Sewing Inspection date (Plan)</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Sewing Inline Inspection date (Actual)" class="form-control" />
+                        <label for="sewingInlineInspectionDateActual">Sewing Inline Inspection date (Actual)</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Create Inline Inspection Schedule" class="form-control" />
+                        <label for="createInlineInspectionSchedule">Create Inline Inspection Schedule</label>
+                    </div>
+                </div>
+
+
+            </div>
+            <br />
+            <div id="flush-collapseEight" class="row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+                <div class="col-md-4">
+                    <input type="file" />
+                    <label for="">Sewing Inline Inspection Report </label>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Finishing Inline Inspection date (Plan)" class="form-control" />
+                        <label for="finishingInlineInspectionDatePlan">Finishing Inline Inspection date (Plan)</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Finishing Inline Inspection date (Actual)" class="form-control" />
+                        <label for="finishingInlineInspectionDateActual">Finishing Inline Inspection date (Actual)</label>
+                    </div>
+                </div>
+            </div>
+            <br />
             <div id="flush-collapseEight" class="row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
-                    <input type="text" placeholder="Sewing Inspection date (Plan)" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Sewing Inline Inspection date (Actual)" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Create Inline Inspection Schedule" />
-                </div>
-                <div class="col-md-3">
                     <input type="file" />
-                    <label for="">Sewing Inline Inspection Report Upload</label>
+                    <label for="">Finishing Inline Inspection Report </label>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Pre Final Date (Plan)" class="form-control" />
+                        <label for="preFinalDatePlan">Pre Final Date (Plan)</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Pre Final Date (Actual)" class="form-control" />
+                        <label for="preFinalDateActual">Pre Final Date (Actual)</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Create AQL Schedule" class="form-control" />
+                        <label for="createAQLSchedule">Create AQL Schedule</label>
+                    </div>
                 </div>
 
             </div>
             <br />
             <div id="flush-collapseEight" class="row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
-                    <input type="text" placeholder="Finishing Inline Inspection date (Plan)" />
+                    <input type="file" />
+                    <label for="">Pre Final Date AQL Report </label>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" placeholder="Finishing Inline Inspection date (Actual)" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Final AQL date (Plan)" class="form-control" />
+                        <label for="finalAQLDatePlan">Final AQL date (Plan)</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Final AQL date (Actual)" class="form-control" />
+                        <label for="finalAQLDateActual">Final AQL date (Actual)</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Create AQL Schedule" class="form-control" />
+                        <label for="createAQLSchedule">Create AQL Schedule</label>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <input type="file" />
-                    <label for="">Finishing Inline Inspection Report Upload</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Pre Final Date (Plan)" />
+                    <label for="">Final AQL Report Upload </label>
                 </div>
 
-            </div>
-            <br />
-            <div id="flush-collapseEight" class="row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-                <div class="col-md-3">
-                    <input type="text" placeholder="Pre Final Date (Actual)" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Create AQL Schedule " />
-                </div>
-                <div class="col-md-3">
-                    <input type="file" />
-                    <label for="">Pre Final Date AQL Report Upload</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Final AQL date (Plan)" />
-                </div>
-            </div>
-            <br />
-            <div id="flush-collapseEight" class="row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-                <div class="col-md-3">
-                    <input type="text" placeholder="Final AQL date  (Actual)" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Create AQL Schedule" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Final AQL Report Upload" />
-                </div>
             </div>
         </div>
         <br />
@@ -653,42 +694,59 @@
                     Production Sample & Shipping Approval Information
                 </button>
             </h2>
+            <div id="flush-collapseNine" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Production Sample Approval (Plan)" class="form-control" />
+                        <label for="productionSampleApprovalPlan">Production Sample Approval (Plan)</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Production Sample Approval (Actual)" class="form-control" />
+                        <label for="productionSampleApprovalActual">Production Sample Approval (Actual)</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Production Sample Dispatch Details" class="form-control" />
+                        <label for="productionSampleDispatchDetails">Production Sample Dispatch Details</label>
+                    </div>
+                </div>
+            </div>
+            <br />
             <div id="flush-collapseNine" class="row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
-                <div class="col-md-3">
-                    <input type="text" placeholder="Production Sample Approval (Plan)" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Production Sample Approval (Actual)" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Production Sample Dispatch Details" />
-                </div>
                 <div class="col-md-3">
                     <input type="file" />
-                    <label for="">Production Sample Image Upload</label>
+                    <label for="">Production Sample Image </label>
                 </div>
-
-            </div>
-
-            <div id="flush-collapseNine" class="row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
-                <div class="col-md-3">
-                    <input type="text" placeholder="Shipment Booking with ACS (Plan)" />
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Shipment Booking with ACS (Plan)" class="form-control" />
+                        <label for="shipmentBookingACSPlan">Shipment Booking with ACS (Plan)</label>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Shipment Booking with ACS (Actual)" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="SA approval (Plan)" />
-                </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="SA approval (Plan)" />
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Shipment Booking with ACS (Actual)" class="form-control" />
+                        <label for="shipmentBookingACSActual">Shipment Booking with ACS (Actual)</label>
+                    </div>
                 </div>
 
             </div>
             <br />
             <div id="flush-collapseNine" class="row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
-                    <input type="text" placeholder=" SA approval (Actual)" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="SA approval (Plan)" class="form-control" />
+                        <label for="saApprovalPlan">SA approval (Plan)</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <input type="text" placeholder="SA approval (Actual)" class="form-control" />
+                        <label for="saApprovalActual">SA approval (Actual)</label>
+                    </div>
                 </div>
 
             </div>
@@ -700,36 +758,58 @@
                     Ex-Factory, ETA & Vessel Information
                 </button>
             </h2>
-            <div id="flush-collapseTen" class="row accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseTen" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
-                    <input type="text" placeholder="Ex-factory Date PO" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Ex-factory Date PO" class="form-control" />
+                        <label for="exFactoryDatePO">Ex-factory Date PO</label>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" placeholder="Revised Ex-factory Date" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Revised Ex-factory Date" class="form-control" />
+                        <label for="revisedExFactoryDate">Revised Ex-factory Date</label>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" placeholder="Actual Ex-factory Date" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Actual Ex-factory Date" class="form-control" />
+                        <label for="actualExFactoryDate">Actual Ex-factory Date</label>
+                    </div>
                 </div>
-
                 <div class="col-md-3">
-                    <input type="text" placeholder="Shipped Units" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Shipped Units" class="form-control" />
+                        <label for="shippedUnits">Shipped Units</label>
+                    </div>
                 </div>
 
             </div>
             <br />
             <div id="flush-collapseTen" class="row accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
-                    <input type="text" placeholder="Original ETA SA date" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Original ETA SA date" class="form-control" />
+                        <label for="originalETASADate">Original ETA SA date</label>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" placeholder="Revised ETA SA date" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Revised ETA SA date" class="form-control" />
+                        <label for="revisedETASADate">Revised ETA SA date</label>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" placeholder="Ship mode" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Ship mode" class="form-control" />
+                        <label for="shipMode">Ship mode</label>
+                    </div>
                 </div>
-
                 <div class="col-md-3">
-                    <input type="text" placeholder="Forwarder ref/ Vessel name or AWB" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Forwarder ref/ Vessel name or AWB" class="form-control" />
+                        <label for="forwarderRef">Forwarder ref/ Vessel name</label>
+                    </div>
                 </div>
 
             </div>
@@ -741,19 +821,30 @@
                     Payment Information
                 </button>
             </h2>
-            <div id="flush-collapse11" class="row accordion-collapse collapse" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapse11" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
-                    <input type="text" placeholder="Late Delivery Discounts - CRP" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Late Delivery Discounts - CRP" class="form-control" />
+                        <label for="lateDeliveryDiscounts">Late Delivery Discounts - CRP</label>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" placeholder="Invoice Number" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Invoice Number" class="form-control" />
+                        <label for="invoiceNumber">Invoice Number</label>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" placeholder="Invoice  Date" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Invoice Date" class="form-control" />
+                        <label for="invoiceDate">Invoice Date</label>
+                    </div>
                 </div>
-
                 <div class="col-md-3">
-                    <input type="text" placeholder="Payment Receive Date" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="Payment Receive Date" class="form-control" />
+                        <label for="paymentReceiveDate">Payment Receive Date</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -764,23 +855,46 @@
                     Comments, Critical Analyse Information
                 </button>
             </h2>
-            <div id="flush-collapse12" class="row accordion-collapse collapse" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
-                <div class="col-md-3">
-                    <input type="text" placeholder="Reason for major change likely to affect shipment" />
+            <div id="flush-collapse12" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Reason for major change likely to affect shipment" class="form-control" />
+                        <label for="majorChangeReason">Reason for major change </label>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="AEON Comments - Date 12 Dec 22" />
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="AEON Comments - Date 12 Dec 22" class="form-control" />
+                        <label for="aeonComments">AEON Comments - Date 12 Dec 22</label>
+                    </div>
                 </div>
-                <div class="col-md-3">
-                    <input type="text" placeholder="Vendor Comments - Date 14 Dec 22" />
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" placeholder="Vendor Comments - Date 14 Dec 22" class="form-control" />
+                        <label for="vendorComments">Vendor Comments - Date 14 Dec 22</label>
+                    </div>
                 </div>
 
+            </div>
+            <div id="flush-collapse12" class="row accordion-collapse collapse" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
-                    <input type="text" placeholder="SA ETA +5 Days?" />
+                    <div class="form-floating">
+                        <input type="text" placeholder="SA ETA +5 Days?" class="form-control" />
+                        <label for="saEtaPlusFiveDays">SA ETA +5 Days?</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <input type="text" placeholder="NOTE" class="form-control" />
+                        <label for="saEtaPlusFiveDays">NOTE</label>
+                    </div>
                 </div>
             </div>
         </div>
         <br />
     </div>
 </div>
+
+
+
 @endsection
