@@ -1,17 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-<!-- <style>
-    /* Add custom styles for the table container */
-    .table-container {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    /* Add custom styles for the table */
-    #table_id {
-        width: 100%;
-    }
-</style> -->
 <!-- <div class="container"> -->
 <section class="content">
     <div class="row">
@@ -27,6 +15,33 @@
                 <div class="table-container">
                     <table id="table_id" class="display">
                         <thead>
+                            <tr>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;">Total / Sub- Total</th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;">1000</th>
+                            </tr>
+                            <tr>
+                                <th style="border: 1px solid black; background-color: #D9D9D9; font-style:italic;" colspan="21">General Information</th>
+                                <th style="border: 1px solid black;font-style:italic; " colspan="4">Purchase Order information</th>
+                                <th style="border: 1px solid black; background-color: yellow;font-style:italic;" colspan="7">Lab dips and Embellishment Information</th>
+                                <th style="border: 1px solid black; font-style:italic;" colspan="8">Bulk Fabric Information</th>
+                                <th style="border: 1px solid black; background-color: #B7DEE8;font-style:italic;" colspan="16">Sample Approval Information </th>
+                                <th style="border: 1px solid black;font-style:italic;" colspan="7">PP Meeting Details</th>
+                                <th style="border: 1px solid black; background-color: #FCD5B4;font-style:italic;" colspan="10">Production Information</th>
+                                <th style="border: 1px solid black; font-style:italic;" colspan="16">Inspection Information</th>
+                                <th style="border: 1px solid black; background-color: #F2DCDB;font-style:italic;" colspan="8">Production Sample & Shipping Approval Information</th>
+                                <th style="border: 1px solid black; font-style:italic;" colspan="8">Ex-Factory, ETA & Vessel Information</th>
+                                <th style="border: 1px solid black; background-color: #DDD9C4;font-style:italic;" colspan="4">Payment Information</th>
+                            </tr>
                             <tr>
                                 <th>Brand<br />
                                     <select name="buyerFilter" id="buyerFilter">
@@ -317,7 +332,7 @@
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
                                 <th>12345 </th>
-                                <th><input value="8888" type="text" name="style_no" id="style" class="col-md-8"/></th>
+                                <th><input value="8888" type="text" name="style_no" id="style" class="col-md-8" /></th>
                                 <th>Order <br />Quantity</th>
                                 <th>Supplier Price/ <br />Product cost</th>
                                 <th>Total Value</th>
@@ -436,6 +451,8 @@
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
+
+
         var table = $("#table_id").DataTable({
             scrollX: true
         });
@@ -486,7 +503,7 @@
         $('#style').on('keyup', function() {
             var inputValue = $(this).val();
             console.log(inputValue);
-           
+
         });
 
     });
