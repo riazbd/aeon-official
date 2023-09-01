@@ -8,12 +8,12 @@
                 <div class="card-header">
                     <h3 class="card-title">critical List</h3>
                     <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#create-buyer">
-                        <span class="fas fa-plus-circle"><a href="{{ route('add-critical-path') }}" class="nav-link">Add New</a></span>
+                        <a href="{{ route('add-critical-path') }}" class="nav-link">Update</a>
                     </p>
                 </div>
 
-                <div class="table-container">
-                    <table id="table_id" class="display">
+                <div style="margin-top: 20px;" class="table-container">
+                    <table id="table_id" class="row-border cell-border display">
                         <thead>
                             <tr>
                                 <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
@@ -40,70 +40,42 @@
                                 <th style="border: 1px solid black; font-style:italic;" colspan="16">Inspection Information</th>
                                 <th style="border: 1px solid black; background-color: #F2DCDB;font-style:italic;" colspan="8">Production Sample & Shipping Approval Information</th>
                                 <th style="border: 1px solid black; font-style:italic;" colspan="8">Ex-Factory, ETA & Vessel Information</th>
-                                <th style="border: 1px solid black; background-color: #DDD9C4;font-style:italic;" colspan="4">Payment Information</th>
+                                <th style="border: 1px solid black; background-color: #DDD9C4;font-style:italic;" colspan="5">Payment Information</th>
                             </tr>
                             <tr>
+                                <th>Options</th>
+                                <th>PO
+                                    <br />
+                                    <input type="text" class="col-md-12">
+                                </th>
                                 <th>Brand<br />
-                                    <select name="buyerFilter" id="buyerFilter">
+                                    <input type="text" class="col-md-12">
+                                    <!-- <select >
                                         <option value="">SELECT Buyer</option>
                                         @foreach($buyerList as $buyer)
                                         <option value="{{ $buyer->name }}">{{ $buyer->name }}</option>
                                         @endforeach
-                                    </select>
+                                    </select> -->
                                 </th>
                                 <th>Department<br />
-                                    <select name="buyerFilter" id="departmentFilter">
-                                        <option value="">SELECT department</option>
-                                        @foreach($departmentList as $dt)
-                                        <option value="{{ $dt->name }}">{{ $dt->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="col-md-12">
                                 </th>
-                                <th>Season<br />
-                                    <select name="season" id="seasonFilter">
-                                        <option value="">Season</option>
-                                        <option value="WW22">WW22</option>
-                                        <option value="WW23">WW23</option>
-                                    </select>
+                                <th>Season
                                 </th>
 
                                 </th>
                                 <th>Image</th>
-                                <th>Fabric<br /> Type<br />
-                                    <select name="fabric_type" id="fabricFilter">
-                                        <option value="">Fabric Type</option>
-                                        <option value="Import">Import</option>
-                                        <option value="AOP/ Special Yarn">AOP/ Special Yarn</option>
-                                    </select>
+                                <th>Fabric
                                 </th>
-                                <th>BLOCK<br /> (Repeat or initial)
-                                    <br />
-                                    <select name="bLOCK" id="blockFilter">
-                                        <option value="">bLOCK</option>
-                                        <option value="Initial">Initial</option>
-                                        <option value="Repeat">Repeat</option>
-                                    </select>
+                                <th>BLOCK
                                 </th>
                                 </th>
                                 <th>Vendor<br />
-                                    <select name="buyerFilter" id="VendorFilter">
-                                        <option value="">SELECT Vendor</option>
-                                        @foreach($vendor as $avendor)
-                                        <option value="{{ $avendor->name }}">{{ $avendor->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="col-md-12">
                                 </th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
-                                <th>Purchase <br /> Order number
-                                    <br />
-                                    <select name="poFilter" id="poFilter">
-                                        <option value="">SELECT PO</option>
-                                        @foreach($purchaseOrder as $po)
-                                        <option value="{{ $po->po_no }}">{{ $po->po_no }}</option>
-                                        @endforeach
-                                    </select>
-                                </th>
+
                                 <th>Style Number </th>
                                 <th>Order <br />Quantity</th>
                                 <th>Supplier Price/ <br />Product cost</th>
@@ -209,6 +181,15 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <th>
+                                    <a style="margin-left:2px" href="#">
+                                        Edit
+                                    </a>
+                                    <a style="margin-left:2px" href="#">
+                                        Delete
+                                    </a>
+                                </th>
+                                <th><a href="">67166531</a></th>
                                 <th>mrp</th>
                                 <th>demo</th>
                                 <th>Season</th>
@@ -218,7 +199,6 @@
                                 <th>Shourov</th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
-                                <th>67166531</th>
                                 <th>Style Number </th>
                                 <th>Order <br />Quantity</th>
                                 <th>Supplier Price/ <br />Product cost</th>
@@ -322,6 +302,15 @@
                                 <!-- Add more headers here -->
                             </tr>
                             <tr>
+                                <th>
+                                    <a style="margin-left:2px" href="#">
+                                        Edit
+                                    </a>
+                                    <a style="margin-left:2px" href="#">
+                                        Delete
+                                    </a>
+                                </th>
+                                <th><a href="">12345</a> </th>
                                 <th>Woolworths (Pty) Ltd</th>
                                 <th>157 - Y/BOYS OUTERWEAR</th>
                                 <th>WW22</th>
@@ -331,7 +320,7 @@
                                 <th>Vendor</th>
                                 <th>Manufacturing<br /> Unit</th>
                                 <th>PLM <br /> Number</th>
-                                <th>12345 </th>
+
                                 <th><input value="8888" type="text" name="style_no" id="style" class="col-md-8" /></th>
                                 <th>Order <br />Quantity</th>
                                 <th>Supplier Price/ <br />Product cost</th>
@@ -448,13 +437,13 @@
 @endsection
 
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<!-- <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> -->
 <script>
     $(document).ready(function() {
 
 
         var table = $("#table_id").DataTable({
-            scrollX: true
+            scrollX: true,
         });
 
         $("#buyerFilter").on("change", function() {
