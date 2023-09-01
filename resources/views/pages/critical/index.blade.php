@@ -46,19 +46,13 @@
                                 <th>Options</th>
                                 <th>PO
                                     <br />
-                                    <input type="text" class="col-md-12">
+                                    <input id="po" type="text" class="col-md-12">
                                 </th>
                                 <th>Brand<br />
-                                    <input type="text" class="col-md-12">
-                                    <!-- <select >
-                                        <option value="">SELECT Buyer</option>
-                                        @foreach($buyerList as $buyer)
-                                        <option value="{{ $buyer->name }}">{{ $buyer->name }}</option>
-                                        @endforeach
-                                    </select> -->
+                                    <input id="brand" type="text" class="col-md-12">
                                 </th>
                                 <th>Department<br />
-                                    <input type="text" class="col-md-12">
+                                    <input id="department" type="text" class="col-md-12">
                                 </th>
                                 <th>Season
                                 </th>
@@ -444,55 +438,30 @@
 
         var table = $("#table_id").DataTable({
             scrollX: true,
+            searching:true,
+            columnDefs: [
+                {
+                    targets: [1], 
+                    orderable: false, 
+                },
+                {
+                    targets: [2], 
+                    orderable: false, 
+                },
+                {
+                    targets: [3], 
+                    orderable: false, 
+                }
+            ],
         });
-
-        $("#buyerFilter").on("change", function() {
-            var buyerId = $(this).val();
-
-            // Use DataTables built-in search() method to filter the table
-            table.column(0).search(buyerId).draw();
+        $('#po').on('keyup', function () {
+            table.search(this.value).draw();
         });
-        $("#departmentFilter").on("change", function() {
-            var departmentId = $(this).val();
-
-            // Use DataTables built-in search() method to filter the table
-            table.column(1).search(departmentId).draw();
+        $('#brand').on('keyup', function () {
+            table.search(this.value).draw();
         });
-        $("#fabricFilter").on("change", function() {
-            var fabric = $(this).val();
-
-            // Use DataTables built-in search() method to filter the table
-            table.column(4).search(fabric).draw();
-        });
-        $("#seasonFilter").on("change", function() {
-            var season = $(this).val();
-
-            // Use DataTables built-in search() method to filter the table
-            table.column(2).search(season).draw();
-        });
-        $("#blockFilter").on("change", function() {
-            var blockFilter = $(this).val();
-
-            // Use DataTables built-in search() method to filter the table
-            table.column(5).search(blockFilter).draw();
-        });
-        $("#VendorFilter").on("change", function() {
-            var VendorFilter = $(this).val();
-
-            // Use DataTables built-in search() method to filter the table
-            table.column(6).search(VendorFilter).draw();
-        });
-        $("#poFilter").on("change", function() {
-            var poFilter = $(this).val();
-
-            // Use DataTables built-in search() method to filter the table
-            table.column(9).search(poFilter).draw();
-        });
-
-        $('#style').on('keyup', function() {
-            var inputValue = $(this).val();
-            console.log(inputValue);
-
+        $('#department').on('keyup', function () {
+            table.search(this.value).draw();
         });
 
     });
