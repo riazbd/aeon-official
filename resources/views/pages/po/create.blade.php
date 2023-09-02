@@ -504,6 +504,8 @@
                 } else {
                     differenceElement.removeClass('text-danger');
                 }
+
+
             }
 
             // Add event listener to the "Ex Factory Date" input to update the difference note
@@ -533,7 +535,7 @@
                 }
 
                 // Calculate the percentage difference between Buyer Price and Vendor Price
-                const percentageDifference = ((buyerPrice - vendorPrice.toFixed(2)) / buyerPrice) * 100;
+                const percentageDifference = ((buyerPrice - vendorPrice) / buyerPrice) * 100;
 
                 // Round the percentageDifference to 2 decimal places
                 const roundedPercentageDifference = parseFloat(percentageDifference.toFixed(2));
@@ -543,7 +545,7 @@
                 const vendorPriceDifferenceElement = $('#vendor_price_difference');
 
                 // Update the value of the Vendor Price field
-                vendorPriceElement.val(vendorPrice.toFixed(2));
+                vendorPriceElement.val(parseFloat(vendorPrice).toFixed(2));
 
                 // Update the text content of the Vendor Price Difference note
                 vendorPriceDifferenceElement.text(
@@ -560,9 +562,9 @@
             });
 
             // Add event listener to the "Vendor Price" input to update the Vendor Price and Vendor Price Difference note
-            $('#vendor_price').on('input', function() {
-                updateVendorPriceAndDifference();
-            });
+            // $('#vendor_price').on('input', function() {
+            //     updateVendorPriceAndDifference();
+            // });
 
 
             $('.nav-tabs a').click(function(e) {
@@ -659,26 +661,11 @@
                             $('#description').val(data.data[0]['Item Description'])
 
 
-                            updateVendorPriceAndDifference();
-                            // const styleNote = 'Price: ' + (parseFloat($('#vendor_price').val()) -
-                            //         parseFloat(
-                            //             data.keys['hanger'])).toString() + " " + "+" + " " + data
-                            //     .keys[
-                            //         'hanger'] + ' ' + '=' + " " + (parseFloat($('#vendor_price')
-                            //         .val()) - parseFloat(
-                            //         data.keys['hanger']) + parseFloat(
-                            //         data.keys['hanger'])).toString()
 
-                            const accessPriceValue = parseFloat($('#access_price')
-                                .val()); // Get the value of the access_price input field
+                            let accessPriceValue = parseFloat($('#access_price')
+                                .val());
 
-                            const styleNote = 'Price: ' + (parseFloat($('#vendor_price')
-                                    .val())) +
-                                " " + "+" + " " + accessPriceValue + ' ' + '=' +
-                                " " + ((parseFloat($('#vendor_price')
-                                    .val()) + accessPriceValue).toFixed(2)).toString()
 
-                            $('#style_note').val(styleNote);
 
                             // ex factory date
                             const buyerDate = new Date($('#early-buyer-date').val());
@@ -690,7 +677,25 @@
                                 'T')[
                                 0]; // Convert date to YYYY-MM-DD format
                             $('#ex_factory_date').val(exFactoryDateFormatted);
+                            updateVendorPriceAndDifference();
+
                             updateDifferenceNote();
+
+                            const vendorPriceInput = $('#vendor_price').val().trim();
+
+                            if (!isNaN(vendorPriceInput)) {
+                                const vendorPrice = parseFloat(vendorPriceInput);
+                                const calculatedPrice = (vendorPrice + accessPriceValue)
+                                    .toFixed(2);
+                                const styleNote =
+                                    `Price: ${vendorPrice} + ${accessPriceValue} = ${calculatedPrice}`;
+                                $('#style_note').val(styleNote);
+                            } else {
+                                // Handle the case where vendorPriceInput is not a valid number
+                                alert(
+                                    'Please enter a valid numerical value in the vendor price field.'
+                                );
+                            }
 
                             // table work
                             $('#item-table-body').empty()
@@ -698,6 +703,7 @@
                             const tbody = $('#item-table-body');
 
                             // Iterate through the data and create rows
+                            console.log(accessPriceValue);
                             data.data.forEach((item, index) => {
                                 const newRow = `
                                     <tr>
@@ -781,6 +787,8 @@
 
                             document.getElementById('vendor_price').addEventListener("change",
                                 function() {
+
+                                    updateVendorPriceAndDifference()
                                     // Get the new value entered in the changed input field
 
                                     let newAccessPrice = parseFloat($('#access_price')
@@ -856,10 +864,10 @@
 
                             // Use moment to parse the input date
                             const dateObject = moment(data.keys['Ship From Date'],
-                                "DD-MMM-YYYY");
+                                "DD-MM-YYYY");
 
                             const approvedDateObject = moment(data.keys[
-                                'Originally Approved Date'], "DD-MMM-YYYY")
+                                'Originally Approved Date'], "DD-MM-YYYY")
 
 
 
@@ -867,7 +875,7 @@
                             $('#plm').prop('required', false);
                             $('#plm').prop('type', 'hidden');
 
-                            $('#access_price').val('0')
+                            $('#access_price').val('0.15')
 
 
 
@@ -952,6 +960,8 @@
 
                             const tbody = $('#item-table-body');
 
+                            console.log(accessPriceValue);
+
                             data.inner_table.forEach((item, index) => {
                                 const newRow = `
                                     <tr>
@@ -962,9 +972,10 @@
                                         <td><input type="text" name="items[${index}][item_no]" value="${data.outer_table['Item']}"></td>
                                         <td><input type="text" name="items[${index}][size]" value="${item["Size"]}"></td>
                                         <td><input type="text" name="items[${index}][qty_ordered]" value="${item["Qty"]}"></td>
-                                        <td><input type="text" name="items[${index}][inner_qty]" value="${$('#vendor_price').val()}"></td>
+                                        <td><input type="text" class="vendor-price" name="items[${index}][inner_qty]" value="${$('#vendor_price').val()}"></td>
                                         <td><input type="text" class="outer_qty" name="items[${index}][outer_case_qty]" value="${accessPriceValue}"></td>
-                                        <td><input type="text" class="supplier_price" name="items[${index}][supplier_price]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue).toFixed()).toString()}"></td>
+                                        <td><input type="text" class="supplier_price" name="items[${index}][supplier_price]" value="${((parseFloat($('#vendor_price')
+                                    .val()) + accessPriceValue).toFixed(2)).toString()}"></td>
 
                                         <td><input type="text" class="total_price" name="items[${index}][value]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue) * parseFloat(item["Qty"])).toFixed(2)}"></td>
                                         <td><input type="text" name="items[${index}][selling_price]" value="${item["Selling Price"]}"></td>
@@ -977,6 +988,9 @@
 
                             const valueInputs = document.querySelectorAll(
                                 '.supplier_price');
+
+                            const vendorPriceInputs = document.querySelectorAll(
+                                '.vendor-price');
 
                             const accessoriesInputs = document.querySelectorAll(
                                 '.outer_qty');
@@ -1004,6 +1018,11 @@
                                         newAccessPrice).toFixed(2)).toString()
 
                                 $('#style_note').val(newStyleNote);
+
+                                Array.prototype.forEach.call(vendorPriceInputs,
+                                    function(input, index) {
+                                        input.value = $('#vendor_price').val()
+                                    })
 
                                 Array.prototype.forEach.call(accessoriesInputs,
                                     function(input, index) {
@@ -1049,7 +1068,7 @@
                             document.getElementById('vendor_price').addEventListener("change",
                                 function() {
                                     // Get the new value entered in the changed input field
-
+                                    updateVendorPriceAndDifference()
                                     let newAccessPrice = parseFloat($('#access_price')
                                         .val());
 
@@ -1062,6 +1081,11 @@
                                             newAccessPrice).toFixed(2)).toString()
 
                                     $('#style_note').val(newStyleNote);
+
+                                    Array.prototype.forEach.call(vendorPriceInputs,
+                                        function(input, index) {
+                                            input.value = $('#vendor_price').val()
+                                        })
 
                                     Array.prototype.forEach.call(accessoriesInputs,
                                         function(input, index) {
