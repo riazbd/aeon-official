@@ -1,11 +1,24 @@
 @extends('layouts.admin')
 @section('content')
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #000; /* Add a 1px black border to the table */
+    }
+
+    th, td {
+        border: 1px solid #000; /* Add a 1px black border to table cells (headers and data cells) */
+        padding: 8px;
+        text-align: left;
+    }
+</style>
 <!-- <div class="container"> -->
 <section class="content">
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="margin-top: 20px;">
                     <h3 class="card-title">critical List</h3>
                     <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#create-buyer">
                         <a href="{{ route('add-critical-path') }}" class="nav-link">Update</a>
@@ -44,15 +57,13 @@
                             </tr>
                             <tr>
                                 <th>Actions</th>
-                                <th>PO
-                                    <br />
-                                    <input id="po" type="text" class="col-md-12">
+                                <th>PurchageOrder
                                 </th>
-                                <th>Brand<br />
-                                    <input id="brand" type="text" class="col-md-12">
+                                <th>Brand Name
+
                                 </th>
-                                <th>Department<br />
-                                    <input id="department" type="text" class="col-md-12">
+                                <th>Department
+
                                 </th>
                                 <th>Season
                                 </th>
@@ -64,15 +75,14 @@
                                 <th>BLOCK
                                 </th>
                                 </th>
-                                <th>Vendor<br />
-                                    <input type="text" class="col-md-12">
+                                <th>Vendor
                                 </th>
                                 <th>Mfacture</th>
                                 <th>PLM</th>
 
-                                <th>Style  </th>
+                                <th>Style </th>
                                 <th>Order </th>
-                                <th>Sup/pro<br/> cost</th>
+                                <th>Sup/pro<br /> cost</th>
                                 <th>Total Value</th>
                                 <th>Style Defs</th>
                                 <th>Colour</th>
@@ -85,7 +95,7 @@
                                 <th>prio order</th>
                                 <th>Off PO <br />sent (Plan)</th>
                                 <th>Off PO <br />sent (Actual)</th>
-                                <th>Col std  sent <br /> to sup (plan)</th>
+                                <th>Col std sent <br /> to sup (plan)</th>
                                 <th>Lab dip /<br />App (Plan)</th>
                                 <th>Lab dip /<br />Dis Image</th>
                                 <th>Embe S/O /<br /> App (Plan)</th>
@@ -179,7 +189,7 @@
                                     <a style="margin-left:2px" href="#">
                                         Edit
                                     </a>
-                                    <a style="margin-left:2px" href="#">
+                                    <a  style="margin-left:2px;color:red;" href="#">
                                         Delete
                                     </a>
                                 </th>
@@ -299,7 +309,7 @@
                                     <a style="margin-left:2px" href="#">
                                         Edit
                                     </a>
-                                    <a style="margin-left:2px" href="#">
+                                    <a style="margin-left:2px;color:red;" href="#">
                                         Delete
                                     </a>
                                 </th>
@@ -416,6 +426,123 @@
                             </tr>
                             <!-- Populate table rows with data -->
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+
+                                </th>
+                                <th>  <input id="po" type="text" ></th>
+                                <th> <input id="brand" type="text" ></th>
+                                <th> <input id="department" type="text" ></th>
+                                <th></th>
+                                <th</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <!-- Add more headers here -->
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -435,31 +562,30 @@
 
         var table = $("#table_id").DataTable({
             scrollX: true,
-            searching:true,
-            
-            columnDefs: [
-                {
-                    targets: [1], 
-                    orderable: false, 
+            searching: true,
+
+            columnDefs: [{
+                    targets: [1],
+                    orderable: false,
                 },
                 {
-                    targets: [2], 
-                    orderable: false, 
+                    targets: [2],
+                    orderable: false,
                 },
                 {
-                    targets: [3], 
-                    orderable: false, 
+                    targets: [3],
+                    orderable: false,
                 },
-                
+
             ],
         });
-        $('#po').on('keyup', function () {
+        $('#po').on('keyup', function() {
             table.search(this.value).draw();
         });
-        $('#brand').on('keyup', function () {
+        $('#brand').on('keyup', function() {
             table.search(this.value).draw();
         });
-        $('#department').on('keyup', function () {
+        $('#department').on('keyup', function() {
             table.search(this.value).draw();
         });
 
