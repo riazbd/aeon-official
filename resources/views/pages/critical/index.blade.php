@@ -43,7 +43,7 @@
                                 <th style="border: 1px solid black; background-color: #DDD9C4;font-style:italic;" colspan="5">Payment Information</th>
                             </tr>
                             <tr>
-                                <th>Options</th>
+                                <th>Actions</th>
                                 <th>PO
                                     <br />
                                     <input id="po" type="text" class="col-md-12">
@@ -67,62 +67,62 @@
                                 <th>Vendor<br />
                                     <input type="text" class="col-md-12">
                                 </th>
-                                <th>Manufacturing<br /> Unit</th>
-                                <th>PLM <br /> Number</th>
+                                <th>Mfacture</th>
+                                <th>PLM</th>
 
-                                <th>Style Number </th>
-                                <th>Order <br />Quantity</th>
-                                <th>Supplier Price/ <br />Product cost</th>
+                                <th>Style  </th>
+                                <th>Order </th>
+                                <th>Sup/pro<br/> cost</th>
                                 <th>Total Value</th>
-                                <th>Style Description</th>
+                                <th>Style Defs</th>
                                 <th>Colour</th>
-                                <th>Care <br />Label Date </th>
-                                <th>Fabric <br />Reference </th>
-                                <th>Fabrication <br />Fabric Content </th>
-                                <th>Fabric Weight</th>
-                                <th>Fabric Mill</th>
+                                <th>Care Date </th>
+                                <th>Fab Ref</th>
+                                <th>Fab Con</th>
+                                <th>Fab Wei</th>
+                                <th>Fab Mill</th>
                                 <th>Lead Times</th>
-                                <th>Treated <br />as a priority<br />order</th>
-                                <th>Official PO <br />sent (Plan)</th>
-                                <th>Official PO <br />sent (Actual)</th>
-                                <th>Colour std /<br />print artwork sent to supplier (plan)</th>
-                                <th>Lab dip /<br />Approval (Plan)</th>
-                                <th>Lab dip /<br />Dispatch Image</th>
-                                <th>Embellishment - /<br />S/O Approval (Plan)</th>
-                                <th>Embellishment - /<br />S/O Approval (Actual)</th>
-                                <th>Embellishment - /<br />S/O Approval Dispatch Details</th>
-                                <th>Embellishment - /<br />S/O Approval Dispatch Image</th>
-                                <th>Fabric /<br /> Ordered (actual)</th>
-                                <th>Fabric /<br /> Ordered (Plan)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />(Plan)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />(actual)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />Dispatch Details</th>
-                                <th>Bulk Fabric/ Knit <br /> Image</th>
-                                <th>Bulk Yarn /<br /> Fabric Inhouse <br />(Plan)</th>
-                                <th>Bulk Yarn /<br /> Fabric Inhouse <br />(actual)</th>
-                                <th>Development /<br /> Photo sample <br />sent (plan)</th>
-                                <th>Development /<br /> Photo sample <br />sent (actual)</th>
-                                <th>Development /<br /> Photo sample <br />Dispatch Details</th>
-                                <th>Development /<br /> Photo sample <br />Image</th>
-                                <th>Fit -Approval<br />(Plan)</th>
-                                <th>Fit -Approval<br />(actual)</th>
-                                <th>Fit -Approval<br />Dispatch Details</th>
-                                <th>Fit -Approval<br />Image</th>
-                                <th>Size set Approval<br />(Plan)</th>
-                                <th>Size set Approval<br />(actual)</th>
-                                <th>Size set Approval<br />Dispatch Details</th>
-                                <th>Size set Approval<br />Image</th>
-                                <th>PP Approval<br />(Plan)</th>
-                                <th>PP Approval<br />(actual)</th>
-                                <th>PP Approval<br />Dispatch Details</th>
-                                <th>PP Approval<br />Image</th>
-                                <th>Care Label Approval<br />(Plan)</th>
-                                <th>Care Label Approval<br />(actual)</th>
-                                <th>Material Inhouse<br />date (Plan)</th>
-                                <th>PP Meeting <br />date (Plan)</th>
-                                <th>PP Meeting <br />date (actual)</th>
-                                <th>Create PP<br /> Meeting Schedule</th>
-                                <th> PP<br /> Meeting Upload</th>
+                                <th>prio order</th>
+                                <th>Off PO <br />sent (Plan)</th>
+                                <th>Off PO <br />sent (Actual)</th>
+                                <th>Col std  sent <br /> to sup (plan)</th>
+                                <th>Lab dip /<br />App (Plan)</th>
+                                <th>Lab dip /<br />Dis Image</th>
+                                <th>Embe S/O /<br /> App (Plan)</th>
+                                <th>Embe S/O /<br /> App (Actual)</th>
+                                <th>Embe S/O /<br /> App Dis </th>
+                                <th>Embe S/O /<br /> App Dis Img</th>
+                                <th>Fab /<br /> Order (actual)</th>
+                                <th>Fab /<br /> Order (Plan)</th>
+                                <th>Bulk Fab<br />Knit(Plan)</th>
+                                <th>Bulk Fab<br />Knit(actual)</th>
+                                <th>Bulk Fab<br />Knit Dis</th>
+                                <th>Bulk Fab <br /> Img</th>
+                                <th>Bulk Yarn<br /> (Plan)</th>
+                                <th>Bulk Yarn<br /> (actual)</th>
+                                <th>Dev /<br /> Pho <br />sent (plan)</th>
+                                <th>Dev /<br /> Pho <br />sent (actual)</th>
+                                <th>Dev /<br /> Pho <br />Dis</th>
+                                <th>Dev /<br /> Pho <br />Img</th>
+                                <th>Fit App<br />(Plan)</th>
+                                <th>Fit App<br />(actual)</th>
+                                <th>Fit App<br />Dis </th>
+                                <th>Fit App<br />Image</th>
+                                <th>Size set App<br />(Plan)</th>
+                                <th>Size set App<br />(actual)</th>
+                                <th>Size set App<br />Dis</th>
+                                <th>Size set App<br />Image</th>
+                                <th>PP App<br />(Plan)</th>
+                                <th>PP Apl<br />(actual)</th>
+                                <th>PP App<br />Dis</th>
+                                <th>PP App<br />Image</th>
+                                <th>Care App<br />(Plan)</th>
+                                <th>Care App<br />(actual)</th>
+                                <th>Material<br />(Plan)</th>
+                                <th>PP Meet<br />(Plan)</th>
+                                <th>PP Meet<br />(actual)</th>
+                                <th>Create PP<br /> Meet Schedule</th>
+                                <th> PP<br /> Meet Upload</th>
                                 <th>Cutting<br />date (Plan)</th>
                                 <th>Cutting<br />date (actual)</th>
                                 <th>Embellishment<br /> (Plan)</th>
@@ -137,38 +137,38 @@
                                 <th>Sewing Inline Inspection <br /> date (actual)</th>
                                 <th>Create Inline <br /> Inspection Schedule</th>
                                 <th>Create Inline <br /> Inspection Upload</th>
-                                <th>Finishing Inline <br /> Inspection date (Plan)</th>
-                                <th>Finishing Inline <br /> Inspection date (actual)</th>
-                                <th>Create Inline <br /> Inspection date Schedule</th>
-                                <th>Finishing Inline <br /> Inspection Report Upload</th>
-                                <th>Pre final <br /> date (Plan)</th>
-                                <th>Pre final <br /> date (actual)</th>
-                                <th>Create AQL <br />Schedule</th>
-                                <th>Pre Final Date AQL Report <br />Upload</th>
-                                <th>Final AQL<br /> date (Plan)</th>
-                                <th>Final AQL<br /> date (actual)</th>
-                                <th>Create AQL<br /> Schedule</th>
-                                <th>Final AQL<br />Report Upload </th>
-                                <th>Production Sample <br /> date (Plan)</th>
-                                <th>Production Sample <br /> date (actual)</th>
-                                <th>Production Sample <br /> Dispatch</th>
-                                <th>Production Sample <br /> Dispatch Upload</th>
-                                <th>Shipment Booking <br /> with ACS (Plan)</th>
-                                <th>Shipment Booking <br /> with ACS (actual)</th>
-                                <th>SA approval <br />(Plan) </th>
-                                <th>SA approval <br />(actual) </th>
+                                <th>Finish Inl <br /> Insp date (Plan)</th>
+                                <th>Finish Inl <br /> Insp date (act)</th>
+                                <th>Create Inl <br /> Insp date Sch</th>
+                                <th>Finish Inl <br /> Insp Report Uplod</th>
+                                <th>Pre final <br />(Plan)</th>
+                                <th>Pre final <br />(act)</th>
+                                <th>New AQL <br />Sch</th>
+                                <th>Pre Fin AQL Rep <br /></th>
+                                <th>Fin AQL<br />(Plan)</th>
+                                <th>Fin AQL<br />(act)</th>
+                                <th>New AQL<br /> Sch</th>
+                                <th>Fin AQL<br />Rep </th>
+                                <th>Prod Sple <br />(Plan)</th>
+                                <th>Prod Sple <br />(act)</th>
+                                <th>Prod Sple <br /> Dis</th>
+                                <th>Prod Sple <br /> Dis</th>
+                                <th>Ship Book <br /> ACS (Plan)</th>
+                                <th>Ship Book <br /> ACS (act)</th>
+                                <th>SA app<br />(Plan) </th>
+                                <th>SA app <br />(actual) </th>
                                 <th>Ex-factory<br /> Date PO </th>
-                                <th>Revised Ex-factory<br /> Date </th>
-                                <th>Actual Ex-factory<br /> Date </th>
-                                <th>Shipped <br /> Units</th>
-                                <th>Original ETA<br /> SA date</th>
-                                <th>Revised ETA <br />SA date</th>
-                                <th>Ship mode<br />Sea/Air</th>
-                                <th>Forwarder ref/<br />Vessel name or AWB </th>
-                                <th>Late Delivery <br />Discounts - CRP</th>
-                                <th>Invoice Number</th>
-                                <th>Invoice Number <br />Create Date</th>
-                                <th>Payment Received<br /> Date</th>
+                                <th>Revi Ex-fac<br /> Date </th>
+                                <th>Act Ex-fac </th>
+                                <th>Ship <br /> Units</th>
+                                <th>Orig<br /> SA date</th>
+                                <th>Revi<br />SA date</th>
+                                <th>Ship <br />Sea/Air</th>
+                                <th>For<br />Ves name</th>
+                                <th>Late Del<br />DisCRP</th>
+                                <th>Inv No</th>
+                                <th>Inv No<br />Create </th>
+                                <th>Payment</th>
 
                                 <!-- Add more headers here -->
                             </tr>
@@ -189,110 +189,109 @@
                                 <th>Season</th>
                                 <th>ratul</th>
                                 <th>Import</th>
-                                <th>BLOCK<br /> (Repeat or initial)</th>
+                                <th></th>
                                 <th>Shourov</th>
-                                <th>Manufacturing<br /> Unit</th>
-                                <th>PLM <br /> Number</th>
+                                <th></th>
+                                <th></th>
                                 <th>Style Number </th>
-                                <th>Order <br />Quantity</th>
-                                <th>Supplier Price/ <br />Product cost</th>
+                                <th></th>
+                                <th></th>
                                 <th>Total Value</th>
                                 <th>Style Description</th>
                                 <th>Colour</th>
-                                <th>Care <br />Label Date </th>
-                                <th>Fabric <br />Reference </th>
-                                <th>Fabrication <br />Fabric Content </th>
-                                <th>Fabric Weight</th>
-                                <th>Fabric Mill</th>
-                                <th>Lead Times</th>
-                                <th>Treated <br />as a priority<br />order</th>
-                                <th>Official PO <br />sent (Plan)</th>
-                                <th>Official PO <br />sent (Actual)</th>
-                                <th>Colour std /<br />print artwork sent to supplier (plan)</th>
-                                <th>Lab dip /<br />Approval (Plan)</th>
-                                <th>Lab dip /<br />Dispatch Image</th>
-                                <th>Embellishment - /<br />S/O Approval (Plan)</th>
-                                <th>Embellishment - /<br />S/O Approval (Actual)</th>
-                                <th>Embellishment - /<br />S/O Approval Dispatch Details</th>
-                                <th>Embellishment - /<br />S/O Approval Dispatch Image</th>
-                                <th>Fabric /<br /> Ordered (actual)</th>
-                                <th>Fabric /<br /> Ordered (Plan)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />(Plan)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />(actual)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />Dispatch Details</th>
-                                <th>Bulk Fabric/ Knit <br /> Image</th>
-                                <th>Bulk Yarn /<br /> Fabric Inhouse <br />(Plan)</th>
-                                <th>Bulk Yarn /<br /> Fabric Inhouse <br />(actual)</th>
-                                <th>Development /<br /> Photo sample <br />sent (plan)</th>
-                                <th>Development /<br /> Photo sample <br />sent (actual)</th>
-                                <th>Development /<br /> Photo sample <br />Dispatch Details</th>
-                                <th>Development /<br /> Photo sample <br />Image</th>
-                                <th>Fit -Approval<br />(Plan)</th>
-                                <th>Fit -Approval<br />(actual)</th>
-                                <th>Fit -Approval<br />Dispatch Details</th>
-                                <th>Fit -Approval<br />Image</th>
-                                <th>Size set Approval<br />(Plan)</th>
-                                <th>Size set Approval<br />(actual)</th>
-                                <th>Size set Approval<br />Dispatch Details</th>
-                                <th>Size set Approval<br />Image</th>
-                                <th>PP Approval<br />(Plan)</th>
-                                <th>PP Approval<br />(actual)</th>
-                                <th>PP Approval<br />Dispatch Details</th>
-                                <th>PP Approval<br />Image</th>
-                                <th>Care Label Approval<br />(Plan)</th>
-                                <th>Care Label Approval<br />(actual)</th>
-                                <th>Material Inhouse<br />date (Plan)</th>
-                                <th>PP Meeting <br />date (Plan)</th>
-                                <th>PP Meeting <br />date (actual)</th>
-                                <th>Create PP<br /> Meeting Schedule</th>
-                                <th> PP<br /> Meeting Upload</th>
-                                <th>Cutting<br />date (Plan)</th>
-                                <th>Cutting<br />date (actual)</th>
-                                <th>Embellishment<br /> (Plan)</th>
-                                <th>Embellishment<br /> (actual)</th>
-                                <th>Sewing Start <br /> date (Plan)</th>
-                                <th>Sewing Start <br /> date (actual)</th>
-                                <th>Washing complete <br /> date (Plan)</th>
-                                <th>Washing complete <br /> date (actual)</th>
-                                <th>Finishing complete <br /> date (Plan)</th>
-                                <th>Finishing complete <br /> date (actual)</th>
-                                <th>Sewing Inline Inspection <br /> date (Plan)</th>
-                                <th>Sewing Inline Inspection <br /> date (actual)</th>
-                                <th>Create Inline <br /> Inspection Schedule</th>
-                                <th>Create Inline <br /> Inspection Upload</th>
-                                <th>Finishing Inline <br /> Inspection date (Plan)</th>
-                                <th>Finishing Inline <br /> Inspection date (actual)</th>
-                                <th>Create Inline <br /> Inspection date Schedule</th>
-                                <th>Finishing Inline <br /> Inspection Report Upload</th>
-                                <th>Pre final <br /> date (Plan)</th>
-                                <th>Pre final <br /> date (actual)</th>
-                                <th>Create AQL <br />Schedule</th>
-                                <th>Pre Final Date AQL Report <br />Upload</th>
-                                <th>Final AQL<br /> date (Plan)</th>
-                                <th>Final AQL<br /> date (actual)</th>
-                                <th>Create AQL<br /> Schedule</th>
-                                <th>Final AQL<br />Report Upload </th>
-                                <th>Production Sample <br /> date (Plan)</th>
-                                <th>Production Sample <br /> date (actual)</th>
-                                <th>Production Sample <br /> Dispatch</th>
-                                <th>Production Sample <br /> Dispatch Upload</th>
-                                <th>Shipment Booking <br /> with ACS (Plan)</th>
-                                <th>Shipment Booking <br /> with ACS (actual)</th>
-                                <th>SA approval <br />(Plan) </th>
-                                <th>SA approval <br />(actual) </th>
-                                <th>Ex-factory<br /> Date PO </th>
-                                <th>Revised Ex-factory<br /> Date </th>
-                                <th>Actual Ex-factory<br /> Date </th>
-                                <th>Shipped <br /> Units</th>
-                                <th>Original ETA<br /> SA date</th>
-                                <th>Revised ETA <br />SA date</th>
-                                <th>Ship mode<br />Sea/Air</th>
-                                <th>Forwarder ref/<br />Vessel name or AWB </th>
-                                <th>Late Delivery <br />Discounts - CRP</th>
-                                <th>Invoice Number</th>
-                                <th>Invoice Number <br />Create Date</th>
-                                <th>Payment Received<br /> Date</th>
-
+                                <th> </th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                                 <!-- Add more headers here -->
                             </tr>
                             <tr>
@@ -304,117 +303,115 @@
                                         Delete
                                     </a>
                                 </th>
-                                <th><a href="">12345</a> </th>
-                                <th>Woolworths (Pty) Ltd</th>
-                                <th>157 - Y/BOYS OUTERWEAR</th>
-                                <th>WW22</th>
-                                <th>shourov</th>
-                                <th>AOP/ Special Yarn</th>
-                                <th>Initial</th>
-                                <th>Vendor</th>
-                                <th>Manufacturing<br /> Unit</th>
-                                <th>PLM <br /> Number</th>
-
-                                <th><input value="8888" type="text" name="style_no" id="style" class="col-md-8" /></th>
-                                <th>Order <br />Quantity</th>
-                                <th>Supplier Price/ <br />Product cost</th>
+                                <th><a href="">67166531</a></th>
+                                <th>mrp</th>
+                                <th>demo</th>
+                                <th>Season</th>
+                                <th>ratul</th>
+                                <th>Import</th>
+                                <th></th>
+                                <th>Shourov</th>
+                                <th></th>
+                                <th></th>
+                                <th>Style Number </th>
+                                <th></th>
+                                <th></th>
                                 <th>Total Value</th>
                                 <th>Style Description</th>
                                 <th>Colour</th>
-                                <th>Care <br />Label Date </th>
-                                <th>Fabric <br />Reference </th>
-                                <th>Fabrication <br />Fabric Content </th>
-                                <th>Fabric Weight</th>
-                                <th>Fabric Mill</th>
-                                <th>Lead Times</th>
-                                <th>Treated <br />as a priority<br />order</th>
-                                <th>Official PO <br />sent (Plan)</th>
-                                <th>Official PO <br />sent (Actual)</th>
-                                <th>Colour std /<br />print artwork sent to supplier (plan)</th>
-                                <th>Lab dip /<br />Approval (Plan)</th>
-                                <th>Lab dip /<br />Dispatch Image</th>
-                                <th>Embellishment - /<br />S/O Approval (Plan)</th>
-                                <th>Embellishment - /<br />S/O Approval (Actual)</th>
-                                <th>Embellishment - /<br />S/O Approval Dispatch Details</th>
-                                <th>Embellishment - /<br />S/O Approval Dispatch Image</th>
-                                <th>Fabric /<br /> Ordered (actual)</th>
-                                <th>Fabric /<br /> Ordered (Plan)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />(Plan)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />(actual)</th>
-                                <th>Bulk Fabric/ Knit <br /> down Approval<br />Dispatch Details</th>
-                                <th>Bulk Fabric/ Knit <br /> Image</th>
-                                <th>Bulk Yarn /<br /> Fabric Inhouse <br />(Plan)</th>
-                                <th>Bulk Yarn /<br /> Fabric Inhouse <br />(actual)</th>
-                                <th>Development /<br /> Photo sample <br />sent (plan)</th>
-                                <th>Development /<br /> Photo sample <br />sent (actual)</th>
-                                <th>Development /<br /> Photo sample <br />Dispatch Details</th>
-                                <th>Development /<br /> Photo sample <br />Image</th>
-                                <th>Fit -Approval<br />(Plan)</th>
-                                <th>Fit -Approval<br />(actual)</th>
-                                <th>Fit -Approval<br />Dispatch Details</th>
-                                <th>Fit -Approval<br />Image</th>
-                                <th>Size set Approval<br />(Plan)</th>
-                                <th>Size set Approval<br />(actual)</th>
-                                <th>Size set Approval<br />Dispatch Details</th>
-                                <th>Size set Approval<br />Image</th>
-                                <th>PP Approval<br />(Plan)</th>
-                                <th>PP Approval<br />(actual)</th>
-                                <th>PP Approval<br />Dispatch Details</th>
-                                <th>PP Approval<br />Image</th>
-                                <th>Care Label Approval<br />(Plan)</th>
-                                <th>Care Label Approval<br />(actual)</th>
-                                <th>Material Inhouse<br />date (Plan)</th>
-                                <th>PP Meeting <br />date (Plan)</th>
-                                <th>PP Meeting <br />date (actual)</th>
-                                <th>Create PP<br /> Meeting Schedule</th>
-                                <th> PP<br /> Meeting Upload</th>
-                                <th>Cutting<br />date (Plan)</th>
-                                <th>Cutting<br />date (actual)</th>
-                                <th>Embellishment<br /> (Plan)</th>
-                                <th>Embellishment<br /> (actual)</th>
-                                <th>Sewing Start <br /> date (Plan)</th>
-                                <th>Sewing Start <br /> date (actual)</th>
-                                <th>Washing complete <br /> date (Plan)</th>
-                                <th>Washing complete <br /> date (actual)</th>
-                                <th>Finishing complete <br /> date (Plan)</th>
-                                <th>Finishing complete <br /> date (actual)</th>
-                                <th>Sewing Inline Inspection <br /> date (Plan)</th>
-                                <th>Sewing Inline Inspection <br /> date (actual)</th>
-                                <th>Create Inline <br /> Inspection Schedule</th>
-                                <th>Create Inline <br /> Inspection Upload</th>
-                                <th>Finishing Inline <br /> Inspection date (Plan)</th>
-                                <th>Finishing Inline <br /> Inspection date (actual)</th>
-                                <th>Create Inline <br /> Inspection date Schedule</th>
-                                <th>Finishing Inline <br /> Inspection Report Upload</th>
-                                <th>Pre final <br /> date (Plan)</th>
-                                <th>Pre final <br /> date (actual)</th>
-                                <th>Create AQL <br />Schedule</th>
-                                <th>Pre Final Date AQL Report <br />Upload</th>
-                                <th>Final AQL<br /> date (Plan)</th>
-                                <th>Final AQL<br /> date (actual)</th>
-                                <th>Create AQL<br /> Schedule</th>
-                                <th>Final AQL<br />Report Upload </th>
-                                <th>Production Sample <br /> date (Plan)</th>
-                                <th>Production Sample <br /> date (actual)</th>
-                                <th>Production Sample <br /> Dispatch</th>
-                                <th>Production Sample <br /> Dispatch Upload</th>
-                                <th>Shipment Booking <br /> with ACS (Plan)</th>
-                                <th>Shipment Booking <br /> with ACS (actual)</th>
-                                <th>SA approval <br />(Plan) </th>
-                                <th>SA approval <br />(actual) </th>
-                                <th>Ex-factory<br /> Date PO </th>
-                                <th>Revised Ex-factory<br /> Date </th>
-                                <th>Actual Ex-factory<br /> Date </th>
-                                <th>Shipped <br /> Units</th>
-                                <th>Original ETA<br /> SA date</th>
-                                <th>Revised ETA <br />SA date</th>
-                                <th>Ship mode<br />Sea/Air</th>
-                                <th>Forwarder ref/<br />Vessel name or AWB </th>
-                                <th>Late Delivery <br />Discounts - CRP</th>
-                                <th>Invoice Number</th>
-                                <th>Invoice Number <br />Create Date</th>
-                                <th>Payment Received<br /> Date</th>
-
+                                <th> </th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                                 <!-- Add more headers here -->
                             </tr>
                             <!-- Populate table rows with data -->
@@ -439,6 +436,7 @@
         var table = $("#table_id").DataTable({
             scrollX: true,
             searching:true,
+            
             columnDefs: [
                 {
                     targets: [1], 
@@ -451,7 +449,8 @@
                 {
                     targets: [3], 
                     orderable: false, 
-                }
+                },
+                
             ],
         });
         $('#po').on('keyup', function () {
