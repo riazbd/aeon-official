@@ -21,7 +21,7 @@
                 <div class="card-header" style="margin-top: 20px;">
                     <h3 class="card-title">critical List</h3>
                     <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#create-buyer">
-                        <a href="{{ route('add-critical-path') }}" class="nav-link">Update</a>
+                        <a href="{{ route('add-critical-path') }}" class="nav-link">ADD</a>
                     </p>
                 </div>
 
@@ -31,6 +31,7 @@
                             <tr>
                                 <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
                                 <th style="border: 1px solid black; background-color: #D9D9D9;">Total / Sub- Total</th>
+                                <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
                                 <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
                                 <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
                                 <th style="border: 1px solid black; background-color: #D9D9D9;"></th>
@@ -59,12 +60,8 @@
                                 <th>Actions</th>
                                 <th>PurchageOrder
                                 </th>
-                                <th>Brand Name
-
-                                </th>
-                                <th>Department
-
-                                </th>
+                                <th>Brand Name</th>
+                                <th>Department Name</th>
                                 <th>Season
                                 </th>
 
@@ -199,12 +196,12 @@
                                 <th>{{$data->deptName}}</th>
                                 <th>Season</th>
                                 <th>ratul</th>
-                                <th>Import</th>
+                                <th>{{$data->fabric_type}}</th>
                                 <th></th>
-                                <th>Shourov</th>
+                                <th>{{$data->vendorName}}</th>
                                 <th></th>
-                                <th></th>
-                                <th>Style Number </th>
+                                <th>{{$data->plm}}</th>
+                                <th>{{$data->stlye_no}}</th>
                                 <th></th>
                                 <th></th>
                                 <th>Total Value</th>
