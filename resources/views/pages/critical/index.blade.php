@@ -184,6 +184,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($criticalPath as $data)
                             <tr>
                                 <th>
                                     <a style="margin-left:2px" href="#">
@@ -193,9 +194,9 @@
                                         Delete
                                     </a>
                                 </th>
-                                <th><a href="">67166531</a></th>
-                                <th>mrp</th>
-                                <th>demo</th>
+                                <th><a href="">{{$data->po_no}}</a></th>
+                                <th>{{$data->buyerName}}</th>
+                                <th>{{$data->deptName}}</th>
                                 <th>Season</th>
                                 <th>ratul</th>
                                 <th>Import</th>
@@ -304,126 +305,7 @@
                                 <th></th>
                                 <!-- Add more headers here -->
                             </tr>
-                            <tr>
-                                <th>
-                                    <a style="margin-left:2px" href="#">
-                                        Edit
-                                    </a>
-                                    <a style="margin-left:2px;color:red;" href="#">
-                                        Delete
-                                    </a>
-                                </th>
-                                <th><a href="">67166531</a></th>
-                                <th>mrp</th>
-                                <th>demo</th>
-                                <th>Season</th>
-                                <th>ratul</th>
-                                <th>Import</th>
-                                <th></th>
-                                <th>Shourov</th>
-                                <th></th>
-                                <th></th>
-                                <th>Style Number </th>
-                                <th></th>
-                                <th></th>
-                                <th>Total Value</th>
-                                <th>Style Description</th>
-                                <th>Colour</th>
-                                <th> </th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <!-- Add more headers here -->
-                            </tr>
+                           @endforeach
                             <!-- Populate table rows with data -->
                         </tbody>
                         <tfoot>
