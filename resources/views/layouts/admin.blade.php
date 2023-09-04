@@ -23,7 +23,7 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- My styles -->
-    <!-- <link rel="stylesheet" href="{{ asset('plugins/bootstrap_my/my_style.css') }}"> -->
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap_my/my_style.css') }}">
     <!-- Responsive data tables -->
     <!-- <link rel="stylesheet" href="{{ asset('plugins/Responsive-2.2.3/css/responsive.dataTables.min.css') }}"> -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
