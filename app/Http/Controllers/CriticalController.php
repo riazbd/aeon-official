@@ -22,7 +22,12 @@ class CriticalController extends Controller
         $departmentList=Department::orderBy('id','desc')->get();
         $criticalPath = CriticalPath::orderBy('id','desc')->get();
         $vendor = Vendor::orderBy('id','desc')->get();
-        $purchaseOrder=PurchageOrder::orderBy('id','desc')->get(['id', 'po_no']);
+        $purchaseOrder=CriticalPath::orderBy('critical_paths.id','desc')
+            ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+            ->select('*','purchage_orders.*')
+                ->get();
+        //dd($purchaseOrder);
+       // PurchageOrder::orderBy('id','desc')->get();
         return view('pages.critical.index', compact('criticalPath','buyerList','departmentList','vendor','purchaseOrder'));
         //
     }

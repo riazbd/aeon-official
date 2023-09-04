@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buyer;
+use App\Models\CriticalPath;
 use App\Models\OrderItem;
 use App\Models\PurchageOrder;
 use App\Models\Vendor;
@@ -142,7 +143,9 @@ class PurchageOrderController extends Controller
                 $orderItem->save();
             }
         }
-
+        $crtical=new CriticalPath();
+        $crtical->po_id=$purchaseOrder->id;
+        $crtical->save();
         if ($request->input('download_pdf') == 'yes') {
             if ($request->input('select_buyer') == 1) {
                 $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
