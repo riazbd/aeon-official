@@ -4,11 +4,14 @@
     table {
         border-collapse: collapse;
         width: 100%;
-        border: 1px solid #000; /* Add a 1px black border to the table */
+        border: 1px solid #000;
+        /* Add a 1px black border to the table */
     }
 
-    th, td {
-        border: 1px solid #000; /* Add a 1px black border to table cells (headers and data cells) */
+    th,
+    td {
+        border: 1px solid #000;
+        /* Add a 1px black border to table cells (headers and data cells) */
         padding: 8px;
         text-align: left;
     }
@@ -184,10 +187,9 @@
                             @foreach($criticalPath as $data)
                             <tr>
                                 <th>
-                                    <a style="margin-left:2px" href="#">
-                                        Edit
-                                    </a>
-                                    <a  style="margin-left:2px;color:red;" href="#">
+                                <a href="{{ route('critical.edit',$data->id) }}" type="button" class="btn btn-info btn-sm"> Edit</a>
+                                   
+                                    <a style="margin-left:2px;color:red;" href="#" type="button">
                                         Delete
                                     </a>
                                 </th>
@@ -203,10 +205,19 @@
                                 <th>{{$data->plm}}</th>
                                 <th>{{$data->stlye_no}}</th>
                                 <th></th>
+                                <th>{{$data->style_note}}</th>
                                 <th></th>
-                                <th>Total Value</th>
-                                <th>Style Description</th>
-                                <th>Colour</th>
+                                <th></th>
+                                <th></th>
+                                <th> </th>
+                                <th></th>
+                                <th>{{$data->fabric_content}} </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                                 <th> </th>
                                 <th></th>
                                 <th> </th>
@@ -216,9 +227,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th> </th>
                                 <th></th>
-                                <th> </th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -240,6 +249,8 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th><input id="care_plan_date" type="date" / name="care_plan_date" class="col-md-12"></th>
+                                <th>{{$data->care_lavel_date}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -279,16 +290,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->ex_factory_date}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -302,7 +304,7 @@
                                 <th></th>
                                 <!-- Add more headers here -->
                             </tr>
-                           @endforeach
+                            @endforeach
                             <!-- Populate table rows with data -->
                         </tbody>
                         <tfoot>
@@ -310,116 +312,116 @@
                                 <th>
 
                                 </th>
-                                <th>  <input id="po" type="text" ></th>
-                                <th> <input id="brand" type="text" ></th>
-                                <th> <input id="department" type="text" ></th>
+                                <th> <input id="po" type="text" class="col-md-12"></th>
+                                <th> <input id="brand" type="text" class="col-md-12"></th>
+                                <th> <input id="department" type="text" class="col-md-12"></th>
                                 <th></th>
                                 <th</th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <!-- Add more headers here -->
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th> </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th> </th>
+                                    <th></th>
+                                    <th> </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th> </th>
+                                    <th></th>
+                                    <th> </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <!-- Add more headers here -->
                             </tr>
                         </tfoot>
                     </table>
@@ -437,8 +439,6 @@
 <!-- <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> -->
 <script>
     $(document).ready(function() {
-
-
         var table = $("#table_id").DataTable({
             scrollX: true,
             searching: true,
@@ -458,6 +458,12 @@
 
             ],
         });
+        // $('#care_plan_date').on('change', function() {
+        //     const selectedDate = $(this).val();
+           
+
+        // });
+
         $('#po').on('keyup', function() {
             table.search(this.value).draw();
         });
