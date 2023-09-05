@@ -24,6 +24,7 @@ class CreatePurchageOrdersTable extends Migration
             $table->string('style_note')->nullable();
             $table->string('vendor_price')->nullable();
             $table->string('earliest_buyer_date')->nullable();
+            $table->string('approved_date')->nullable();
             $table->string('buyer_date')->nullable();
             $table->string('ex_factory_date')->nullable();
             $table->string('po_no')->nullable();
@@ -32,6 +33,7 @@ class CreatePurchageOrdersTable extends Migration
             $table->string('description')->nullable();
             $table->string('fabric_quality')->nullable();
             $table->string('fabric_content')->nullable();
+            $table->string('fabric_type')->nullable();
             $table->string('supplier_no')->nullable();
             $table->string('supplier_name')->nullable();
             $table->string('currency')->nullable();

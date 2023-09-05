@@ -180,7 +180,7 @@
             </ul>
         </li>
     </ul>
-    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+    {{-- <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
         data-accordion="false">
         <li class="nav-item has-treeview">
             <a href="#"
@@ -202,7 +202,7 @@
                 </li>
             </ul>
         </li>
-    </ul>
+    </ul> --}}
     {{--    @can('card.main') --}}
 
     {{--    @endcan --}}

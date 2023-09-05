@@ -20,7 +20,7 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="select_buyer" class="text-right">Select Buyer:</label>
+                                <label for="select_buyer" class="text-right">Select Buyer<span style="color:red">*</span>:</label>
                                 <div class="">
                                     <select class="form-control form-control-sm" id="select_buyer_upload"
                                         name="select_buyer_upload" required>
@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="select_vendor" class="text-right">Select Vendor:</label>
+                                <label for="select_vendor" class="text-right">Select Vendor<span style="color:red">*</span>:</label>
                                 <div class="">
                                     <select class="form-control form-control-sm" id="select_vendor_upload"
                                         name="select_vendor_upload" required>
@@ -74,7 +74,7 @@
                     <div class="row justify-content-between">
                         <div class="col-md-6 justify-content-end">
                             <div class="form-group row">
-                                <label for="select_buyer" class="col-5 text-right">Select Buyer:</label>
+                                <label for="select_buyer" class="col-5 text-right">Select Buyer<span style="color:red">*</span>:</label>
                                 <div class="col-7">
                                     <select class="form-control form-control-sm" id="select_buyer" name="select_buyer"
                                         required>
@@ -86,7 +86,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="department" class="col-5 text-right">Department:</label>
+                                <label for="department" class="col-5 text-right">Department<span style="color:red">*</span>:</label>
                                 <div class="col-7">
                                     <select name="department" id="department" class="form-control form-control-sm" required>
                                         <option value="">Select Department</option>
@@ -94,12 +94,12 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="buyer_price" class="col-5 text-right">Buyer Price:</label>
+                                <label for="buyer_price" class="col-5 text-right">Buyer Price<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="buyer_price" name="buyer_price" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="vendor_price" class="col-5 text-right">Vendor Price:</label>
+                                <label for="vendor_price" class="col-5 text-right">Vendor Price<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="vendor_price" name="vendor_price" required></div>
                             </div>
@@ -109,47 +109,47 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="early-buyer-date" class="col-5 text-right">Earliest Shipment Date:</label>
+                                <label for="early-buyer-date" class="col-5 text-right">Earliest Shipment Date<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                         id="early-buyer-date" name="early-buyer-date" required></div>
                             </div>
 
 
                             <div class="form-group row">
-                                <label for="care_label_date" class="col-5 text-right">Care Label Date:</label>
+                                <label for="care_label_date" class="col-5 text-right">Care Label Date<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                         id="care_label_date" name="care_label_date" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="approval_date" class="col-5 text-right">Approval Date:</label>
+                                <label for="approval_date" class="col-5 text-right">Approval Date<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                         id="approval_date" name="approval_date" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="ww_po_no" class="col-5 text-right">PO Number.:</label>
+                                <label for="ww_po_no" class="col-5 text-right">PO Number.<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="ww_po_no" name="ww_po_no" required>
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="plm" class="col-5 text-right" id="plm-label-form">PLM:</label>
+                                <label for="plm" class="col-5 text-right" id="plm-label-form">PLM<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="plm" name="plm" required></div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="fabric_quality" class="col-5 text-right">Fabric Quality:</label>
+                                <label for="fabric_quality" class="col-5 text-right">Fabric Quality<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="fabric_quality" name="fabric_quality" requred></div>
                             </div>
                             <div class="form-group row">
-                                <label for="fabric_content" class="col-5 text-right">Fabric Content:</label>
+                                <label for="fabric_content" class="col-5 text-right">Fabric Content<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="fabric_content" name="fabric_content" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="fabric_type" class="col-5 text-right">Fabric Type:</label>
+                                <label for="fabric_type" class="col-5 text-right">Fabric Type<span style="color:red">*</span>:</label>
                                 <div class="col-7"><select class="form-control form-control-sm" id="fabric_type"
                                         name="fabric_type" required>
                                         <option value="">Select Fabric Type</option>
@@ -159,12 +159,12 @@
                                     </select></div>
                             </div>
                             <div class="form-group row">
-                                <label for="supplier_no" class="col-5 text-right">Supplier Number:</label>
+                                <label for="supplier_no" class="col-5 text-right">Supplier Number<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="supplier_no" name="supplier_no" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="supplier_name" class="col-5 text-right">Supplier Name:</label>
+                                <label for="supplier_name" class="col-5 text-right">Supplier Name<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="supplier_name" name="supplier_name" required></div>
                             </div>
@@ -175,7 +175,7 @@
                         </div>
                         <div class="col-md-6 justify-content-start">
                             <div class="form-group row">
-                                <label for="select_vendor" class="col-5 text-right">Select Vendor:</label>
+                                <label for="select_vendor" class="col-5 text-right">Select Vendor<span style="color:red">*</span>:</label>
                                 <div class="col-7">
                                     <select class="form-control form-control-sm" id="select_vendor" name="select_vendor"
                                         required>
@@ -190,7 +190,7 @@
 
 
                             <div class="form-group row">
-                                <label for="ex_factory_date" class="col-5 text-right">Factory Ex-Factory Date:</label>
+                                <label for="ex_factory_date" class="col-5 text-right">Factory Ex-Factory Date<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="date" class="form-control form-control-sm datepicker"
                                         id="ex_factory_date" name="ex_factory_date" required></div>
                             </div>
@@ -201,14 +201,14 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="access_price" class="col-5 text-right">Accessories Price:</label>
+                                <label for="access_price" class="col-5 text-right">Accessories Price<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="access_price" name="access_price"></div>
                             </div>
 
 
                             <div class="form-group row">
-                                <label for="style_note" class="col-5 text-right">Final Price:</label>
+                                <label for="style_note" class="col-5 text-right">Final Price<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="style_note" name="style_note" required></div>
                             </div>
@@ -216,14 +216,14 @@
 
                             <div class="form-group row">
                                 <label for="upload_picture_germent" class="col-5 text-right">Upload Picture
-                                    germent:</label>
+                                    germent<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="file" class="" id="upload_picture_germent"
                                         name="upload_picture_germent" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="upload_artwork" class="col-5 text-right">Upload Artwork:</label>
+                                <label for="upload_artwork" class="col-5 text-right">Upload Artwork<span style="color:red"></span>:</label>
                                 <div class="col-7"><input type="file" class="" id="upload_artwork"
-                                        name="upload_artwork" required></div>
+                                        name="upload_artwork"></div>
                             </div>
 
                             {{-- <div class="form-group row">
@@ -232,27 +232,27 @@
                                         id="note" name="note"></div>
                             </div> --}}
                             <div class="form-group row">
-                                <label for="currency" class="col-5 text-right">Currency:</label>
+                                <label for="currency" class="col-5 text-right">Currency<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="currency" name="currency" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="payment_terms" class="col-5 text-right">Payment Terms:</label>
+                                <label for="payment_terms" class="col-5 text-right">Payment Terms<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="payment_terms" name="payment_terms" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="ship_mode" class="col-5 text-right">Ship Method:</label>
+                                <label for="ship_mode" class="col-5 text-right">Ship Method<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="ship_mode" name="ship_mode" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="description" class="col-5 text-right">Description:</label>
+                                <label for="description" class="col-5 text-right">Description<span style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="description" name="description" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="note" class="col-5 text-right">Special Note:</label>
+                                <label for="note" class="col-5 text-right">Special Note<span style="color:red">*</span>:</label>
                                 <div class="col-7">
                                     <textarea class="form-control form-control-sm" id="note" name="note" required></textarea>
                                 </div>
@@ -504,6 +504,8 @@
                 } else {
                     differenceElement.removeClass('text-danger');
                 }
+
+
             }
 
             // Add event listener to the "Ex Factory Date" input to update the difference note
@@ -533,7 +535,7 @@
                 }
 
                 // Calculate the percentage difference between Buyer Price and Vendor Price
-                const percentageDifference = ((buyerPrice - vendorPrice.toFixed(2)) / buyerPrice) * 100;
+                const percentageDifference = ((buyerPrice - vendorPrice) / buyerPrice) * 100;
 
                 // Round the percentageDifference to 2 decimal places
                 const roundedPercentageDifference = parseFloat(percentageDifference.toFixed(2));
@@ -543,7 +545,7 @@
                 const vendorPriceDifferenceElement = $('#vendor_price_difference');
 
                 // Update the value of the Vendor Price field
-                vendorPriceElement.val(vendorPrice.toFixed(2));
+                vendorPriceElement.val(parseFloat(vendorPrice).toFixed(2));
 
                 // Update the text content of the Vendor Price Difference note
                 vendorPriceDifferenceElement.text(
@@ -560,9 +562,9 @@
             });
 
             // Add event listener to the "Vendor Price" input to update the Vendor Price and Vendor Price Difference note
-            $('#vendor_price').on('input', function() {
-                updateVendorPriceAndDifference();
-            });
+            // $('#vendor_price').on('input', function() {
+            //     updateVendorPriceAndDifference();
+            // });
 
 
             $('.nav-tabs a').click(function(e) {
@@ -651,7 +653,13 @@
                             $('#early-buyer-date').val(formattedDate);
                             $('#payment_terms').val(terms);
                             $('#ship_mode').val(shipMode);
-                            accessPrice.value = data.keys['hanger'];
+                            if(data.keys['hanger'] === 'Not Found'){
+                                accessPrice.value = 0;
+
+                            } else {
+                                accessPrice.value = data.keys['hanger'];
+                            }
+
                             $('#approval_date').val(formattedApprovedDate)
                             $('#plm').val(data.data[0][
                                 'Vendor \nProduct No. / \nRef. Item No.'
@@ -659,26 +667,11 @@
                             $('#description').val(data.data[0]['Item Description'])
 
 
-                            updateVendorPriceAndDifference();
-                            // const styleNote = 'Price: ' + (parseFloat($('#vendor_price').val()) -
-                            //         parseFloat(
-                            //             data.keys['hanger'])).toString() + " " + "+" + " " + data
-                            //     .keys[
-                            //         'hanger'] + ' ' + '=' + " " + (parseFloat($('#vendor_price')
-                            //         .val()) - parseFloat(
-                            //         data.keys['hanger']) + parseFloat(
-                            //         data.keys['hanger'])).toString()
 
-                            const accessPriceValue = parseFloat($('#access_price')
-                                .val()); // Get the value of the access_price input field
+                            let accessPriceValue = parseFloat($('#access_price')
+                                .val());
 
-                            const styleNote = 'Price: ' + (parseFloat($('#vendor_price')
-                                    .val())) +
-                                " " + "+" + " " + accessPriceValue + ' ' + '=' +
-                                " " + ((parseFloat($('#vendor_price')
-                                    .val()) + accessPriceValue).toFixed(2)).toString()
 
-                            $('#style_note').val(styleNote);
 
                             // ex factory date
                             const buyerDate = new Date($('#early-buyer-date').val());
@@ -690,7 +683,25 @@
                                 'T')[
                                 0]; // Convert date to YYYY-MM-DD format
                             $('#ex_factory_date').val(exFactoryDateFormatted);
+                            updateVendorPriceAndDifference();
+
                             updateDifferenceNote();
+
+                            const vendorPriceInput = $('#vendor_price').val().trim();
+
+                            if (!isNaN(vendorPriceInput)) {
+                                const vendorPrice = parseFloat(vendorPriceInput);
+                                const calculatedPrice = (vendorPrice + accessPriceValue)
+                                    .toFixed(2);
+                                const styleNote =
+                                    `Price: ${vendorPrice} + ${accessPriceValue} = ${calculatedPrice}`;
+                                $('#style_note').val(styleNote);
+                            } else {
+                                // Handle the case where vendorPriceInput is not a valid number
+                                alert(
+                                    'Please enter a valid numerical value in the vendor price field.'
+                                );
+                            }
 
                             // table work
                             $('#item-table-body').empty()
@@ -698,6 +709,7 @@
                             const tbody = $('#item-table-body');
 
                             // Iterate through the data and create rows
+                            console.log(accessPriceValue);
                             data.data.forEach((item, index) => {
                                 const newRow = `
                                     <tr>
@@ -781,6 +793,8 @@
 
                             document.getElementById('vendor_price').addEventListener("change",
                                 function() {
+
+                                    updateVendorPriceAndDifference()
                                     // Get the new value entered in the changed input field
 
                                     let newAccessPrice = parseFloat($('#access_price')
@@ -856,10 +870,10 @@
 
                             // Use moment to parse the input date
                             const dateObject = moment(data.keys['Ship From Date'],
-                                "DD-MMM-YYYY");
+                                "DD-MM-YYYY");
 
                             const approvedDateObject = moment(data.keys[
-                                'Originally Approved Date'], "DD-MMM-YYYY")
+                                'Originally Approved Date'], "DD-MM-YYYY")
 
 
 
@@ -867,7 +881,7 @@
                             $('#plm').prop('required', false);
                             $('#plm').prop('type', 'hidden');
 
-                            $('#access_price').val('0')
+                            $('#access_price').val('0.15')
 
 
 
@@ -952,6 +966,8 @@
 
                             const tbody = $('#item-table-body');
 
+                            console.log(accessPriceValue);
+
                             data.inner_table.forEach((item, index) => {
                                 const newRow = `
                                     <tr>
@@ -962,9 +978,10 @@
                                         <td><input type="text" name="items[${index}][item_no]" value="${data.outer_table['Item']}"></td>
                                         <td><input type="text" name="items[${index}][size]" value="${item["Size"]}"></td>
                                         <td><input type="text" name="items[${index}][qty_ordered]" value="${item["Qty"]}"></td>
-                                        <td><input type="text" name="items[${index}][inner_qty]" value="${$('#vendor_price').val()}"></td>
+                                        <td><input type="text" class="vendor-price" name="items[${index}][inner_qty]" value="${$('#vendor_price').val()}"></td>
                                         <td><input type="text" class="outer_qty" name="items[${index}][outer_case_qty]" value="${accessPriceValue}"></td>
-                                        <td><input type="text" class="supplier_price" name="items[${index}][supplier_price]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue).toFixed()).toString()}"></td>
+                                        <td><input type="text" class="supplier_price" name="items[${index}][supplier_price]" value="${((parseFloat($('#vendor_price')
+                                    .val()) + accessPriceValue).toFixed(2)).toString()}"></td>
 
                                         <td><input type="text" class="total_price" name="items[${index}][value]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue) * parseFloat(item["Qty"])).toFixed(2)}"></td>
                                         <td><input type="text" name="items[${index}][selling_price]" value="${item["Selling Price"]}"></td>
@@ -977,6 +994,9 @@
 
                             const valueInputs = document.querySelectorAll(
                                 '.supplier_price');
+
+                            const vendorPriceInputs = document.querySelectorAll(
+                                '.vendor-price');
 
                             const accessoriesInputs = document.querySelectorAll(
                                 '.outer_qty');
@@ -1004,6 +1024,11 @@
                                         newAccessPrice).toFixed(2)).toString()
 
                                 $('#style_note').val(newStyleNote);
+
+                                Array.prototype.forEach.call(vendorPriceInputs,
+                                    function(input, index) {
+                                        input.value = $('#vendor_price').val()
+                                    })
 
                                 Array.prototype.forEach.call(accessoriesInputs,
                                     function(input, index) {
@@ -1049,7 +1074,7 @@
                             document.getElementById('vendor_price').addEventListener("change",
                                 function() {
                                     // Get the new value entered in the changed input field
-
+                                    updateVendorPriceAndDifference()
                                     let newAccessPrice = parseFloat($('#access_price')
                                         .val());
 
@@ -1062,6 +1087,11 @@
                                             newAccessPrice).toFixed(2)).toString()
 
                                     $('#style_note').val(newStyleNote);
+
+                                    Array.prototype.forEach.call(vendorPriceInputs,
+                                        function(input, index) {
+                                            input.value = $('#vendor_price').val()
+                                        })
 
                                     Array.prototype.forEach.call(accessoriesInputs,
                                         function(input, index) {
