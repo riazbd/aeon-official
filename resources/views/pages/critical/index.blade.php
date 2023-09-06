@@ -187,10 +187,10 @@
                             @foreach($criticalPath as $data)
                             <tr>
                                 <th>
-                                <a href="{{ route('critical.edit',$data->id) }}" type="button" class="btn btn-info btn-sm"> Edit</a>
+                                <a href="{{ route('critical.edit',$data->id) }}" > <i class="fas fa-edit"></i></a>
                                    
-                                    <a style="margin-left:2px;color:red;" href="#" type="button">
-                                        Delete
+                                    <a style="margin-left:2px;" href="#" >
+                                    <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </th>
                                 <th><a href="">{{$data->po_no}}</a></th>
