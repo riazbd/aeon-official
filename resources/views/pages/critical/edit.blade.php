@@ -154,7 +154,7 @@
                 </div>
             </div>
         </div>
-        <br />
+       
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -191,7 +191,7 @@
 
             </div>
         </div>
-        <br />
+        
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingThree">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
@@ -332,7 +332,6 @@
 
             </div>
         </div>
-        <br />
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingFive">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
@@ -442,7 +441,6 @@
 
             </div>
         </div>
-        <br />
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingSix">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
@@ -502,7 +500,6 @@
 
             </div>
         </div>
-        <br />
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingSeven">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
@@ -582,7 +579,6 @@
                 </div>
             </div>
         </div>
-        <br />
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingEight">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
@@ -687,7 +683,6 @@
 
             </div>
         </div>
-        <br />
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingNine">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
@@ -751,7 +746,6 @@
 
             </div>
         </div>
-        <br />
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingTen">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
@@ -814,7 +808,6 @@
 
             </div>
         </div>
-        <br />
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading11">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse11" aria-expanded="false" aria-controls="flush-collapse11">
@@ -848,7 +841,6 @@
                 </div>
             </div>
         </div>
-        <br />
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading12">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse12" aria-expanded="false" aria-controls="flush-collapse12">
@@ -891,7 +883,6 @@
                 </div>
             </div>
         </div>
-        <br />
     </div>
 </div>
 
