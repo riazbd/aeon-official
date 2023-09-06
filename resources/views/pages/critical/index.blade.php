@@ -21,13 +21,6 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header" style="margin-top: 20px;">
-                    <h3 class="card-title">critical List</h3>
-                    <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#create-buyer">
-                        <a href="{{ route('add-critical-path') }}" class="nav-link">ADD</a>
-                    </p>
-                </div>
-
                 <div style="margin-top: 20px;" class="table-container">
                     <table id="table_id" class="row-border cell-border display">
                         <thead>
