@@ -5,6 +5,12 @@
     .toplabel{
         margin-top: 12px;
     }
+    .rowItem {
+        margin-top: 10px;
+    }
+    .rowBottom{
+        margin-bottom: 10px;
+    }
 </style>
 <div class="container">
     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -14,7 +20,7 @@
                     General information
                 </button>
             </h2>
-            <div id="flush-collapseOne" class=" row accordion-collapse collapse toplabel" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseOne" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" id="brand" placeholder="brand" class="form-control" />
@@ -39,7 +45,7 @@
                 </div>
             </div>
 
-            <div id="flush-collapseOne" class=" row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div  id="flush-collapseOne" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" id="fabricType" placeholder="Fabric Type" class="form-control" />
@@ -66,8 +72,8 @@
                     </div>
                 </div>
             </div>
-            <br />
-            <div id="flush-collapseOne" class=" row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+           
+            <div id="flush-collapseOne" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" id="plmNumber" placeholder="PLM Number" class="form-control" />
@@ -93,8 +99,8 @@
                     </div>
                 </div>
             </div>
-            <br />
-            <div id="flush-collapseOne" class=" row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+           
+            <div id="flush-collapseOne" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" id="supplierPrice" placeholder="Supplier Price/Product Cost" class="form-control" />
@@ -120,8 +126,7 @@
                     </div>
                 </div>
             </div>
-            <br />
-            <div id="flush-collapseOne" class=" row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseOne" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" id="careLabelDate" placeholder="Care Label Date" class="form-control" />
@@ -162,7 +167,7 @@
                 </button>
             </h2>
 
-            <div id="flush-collapseTwo" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseTwo" class="rowBottom row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-3">
                     <div class="form-floating">
@@ -198,7 +203,7 @@
                     Lab dips and Embellishment Information
                 </button>
             </h2>
-            <div id="flush-collapseThree" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseThree" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-3">
                     <div class="form-floating">
@@ -226,9 +231,7 @@
                 </div>
 
             </div>
-
-            <br />
-            <div id="flush-collapseThree" class="row accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseThree" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" id="labDipDispatch" placeholder="Lab Dip Dispatch Details" class="form-control" />
@@ -246,7 +249,7 @@
                     </div>
                 </div>
             </div>
-            <div id="flush-collapseThree" class="row accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseThree" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-4">
                     <div class="form-floating">
@@ -273,7 +276,7 @@
                     Bulk Fabric Information
                 </button>
             </h2>
-            <div id="flush-collapseFour" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFour" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-4">
                     <div class="form-floating">
@@ -297,7 +300,7 @@
 
 
             </div>
-            <div id="flush-collapseFour" class="row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFour" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" id="bulkFabricApprovalActual" placeholder="Bulk Fabric/ Knit Down Approval (Actual)" class="form-control" />
@@ -315,7 +318,7 @@
                     <label for="">Bulk fabric/ Knit down Image</label>
                 </div>
             </div>
-            <div id="flush-collapseFour" class="row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFour" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" id="bulkYarnInhousePlan" placeholder="Bulk Yarn / Fabric Inhouse (Plan)" class="form-control" />
@@ -338,7 +341,7 @@
                     Sample Approval Information
                 </button>
             </h2>
-            <div id="flush-collapseFive" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFive" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-3">
                     <div class="form-floating">
@@ -362,10 +365,8 @@
                     <input type="file" />
                     <label for="">Development image</label>
                 </div>
-
-
             </div>
-            <div id="flush-collapseFive" class="row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFive" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="Fit - Approval (Plan)" class="form-control" />
@@ -390,8 +391,7 @@
                 </div>
 
             </div>
-            <br />
-            <div id="flush-collapseFive" class="row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFive" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="Size set Approval (Plan)" class="form-control" />
@@ -415,7 +415,7 @@
                     <label for="">Size Set sample image </label>
                 </div>
             </div>
-            <div id="flush-collapseFive" class="row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseFive" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="PP Approval (Plan)" class="form-control" />
@@ -447,7 +447,7 @@
                     PP Meeting Details
                 </button>
             </h2>
-            <div id="flush-collapseSix" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseSix" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="Care Approval Plan" class="form-control" />
@@ -473,8 +473,7 @@
                     </div>
                 </div>
             </div>
-            <br />
-            <div id="flush-collapseSix" class="row accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseSix" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="PP Meeting Date (Plan)" class="form-control" />
@@ -506,7 +505,7 @@
                     Production Information
                 </button>
             </h2>
-            <div id="flush-collapseSeven" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseSeven" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
 
                 <div class="col-md-3">
                     <div class="form-floating">
@@ -533,9 +532,7 @@
                     </div>
                 </div>
             </div>
-
-            <br />
-            <div id="flush-collapseSeven" class="row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseSeven" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" placeholder="Sewing Start date (Plan)" class="form-control" />
@@ -554,11 +551,8 @@
                         <label for="washingCompleteDatePlan">Washing complete date (Plan)</label>
                     </div>
                 </div>
-
-
             </div>
-            <br />
-            <div id="flush-collapseSeven" class="row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseSeven" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" placeholder="Washing complete date (Actual)" class="form-control" />
@@ -585,7 +579,7 @@
                     Inspection Information
                 </button>
             </h2>
-            <div id="flush-collapseEight" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" placeholder="Sewing Inspection date (Plan)" class="form-control" />
@@ -604,11 +598,8 @@
                         <label for="createInlineInspectionSchedule">Create Inline Inspection Schedule</label>
                     </div>
                 </div>
-
-
             </div>
-            <br />
-            <div id="flush-collapseEight" class="row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-4">
                     <input type="file" />
                     <label for="">Sewing Inline Inspection Report </label>
@@ -626,8 +617,7 @@
                     </div>
                 </div>
             </div>
-            <br />
-            <div id="flush-collapseEight" class="row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <input type="file" />
                     <label for="">Finishing Inline Inspection Report </label>
@@ -650,10 +640,8 @@
                         <label for="createAQLSchedule">Create AQL Schedule</label>
                     </div>
                 </div>
-
             </div>
-            <br />
-            <div id="flush-collapseEight" class="row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseEight" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <input type="file" />
                     <label for="">Pre Final Date AQL Report </label>
@@ -689,7 +677,7 @@
                     Production Sample & Shipping Approval Information
                 </button>
             </h2>
-            <div id="flush-collapseNine" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseNine" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" placeholder="Production Sample Approval (Plan)" class="form-control" />
@@ -709,8 +697,7 @@
                     </div>
                 </div>
             </div>
-            <br />
-            <div id="flush-collapseNine" class="row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseNine" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <input type="file" />
                     <label for="">Production Sample Image </label>
@@ -729,8 +716,7 @@
                 </div>
 
             </div>
-            <br />
-            <div id="flush-collapseNine" class="row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseNine" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="SA approval (Plan)" class="form-control" />
@@ -752,7 +738,7 @@
                     Ex-Factory, ETA & Vessel Information
                 </button>
             </h2>
-            <div id="flush-collapseTen" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseTen" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="Ex-factory Date PO" class="form-control" />
@@ -779,8 +765,7 @@
                 </div>
 
             </div>
-            <br />
-            <div id="flush-collapseTen" class="row accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapseTen" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="Original ETA SA date" class="form-control" />
@@ -814,7 +799,7 @@
                     Payment Information
                 </button>
             </h2>
-            <div id="flush-collapse11" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapse11" class="rowItem rowBottom row accordion-collapse collapse toplabel" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="Late Delivery Discounts - CRP" class="form-control" />
@@ -847,7 +832,7 @@
                     Comments, Critical Analyse Information
                 </button>
             </h2>
-            <div id="flush-collapse12" class="row accordion-collapse collapse toplabel" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapse12" class=" rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" placeholder="Reason for major change likely to affect shipment" class="form-control" />
@@ -868,7 +853,7 @@
                 </div>
 
             </div>
-            <div id="flush-collapse12" class="row accordion-collapse collapse" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
+            <div id="flush-collapse12" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
                 <div class="col-md-3">
                     <div class="form-floating">
                         <input type="text" placeholder="SA ETA +5 Days?" class="form-control" />
