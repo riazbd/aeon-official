@@ -191,7 +191,9 @@
                                 <th>{{$data->deptName}}</th>
                                 <th>Season</th>
                                 <th>ratul</th>
-                                <th>{{$data->fabric_type}}</th>
+                                <th>
+                                {{$data->fabric_type == 1 ? 'Local Fabric' : ($data->fabric_type == 2 ? 'Special Yarn/ AOP Fabric' : 'Imported Fabric')}}
+                                </th>
                                 <th></th>
                                 <th>{{$data->vendorName}}</th>
                                 <th></th>
@@ -465,6 +467,26 @@
         });
         $('#department').on('keyup', function() {
             table.search(this.value).draw();
+        });
+
+        $('#care_plan_date').change(function() {
+            var selectedDate = $(this).val();
+
+            $.ajax({
+                url: "{{route('process.date')}}",
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    care_plan_date: selectedDate
+                },
+                success: function(response) {
+                    console.log(response);
+                    // Handle the response here
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
         });
 
     });

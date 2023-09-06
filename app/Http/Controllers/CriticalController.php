@@ -18,17 +18,17 @@ class CriticalController extends Controller
      */
     public function index()
     {
-        $buyerList=Buyer::orderBy('id','desc')->get();
-        $departmentList=Department::orderBy('id','desc')->get();
-        $vendor = Vendor::orderBy('id','desc')->get();
-        $criticalPath=CriticalPath::orderBy('critical_paths.id','desc')
+        $buyerList = Buyer::orderBy('id', 'desc')->get();
+        $departmentList = Department::orderBy('id', 'desc')->get();
+        $vendor = Vendor::orderBy('id', 'desc')->get();
+        $criticalPath = CriticalPath::orderBy('critical_paths.id', 'desc')
             ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
-            ->select('*','purchage_orders.*','departments.name as deptName','buyers.name as buyerName')
-                ->get();
+            ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'buyers.name as buyerName')
+            ->get();
         //dd($criticalPath);
-        return view('pages.critical.index', compact('criticalPath','buyerList','departmentList','vendor','criticalPath'));
+        return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
         //
     }
 
@@ -39,8 +39,8 @@ class CriticalController extends Controller
      */
     public function create()
     {
-        $poList=PurchageOrder::orderBy('id','desc')->get();
-        return view('pages.critical.create',compact('poList'));
+        $poList = PurchageOrder::orderBy('id', 'desc')->get();
+        return view('pages.critical.create', compact('poList'));
         //
     }
 
@@ -74,13 +74,13 @@ class CriticalController extends Controller
      */
     public function edit($id)
     {
-        $criticalPath=CriticalPath::where('po_id',$id)->orderBy('critical_paths.id','desc')
+        $criticalPath = CriticalPath::where('po_id', $id)->orderBy('critical_paths.id', 'desc')
             ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
-            ->select('*','purchage_orders.*','departments.name as deptName','buyers.name as buyerName')
-                ->get();
-        return view('pages.critical.edit',compact('criticalPath'));
+            ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'buyers.name as buyerName')
+            ->get();
+        return view('pages.critical.edit', compact('criticalPath'));
         //
     }
 
@@ -105,5 +105,17 @@ class CriticalController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function processDate(Request $request)
+    {
+        // Your code to process the date goes here
+        $selectedDate = $request->input('care_plan_date');
+        $id = $request->input('id');
+
+        // Perform some logic with $selectedDate
+
+        // Return a response (e.g., JSON)
+        return response()->json(['result' => 'success','id'=>$id ,'message' => 'Date processed successfully']);
     }
 }

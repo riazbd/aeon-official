@@ -149,6 +149,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('critical-path-manage', [CriticalController::class, 'index'])->name('critical-path');
     Route::get('add-critical-path', [CriticalController::class, 'create'])->name('add-critical-path');
     Route::get('/critical/edit/{id}',[CriticalController::class, 'edit'])->name('critical.edit');
+    Route::post('/process-date', [CriticalController::class,'processDate'])->name('process.date');
 });
 
 // Change language session condition
