@@ -11,6 +11,9 @@
     .rowBottom{
         margin-bottom: 10px;
     }
+    #update{
+        float:right;
+    }
 </style>
 <div class="container">
     <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -158,6 +161,12 @@
                     </div>
                 </div>
             </div>
+
+            <div id="flush-collapseOne" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update"  class="btn btn-success">Update</button>
+                </div>
+            </div>
         </div>
        
         <div class="accordion-item">
@@ -194,6 +203,11 @@
                     </div>
                 </div>
 
+            </div>
+            <div id="flush-collapseTwo" class="rowBottom row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
+                </div>
             </div>
         </div>
         
@@ -269,6 +283,11 @@
                     <label for="">Embellishment - S/O Image</label>
                 </div>
             </div>
+            <div id="flush-collapseThree" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
+                </div>
+            </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingFour">
@@ -333,6 +352,11 @@
                 </div>
 
 
+            </div>
+            <div id="flush-collapseFour" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
+                </div>
             </div>
         </div>
         <div class="accordion-item">
@@ -440,6 +464,11 @@
                 </div>
 
             </div>
+            <div id="flush-collapseFive" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
+                </div>
+            </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingSix">
@@ -497,6 +526,11 @@
                     <label for="">PP Meeting Report Upload</label>
                 </div>
 
+            </div>
+            <div id="flush-collapseSix" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
+                </div>
             </div>
         </div>
         <div class="accordion-item">
@@ -570,6 +604,11 @@
                         <input type="text" name="finish_com_date_act" placeholder="Finishing complete date (Actual)" class="form-control" />
                         <label for="finishingCompleteDateActual">Finishing complete date (Actual)</label>
                     </div>
+                </div>
+            </div>
+            <div id="flush-collapseSeven" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
                 </div>
             </div>
         </div>
@@ -670,6 +709,11 @@
                 </div>
 
             </div>
+            <div id="flush-collapseEight" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
+                </div>
+            </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingNine">
@@ -730,6 +774,11 @@
                     </div>
                 </div>
 
+            </div>
+            <div id="flush-collapseNine" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
+                </div>
             </div>
         </div>
         <div class="accordion-item">
@@ -792,6 +841,11 @@
                 </div>
 
             </div>
+            <div id="flush-collapseTen" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
+                </div>
+            </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header" id="flush-heading11">
@@ -823,6 +877,11 @@
                         <input type="text" name="" placeholder="Payment Receive Date" class="form-control" />
                         <label for="paymentReceiveDate">Payment Receive Date</label>
                     </div>
+                </div>
+            </div>
+            <div id="flush-collapse11" class="rowItem rowBottom row accordion-collapse collapse toplabel" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
                 </div>
             </div>
         </div>
@@ -865,6 +924,11 @@
                         <input type="text" name="" placeholder="NOTE" class="form-control" />
                         <label for="saEtaPlusFiveDays">NOTE</label>
                     </div>
+                </div>
+            </div>
+            <div id="flush-collapse12" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
+                <div>
+                  <button id="update" class="btn btn-success">Update</button>
                 </div>
             </div>
         </div>

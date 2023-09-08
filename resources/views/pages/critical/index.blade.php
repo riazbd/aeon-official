@@ -180,6 +180,7 @@
                             @foreach($criticalPath as $data)
                             <tr>
                                 <th>
+                                    <input type="hidden" name="po_id" value="{{$data->id}}">
                                 <a href="{{ route('critical.edit',$data->id) }}" > <i class="fas fa-edit"></i></a>
                                    
                                     <a style="margin-left:2px;" href="#" >
