@@ -125,6 +125,16 @@ class CriticalController extends Controller
                 $updateData['colour'] = $request->colour;
             }
 
+            if (isset($request->lead_times)) {
+                $updateData['lead_times'] = $request->lead_times;
+            }
+            if (isset($request->treated_as_priority_order)) {
+                $updateData['treated_as_priority_order'] = $request->treated_as_priority_order;
+            }
+            if (isset($request->official_po_sent_actual_date)) {
+                $updateData['official_po_sent_actual_date'] = $request->official_po_sent_actual_date;
+            }
+
             // Add more conditions for other fields as needed
 
             // Update the model with the data

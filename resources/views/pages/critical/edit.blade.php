@@ -198,25 +198,31 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="leadTimes" id="leadTimes" placeholder="Lead Times" class="form-control" />
+                            <input type="text" value="{{$criticalPath->lead_times}}" name="lead_times" id="leadTimes" placeholder="Lead Times" class="form-control" />
                             <label for="leadTimes">Lead Times</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="priorityOrder" id="priorityOrder" placeholder="Treated as a priority order" class="form-control" />
+                        <select name="treated_as_priority_order" id="block" class="form-control">
+                                <option value="{{$criticalPath->treated_as_priority_order}}" selected disabled>{{$criticalPath->treated_as_priority_order == 1 ? 'Regular Lead Item':($criticalPath->treated_as_priority_order == 2 ?'Short Term Item':'Treated Priority order')}}</option>
+                                <option value="1">Regular Lead Item</option>
+                                <option value="2">Short Term Item</option>
+                                <!-- Add more options as needed -->
+                            </select>
+                            <!-- <input type="text" value="" name="priorityOrder" id="priorityOrder" placeholder="Treated as a priority order" class="form-control" /> -->
                             <label for="priorityOrder">Treated as a priority order</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="planPO" id="planPO" placeholder="Official PO sent (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="planPO" id="planPO" placeholder="Official PO sent (Plan)" class="form-control" />
                             <label for="planPO">Official PO sent (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="actualPO" id="actualPO" placeholder="Official PO sent (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->official_po_sent_actual_date}}" name="official_po_sent_actual_date" id="official_po_sent_actual_date" placeholder="Official PO sent (Actual)" class="form-control" />
                             <label for="actualPO">Official PO sent (Actual)</label>
                         </div>
                     </div>

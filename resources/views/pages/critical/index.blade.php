@@ -210,10 +210,10 @@
                                 <th>{{$data->fabric_content}} </th>
                                 <th>{{$data->fabric_weight}}</th>
                                 <th>{{$data->fabric_mill}}</th>
+                                <th>{{$data->lead_times}}</th>
+                                <th>{{$data->treated_as_priority_order == 1 ? 'Regular Lead Item':($data->treated_as_priority_order == 2 ?'Short Term Item':'')}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th><input id="official_po_sent_actual_date" type="date" value="{{$data->official_po_sent_actual_date}}" name="official_po_sent_actual_date" class="col-md-12"></th>
                                 <th> </th>
                                 <th></th>
                                 <th> </th>
