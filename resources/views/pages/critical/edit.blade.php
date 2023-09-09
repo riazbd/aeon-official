@@ -16,6 +16,11 @@
     }
 </style>
 <div class="container">
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <form action="{{ route('criticalUpdate',$criticalPath->po_id) }}" method="post">
                             @csrf                  
     <div class="accordion accordion-flush" id="accordionFlushExample">
