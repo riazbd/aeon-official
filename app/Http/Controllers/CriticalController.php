@@ -25,7 +25,8 @@ class CriticalController extends Controller
             ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
-            ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'buyers.name as buyerName')
+            ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+            ->select('*', 'purchage_orders.*', 'departments.name as deptName','vendors.name as vendorName', 'buyers.name as buyerName')
             ->get();
         //dd($criticalPath);
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
@@ -78,8 +79,9 @@ class CriticalController extends Controller
             ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
-            ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'buyers.name as buyerName')
-            ->get();
+            ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+            ->select('*', 'purchage_orders.*','vendors.name as vendorName', 'departments.name as deptName', 'buyers.name as buyerName')
+            ->first();
         return view('pages.critical.edit', compact('criticalPath'));
         //
     }
@@ -93,7 +95,30 @@ class CriticalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $criticalPath = CriticalPath::where('po_id', $id)->first();
+
+        if (isset($criticalPath)) {
+            // Check if the fields are set in the request
+            $updateData = [];
+        
+            if (isset($request->fabric_ref)) {
+                $updateData['fabric_ref'] = $request->fabric_ref;
+            }
+        
+            if (isset($request->fabric_weight)) {
+                $updateData['fabric_weight'] = $request->fabric_weight;
+            }
+            if (isset($request->fabric_mill)) {
+                $updateData['fabric_mill'] = $request->fabric_mill;
+            }
+        
+            // Add more conditions for other fields as needed
+        
+            // Update the model with the data
+            $criticalPath->update($updateData);
+
+            return redirect()->back()->with('success', 'Data saved successfully!');
+        }
     }
 
     /**

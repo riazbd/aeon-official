@@ -187,7 +187,7 @@
                                     <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </th>
-                                <th><a href="">{{$data->po_no}}</a></th>
+                                <th>{{$data->po_no}}</th>
                                 <th>{{$data->buyerName}}</th>
                                 <th>{{$data->deptName}}</th>
                                 <th>Season</th>
@@ -206,10 +206,10 @@
                                 <th></th>
                                 <th></th>
                                 <th> </th>
-                                <th></th>
+                                <th>{{$data->fabric_ref}}</th>
                                 <th>{{$data->fabric_content}} </th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->fabric_weight}}</th>
+                                <th>{{$data->fabric_mill}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -245,7 +245,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th><input id="care_plan_date" type="date" / name="care_plan_date" class="col-md-12"></th>
+                                <th><input id="care_plan_date" type="date"  name="care_plan_date" class="col-md-12"></th>
                                 <th>{{$data->care_lavel_date}}</th>
                                 <th></th>
                                 <th></th>
