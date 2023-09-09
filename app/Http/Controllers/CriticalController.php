@@ -124,23 +124,6 @@ class CriticalController extends Controller
             if (isset($request->colour)) {
                 $updateData['colour'] = $request->colour;
             }
-            if ($request->hasFile('image')) {
-                $destinationPath = 'public/artworks';
-    
-                $mainName = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
-    
-                // Get the file extension from the uploaded logo
-                $extension = $request->file('image')->getClientOriginalExtension();
-    
-                // Generate a unique file name with the main name, current timestamp, and extension
-                $newFileName = $mainName . '_' . time() . '.' . $extension;
-    
-                // Move the logo file to the specified destination path
-                $logoPath = $request->file('image')->storeAs($destinationPath, $newFileName);
-    
-                // Set the logo path to the Buyer model attribute
-                $updateData['image'] = 'storage/artworks/' . $newFileName;
-            }
 
             // Add more conditions for other fields as needed
 
