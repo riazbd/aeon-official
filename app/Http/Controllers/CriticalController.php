@@ -104,14 +104,25 @@ class CriticalController extends Controller
             if (isset($request->fabric_ref)) {
                 $updateData['fabric_ref'] = $request->fabric_ref;
             }
-        
+            if (isset($request->block_repeat_initial)) {
+                $updateData['block_repeat_initial'] = $request->block_repeat_initial;
+            }
+            if (isset($request->style_description)) {
+                $updateData['style_description'] = $request->style_description;
+            }
             if (isset($request->fabric_weight)) {
                 $updateData['fabric_weight'] = $request->fabric_weight;
             }
             if (isset($request->fabric_mill)) {
                 $updateData['fabric_mill'] = $request->fabric_mill;
             }
-        
+
+            if (isset($request->season)) {
+                $updateData['season'] = $request->season;
+            }
+            if (isset($request->colour)) {
+                $updateData['colour'] = $request->colour;
+            }
             // Add more conditions for other fields as needed
         
             // Update the model with the data

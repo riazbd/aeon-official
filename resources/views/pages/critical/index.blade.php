@@ -190,12 +190,12 @@
                                 <th>{{$data->po_no}}</th>
                                 <th>{{$data->buyerName}}</th>
                                 <th>{{$data->deptName}}</th>
-                                <th>Season</th>
+                                <th>{{$data->season}}</th>
                                 <th>ratul</th>
                                 <th>
                                 {{$data->fabric_type == 1 ? 'Local Fabric' : ($data->fabric_type == 2 ? 'Special Yarn/ AOP Fabric' : 'Imported Fabric')}}
                                 </th>
-                                <th></th>
+                                <th>{{$data->block_repeat_initial == 1 ? 'Initial':($data->block_repeat_initial == 2 ?'Repeat':'')}}</th>
                                 <th>{{$data->vendorName}}</th>
                                 <th></th>
                                 <th>{{$data->plm}}</th>
@@ -203,9 +203,9 @@
                                 <th></th>
                                 <th>{{$data->style_note}}</th>
                                 <th></th>
+                                <th>{{$data->style_description}}</th>
                                 <th></th>
                                 <th></th>
-                                <th> </th>
                                 <th>{{$data->fabric_ref}}</th>
                                 <th>{{$data->fabric_content}} </th>
                                 <th>{{$data->fabric_weight}}</th>
