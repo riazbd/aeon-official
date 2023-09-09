@@ -26,7 +26,7 @@ class CriticalController extends Controller
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->select('*', 'purchage_orders.*', 'departments.name as deptName','vendors.name as vendorName', 'buyers.name as buyerName')
+            ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName')
             ->get();
         //dd($criticalPath);
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
@@ -80,7 +80,7 @@ class CriticalController extends Controller
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->select('*', 'purchage_orders.*','vendors.name as vendorName', 'departments.name as deptName', 'buyers.name as buyerName')
+            ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName', 'departments.name as deptName', 'buyers.name as buyerName')
             ->first();
         return view('pages.critical.edit', compact('criticalPath'));
         //
@@ -95,12 +95,13 @@ class CriticalController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $criticalPath = CriticalPath::where('po_id', $id)->first();
-
+        $criticalPath = CriticalPath::where('po_id', $id)->first();
+        $po_find = PurchageOrder::find($id);
         if (isset($criticalPath)) {
+
             // Check if the fields are set in the request
             $updateData = [];
-        
+            $data = [];
             if (isset($request->fabric_ref)) {
                 $updateData['fabric_ref'] = $request->fabric_ref;
             }
@@ -123,11 +124,33 @@ class CriticalController extends Controller
             if (isset($request->colour)) {
                 $updateData['colour'] = $request->colour;
             }
+            if ($request->hasFile('image')) {
+                $destinationPath = 'public/artworks';
+    
+                $mainName = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
+    
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('image')->getClientOriginalExtension();
+    
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+    
+                // Move the logo file to the specified destination path
+                $logoPath = $request->file('image')->storeAs($destinationPath, $newFileName);
+    
+                // Set the logo path to the Buyer model attribute
+                $updateData['image'] = 'storage/artworks/' . $newFileName;
+            }
+
             // Add more conditions for other fields as needed
-        
+
             // Update the model with the data
             $criticalPath->update($updateData);
 
+            if (isset($request->care_lavel_date)) {
+                $data['care_lavel_date'] = $request->care_lavel_date;
+            }
+            $po_find->update($data);
             return redirect()->back()->with('success', 'Data saved successfully!');
         }
     }
@@ -152,6 +175,6 @@ class CriticalController extends Controller
         // Perform some logic with $selectedDate
 
         // Return a response (e.g., JSON)
-        return response()->json(['result' => 'success','id'=>$id ,'message' => 'Date processed successfully']);
+        return response()->json(['result' => 'success', 'id' => $id, 'message' => 'Date processed successfully']);
     }
 }

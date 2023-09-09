@@ -20,7 +20,10 @@
 </style>
 <div class="container">
     @if (session('success'))
-    <div class="alert alert-success">
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
         {{ session('success') }}
     </div>
     @endif
@@ -139,7 +142,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="{{$criticalPath->colour}}" name="colour" id="colour" placeholder="Colour" class="form-control" />
+                            <input type="text" value="{{$criticalPath->colourName}}" name="colour" id="colour" placeholder="Colour" class="form-control" />
                             <label for="colour">Colour</label>
                         </div>
                     </div>
@@ -147,7 +150,7 @@
                 <div id="flush-collapseOne" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="{{$criticalPath->care_lavel_date}}" name="careLabelDate" id="careLabelDate" placeholder="Care Label Date" class="form-control" />
+                            <input type="date" value="{{$criticalPath->care_lavel_date}}" name="care_lavel_date" id="careLabelDate" placeholder="Care Label Date" class="form-control" />
                             <label for="careLabelDate">Care Label Date</label>
                         </div>
                     </div>
