@@ -180,14 +180,14 @@
             </ul>
         </li>
     </ul>
-    {{-- <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
         data-accordion="false">
         <li class="nav-item has-treeview">
             <a href="#"
                 class="nav-link {{ Request::is('permission*') || Request::is('role*') || Request::is('user*') ? 'active' : '' }}">
                 <i class="fas fa-circle"></i>
                 <p>
-                    Critical  Management
+                    Critical Management
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
@@ -202,7 +202,7 @@
                 </li>
             </ul>
         </li>
-    </ul> --}}
+    </ul>
     {{--    @can('card.main') --}}
 
     {{--    @endcan --}}
