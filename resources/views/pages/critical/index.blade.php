@@ -21,13 +21,6 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <div class="card-header" style="margin-top: 20px;">
-                    <h3 class="card-title">critical List</h3>
-                    <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#create-buyer">
-                        <a href="{{ route('add-critical-path') }}" class="nav-link">ADD</a>
-                    </p>
-                </div>
-
                 <div style="margin-top: 20px;" class="table-container">
                     <table id="table_id" class="row-border cell-border display">
                         <thead>
@@ -187,19 +180,22 @@
                             @foreach($criticalPath as $data)
                             <tr>
                                 <th>
-                                <a href="{{ route('critical.edit',$data->id) }}" type="button" class="btn btn-info btn-sm"> Edit</a>
+                                    <input type="hidden" name="po_id" value="{{$data->id}}">
+                                <a href="{{ route('critical.edit',$data->id) }}" > <i class="fas fa-edit"></i></a>
                                    
-                                    <a style="margin-left:2px;color:red;" href="#" type="button">
-                                        Delete
+                                    <a style="margin-left:2px;" href="#" >
+                                    <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </th>
-                                <th><a href="">{{$data->po_no}}</a></th>
+                                <th>{{$data->po_no}}</th>
                                 <th>{{$data->buyerName}}</th>
                                 <th>{{$data->deptName}}</th>
-                                <th>Season</th>
+                                <th>{{$data->season}}</th>
                                 <th>ratul</th>
-                                <th>{{$data->fabric_type}}</th>
-                                <th></th>
+                                <th>
+                                {{$data->fabric_type == 1 ? 'Local Fabric' : ($data->fabric_type == 2 ? 'Special Yarn/ AOP Fabric' : 'Imported Fabric')}}
+                                </th>
+                                <th>{{$data->block_repeat_initial == 1 ? 'Initial':($data->block_repeat_initial == 2 ?'Repeat':'')}}</th>
                                 <th>{{$data->vendorName}}</th>
                                 <th></th>
                                 <th>{{$data->plm}}</th>
@@ -207,17 +203,17 @@
                                 <th></th>
                                 <th>{{$data->style_note}}</th>
                                 <th></th>
+                                <th>{{$data->style_description}}</th>
                                 <th></th>
                                 <th></th>
-                                <th> </th>
-                                <th></th>
+                                <th>{{$data->fabric_ref}}</th>
                                 <th>{{$data->fabric_content}} </th>
+                                <th>{{$data->fabric_weight}}</th>
+                                <th>{{$data->fabric_mill}}</th>
+                                <th>{{$data->lead_times}}</th>
+                                <th>{{$data->treated_as_priority_order == 1 ? 'Regular Lead Item':($data->treated_as_priority_order == 2 ?'Short Term Item':'')}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th><input id="official_po_sent_actual_date" type="date" value="{{$data->official_po_sent_actual_date}}" name="official_po_sent_actual_date" class="col-md-12"></th>
                                 <th> </th>
                                 <th></th>
                                 <th> </th>
@@ -249,7 +245,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th><input id="care_plan_date" type="date" / name="care_plan_date" class="col-md-12"></th>
+                                <th><input id="care_plan_date" type="date"  name="care_plan_date" class="col-md-12"></th>
                                 <th>{{$data->care_lavel_date}}</th>
                                 <th></th>
                                 <th></th>
@@ -472,6 +468,26 @@
         });
         $('#department').on('keyup', function() {
             table.search(this.value).draw();
+        });
+
+        $('#care_plan_date').change(function() {
+            var selectedDate = $(this).val();
+
+            $.ajax({
+                url: "{{route('process.date')}}",
+                type: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    care_plan_date: selectedDate
+                },
+                success: function(response) {
+                    console.log(response);
+                    // Handle the response here
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
         });
 
     });
