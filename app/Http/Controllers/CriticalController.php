@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Buyer;
+use App\Models\CriticalDetails;
 use App\Models\CriticalPath;
 use App\Models\Department;
 use App\Models\PurchageOrder;
 use App\Models\Vendor;
+use CreateCriticalDetailsTable;
 use Illuminate\Http\Request;
 
 class CriticalController extends Controller
@@ -83,7 +85,8 @@ class CriticalController extends Controller
             ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName', 'departments.name as deptName', 'buyers.name as buyerName')
             ->first();
             $po_find=PurchageOrder::find($id);
-        return view('pages.critical.edit', compact('criticalPath','po_find'));
+            $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
+        return view('pages.critical.edit', compact('criticalPath','po_find','criticlDetails'));
         //
     }
 
@@ -97,12 +100,14 @@ class CriticalController extends Controller
     public function update(Request $request, $id)
     {
         $criticalPath = CriticalPath::where('po_id', $id)->first();
+        $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
         $po_find = PurchageOrder::find($id);
         if (isset($criticalPath)) {
 
             // Check if the fields are set in the request
             $updateData = [];
             $data = [];
+            $details=[];
             if (isset($request->fabric_ref)) {
                 $updateData['fabric_ref'] = $request->fabric_ref;
             }
@@ -206,6 +211,12 @@ class CriticalController extends Controller
                 $data['care_lavel_date'] = $request->care_lavel_date;
             }
             $po_find->update($data);
+
+            if (isset($request->cutting_date_actual)) {
+                $details['cutting_date_actual'] = $request->cutting_date_actual;
+            }
+
+            $criticlDetails->update($details);
             return redirect()->back()->with('success', 'Data saved successfully!');
         }
     }
