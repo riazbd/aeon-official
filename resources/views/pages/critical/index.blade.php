@@ -230,20 +230,21 @@
                                 <th></th>
                                 <th>{{$data->bulk_yarn_fabric_actual_date}}</th>
                                 <th></th>
+                                <th>{{$data->development_photo_sample_sent_actual_date}}</th>
+                                <th>{{$data->development_photo_sample_dispatch_details}}</th>
                                 <th></th>
                                 <th></th>
+                                <th>{{$data->fit_approval_actual}}</th>
+                                <th>{{$data->fit_dispatch}}</th>
                                 <th></th>
                                 <th></th>
+                                <th>{{$data->size_set_actual}}</th>
+                                <th>{{$data->size_set_dispatch}}</th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->pp_actual}}</th>
+                                <th>{{$data->pp_dispatch}}</th>
+                                
                                 <th></th>
                                 <th><input id="care_plan_date" type="date"  name="care_plan_date" class="col-md-12"></th>
                                 <th>{{$data->care_lavel_date}}</th>

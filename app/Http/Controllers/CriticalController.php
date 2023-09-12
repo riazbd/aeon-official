@@ -164,6 +164,31 @@ class CriticalController extends Controller
             if (isset($request->bulk_yarn_fabric_actual_date)) {
                 $updateData['bulk_yarn_fabric_actual_date'] = $request->bulk_yarn_fabric_actual_date;
             }
+            /**sample approval */
+            if (isset($request->development_photo_sample_sent_actual_date)) {
+                $updateData['development_photo_sample_sent_actual_date'] = $request->development_photo_sample_sent_actual_date;
+            }
+            if (isset($request->development_photo_sample_dispatch_details)) {
+                $updateData['development_photo_sample_dispatch_details'] = $request->development_photo_sample_dispatch_details;
+            }
+            if (isset($request->fit_approval_actual)) {
+                $updateData['fit_approval_actual'] = $request->fit_approval_actual;
+            }
+            if (isset($request->fit_dispatch)) {
+                $updateData['fit_dispatch'] = $request->fit_dispatch;
+            }
+            if (isset($request->size_set_actual)) {
+                $updateData['size_set_actual'] = $request->size_set_actual;
+            }
+            if (isset($request->size_set_dispatch)) {
+                $updateData['size_set_dispatch'] = $request->size_set_dispatch;
+            }
+            if (isset($request->pp_actual)) {
+                $updateData['pp_actual'] = $request->pp_actual;
+            }
+            if (isset($request->pp_dispatch)) {
+                $updateData['pp_dispatch'] = $request->pp_dispatch;
+            }
 
             // Add more conditions for other fields as needed
 
