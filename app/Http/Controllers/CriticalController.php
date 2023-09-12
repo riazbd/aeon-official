@@ -134,6 +134,36 @@ class CriticalController extends Controller
             if (isset($request->official_po_sent_actual_date)) {
                 $updateData['official_po_sent_actual_date'] = $request->official_po_sent_actual_date;
             }
+            if (isset($request->colourArtworkActual)) {
+                $updateData['colour_std_print_artwork_sent_to_supplier_actual_date'] = $request->colourArtworkActual;
+            }
+            if (isset($request->lab_dip_approval_actual_date)) {
+                $updateData['lab_dip_approval_actual_date'] = $request->lab_dip_approval_actual_date;
+            }
+            if (isset($request->lab_dip_dispatch_details)) {
+                $updateData['lab_dip_dispatch_details'] = $request->lab_dip_dispatch_details;
+            }
+            if (isset($request->embellishment_s_o_approval_actual_date)) {
+                $updateData['embellishment_s_o_approval_actual_date'] = $request->embellishment_s_o_approval_actual_date;
+            }
+            if (isset($request->embellishment_s_o_dispatch_details)) {
+                $updateData['embellishment_s_o_dispatch_details'] = $request->embellishment_s_o_dispatch_details;
+            }
+            if (isset($request->fabric_ordered_actual_date)) {
+                $updateData['fabric_ordered_actual_date'] = $request->fabric_ordered_actual_date;
+            }
+            if (isset($request->bulk_fabric_knit_down_approval_actual_date)) {
+                $updateData['bulk_fabric_knit_down_approval_actual_date'] = $request->bulk_fabric_knit_down_approval_actual_date;
+            }
+            if (isset($request->bulk_fabric_knit_down_approval_actual_date)) {
+                $updateData['bulk_fabric_knit_down_approval_actual_date'] = $request->bulk_fabric_knit_down_approval_actual_date;
+            }
+            if (isset($request->bulk_fabric_knit_down_dispatch_details)) {
+                $updateData['bulk_fabric_knit_down_dispatch_details'] = $request->bulk_fabric_knit_down_dispatch_details;
+            }
+            if (isset($request->bulk_yarn_fabric_actual_date)) {
+                $updateData['bulk_yarn_fabric_actual_date'] = $request->bulk_yarn_fabric_actual_date;
+            }
 
             // Add more conditions for other fields as needed
 

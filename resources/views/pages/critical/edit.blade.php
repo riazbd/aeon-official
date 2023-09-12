@@ -245,25 +245,25 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="colourArtworkPlan" id="colourArtworkPlan" placeholder="Colour std/print artwork sent to supplier (plan)" class="form-control" />
+                            <input readonly type="text" value="colourArtworkPlan" name="colourArtworkPlan" id="colourArtworkPlan" placeholder="Colour std/print artwork sent to supplier (plan)" class="form-control" />
                             <label for="colourArtworkPlan">Colour std sent supplier (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="colourArtworkActual" id="colourArtworkActual" placeholder="Colour std/print artwork sent to supplier (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date}}" name="colourArtworkActual" id="colourArtworkActual" placeholder="Colour std/print artwork sent to supplier (Actual)" class="form-control" />
                             <label for="colourArtworkActual">Colour std sent supplier (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="labDipApprovalPlan" id="labDipApprovalPlan" placeholder="Lab dip Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->lab_dip_approval_plan_date}}" name="lab_dip_approval_plan_date" id="labDipApprovalPlan" placeholder="Lab dip Approval (Plan)" class="form-control" />
                             <label for="labDipApprovalPlan">Lab dip Approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="labDipApprovalActual" id="labDipApprovalActual" placeholder="Lab dip Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->lab_dip_approval_actual_date}}" name="lab_dip_approval_actual_date" id="labDipApprovalActual" placeholder="Lab dip Approval (Actual)" class="form-control" />
                             <label for="labDipApprovalActual">Lab dip Approval (Actual)</label>
                         </div>
                     </div>
@@ -272,7 +272,7 @@
                 <div id="flush-collapseThree" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="labDipDispatch" id="labDipDispatch" placeholder="Lab Dip Dispatch Details" class="form-control" />
+                            <input type="text" value="{{$criticalPath->lab_dip_dispatch_details}}" name="lab_dip_dispatch_details" id="labDipDispatch" placeholder="Lab Dip Dispatch Details" class="form-control" />
                             <label for="labDipDispatch">Lab Dip Dispatch Details</label>
                         </div>
                     </div>
@@ -282,7 +282,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="embellishmentApprovalPlan" id="embellishmentApprovalPlan" placeholder="Embellishment - S/O Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->embellishment_s_o_approval_plan_date}}" name="embellishment_s_o_approval_plan_date" id="embellishmentApprovalPlan" placeholder="Embellishment - S/O Approval (Plan)" class="form-control" />
                             <label for="embellishmentApprovalPlan">Embellishment - S/O Approval (Plan)</label>
                         </div>
                     </div>
@@ -291,13 +291,13 @@
 
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="embellishmentApprovalActual" id="embellishmentApprovalActual" placeholder="Embellishment - S/O Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->embellishment_s_o_approval_actual_date}}" name="embellishment_s_o_approval_actual_date" id="embellishmentApprovalActual" placeholder="Embellishment - S/O Approval (Actual)" class="form-control" />
                             <label for="embellishmentApprovalActual">Embellishment - S/O Approval (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="embellishmentDispatch" id="embellishmentDispatch" placeholder="Embellishment - S/O Dispatch Details" class="form-control" />
+                            <input type="text" value="{{$criticalPath->embellishment_s_o_dispatch_details}}" name="embellishment_s_o_dispatch_details" id="embellishmentDispatch" placeholder="Embellishment - S/O Dispatch Details" class="form-control" />
                             <label for="embellishmentDispatch">Embellishment - S/O Dispatch Details</label>
                         </div>
                     </div>
@@ -323,19 +323,19 @@
 
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" id="fabricOrderedPlan" placeholder="Fabric Ordered (plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->fabric_ordered_plan_date}}" name="fabric_ordered_plan_date" id="fabricOrderedPlan" placeholder="Fabric Ordered (plan)" class="form-control" />
                             <label for="fabricOrderedPlan">Fabric Ordered (plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" id="fabricOrderedActual" placeholder="Fabric Ordered (actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->fabric_ordered_actual_date}}" name="fabric_ordered_actual_date" id="fabricOrderedActual" placeholder="Fabric Ordered (actual)" class="form-control" />
                             <label for="fabricOrderedActual">Fabric Ordered (actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" id="bulkFabricApprovalPlan" placeholder="Bulk Fabric/ Knit Down Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->bulk_fabric_knit_down_approval_plan_date}}" name="bulk_fabric_knit_down_approval_plan_date" id="bulkFabricApprovalPlan" placeholder="Bulk Fabric/ Knit Down Approval (Plan)" class="form-control" />
                             <label for="bulkFabricApprovalPlan">Bulk Fabric/ Knit Down Approval (Plan)</label>
                         </div>
                     </div>
@@ -346,13 +346,13 @@
                 <div id="flush-collapseFour" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" id="bulkFabricApprovalActual" placeholder="Bulk Fabric/ Knit Down Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->bulk_fabric_knit_down_approval_actual_date}}" name="bulk_fabric_knit_down_approval_actual_date" id="bulkFabricApprovalActual" placeholder="Bulk Fabric/ Knit Down Approval (Actual)" class="form-control" />
                             <label for="bulkFabricApprovalActual">Bulk Fabric/ Knit Down Approval (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" id="bulkFabricDispatch" placeholder="Bulk Fabric/ Knit Down Dispatch Details" class="form-control" />
+                            <input type="text" value="{{$criticalPath->bulk_fabric_knit_down_dispatch_details}}" name="bulk_fabric_knit_down_dispatch_details" id="bulkFabricDispatch" placeholder="Bulk Fabric/ Knit Down Dispatch Details" class="form-control" />
                             <label for="bulkFabricDispatch">Bulk Fabric/ Knit Down Dispatch Details</label>
                         </div>
                     </div>
@@ -364,13 +364,13 @@
                 <div id="flush-collapseFour" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" id="bulkYarnInhousePlan" placeholder="Bulk Yarn / Fabric Inhouse (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->bulk_yarn_fabric_plan_date}}" name="bulk_yarn_fabric_plan_date" id="bulkYarnInhousePlan" placeholder="Bulk Yarn / Fabric Inhouse (Plan)" class="form-control" />
                             <label for="bulkYarnInhousePlan">Bulk Yarn / Fabric Inhouse (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" id="bulkYarnInhouseActual" placeholder="Bulk Yarn / Fabric Inhouse (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->bulk_yarn_fabric_actual_date}}" name="bulk_yarn_fabric_actual_date" id="bulkYarnInhouseActual" placeholder="Bulk Yarn / Fabric Inhouse (Actual)" class="form-control" />
                             <label for="bulkYarnInhouseActual">Bulk Yarn / Fabric Inhouse (Actual)</label>
                         </div>
                     </div>

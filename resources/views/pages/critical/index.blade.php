@@ -88,8 +88,8 @@
                                 <th>prio order</th>
                                 <th>Off PO <br />sent (Plan)</th>
                                 <th>Off PO <br />sent (Actual)</th>
-                                <th>Col std sent <br /> to sup (plan)</th>
-                                <th>Lab dip /<br />App (Plan)</th>
+                                <th>Col std sent <br /> to sup (act)</th>
+                                <th>Lab dip /<br />App (act)</th>
                                 <th>Lab dip /<br />Dis Image</th>
                                 <th>Embe S/O /<br /> App (Plan)</th>
                                 <th>Embe S/O /<br /> App (Actual)</th>
@@ -214,21 +214,21 @@
                                 <th>{{$data->treated_as_priority_order == 1 ? 'Regular Lead Item':($data->treated_as_priority_order == 2 ?'Short Term Item':'')}}</th>
                                 <th></th>
                                 <th><input id="official_po_sent_actual_date" type="date" value="{{$data->official_po_sent_actual_date}}" name="official_po_sent_actual_date" class="col-md-12"></th>
-                                <th> </th>
+                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}} </th>
+                                <th>{{$data->lab_dip_approval_actual_date}}</th>
                                 <th></th>
-                                <th> </th>
+                                <th>{{$data->embellishment_s_o_approval_plan_date}}</th>
+                                <th>{{$data->embellishment_s_o_approval_actual_date}}</th>
+                                <th>{{$data->embellishment_s_o_dispatch_details}}</th>
                                 <th></th>
+                                <th>{{$data->fabric_ordered_actual_date}}</th>
+                                <th>{{$data->fabric_ordered_plan_date}}</th>
+                                <th>{{$data->bulk_fabric_knit_down_approval_plan_date}}</th>
+                                <th>{{$data->bulk_fabric_knit_down_approval_actual_date}}</th>
+                                <th>{{$data->bulk_fabric_knit_down_dispatch_details}}</th>
+                                <th>{{$data->bulk_yarn_fabric_plan_date}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->bulk_yarn_fabric_actual_date}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
