@@ -503,25 +503,25 @@
                 <div id="flush-collapseSix" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="care_app_plan" placeholder="Care Approval Plan" class="form-control" />
+                            <input readonly type="text" value="" name="care_app_plan" placeholder="Care Approval Plan" class="form-control" />
                             <label for="careApprovalPlan">Care Approval Plan</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="care_app_act" placeholder="Care Approval Actual" class="form-control" />
+                            <input type="date" value="{{$po_find->care_lavel_date}}" name="care_lavel_date" placeholder="Care Approval Actual" class="form-control" />
                             <label for="careApprovalActual">Care Approval Actual</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="mat_inhouse_plan" placeholder="Material Inhouse date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->material_inhouse_plan}}" name="material_inhouse_plan" placeholder="Material Inhouse date (Plan)" class="form-control" />
                             <label for="materialInhouseDatePlan">Material Inhouse date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="mat_inhouse_act" placeholder="Material Inhouse date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->material_inhouse_actual}}" name="material_inhouse_actual" placeholder="Material Inhouse date (Actual)" class="form-control" />
                             <label for="materialInhouseDateActual">Material Inhouse date (Actual)</label>
                         </div>
                     </div>
@@ -529,13 +529,13 @@
                 <div id="flush-collapseSix" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="pp_meet_plan" placeholder="PP Meeting Date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->pp_meeting_plan}}" name="pp_meeting_plan" placeholder="PP Meeting Date (Plan)" class="form-control" />
                             <label for="ppMeetingDatePlan">PP Meeting Date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="pp_meet_act" placeholder="PP Meeting Date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->pp_meeting_actual}}" name="pp_meeting_actual" placeholder="PP Meeting Date (Actual)" class="form-control" />
                             <label for="ppMeetingDateActual">PP Meeting Date (Actual)</label>
                         </div>
                     </div>

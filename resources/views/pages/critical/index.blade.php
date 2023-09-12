@@ -122,6 +122,7 @@
                                 <th>Care App<br />(Plan)</th>
                                 <th>Care App<br />(actual)</th>
                                 <th>Material<br />(Plan)</th>
+                                <th>Material<br />(actual)</th>
                                 <th>PP Meet<br />(Plan)</th>
                                 <th>PP Meet<br />(actual)</th>
                                 <th>Create PP<br /> Meet Schedule</th>
@@ -246,11 +247,12 @@
                                 <th>{{$data->pp_dispatch}}</th>
                                 
                                 <th></th>
-                                <th><input id="care_plan_date" type="date"  name="care_plan_date" class="col-md-12"></th>
+                                <th></th>
                                 <th>{{$data->care_lavel_date}}</th>
                                 <th></th>
+                                <th>{{$data->material_inhouse_actual}}</th>
                                 <th></th>
-                                <th></th>
+                                <th>{{$data->pp_meeting_actual}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -337,6 +339,7 @@
                                     <th> </th>
                                     <th></th>
                                     <th> </th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>

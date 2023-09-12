@@ -82,7 +82,8 @@ class CriticalController extends Controller
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
             ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName', 'departments.name as deptName', 'buyers.name as buyerName')
             ->first();
-        return view('pages.critical.edit', compact('criticalPath'));
+            $po_find=PurchageOrder::find($id);
+        return view('pages.critical.edit', compact('criticalPath','po_find'));
         //
     }
 
@@ -188,6 +189,12 @@ class CriticalController extends Controller
             }
             if (isset($request->pp_dispatch)) {
                 $updateData['pp_dispatch'] = $request->pp_dispatch;
+            }
+            if (isset($request->material_inhouse_actual)) {
+                $updateData['material_inhouse_actual'] = $request->material_inhouse_actual;
+            }
+            if (isset($request->pp_meeting_actual)) {
+                $updateData['pp_meeting_actual'] = $request->pp_meeting_actual;
             }
 
             // Add more conditions for other fields as needed
