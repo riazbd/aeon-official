@@ -245,7 +245,7 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="colourArtworkPlan" id="colourArtworkPlan" placeholder="Colour std/print artwork sent to supplier (plan)" class="form-control" />
+                            <input readonly type="text" value="" name="colourArtworkPlan" id="colourArtworkPlan" placeholder="Colour std/print artwork sent to supplier (plan)" class="form-control" />
                             <label for="colourArtworkPlan">Colour std sent supplier (Plan)</label>
                         </div>
                     </div>

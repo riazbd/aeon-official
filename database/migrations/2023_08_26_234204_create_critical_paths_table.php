@@ -42,6 +42,7 @@ class CreateCriticalPathsTable extends Migration
             $table->string('official_po_sent_plan_date')->nullable();
             $table->string('official_po_sent_actual_date')->nullable();
             $table->string('colour_std_print_artwork_sent_to_supplier_plan_date')->nullable();
+            $table->string('colour_std_print_artwork_sent_to_supplier_actual_date')->nullable();
             $table->string('lab_dip_approval_plan_date')->nullable();
             $table->string('lab_dip_approval_actual_date')->nullable();
             $table->string('lab_dip_dispatch_details')->nullable();
