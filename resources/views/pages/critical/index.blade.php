@@ -4,10 +4,10 @@
     table {
         border-collapse: collapse;
         width: 100%;
+        height: 100%;
         border: 1px solid #000;
         /* Add a 1px black border to the table */
     }
-
     th,
     td {
         border: 1px solid #000;
@@ -75,7 +75,7 @@
 
                                 <th>Style </th>
                                 <th>Order </th>
-                                <th>Sup/pro<br /> cost</th>
+                                <th>Sup/pro cost</th>
                                 <th>Total Value</th>
                                 <th>Style Defs</th>
                                 <th>Colour</th>

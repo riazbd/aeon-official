@@ -211,6 +211,9 @@ class CriticalController extends Controller
             if (isset($request->care_lavel_date)) {
                 $data['care_lavel_date'] = $request->care_lavel_date;
             }
+            if (isset($request->ex_factory_date)) {
+                $data['ex_factory_date'] = $request->ex_factory_date;
+            }
             $po_find->update($data);
 
             if (isset($request->cutting_date_actual)) {
@@ -242,6 +245,18 @@ class CriticalController extends Controller
             }
             if (isset($request->final_aql_date_actual)) {
                 $details['final_aql_date_actual'] = $request->final_aql_date_actual;
+            }
+            if (isset($request->production_sample_approval_actual)) {
+                $details['production_sample_approval_actual'] = $request->production_sample_approval_actual;
+            }
+            if (isset($request->production_sample_dispatch)) {
+                $details['production_sample_dispatch'] = $request->production_sample_dispatch;
+            }
+            if (isset($request->shipment_booking_with_acs_actual)) {
+                $details['shipment_booking_with_acs_actual'] = $request->shipment_booking_with_acs_actual;
+            }
+            if (isset($request->sa_approval_actual)) {
+                $details['sa_approval_actual'] = $request->sa_approval_actual;
             }
 
             $criticlDetails->update($details);

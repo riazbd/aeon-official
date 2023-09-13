@@ -748,19 +748,19 @@
                 <div id="flush-collapseNine" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="pp_sam_app" placeholder="Production Sample Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="pp_sam_app" placeholder="Production Sample Approval (Plan)" class="form-control" />
                             <label for="productionSampleApprovalPlan">Production Sample Approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="pp_sam_paln" placeholder="Production Sample Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->production_sample_approval_actual}}" name="production_sample_approval_actual" placeholder="Production Sample Approval (Actual)" class="form-control" />
                             <label for="productionSampleApprovalActual">Production Sample Approval (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="pp_sam_dis" placeholder="Production Sample Dispatch Details" class="form-control" />
+                            <input type="text" value="{{$criticalPath->production_sample_dispatch}}" name="production_sample_dispatch" placeholder="Production Sample Dispatch Details" class="form-control" />
                             <label for="productionSampleDispatchDetails">Production Sample Dispatch Details</label>
                         </div>
                     </div>
@@ -772,13 +772,13 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="shi_acs_plan" placeholder="Shipment Booking with ACS (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="shi_acs_plan" placeholder="Shipment Booking with ACS (Plan)" class="form-control" />
                             <label for="shipmentBookingACSPlan">Shipment Booking with ACS (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="shi_acs_act" placeholder="Shipment Booking with ACS (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->shipment_booking_with_acs_actual}}" name="shipment_booking_with_acs_actual" placeholder="Shipment Booking with ACS (Actual)" class="form-control" />
                             <label for="shipmentBookingACSActual">Shipment Booking with ACS (Actual)</label>
                         </div>
                     </div>
@@ -787,13 +787,13 @@
                 <div id="flush-collapseNine" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="sa_app_plan" placeholder="SA approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="sa_app_plan" placeholder="SA approval (Plan)" class="form-control" />
                             <label for="saApprovalPlan">SA approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="sa_app_act" placeholder="SA approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->sa_approval_actual}}" name="sa_approval_actual" placeholder="SA approval (Actual)" class="form-control" />
                             <label for="saApprovalActual">SA approval (Actual)</label>
                         </div>
                     </div>
@@ -814,7 +814,7 @@
                 <div id="flush-collapseTen" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="ex_fac_date_po" placeholder="Ex-factory Date PO" class="form-control" />
+                            <input  type="date" value="{{$criticalPath->ex_factory_date}}" name="ex_factory_date" placeholder="Ex-factory Date PO" class="form-control" />
                             <label for="exFactoryDatePO">Ex-factory Date PO</label>
                         </div>
                     </div>
