@@ -228,6 +228,21 @@ class CriticalController extends Controller
             if (isset($request->finishing_complete_actual)) {
                 $details['finishing_complete_actual'] = $request->finishing_complete_actual;
             }
+            if (isset($request->sewing_inline_inspection_date_actual)) {
+                $details['sewing_inline_inspection_date_actual'] = $request->sewing_inline_inspection_date_actual;
+            }
+            if (isset($request->finishing_inline_inspection_report)) {
+                $details['finishing_inline_inspection_report'] = $request->finishing_inline_inspection_report;
+            }
+            if (isset($request->pre_final_date_actual)) {
+                $details['pre_final_date_actual'] = $request->pre_final_date_actual;
+            }
+            if (isset($request->create_aql_schedule)) {
+                $details['create_aql_schedule'] = $request->create_aql_schedule;
+            }
+            if (isset($request->final_aql_date_actual)) {
+                $details['final_aql_date_actual'] = $request->final_aql_date_actual;
+            }
 
             $criticlDetails->update($details);
             return redirect()->back()->with('success', 'Data saved successfully!');

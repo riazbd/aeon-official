@@ -213,7 +213,7 @@
                                 <th>{{$data->lead_times}}</th>
                                 <th>{{$data->treated_as_priority_order == 1 ? 'Regular Lead Item':($data->treated_as_priority_order == 2 ?'Short Term Item':'')}}</th>
                                 <th></th>
-                                <th><input id="official_po_sent_actual_date" type="date" value="{{$data->official_po_sent_actual_date}}" name="official_po_sent_actual_date" class="col-md-12"></th>
+                                <th> {{$data->official_po_sent_actual_date}}</th>
                                 <th> </th>
                                 <th></th>
                                 <th> </th>
@@ -261,9 +261,9 @@
                                 <th></th>
                                 <th>{{$data->washing_complete_actual}}</th>
                                 <th></th>
+                                <th>{{$data->washing_complete_actual}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->finishing_complete_actual}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>

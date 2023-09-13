@@ -645,13 +645,13 @@
                 <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="sew_ins_date_plan" placeholder="Sewing Inspection date (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="sew_ins_date_plan" placeholder="Sewing Inspection date (Plan)" class="form-control" />
                             <label for="sewingInspectionDatePlan">Sewing Inspection date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="sew_inline_date_act" placeholder="Sewing Inline Inspection date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->sewing_inline_inspection_date_actual}}" name="sewing_inline_inspection_date_actual" placeholder="Sewing Inline Inspection date (Actual)" class="form-control" />
                             <label for="sewingInlineInspectionDateActual">Sewing Inline Inspection date (Actual)</label>
                         </div>
                     </div>
@@ -669,13 +669,13 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="fini_in_ins_date_plan" placeholder="Finishing Inline Inspection date (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="fini_in_ins_date_plan" placeholder="Finishing Inline Inspection date (Plan)" class="form-control" />
                             <label for="finishingInlineInspectionDatePlan">Finishing Inline Inspection date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="fini_in_ins_date_act" placeholder="Finishing Inline Inspection date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->finishing_inline_inspection_report}}" name="finishing_inline_inspection_report" placeholder="Finishing Inline Inspection date (Actual)" class="form-control" />
                             <label for="finishingInlineInspectionDateActual">Finishing Inline Inspection date (Actual)</label>
                         </div>
                     </div>
@@ -687,20 +687,20 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="pre_final_date_plan" placeholder="Pre Final Date (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="pre_final_date_plan" placeholder="Pre Final Date (Plan)" class="form-control" />
                             <label for="preFinalDatePlan">Pre Final Date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="pre_final_date_act" placeholder="Pre Final Date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->pre_final_date_actual}}" name="pre_final_date_actual" placeholder="Pre Final Date (Actual)" class="form-control" />
                             <label for="preFinalDateActual">Pre Final Date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="create_aql_sch" placeholder="Create AQL Schedule" class="form-control" />
-                            <label for="createAQLSchedule">Create AQL Schedule</label>
+                            <input type="date" value="{{$criticalPath->create_aql_schedule}}" name="create_aql_schedule" placeholder="Create AQL Schedule" class="form-control" />
+                            <label for="createAQLSchedule">Create AQL Schedule(Actual)</label>
                         </div>
                     </div>
                 </div>
@@ -711,19 +711,19 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="final_aql_date_plan" placeholder="Final AQL date (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="final_aql_date_plan" placeholder="Final AQL date (Plan)" class="form-control" />
                             <label for="finalAQLDatePlan">Final AQL date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="final_aql_date_act" placeholder="Final AQL date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->final_aql_date_actual}}" name="final_aql_date_actual" placeholder="Final AQL date (Actual)" class="form-control" />
                             <label for="finalAQLDateActual">Final AQL date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="create_aql_sch" placeholder="Create AQL Schedule" class="form-control" />
+                            <input readonly type="text" value="" name="create_aql_sch" placeholder="Create AQL Schedule" class="form-control" />
                             <label for="createAQLSchedule">Create AQL Schedule</label>
                         </div>
                     </div>
