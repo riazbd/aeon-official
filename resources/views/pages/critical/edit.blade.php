@@ -880,7 +880,7 @@
                 <div id="flush-collapse11" class="rowItem rowBottom row accordion-collapse collapse toplabel" aria-labelledby="flush-heading11" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="" placeholder="Late Delivery Discounts - CRP" class="form-control" />
+                            <input type="text" value="{{$criticalPath->late_delivery_discounts_crp}}" name="late_delivery_discounts_crp" placeholder="Late Delivery Discounts - CRP" class="form-control" />
                             <label for="lateDeliveryDiscounts">Late Delivery Discounts - CRP</label>
                         </div>
                     </div>
@@ -892,13 +892,13 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="" placeholder="Invoice Date" class="form-control" />
+                            <input type="date" value="{{$criticalPath->invoice_create_date}}" name="invoice_create_date" placeholder="Invoice Date" class="form-control" />
                             <label for="invoiceDate">Invoice Date</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="" placeholder="Payment Receive Date" class="form-control" />
+                            <input type="date" value="{{$criticalPath->payment_receive_date}}" name="payment_receive_date" placeholder="Payment Receive Date" class="form-control" />
                             <label for="paymentReceiveDate">Payment Receive Date</label>
                         </div>
                     </div>
@@ -918,19 +918,19 @@
                 <div id="flush-collapse12" class=" rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" placeholder="Reason for major change likely to affect shipment" class="form-control" />
+                            <input type="text" value="{{$criticalPath->reason_for_change_affect_shipment}}" name="reason_for_change_affect_shipment" placeholder="Reason for major change likely to affect shipment" class="form-control" />
                             <label for="majorChangeReason">Reason for major change </label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" placeholder="AEON Comments - Date 12 Dec 22" class="form-control" />
+                            <input type="date" value="{{$criticalPath->aeon_comments_date}}" name="aeon_comments_date" placeholder="AEON Comments - Date 12 Dec 22" class="form-control" />
                             <label for="aeonComments">AEON Comments - Date 12 Dec 22</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="" placeholder="Vendor Comments - Date 14 Dec 22" class="form-control" />
+                            <input type="date" value="{{$criticalPath->vendor_comments_date}}" name="vendor_comments_date" placeholder="Vendor Comments - Date 14 Dec 22" class="form-control" />
                             <label for="vendorComments">Vendor Comments - Date 14 Dec 22</label>
                         </div>
                     </div>
@@ -939,13 +939,13 @@
                 <div id="flush-collapse12" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-heading12" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="" placeholder="SA ETA +5 Days?" class="form-control" />
+                            <input type="text" value="{{$criticalPath->sa_eta_5_days}}" name="sa_eta_5_days" placeholder="SA ETA +5 Days?" class="form-control" />
                             <label for="saEtaPlusFiveDays">SA ETA +5 Days?</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="" placeholder="NOTE" class="form-control" />
+                            <input type="text" value="{{$criticalPath->note}}" name="note" placeholder="NOTE" class="form-control" />
                             <label for="saEtaPlusFiveDays">NOTE</label>
                         </div>
                     </div>

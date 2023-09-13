@@ -258,6 +258,30 @@ class CriticalController extends Controller
             if (isset($request->sa_approval_actual)) {
                 $details['sa_approval_actual'] = $request->sa_approval_actual;
             }
+            if (isset($request->late_delivery_discounts_crp)) {
+                $details['late_delivery_discounts_crp'] = $request->late_delivery_discounts_crp;
+            }
+            if (isset($request->invoice_create_date)) {
+                $details['invoice_create_date'] = $request->invoice_create_date;
+            }
+            if (isset($request->payment_receive_date)) {
+                $details['payment_receive_date'] = $request->payment_receive_date;
+            }
+            if (isset($request->reason_for_change_affect_shipment)) {
+                $details['reason_for_change_affect_shipment'] = $request->reason_for_change_affect_shipment;
+            }
+            if (isset($request->aeon_comments_date)) {
+                $details['aeon_comments_date'] = $request->aeon_comments_date;
+            }
+            if (isset($request->vendor_comments_date)) {
+                $details['vendor_comments_date'] = $request->vendor_comments_date;
+            }
+            if (isset($request->sa_eta_5_days)) {
+                $details['sa_eta_5_days'] = $request->sa_eta_5_days;
+            }
+            if (isset($request->note)) {
+                $details['note'] = $request->note;
+            }
 
             $criticlDetails->update($details);
             return redirect()->back()->with('success', 'Data saved successfully!');
