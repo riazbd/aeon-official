@@ -579,13 +579,13 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="emb_plan" placeholder="Embellishment (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="emb_plan" placeholder="Embellishment (Plan)" class="form-control" />
                             <label for="embellishmentPlan">Embellishment (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="emb_act" placeholder="Embellishment (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->embellishment_actual}}" name="embellishment_actual" placeholder="Embellishment (Actual)" class="form-control" />
                             <label for="embellishmentActual">Embellishment (Actual)</label>
                         </div>
                     </div>
@@ -593,19 +593,19 @@
                 <div id="flush-collapseSeven" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="sew_start_plan" placeholder="Sewing Start date (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="sew_start_plan" placeholder="Sewing Start date (Plan)" class="form-control" />
                             <label for="sewingStartDatePlan">Sewing Start date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="sew_start_act" placeholder="Sewing Start date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->Sewing_actual}}" name="Sewing_actual" placeholder="Sewing Start date (Actual)" class="form-control" />
                             <label for="sewingStartDateActual">Sewing Start date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="wash_date_plan" placeholder="Washing complete date (Plan)" class="form-control" />
+                            <input  readonly type="text" value="" name="wash_date_plan" placeholder="Washing complete date (Plan)" class="form-control" />
                             <label for="washingCompleteDatePlan">Washing complete date (Plan)</label>
                         </div>
                     </div>
@@ -613,19 +613,19 @@
                 <div id="flush-collapseSeven" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="wash_date_act" placeholder="Washing complete date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->washing_complete_actual}}" name="washing_complete_actual" placeholder="Washing complete date (Actual)" class="form-control" />
                             <label for="washingCompleteDateActual">Washing complete date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="finish_com_date_plan" placeholder="Finishing complete date (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="finish_com_date_plan" placeholder="Finishing complete date (Plan)" class="form-control" />
                             <label for="finishingCompleteDatePlan">Finishing complete date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="finish_com_date_act" placeholder="Finishing complete date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->finishing_complete_actual}}" name="finishing_complete_actual" placeholder="Finishing complete date (Actual)" class="form-control" />
                             <label for="finishingCompleteDateActual">Finishing complete date (Actual)</label>
                         </div>
                     </div>

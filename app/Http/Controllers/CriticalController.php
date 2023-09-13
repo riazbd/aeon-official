@@ -31,7 +31,6 @@ class CriticalController extends Controller
             ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
             ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*')
             ->get();
-        //dd($criticalPath);
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
         //
     }
@@ -216,6 +215,18 @@ class CriticalController extends Controller
 
             if (isset($request->cutting_date_actual)) {
                 $details['cutting_date_actual'] = $request->cutting_date_actual;
+            }
+            if (isset($request->embellishment_actual)) {
+                $details['embellishment_actual'] = $request->embellishment_actual;
+            }
+            if (isset($request->Sewing_actual)) {
+                $details['Sewing_actual'] = $request->Sewing_actual;
+            }
+            if (isset($request->washing_complete_actual)) {
+                $details['washing_complete_actual'] = $request->washing_complete_actual;
+            }
+            if (isset($request->finishing_complete_actual)) {
+                $details['finishing_complete_actual'] = $request->finishing_complete_actual;
             }
 
             $criticlDetails->update($details);

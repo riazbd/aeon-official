@@ -181,7 +181,7 @@
                             <tr>
                                 <th>
                                     <input type="hidden" name="po_id" value="{{$data->id}}">
-                                <a href="{{ route('critical.edit',$data->id) }}" > <i class="fas fa-edit"></i></a>
+                                <a href="{{ route('critical.edit',$data->po_id) }}" > <i class="fas fa-edit"></i></a>
                                    
                                     <a style="margin-left:2px;" href="#" >
                                     <i class="fas fa-trash-alt"></i>
@@ -253,13 +253,13 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th>{{$data->cutting_date_actual}}</th>
                                 <th></th>
+                                <th>{{$data->embellishment_actual}}</th>
                                 <th></th>
+                                <th>{{$data->Sewing_actual}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->washing_complete_actual}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
