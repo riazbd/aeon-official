@@ -28,7 +28,8 @@ class CriticalController extends Controller
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName')
+            ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
+            ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*')
             ->get();
         //dd($criticalPath);
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
@@ -82,11 +83,12 @@ class CriticalController extends Controller
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+            ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
             ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName', 'departments.name as deptName', 'buyers.name as buyerName')
             ->first();
             $po_find=PurchageOrder::find($id);
-            $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
-        return view('pages.critical.edit', compact('criticalPath','po_find','criticlDetails'));
+           // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
+        return view('pages.critical.edit', compact('criticalPath','po_find'));
         //
     }
 

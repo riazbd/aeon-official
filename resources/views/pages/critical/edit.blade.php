@@ -573,7 +573,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticlDetails->cutting_date_actual}}" name="cutting_date_actual" placeholder="Cutting date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->cutting_date_actual}}" name="cutting_date_actual" placeholder="Cutting date (Actual)" class="form-control" />
                             <label for="cuttingDateActual">Cutting date (Actual)</label>
                         </div>
                     </div>
