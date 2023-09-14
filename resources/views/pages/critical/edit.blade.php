@@ -134,7 +134,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="totalValue" id="totalValue" placeholder="Total Value" class="form-control" />
+                            <input type="text" value="{{$criticalPath->total_value}}" name="total_value" id="totalValue" placeholder="Total Value" class="form-control" />
                             <label for="totalValue">Total Value</label>
                         </div>
                     </div>

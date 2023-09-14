@@ -202,9 +202,9 @@
                                 <th>{{$data->stlye_no}}</th>
                                 <th>{{$data->TotalItemsOrdered}}</th>
                                 <th>{{$data->style_note}}</th>
-                                <th></th>
+                                <th>{{$data->total_value}}</th>
                                 <th>{{$data->style_description}}</th>
-                                <th></th>
+                                <th>{{$data->colourName}}</th>
                                 <th></th>
                                 <th>{{$data->fabric_ref}}</th>
                                 <th>{{$data->fabric_content}} </th>

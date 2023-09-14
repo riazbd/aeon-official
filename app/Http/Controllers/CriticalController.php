@@ -211,6 +211,9 @@ class CriticalController extends Controller
             if (isset($request->manufacture_unit)) {
                 $updateData['manufacture_unit'] = $request->manufacture_unit;
             }
+            if (isset($request->total_value)) {
+                $updateData['total_value'] = $request->total_value;
+            }
 
             // Add more conditions for other fields as needed
 
