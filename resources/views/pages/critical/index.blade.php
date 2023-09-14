@@ -200,7 +200,7 @@
                                 <th></th>
                                 <th>{{$data->plm}}</th>
                                 <th>{{$data->stlye_no}}</th>
-                                <th></th>
+                                <th>{{$data->TotalItemsOrdered}}</th>
                                 <th>{{$data->style_note}}</th>
                                 <th></th>
                                 <th>{{$data->style_description}}</th>

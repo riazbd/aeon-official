@@ -119,7 +119,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="orderQuantity" id="orderQuantity" placeholder="Order Quantity" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->TotalItemsOrdered}}" name="orderQuantity" id="orderQuantity" placeholder="Order Quantity" class="form-control" />
                             <label for="orderQuantity">Order Quantity</label>
                         </div>
                     </div>
