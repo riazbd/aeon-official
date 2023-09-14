@@ -6,11 +6,12 @@ use App\Models\Buyer;
 use App\Models\CriticalDetails;
 use App\Models\CriticalPath;
 use App\Models\Department;
+use App\Models\Manufacturer;
 use App\Models\PurchageOrder;
 use App\Models\Vendor;
 use CreateCriticalDetailsTable;
 use Illuminate\Http\Request;
-
+use DB;
 class CriticalController extends Controller
 {
     /**
@@ -86,7 +87,10 @@ class CriticalController extends Controller
             ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName', 'departments.name as deptName', 'buyers.name as buyerName')
             ->first();
             $po_find=PurchageOrder::find($id);
+           //dd($criticalPath);
            // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
+        //    $totalItemsOrdered = DB::select("SELECT SUM(qty_ordered) AS TotalItemsOrdered FROM order_items WHERE po_id=?", [$criticalPath->po_id]);
+        //   array($totalItemsOrdered);
         return view('pages.critical.edit', compact('criticalPath','po_find'));
         //
     }
@@ -201,6 +205,9 @@ class CriticalController extends Controller
             }
             if (isset($request->pp_meeting_actual)) {
                 $updateData['pp_meeting_actual'] = $request->pp_meeting_actual;
+            }
+            if (isset($request->manufacture_unit)) {
+                $updateData['manufacture_unit'] = $request->manufacture_unit;
             }
 
             // Add more conditions for other fields as needed

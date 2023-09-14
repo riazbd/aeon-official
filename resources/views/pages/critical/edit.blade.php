@@ -88,8 +88,12 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="manufacture_unit" id="vendor" placeholder="Manufacturing Unit" class="form-control" />
-                            <label for="vendor">Manufacturing Unit</label>
+                        <select name="manufacture_unit" id="block" class="form-control">
+                                <option value="{{$criticalPath->manufacture_unit}}" selected disabled>{{$criticalPath->manufacture_unit == 1 ? 'KSS':($criticalPath->manufacture_unit == 2 ?'OTHER':'SELECT Manufacture Unit')}}</option>
+                                <option value="1">KSS</option>
+                                <option value="2">OTHER</option>
+                                <!-- Add more options as needed -->
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -204,7 +208,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <select name="treated_as_priority_order" id="block" class="form-control">
+                            <select name="treated_as_priority_order" id="block" class="form-control">
                                 <option value="{{$criticalPath->treated_as_priority_order}}" selected disabled>{{$criticalPath->treated_as_priority_order == 1 ? 'Regular Lead Item':($criticalPath->treated_as_priority_order == 2 ?'Short Term Item':'Treated Priority order')}}</option>
                                 <option value="1">Regular Lead Item</option>
                                 <option value="2">Short Term Item</option>
@@ -605,7 +609,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input  readonly type="text" value="" name="wash_date_plan" placeholder="Washing complete date (Plan)" class="form-control" />
+                            <input readonly type="text" value="" name="wash_date_plan" placeholder="Washing complete date (Plan)" class="form-control" />
                             <label for="washingCompleteDatePlan">Washing complete date (Plan)</label>
                         </div>
                     </div>
@@ -814,7 +818,7 @@
                 <div id="flush-collapseTen" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input  type="date" value="{{$criticalPath->ex_factory_date}}" name="ex_factory_date" placeholder="Ex-factory Date PO" class="form-control" />
+                            <input type="date" value="{{$criticalPath->ex_factory_date}}" name="ex_factory_date" placeholder="Ex-factory Date PO" class="form-control" />
                             <label for="exFactoryDatePO">Ex-factory Date PO</label>
                         </div>
                     </div>
