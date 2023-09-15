@@ -88,7 +88,7 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <select name="manufacture_unit" id="block" class="form-control">
+                            <select name="manufacture_unit" id="block" class="form-control">
                                 <option value="{{$criticalPath->manufacture_unit}}" selected disabled>{{$criticalPath->manufacture_unit == 1 ? 'KSS':($criticalPath->manufacture_unit == 2 ?'OTHER':'SELECT Manufacture Unit')}}</option>
                                 <option value="1">KSS</option>
                                 <option value="2">OTHER</option>
@@ -220,7 +220,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="planPO" id="planPO" placeholder="Official PO sent (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->official_po_sent_plan_date}}" name="official_po_sent_plan_date" id="official_po_sent_plan_date" placeholder="Official PO sent (Plan)" class="form-control" />
                             <label for="planPO">Official PO sent (Plan)</label>
                         </div>
                     </div>
@@ -967,3 +967,42 @@
 
 
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        function subtractDaysFromDate(inputDate, daysToSubtract) {
+            // Parse the inputDate to create a new Date object
+            var actualDate = new Date(inputDate);
+
+            // Subtract the specified number of days
+            actualDate.setDate(actualDate.getDate() - daysToSubtract);
+
+            // Convert the result to the "yyyy-mm-dd" format
+            var newDateString = actualDate.toISOString().split('T')[0];
+
+            return newDateString;
+        }
+
+        function dateFormat(inputDate) {
+            var actualDate = new Date(inputDate);
+            var newDateString = actualDate.toISOString().split('T')[0];
+
+            return newDateString;
+        }
+        $('#official_po_sent_actual_date').on('change', function() {
+            $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
+            // var actualDate = new Date($('#official_po_sent_actual_date').val());
+
+            // var newDate = new Date(actualDate);
+            // newDate.setDate(actualDate.getDate() - 4);
+            // var newDateString = newDate.toISOString().split('T')[0];
+            // $('#official_po_sent_plan_date').val(newDateString);
+            // updateAnotherDate(); // Call the function when the date changes
+        });
+
+
+
+        // Initially set the "Another Date" value when the page loads
+        // updateAnotherDate();
+    });
+</script>

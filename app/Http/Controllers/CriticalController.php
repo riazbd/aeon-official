@@ -30,7 +30,7 @@ class CriticalController extends Controller
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
             ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
-            ->select('*', 'purchage_orders.*', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*'
+            ->select('*', 'purchage_orders.*','critical_paths.colour as aColor', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*'
             , DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered'))
             ->get();
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));

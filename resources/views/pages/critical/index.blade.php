@@ -197,14 +197,14 @@
                                 </th>
                                 <th>{{$data->block_repeat_initial == 1 ? 'Initial':($data->block_repeat_initial == 2 ?'Repeat':'')}}</th>
                                 <th>{{$data->vendorName}}</th>
-                                <th></th>
+                                <th>{{$data->manufacture_unit == 1 ? 'KSS':($data->manufacture_unit == 2 ?'OTHER':'')}}</th>
                                 <th>{{$data->plm}}</th>
                                 <th>{{$data->stlye_no}}</th>
                                 <th>{{$data->TotalItemsOrdered}}</th>
                                 <th>{{$data->style_note}}</th>
                                 <th>{{$data->total_value}}</th>
                                 <th>{{$data->style_description}}</th>
-                                <th>{{$data->colourName}}</th>
+                                <th>{{$data->aColor}}</th>
                                 <th></th>
                                 <th>{{$data->fabric_ref}}</th>
                                 <th>{{$data->fabric_content}} </th>
