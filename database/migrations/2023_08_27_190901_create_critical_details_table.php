@@ -65,6 +65,7 @@ class CreateCriticalDetailsTable extends Migration
             $table->string('aeon_comments_date')->nullable();
             $table->string('vendor_comments_date')->nullable();
             $table->string('sa_eta_5_days')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

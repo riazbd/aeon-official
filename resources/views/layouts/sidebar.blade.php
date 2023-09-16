@@ -191,11 +191,11 @@
                     <i class="right fas fa-angle-left"></i>
                 </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('add-critical-path') }}" class="nav-link">Add New</a>
                 </li>
-            </ul>
+            </ul> -->
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a href="{{ route('critical-path') }}" class="nav-link">Critical List</a>
