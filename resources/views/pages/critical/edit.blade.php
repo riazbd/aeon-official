@@ -339,7 +339,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->bulk_fabric_knit_down_approval_plan_date}}" name="bulk_fabric_knit_down_approval_plan_date" id="bulkFabricApprovalPlan" placeholder="Bulk Fabric/ Knit Down Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->bulk_fabric_knit_down_approval_plan_date}}" name="bulk_fabric_knit_down_approval_plan_date" id="bulk_fabric_knit_down_approval_plan_date" placeholder="Bulk Fabric/ Knit Down Approval (Plan)" class="form-control" />
                             <label for="bulkFabricApprovalPlan">Bulk Fabric/ Knit Down Approval (Plan)</label>
                         </div>
                     </div>
@@ -350,7 +350,7 @@
                 <div id="flush-collapseFour" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->bulk_fabric_knit_down_approval_actual_date}}" name="bulk_fabric_knit_down_approval_actual_date" id="bulkFabricApprovalActual" placeholder="Bulk Fabric/ Knit Down Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->bulk_fabric_knit_down_approval_actual_date}}" name="bulk_fabric_knit_down_approval_actual_date" id="bulk_fabric_knit_down_approval_actual_date" placeholder="Bulk Fabric/ Knit Down Approval (Actual)" class="form-control" />
                             <label for="bulkFabricApprovalActual">Bulk Fabric/ Knit Down Approval (Actual)</label>
                         </div>
                     </div>
@@ -368,13 +368,13 @@
                 <div id="flush-collapseFour" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->bulk_yarn_fabric_plan_date}}" name="bulk_yarn_fabric_plan_date" id="bulkYarnInhousePlan" placeholder="Bulk Yarn / Fabric Inhouse (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->bulk_yarn_fabric_plan_date}}" name="bulk_yarn_fabric_plan_date" id="bulk_yarn_fabric_plan_date" placeholder="Bulk Yarn / Fabric Inhouse (Plan)" class="form-control" />
                             <label for="bulkYarnInhousePlan">Bulk Yarn / Fabric Inhouse (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->bulk_yarn_fabric_actual_date}}" name="bulk_yarn_fabric_actual_date" id="bulkYarnInhouseActual" placeholder="Bulk Yarn / Fabric Inhouse (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->bulk_yarn_fabric_actual_date}}" name="bulk_yarn_fabric_actual_date" id="bulk_yarn_fabric_actual_date" placeholder="Bulk Yarn / Fabric Inhouse (Actual)" class="form-control" />
                             <label for="bulkYarnInhouseActual">Bulk Yarn / Fabric Inhouse (Actual)</label>
                         </div>
                     </div>
@@ -995,6 +995,8 @@
         $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
         $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
         $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
+        $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
+        $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
        
         
         $('#official_po_sent_actual_date').on('change', function() {
@@ -1011,6 +1013,12 @@
         });
         $('#fabric_ordered_actual_date').on('change', function() {
             $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
+        });
+        $('#bulk_fabric_knit_down_approval_actual_date').on('change', function() {
+            $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
+        });
+        $('#bulk_yarn_fabric_actual_date').on('change', function() {
+            $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
         });
 
 

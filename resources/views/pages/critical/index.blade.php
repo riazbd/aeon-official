@@ -225,12 +225,12 @@
                                 <th></th>
                                 <th>{{$data->fabric_ordered_actual_date}}</th>
                                 <th>{{$data->fabric_ordered_plan_date}}</th>
+                                <th>{{$data->bulk_fabric_knit_down_approval_plan_date}}</th>
+                                <th>{{$data->bulk_fabric_knit_down_approval_actual_date}}</th>
+                                <th>{{$data->bulk_fabric_knit_down_dispatch_details}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->bulk_yarn_fabric_plan_date}}</th>
+                                <th>{{$data->bulk_yarn_fabric_actual_date}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>

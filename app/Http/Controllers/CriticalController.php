@@ -193,14 +193,17 @@ class CriticalController extends Controller
             if (isset($request->bulk_fabric_knit_down_approval_actual_date)) {
                 $updateData['bulk_fabric_knit_down_approval_actual_date'] = $request->bulk_fabric_knit_down_approval_actual_date;
             }
-            if (isset($request->bulk_fabric_knit_down_approval_actual_date)) {
-                $updateData['bulk_fabric_knit_down_approval_actual_date'] = $request->bulk_fabric_knit_down_approval_actual_date;
+            if (isset($request->bulk_fabric_knit_down_approval_plan_date)) {
+                $updateData['bulk_fabric_knit_down_approval_plan_date'] = $request->bulk_fabric_knit_down_approval_plan_date;
             }
             if (isset($request->bulk_fabric_knit_down_dispatch_details)) {
                 $updateData['bulk_fabric_knit_down_dispatch_details'] = $request->bulk_fabric_knit_down_dispatch_details;
             }
             if (isset($request->bulk_yarn_fabric_actual_date)) {
                 $updateData['bulk_yarn_fabric_actual_date'] = $request->bulk_yarn_fabric_actual_date;
+            }
+            if (isset($request->bulk_yarn_fabric_plan_date)) {
+                $updateData['bulk_yarn_fabric_plan_date'] = $request->bulk_yarn_fabric_plan_date;
             }
             /**sample approval */
             if (isset($request->development_photo_sample_sent_actual_date)) {
