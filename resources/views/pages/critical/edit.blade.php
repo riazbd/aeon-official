@@ -397,13 +397,13 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->development_photo_sample_sent_plan_date}}" name="development_photo_sample_sent_plan_date" id="devSamplePlan" placeholder="Development sample (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->development_photo_sample_sent_plan_date}}" name="development_photo_sample_sent_plan_date" id="development_photo_sample_sent_plan_date" placeholder="Development sample (Plan)" class="form-control" />
                             <label for="devSamplePlan">Development sample (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->development_photo_sample_sent_actual_date}}" name="development_photo_sample_sent_actual_date" id="devSampleActual" placeholder="Development sample (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->development_photo_sample_sent_actual_date}}" name="development_photo_sample_sent_actual_date" id="development_photo_sample_sent_actual_date" placeholder="Development sample (Actual)" class="form-control" />
                             <label for="devSampleActual">Development sample (Actual)</label>
                         </div>
                     </div>
@@ -421,13 +421,13 @@
                 <div id="flush-collapseFive" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->fit_approval_plan}}" name="fit_approval_plan" placeholder="Fit - Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->fit_approval_plan}}" name="fit_approval_plan" placeholder="Fit - Approval (Plan)" class="form-control" id="fit_approval_plan" />
                             <label for="fitApprovalPlan">Fit - Approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->fit_approval_actual}}" name="fit_approval_actual" placeholder="Fit - Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->fit_approval_actual}}" name="fit_approval_actual" id="fit_approval_actual" placeholder="Fit - Approval (Actual)" class="form-control" />
                             <label for="fitApprovalActual">Fit - Approval (Actual)</label>
                         </div>
                     </div>
@@ -446,13 +446,13 @@
                 <div id="flush-collapseFive" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->size_set_approval}}" name="size_app_plan" placeholder="Size set Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->size_set_approval}}" name="size_app_plan" id="size_app_plan" placeholder="Size set Approval (Plan)" class="form-control" />
                             <label for="sizeSetApprovalPlan">Size set Approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->size_set_actual}}" name="size_set_actual" placeholder="Size set Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->size_set_actual}}" name="size_set_actual" id="size_set_actual" placeholder="Size set Approval (Actual)" class="form-control" />
                             <label for="sizeSetApprovalActual">Size set Approval (Actual)</label>
                         </div>
                     </div>
@@ -470,13 +470,13 @@
                 <div id="flush-collapseFive" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->pp_approval}}" name="pp_approval" placeholder="PP Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->pp_approval}}" name="pp_approval" id="pp_approval" placeholder="PP Approval (Plan)" class="form-control" />
                             <label for="ppApprovalPlan">PP Approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->pp_actual}}" name="pp_actual" placeholder="PP approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->pp_actual}}" name="pp_actual" id="pp_actual" placeholder="PP approval (Actual)" class="form-control" />
                             <label for="ppApprovalActual">PP approval (Actual)</label>
                         </div>
                     </div>
@@ -997,6 +997,10 @@
         $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
         $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
         $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
+        $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
+        $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
+        $('#size_app_plan').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
+        $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
        
         
         $('#official_po_sent_actual_date').on('change', function() {
@@ -1019,6 +1023,18 @@
         });
         $('#bulk_yarn_fabric_actual_date').on('change', function() {
             $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
+        });
+        $('#development_photo_sample_sent_actual_date').on('change', function() {
+            $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
+        });
+        $('#fit_approval_actual').on('change', function() {
+            $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
+        });
+        $('#size_set_actual').on('change', function() {
+            $('#size_app_plan').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
+        });
+        $('#pp_actual').on('change', function() {
+            $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
         });
 
 

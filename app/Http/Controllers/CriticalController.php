@@ -209,11 +209,17 @@ class CriticalController extends Controller
             if (isset($request->development_photo_sample_sent_actual_date)) {
                 $updateData['development_photo_sample_sent_actual_date'] = $request->development_photo_sample_sent_actual_date;
             }
+            if (isset($request->development_photo_sample_sent_plan_date)) {
+                $updateData['development_photo_sample_sent_plan_date'] = $request->development_photo_sample_sent_plan_date;
+            }
             if (isset($request->development_photo_sample_dispatch_details)) {
                 $updateData['development_photo_sample_dispatch_details'] = $request->development_photo_sample_dispatch_details;
             }
             if (isset($request->fit_approval_actual)) {
                 $updateData['fit_approval_actual'] = $request->fit_approval_actual;
+            }
+            if (isset($request->fit_approval_plan)) {
+                $updateData['fit_approval_plan'] = $request->fit_approval_plan;
             }
             if (isset($request->fit_dispatch)) {
                 $updateData['fit_dispatch'] = $request->fit_dispatch;
@@ -221,11 +227,17 @@ class CriticalController extends Controller
             if (isset($request->size_set_actual)) {
                 $updateData['size_set_actual'] = $request->size_set_actual;
             }
+            if (isset($request->size_app_plan)) {
+                $updateData['size_app_plan'] = $request->size_app_plan;
+            }
             if (isset($request->size_set_dispatch)) {
                 $updateData['size_set_dispatch'] = $request->size_set_dispatch;
             }
             if (isset($request->pp_actual)) {
                 $updateData['pp_actual'] = $request->pp_actual;
+            }
+            if (isset($request->pp_approval)) {
+                $updateData['pp_approval'] = $request->pp_approval;
             }
             if (isset($request->pp_dispatch)) {
                 $updateData['pp_dispatch'] = $request->pp_dispatch;
