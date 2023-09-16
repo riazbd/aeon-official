@@ -154,7 +154,7 @@
                 <div id="flush-collapseOne" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->care_lavel_date}}" name="care_lavel_date" id="careLabelDate" placeholder="Care Label Date" class="form-control" />
+                            <input readonly type="date" value="{{$criticalPath->care_lavel_date}}" name="care_lavel_date" id="careLabelDate" placeholder="Care Label Date" class="form-control" />
                             <label for="careLabelDate">Care Label Date</label>
                         </div>
                     </div>
@@ -261,13 +261,13 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->lab_dip_approval_plan_date}}" name="lab_dip_approval_plan_date" id="labDipApprovalPlan" placeholder="Lab dip Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->lab_dip_approval_plan_date}}" name="lab_dip_approval_plan_date" id="lab_dip_approval_plan_date" placeholder="Lab dip Approval (Plan)" class="form-control" />
                             <label for="labDipApprovalPlan">Lab dip Approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->lab_dip_approval_actual_date}}" name="lab_dip_approval_actual_date" id="labDipApprovalActual" placeholder="Lab dip Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->lab_dip_approval_actual_date}}" name="lab_dip_approval_actual_date" id="lab_dip_approval_actual_date" placeholder="Lab dip Approval (Actual)" class="form-control" />
                             <label for="labDipApprovalActual">Lab dip Approval (Actual)</label>
                         </div>
                     </div>
@@ -286,7 +286,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->embellishment_s_o_approval_plan_date}}" name="embellishment_s_o_approval_plan_date" id="embellishmentApprovalPlan" placeholder="Embellishment - S/O Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->embellishment_s_o_approval_plan_date}}" name="embellishment_s_o_approval_plan_date" id="embellishment_s_o_approval_plan_date" placeholder="Embellishment - S/O Approval (Plan)" class="form-control" />
                             <label for="embellishmentApprovalPlan">Embellishment - S/O Approval (Plan)</label>
                         </div>
                     </div>
@@ -295,7 +295,7 @@
 
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->embellishment_s_o_approval_actual_date}}" name="embellishment_s_o_approval_actual_date" id="embellishmentApprovalActual" placeholder="Embellishment - S/O Approval (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->embellishment_s_o_approval_actual_date}}" name="embellishment_s_o_approval_actual_date" id="embellishment_s_o_approval_actual_date" placeholder="Embellishment - S/O Approval (Actual)" class="form-control" />
                             <label for="embellishmentApprovalActual">Embellishment - S/O Approval (Actual)</label>
                         </div>
                     </div>
@@ -991,11 +991,22 @@
         }
        
         $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
+        $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
+        $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
+        $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
+       
+        
         $('#official_po_sent_actual_date').on('change', function() {
             $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
         });
         $('#colour_std_print_artwork_sent_to_supplier_actual_date').on('change', function() {
             $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
+        });
+        $('#lab_dip_approval_actual_date').on('change', function() {
+            $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
+        });
+        $('#embellishment_s_o_approval_actual_date').on('change', function() {
+            $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
         });
 
 

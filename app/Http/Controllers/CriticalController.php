@@ -30,7 +30,7 @@ class CriticalController extends Controller
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
             ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
-            ->select('*', 'purchage_orders.*','critical_paths.colour as aColor','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*'
+            ->select('*', 'purchage_orders.*','critical_paths.colour as aColor','purchage_orders.care_lavel_date as careDate','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*'
             , DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered'))
             ->get();
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
@@ -108,6 +108,7 @@ class CriticalController extends Controller
     {
         $criticalPath = CriticalPath::where('po_id', $id)->first();
         $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
+       
         $po_find = PurchageOrder::find($id);
         if (isset($criticalPath)) {
 
@@ -168,11 +169,17 @@ class CriticalController extends Controller
             if (isset($request->lab_dip_approval_actual_date)) {
                 $updateData['lab_dip_approval_actual_date'] = $request->lab_dip_approval_actual_date;
             }
+            if (isset($request->lab_dip_approval_plan_date)) {
+                $updateData['lab_dip_approval_plan_date'] = $request->lab_dip_approval_plan_date;
+            }
             if (isset($request->lab_dip_dispatch_details)) {
                 $updateData['lab_dip_dispatch_details'] = $request->lab_dip_dispatch_details;
             }
             if (isset($request->embellishment_s_o_approval_actual_date)) {
                 $updateData['embellishment_s_o_approval_actual_date'] = $request->embellishment_s_o_approval_actual_date;
+            }
+            if (isset($request->embellishment_s_o_approval_plan_date)) {
+                $updateData['embellishment_s_o_approval_plan_date'] = $request->embellishment_s_o_approval_plan_date;
             }
             if (isset($request->embellishment_s_o_dispatch_details)) {
                 $updateData['embellishment_s_o_dispatch_details'] = $request->embellishment_s_o_dispatch_details;

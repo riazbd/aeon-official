@@ -91,7 +91,7 @@
                                 <th>Col std sent <br /> to sup (plan)</th>
                                 <th>Col std sent <br /> to sup (actual)</th>
                                 <th>Lab dip /<br />App (Plan)</th>
-                                <th>Lab dip /<br />Dis Image</th>
+                                <th>Lab dip /<br />App (Actual)</th>
                                 <th>Embe S/O /<br /> App (Plan)</th>
                                 <th>Embe S/O /<br /> App (Actual)</th>
                                 <th>Embe S/O /<br /> App Dis </th>
@@ -206,7 +206,7 @@
                                 <th>{{$data->total_value}}</th>
                                 <th>{{$data->style_description}}</th>
                                 <th>{{$data->aColor}}</th>
-                                <th></th>
+                                <th>{{$data->careDate}}</th>
                                 <th>{{$data->fabric_ref}}</th>
                                 <th>{{$data->fabric_content}} </th>
                                 <th>{{$data->fabric_weight}}</th>
@@ -217,11 +217,11 @@
                                 <th>{{$data->official_po_sent_actual_date}}</th>
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
-                                <th></th>
-                                <th> </th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
+                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
+                                <th>{{$data->embellishment_s_o_approval_plan_date}}</th>
+                                <th>{{$data->embellishment_s_o_approval_actual_date}}</th>
+                                <th>{{$data->embellishment_s_o_dispatch_details}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
