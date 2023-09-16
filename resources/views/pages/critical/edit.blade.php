@@ -446,7 +446,7 @@
                 <div id="flush-collapseFive" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->size_set_approval}}" name="size_app_plan" id="size_app_plan" placeholder="Size set Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->size_set_approval}}" name="size_set_approval" id="size_set_approval" placeholder="Size set Approval (Plan)" class="form-control" />
                             <label for="sizeSetApprovalPlan">Size set Approval (Plan)</label>
                         </div>
                     </div>
@@ -999,7 +999,7 @@
         $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
         $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
         $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
-        $('#size_app_plan').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
+        $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
         $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
        
         
@@ -1031,7 +1031,7 @@
             $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
         });
         $('#size_set_actual').on('change', function() {
-            $('#size_app_plan').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
+            $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
         });
         $('#pp_actual').on('change', function() {
             $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
