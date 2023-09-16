@@ -187,6 +187,9 @@ class CriticalController extends Controller
             if (isset($request->fabric_ordered_actual_date)) {
                 $updateData['fabric_ordered_actual_date'] = $request->fabric_ordered_actual_date;
             }
+            if (isset($request->fabric_ordered_plan_date)) {
+                $updateData['fabric_ordered_plan_date'] = $request->fabric_ordered_plan_date;
+            }
             if (isset($request->bulk_fabric_knit_down_approval_actual_date)) {
                 $updateData['bulk_fabric_knit_down_approval_actual_date'] = $request->bulk_fabric_knit_down_approval_actual_date;
             }

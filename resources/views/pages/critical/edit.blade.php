@@ -327,13 +327,13 @@
 
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->fabric_ordered_plan_date}}" name="fabric_ordered_plan_date" id="fabricOrderedPlan" placeholder="Fabric Ordered (plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->fabric_ordered_plan_date}}" name="fabric_ordered_plan_date" id="fabric_ordered_plan_date" placeholder="Fabric Ordered (plan)" class="form-control" />
                             <label for="fabricOrderedPlan">Fabric Ordered (plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->fabric_ordered_actual_date}}" name="fabric_ordered_actual_date" id="fabricOrderedActual" placeholder="Fabric Ordered (actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->fabric_ordered_actual_date}}" name="fabric_ordered_actual_date" id="fabric_ordered_actual_date" placeholder="Fabric Ordered (actual)" class="form-control" />
                             <label for="fabricOrderedActual">Fabric Ordered (actual)</label>
                         </div>
                     </div>
@@ -994,6 +994,7 @@
         $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
         $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
         $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
+        $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
        
         
         $('#official_po_sent_actual_date').on('change', function() {
@@ -1007,6 +1008,9 @@
         });
         $('#embellishment_s_o_approval_actual_date').on('change', function() {
             $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
+        });
+        $('#fabric_ordered_actual_date').on('change', function() {
+            $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
         });
 
 

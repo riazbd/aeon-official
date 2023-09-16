@@ -223,8 +223,8 @@
                                 <th>{{$data->embellishment_s_o_approval_actual_date}}</th>
                                 <th>{{$data->embellishment_s_o_dispatch_details}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->fabric_ordered_actual_date}}</th>
+                                <th>{{$data->fabric_ordered_plan_date}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
