@@ -30,7 +30,7 @@ class CriticalController extends Controller
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
             ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
-            ->select('*', 'purchage_orders.*','critical_paths.colour as aColor', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*'
+            ->select('*', 'purchage_orders.*','critical_paths.colour as aColor','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*'
             , DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered'))
             ->get();
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
@@ -85,7 +85,7 @@ class CriticalController extends Controller
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
             ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
-            ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName', 'departments.name as deptName', 'buyers.name as buyerName',
+            ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'buyers.name as buyerName',
             DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
             )
             ->first();
@@ -121,8 +121,17 @@ class CriticalController extends Controller
             if (isset($request->block_repeat_initial)) {
                 $updateData['block_repeat_initial'] = $request->block_repeat_initial;
             }
+            if (isset($request->style_no)) {
+                $updateData['style_no'] = $request->style_no;
+            }
+            if (isset($request->supplier_price_product_cost)) {
+                $updateData['supplier_price_product_cost'] = $request->supplier_price_product_cost;
+            }
             if (isset($request->style_description)) {
                 $updateData['style_description'] = $request->style_description;
+            }
+            if (isset($request->total_value)) {
+                $updateData['total_value'] = $request->total_value;
             }
             if (isset($request->fabric_weight)) {
                 $updateData['fabric_weight'] = $request->fabric_weight;
@@ -147,8 +156,14 @@ class CriticalController extends Controller
             if (isset($request->official_po_sent_actual_date)) {
                 $updateData['official_po_sent_actual_date'] = $request->official_po_sent_actual_date;
             }
-            if (isset($request->colourArtworkActual)) {
-                $updateData['colour_std_print_artwork_sent_to_supplier_actual_date'] = $request->colourArtworkActual;
+            if (isset($request->official_po_sent_plan_date)) {
+                $updateData['official_po_sent_plan_date'] = $request->official_po_sent_plan_date;
+            }
+            if (isset($request->colour_std_print_artwork_sent_to_supplier_actual_date)) {
+                $updateData['colour_std_print_artwork_sent_to_supplier_actual_date'] = $request->colour_std_print_artwork_sent_to_supplier_actual_date;
+            }
+            if (isset($request->colour_std_print_artwork_sent_to_supplier_plan_date)) {
+                $updateData['colour_std_print_artwork_sent_to_supplier_plan_date'] = $request->colour_std_print_artwork_sent_to_supplier_plan_date;
             }
             if (isset($request->lab_dip_approval_actual_date)) {
                 $updateData['lab_dip_approval_actual_date'] = $request->lab_dip_approval_actual_date;

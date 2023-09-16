@@ -89,6 +89,7 @@
                                 <th>Off PO <br />sent (Plan)</th>
                                 <th>Off PO <br />sent (Actual)</th>
                                 <th>Col std sent <br /> to sup (plan)</th>
+                                <th>Col std sent <br /> to sup (actual)</th>
                                 <th>Lab dip /<br />App (Plan)</th>
                                 <th>Lab dip /<br />Dis Image</th>
                                 <th>Embe S/O /<br /> App (Plan)</th>
@@ -199,7 +200,7 @@
                                 <th>{{$data->vendorName}}</th>
                                 <th>{{$data->manufacture_unit == 1 ? 'KSS':($data->manufacture_unit == 2 ?'OTHER':'')}}</th>
                                 <th>{{$data->plm}}</th>
-                                <th>{{$data->stlye_no}}</th>
+                                <th>{{$data->aStyleNo}}</th>
                                 <th>{{$data->TotalItemsOrdered}}</th>
                                 <th>{{$data->style_note}}</th>
                                 <th>{{$data->total_value}}</th>
@@ -212,9 +213,10 @@
                                 <th>{{$data->fabric_mill}}</th>
                                 <th>{{$data->lead_times}}</th>
                                 <th>{{$data->treated_as_priority_order == 1 ? 'Regular Lead Item':($data->treated_as_priority_order == 2 ?'Short Term Item':'')}}</th>
-                                <th></th>
-                                <th> {{$data->official_po_sent_actual_date}}</th>
-                                <th> </th>
+                                <th>{{$data->official_po_sent_plan_date}}</th>
+                                <th>{{$data->official_po_sent_actual_date}}</th>
+                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
+                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
                                 <th></th>
                                 <th> </th>
                                 <th></th>
@@ -336,6 +338,7 @@
                                     <th> </th>
                                     <th></th>
                                     <th> </th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>

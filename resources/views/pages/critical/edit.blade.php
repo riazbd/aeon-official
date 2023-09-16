@@ -113,7 +113,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="{{$criticalPath->stlye_no}}" name="styleNumber" id="styleNumber" placeholder="Style Number" class="form-control" />
+                            <input type="text" value="{{$criticalPath->aStyleNo}}" name="style_no" id="styleNumber" placeholder="Style Number" class="form-control" />
                             <label for="styleNumber">Style Number</label>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                 <div id="flush-collapseOne" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="supplierPrice" id="supplierPrice" placeholder="Supplier Price/Product Cost" class="form-control" />
+                            <input type="text" value="{{$criticalPath->supplier_price_product_cost}}" name="supplier_price_product_cost" id="supplierPrice" placeholder="Supplier Price/Product Cost" class="form-control" />
                             <label for="supplierPrice">Supplier Price/Product Cost</label>
                         </div>
                     </div>
@@ -249,13 +249,13 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="colourArtworkPlan" name="colourArtworkPlan" id="colourArtworkPlan" placeholder="Colour std/print artwork sent to supplier (plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date}}" name="colour_std_print_artwork_sent_to_supplier_plan_date" id="colour_std_print_artwork_sent_to_supplier_plan_date" placeholder="Colour std/print artwork sent to supplier (plan)" class="form-control" />
                             <label for="colourArtworkPlan">Colour std sent supplier (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date}}" name="colourArtworkActual" id="colourArtworkActual" placeholder="Colour std/print artwork sent to supplier (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date}}" name="colour_std_print_artwork_sent_to_supplier_actual_date" id="colour_std_print_artwork_sent_to_supplier_actual_date" placeholder="Colour std/print artwork sent to supplier (Actual)" class="form-control" />
                             <label for="colourArtworkActual">Colour std sent supplier (Actual)</label>
                         </div>
                     </div>
@@ -989,15 +989,13 @@
 
             return newDateString;
         }
+       
+        $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
         $('#official_po_sent_actual_date').on('change', function() {
             $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
-            // var actualDate = new Date($('#official_po_sent_actual_date').val());
-
-            // var newDate = new Date(actualDate);
-            // newDate.setDate(actualDate.getDate() - 4);
-            // var newDateString = newDate.toISOString().split('T')[0];
-            // $('#official_po_sent_plan_date').val(newDateString);
-            // updateAnotherDate(); // Call the function when the date changes
+        });
+        $('#colour_std_print_artwork_sent_to_supplier_actual_date').on('change', function() {
+            $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
         });
 
 
