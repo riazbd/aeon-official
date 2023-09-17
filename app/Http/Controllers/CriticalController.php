@@ -227,8 +227,8 @@ class CriticalController extends Controller
             if (isset($request->size_set_actual)) {
                 $updateData['size_set_actual'] = $request->size_set_actual;
             }
-            if (isset($request->size_app_plan)) {
-                $updateData['size_app_plan'] = $request->size_app_plan;
+            if (isset($request->size_set_approval)) {
+                $updateData['size_set_approval'] = $request->size_set_approval;
             }
             if (isset($request->size_set_dispatch)) {
                 $updateData['size_set_dispatch'] = $request->size_set_dispatch;
