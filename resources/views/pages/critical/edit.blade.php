@@ -519,13 +519,13 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->material_inhouse_plan}}" name="material_inhouse_plan" placeholder="Material Inhouse date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->material_inhouse_plan}}" name="material_inhouse_plan" placeholder="Material Inhouse date (Plan)" class="form-control" id="material_inhouse_plan" />
                             <label for="materialInhouseDatePlan">Material Inhouse date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->material_inhouse_actual}}" name="material_inhouse_actual" placeholder="Material Inhouse date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->material_inhouse_actual}}" name="material_inhouse_actual" placeholder="Material Inhouse date (Actual)" class="form-control" id="material_inhouse_actual"/>
                             <label for="materialInhouseDateActual">Material Inhouse date (Actual)</label>
                         </div>
                     </div>
@@ -533,13 +533,13 @@
                 <div id="flush-collapseSix" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->pp_meeting_plan}}" name="pp_meeting_plan" placeholder="PP Meeting Date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->pp_meeting_plan}}" name="pp_meeting_plan" id="pp_meeting_plan" placeholder="PP Meeting Date (Plan)" class="form-control" />
                             <label for="ppMeetingDatePlan">PP Meeting Date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->pp_meeting_actual}}" name="pp_meeting_actual" placeholder="PP Meeting Date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->pp_meeting_actual}}" name="pp_meeting_actual" id="pp_meeting_actual" placeholder="PP Meeting Date (Actual)" class="form-control" />
                             <label for="ppMeetingDateActual">PP Meeting Date (Actual)</label>
                         </div>
                     </div>
@@ -1002,6 +1002,8 @@
         $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
         $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
         $('#care_label_approval').val(subtractDaysFromDate($('#care_lavel_date').val(), 4));
+        $('#material_inhouse_plan').val(subtractDaysFromDate($('#material_inhouse_actual').val(), 4));
+        $('#pp_meeting_plan').val(subtractDaysFromDate($('#pp_meeting_actual').val(), 4));
        
         
         $('#official_po_sent_actual_date').on('change', function() {
@@ -1036,6 +1038,12 @@
         });
         $('#pp_actual').on('change', function() {
             $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
+        });
+        $('#material_inhouse_actual').on('change', function() {
+            $('#material_inhouse_plan').val(subtractDaysFromDate($('#material_inhouse_actual').val(), 4));
+        });
+        $('#pp_meeting_actual').on('change', function() {
+            $('#pp_meeting_plan').val(subtractDaysFromDate($('#pp_meeting_actual').val(), 4));
         });
 
 

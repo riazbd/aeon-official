@@ -248,8 +248,14 @@ class CriticalController extends Controller
             if (isset($request->material_inhouse_actual)) {
                 $updateData['material_inhouse_actual'] = $request->material_inhouse_actual;
             }
+            if (isset($request->material_inhouse_plan)) {
+                $updateData['material_inhouse_plan'] = $request->material_inhouse_plan;
+            }
             if (isset($request->pp_meeting_actual)) {
                 $updateData['pp_meeting_actual'] = $request->pp_meeting_actual;
+            }
+            if (isset($request->pp_meeting_plan)) {
+                $updateData['pp_meeting_plan'] = $request->pp_meeting_plan;
             }
             if (isset($request->manufacture_unit)) {
                 $updateData['manufacture_unit'] = $request->manufacture_unit;
