@@ -545,7 +545,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="pp_meet_schedule" placeholder="Create PP Meeting Schedule" class="form-control" />
+                            <input type="date" value="{{$criticalPath->create_pp_meeting_schedule}}" name="create_pp_meeting_schedule" placeholder="Create PP Meeting Schedule" class="form-control" />
                             <label for="createPPMeetingSchedule">Create PP Meeting Schedule</label>
                         </div>
                     </div>

@@ -254,7 +254,7 @@
                                 <th>{{$data->material_inhouse_actual}}</th>
                                 <th>{{$data->pp_meeting_plan}}</th>
                                 <th>{{$data->pp_meeting_actual}}</th>
-                                <th></th>
+                                <th>{{$data->create_pp_meeting_schedule}}</th>
                                 <th></th>
                                 <th></th>
                                 <th>{{$data->cutting_date_actual}}</th>

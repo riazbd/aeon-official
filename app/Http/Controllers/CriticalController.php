@@ -108,7 +108,6 @@ class CriticalController extends Controller
     {
         $criticalPath = CriticalPath::where('po_id', $id)->first();
         $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
-       
         $po_find = PurchageOrder::find($id);
         if (isset($criticalPath)) {
 
@@ -342,6 +341,9 @@ class CriticalController extends Controller
             }
             if (isset($request->note)) {
                 $details['note'] = $request->note;
+            }
+            if (isset($request->create_pp_meeting_schedule)) {
+                $details['create_pp_meeting_schedule'] = $request->create_pp_meeting_schedule;
             }
 
             $criticlDetails->update($details);
