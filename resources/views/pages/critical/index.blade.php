@@ -174,6 +174,11 @@
                                 <th>Inv No</th>
                                 <th>Inv No<br />Create </th>
                                 <th>Payment</th>
+                                <th>Reason For Change</th>
+                                <th>Aeon Commnets Date</th>
+                                <th>Vendor Comments Date</th>
+                                <th>S/A ETA 5</th>
+                                <th>Note</th>
 
                                 <!-- Add more headers here -->
                             </tr>
@@ -302,6 +307,11 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th>{{$data->reason_for_change_affect_shipment}}</th>
+                                <th>{{$data->aeon_comments_date}}</th>
+                                <th>{{$data->vendor_comments_date}}</th>
+                                <th>{{$data->sa_eta_5_days}}</th>
+                                <th>{{$data->note}}</th>
                                 <!-- Add more headers here -->
                             </tr>
                             @endforeach
@@ -340,6 +350,11 @@
                                     <th> </th>
                                     <th></th>
                                     <th> </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
