@@ -242,6 +242,9 @@ class CriticalController extends Controller
             if (isset($request->pp_dispatch)) {
                 $updateData['pp_dispatch'] = $request->pp_dispatch;
             }
+            if (isset($request->care_label_approval)) {
+                $updateData['care_label_approval'] = $request->care_label_approval;
+            }
             if (isset($request->material_inhouse_actual)) {
                 $updateData['material_inhouse_actual'] = $request->material_inhouse_actual;
             }

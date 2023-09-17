@@ -247,7 +247,7 @@
                                 <th>{{$data->pp_actual}}</th>
                                 <th>{{$data->pp_dispatch}}</th>
                                 <th></th>
-                                <th><input readonly id="care_plan_date" type="text"  name="care_plan_date" class="col-md-12"></th>
+                                <th>{{$data->care_label_approval}}</th>
                                 <th>{{$data->care_lavel_date}}</th>
                                 <th></th>
                                 <th></th>

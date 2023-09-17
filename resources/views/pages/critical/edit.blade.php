@@ -507,13 +507,13 @@
                 <div id="flush-collapseSix" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="care_app_plan" placeholder="Care Approval Plan" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->care_label_approval}}" name="care_label_approval" id="care_label_approval" placeholder="Care Approval Plan" class="form-control" />
                             <label for="careApprovalPlan">Care Approval Plan</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$po_find->care_lavel_date}}" name="care_lavel_date" placeholder="Care Approval Actual" class="form-control" />
+                            <input readonly type="date" value="{{$po_find->care_lavel_date}}" name="care_lavel_date" id="care_lavel_date" placeholder="Care Approval Actual" class="form-control" />
                             <label for="careApprovalActual">Care Approval Actual</label>
                         </div>
                     </div>
@@ -1001,6 +1001,7 @@
         $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
         $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
         $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
+        $('#care_label_approval').val(subtractDaysFromDate($('#care_lavel_date').val(), 4));
        
         
         $('#official_po_sent_actual_date').on('change', function() {
