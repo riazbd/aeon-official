@@ -571,25 +571,25 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="cut_date_plan" placeholder="Cutting date (Plan)" class="form-control" />
+                            <input readonly id="cutting_date_plan" type="text" value="{{$criticalPath->cutting_date_plan}}" name="cutting_date_plan" placeholder="Cutting date (Plan)" class="form-control" />
                             <label for="cuttingDatePlan">Cutting date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->cutting_date_actual}}" name="cutting_date_actual" placeholder="Cutting date (Actual)" class="form-control" />
+                            <input type="date" id="cutting_date_actual" value="{{$criticalPath->cutting_date_actual}}" name="cutting_date_actual" placeholder="Cutting date (Actual)" class="form-control" />
                             <label for="cuttingDateActual">Cutting date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="emb_plan" placeholder="Embellishment (Plan)" class="form-control" />
+                            <input readonly id="embellishment_plan" type="text" value="{{$criticalPath->embellishment_plan}}" name="embellishment_plan" placeholder="Embellishment (Plan)" class="form-control" />
                             <label for="embellishmentPlan">Embellishment (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->embellishment_actual}}" name="embellishment_actual" placeholder="Embellishment (Actual)" class="form-control" />
+                            <input type="date" id="embellishment_actual" value="{{$criticalPath->embellishment_actual}}" name="embellishment_actual" placeholder="Embellishment (Actual)" class="form-control" />
                             <label for="embellishmentActual">Embellishment (Actual)</label>
                         </div>
                     </div>
@@ -597,19 +597,19 @@
                 <div id="flush-collapseSeven" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="sew_start_plan" placeholder="Sewing Start date (Plan)" class="form-control" />
+                            <input readonly type="text" id="Sewing_plan" value="{{$criticalPath->Sewing_plan}}" name="Sewing_plan" placeholder="Sewing Start date (Plan)" class="form-control" />
                             <label for="sewingStartDatePlan">Sewing Start date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->Sewing_actual}}" name="Sewing_actual" placeholder="Sewing Start date (Actual)" class="form-control" />
+                            <input type="date" id="Sewing_actual" value="{{$criticalPath->Sewing_actual}}" name="Sewing_actual" placeholder="Sewing Start date (Actual)" class="form-control" />
                             <label for="sewingStartDateActual">Sewing Start date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="wash_date_plan" placeholder="Washing complete date (Plan)" class="form-control" />
+                            <input readonly type="text" id="washing_complete_plan" value="{{$criticalPath->washing_complete_plan}}" name="washing_complete_plan" placeholder="Washing complete date (Plan)" class="form-control" />
                             <label for="washingCompleteDatePlan">Washing complete date (Plan)</label>
                         </div>
                     </div>
@@ -617,19 +617,19 @@
                 <div id="flush-collapseSeven" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->washing_complete_actual}}" name="washing_complete_actual" placeholder="Washing complete date (Actual)" class="form-control" />
+                            <input type="date" id="washing_complete_actual" value="{{$criticalPath->washing_complete_actual}}" name="washing_complete_actual" placeholder="Washing complete date (Actual)" class="form-control" />
                             <label for="washingCompleteDateActual">Washing complete date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="finish_com_date_plan" placeholder="Finishing complete date (Plan)" class="form-control" />
+                            <input readonly type="text" id="finishing_complete_plan" value="{{$criticalPath->finishing_complete_plan}}" name="finishing_complete_plan" placeholder="Finishing complete date (Plan)" class="form-control" />
                             <label for="finishingCompleteDatePlan">Finishing complete date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->finishing_complete_actual}}" name="finishing_complete_actual" placeholder="Finishing complete date (Actual)" class="form-control" />
+                            <input type="date" id="finishing_complete_actual" value="{{$criticalPath->finishing_complete_actual}}" name="finishing_complete_actual" placeholder="Finishing complete date (Actual)" class="form-control" />
                             <label for="finishingCompleteDateActual">Finishing complete date (Actual)</label>
                         </div>
                     </div>
@@ -1004,8 +1004,16 @@
         $('#care_label_approval').val(subtractDaysFromDate($('#care_lavel_date').val(), 4));
         $('#material_inhouse_plan').val(subtractDaysFromDate($('#material_inhouse_actual').val(), 4));
         $('#pp_meeting_plan').val(subtractDaysFromDate($('#pp_meeting_actual').val(), 4));
+        $('#cutting_date_plan').val(subtractDaysFromDate($('#cutting_date_actual').val(), 4));
+        $('#embellishment_plan').val(subtractDaysFromDate($('#embellishment_actual').val(), 4));
+        $('#Sewing_plan').val(subtractDaysFromDate($('#Sewing_actual').val(), 4));
+        $('#washing_complete_plan').val(subtractDaysFromDate($('#washing_complete_actual').val(), 4));
+        $('#finishing_complete_plan').val(subtractDaysFromDate($('#finishing_complete_actual').val(), 4));
        
         
+      
+
+        //
         $('#official_po_sent_actual_date').on('change', function() {
             $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
         });
@@ -1045,8 +1053,22 @@
         $('#pp_meeting_actual').on('change', function() {
             $('#pp_meeting_plan').val(subtractDaysFromDate($('#pp_meeting_actual').val(), 4));
         });
-
-
+//
+        $('#cutting_date_actual').on('change', function() {
+            $('#cutting_date_plan').val(subtractDaysFromDate($('#cutting_date_actual').val(), 4));
+        });
+        $('#embellishment_actual').on('change', function() {
+            $('#embellishment_plan').val(subtractDaysFromDate($('#embellishment_actual').val(), 4));
+        });
+        $('#Sewing_actual').on('change', function() {
+            $('#Sewing_plan').val(subtractDaysFromDate($('#Sewing_actual').val(), 4));
+        });
+        $('#washing_complete_actual').on('change', function() {
+            $('#washing_complete_plan').val(subtractDaysFromDate($('#washing_complete_actual').val(), 4));
+        });
+        $('#finishing_complete_actual').on('change', function() {
+            $('#finishing_complete_plan').val(subtractDaysFromDate($('#finishing_complete_actual').val(), 4));
+        });
 
         // Initially set the "Another Date" value when the page loads
         // updateAnotherDate();

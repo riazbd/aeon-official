@@ -261,13 +261,13 @@
                                 <th>{{$data->pp_meeting_actual}}</th>
                                 <th>{{$data->create_pp_meeting_schedule}}</th>
                                 <th></th>
-                                <th></th>
+                                <th>{{$data->cutting_date_plan}}</th>
                                 <th>{{$data->cutting_date_actual}}</th>
-                                <th></th>
+                                <th>{{$data->embellishment_plan}}</th>
                                 <th>{{$data->embellishment_actual}}</th>
-                                <th></th>
+                                <th>{{$data->Sewing_plan}}</th>
                                 <th>{{$data->Sewing_actual}}</th>
-                                <th></th>
+                                <th>{{$data->washing_complete_plan}}</th>
                                 <th>{{$data->washing_complete_actual}}</th>
                                 <th></th>
                                 <th>{{$data->washing_complete_actual}}</th>

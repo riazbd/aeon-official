@@ -279,17 +279,32 @@ class CriticalController extends Controller
             if (isset($request->cutting_date_actual)) {
                 $details['cutting_date_actual'] = $request->cutting_date_actual;
             }
+            if (isset($request->cutting_date_plan)) {
+                $details['cutting_date_plan'] = $request->cutting_date_plan;
+            }
             if (isset($request->embellishment_actual)) {
                 $details['embellishment_actual'] = $request->embellishment_actual;
+            }
+            if (isset($request->embellishment_plan)) {
+                $details['embellishment_plan'] = $request->embellishment_plan;
             }
             if (isset($request->Sewing_actual)) {
                 $details['Sewing_actual'] = $request->Sewing_actual;
             }
+            if (isset($request->Sewing_plan)) {
+                $details['Sewing_plan'] = $request->Sewing_plan;
+            }
             if (isset($request->washing_complete_actual)) {
                 $details['washing_complete_actual'] = $request->washing_complete_actual;
             }
+            if (isset($request->washing_complete_plan)) {
+                $details['washing_complete_plan'] = $request->washing_complete_plan;
+            }
             if (isset($request->finishing_complete_actual)) {
                 $details['finishing_complete_actual'] = $request->finishing_complete_actual;
+            }
+            if (isset($request->finishing_complete_plan)) {
+                $details['finishing_complete_plan'] = $request->finishing_complete_plan;
             }
             if (isset($request->sewing_inline_inspection_date_actual)) {
                 $details['sewing_inline_inspection_date_actual'] = $request->sewing_inline_inspection_date_actual;
