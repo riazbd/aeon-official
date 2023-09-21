@@ -223,8 +223,8 @@
                                 <th>{{$data->official_po_sent_actual_date}}</th>
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
-                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
-                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
+                                <th>{{$data->lab_dip_approval_plan_date}}</th>
+                                <th>{{$data->lab_dip_approval_actual_date}}</th>
                                 <th>{{$data->embellishment_s_o_approval_plan_date}}</th>
                                 <th>{{$data->embellishment_s_o_approval_actual_date}}</th>
                                 <th>{{$data->embellishment_s_o_dispatch_details}}</th>

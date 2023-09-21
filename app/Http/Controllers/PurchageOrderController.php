@@ -240,6 +240,12 @@ class PurchageOrderController extends Controller
             else {
                 $crtical->colour_std_print_artwork_sent_to_supplier_plan_date = "";
             }
+            if (!empty($crtical->embellishment_s_o_approval_plan_date)) {
+                $crtical->lab_dip_approval_plan_date=$this->dateCalculate($crtical->embellishment_s_o_approval_plan_date,7);
+            }
+            else {
+                $crtical->lab_dip_approval_plan_date = "";
+            }
             $crtical->save();
         }
         if ($request->input('download_pdf') == 'yes') {
