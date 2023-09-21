@@ -216,6 +216,30 @@ class PurchageOrderController extends Controller
             else {
                 $crtical->official_po_sent_plan_date = "";
             }
+            if (!empty($crtical->cutting_date_plan)) {
+                $crtical->pp_meeting_plan=$this->dateCalculate($crtical->cutting_date_plan,3);
+            }
+            else {
+                $crtical->pp_meeting_plan = "";
+            }
+            if (!empty($crtical->pp_meeting_plan)) {
+                $crtical->pp_approval=$this->dateCalculate($crtical->pp_meeting_plan,10);
+            }
+            else {
+                $crtical->pp_approval = "";
+            }
+            if (!empty($crtical->pp_approval)) {
+                $crtical->embellishment_s_o_approval_plan_date=$this->dateCalculate($crtical->pp_approval,14);
+            }
+            else {
+                $crtical->embellishment_s_o_approval_plan_date = "";
+            }
+            if (!empty($crtical->embellishment_s_o_approval_plan_date)) {
+                $crtical->colour_std_print_artwork_sent_to_supplier_plan_date=$this->dateCalculate($crtical->embellishment_s_o_approval_plan_date,7);
+            }
+            else {
+                $crtical->colour_std_print_artwork_sent_to_supplier_plan_date = "";
+            }
             $crtical->save();
         }
         if ($request->input('download_pdf') == 'yes') {
