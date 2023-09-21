@@ -144,35 +144,25 @@ class PurchageOrderController extends Controller
                 $orderItem->save();
             }
         }
-       
 
-       
-      
-        $crtical=new CriticalPath();
-        $crtical->po_id=$purchaseOrder->id;
-         
-         // $purchaseOrder=PurchageOrder::find($purchaseOrder->id);
-          /* plan date work */
-   //=IFERROR(AJ10-15,"") AJ10 =Fabric order plan
-   //$crtical->crticalfabric_ordered_plan_date
-   //$crtical->official_po_sent_plan_date
 
-   /*critical fabric depends on IF(E10="solid",AP10-30,IF(AND(E10="AOP/ Special Yarn"),AP10-40,IF(AND(E10="Import"),AP10-65)))
-   *E10 =fabric type
-   */
-        //   if($purchaseOrder) {
-        //     if($purchaseOrder->fabric_type=1) {
 
-        //     }
-        // }
-        /**
-         * 
-         */
-        $crtical->save();
-      
-        $crticalDetails=new CriticalDetails();
-        $crticalDetails->critical_id=$crtical->id;
-        $crticalDetails->save();
+        $poFind = PurchageOrder::find($purchaseOrder->id);
+        if ($poFind) {
+            $crtical = new CriticalPath();
+            $crtical->po_id = $purchaseOrder->id;
+            $crtical->ex_factory_date_po = $purchaseOrder->ex_factory_date;
+            if (!empty($purchaseOrder->ex_factory_date)) {
+                // $date = date_create($purchaseOrder->ex_factory_date);
+                // date_sub($date, date_interval_create_from_date_string("7 days"));
+
+                $crtical->final_aql_date_plan =$this->dateCalculate($purchaseOrder->ex_factory_date,7);
+            } else {
+                $crtical->final_aql_date_plan = "";
+            }
+
+            $crtical->save();
+        }
         if ($request->input('download_pdf') == 'yes') {
             if ($request->input('select_buyer') == 1) {
                 $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
@@ -272,5 +262,13 @@ class PurchageOrderController extends Controller
         $po->delete();
 
         return redirect()->back();
+    }
+
+    private function dateCalculate($calculateDateFrom, $differenceDay)
+    {
+        $date = date_create($calculateDateFrom);
+        date_sub($date, date_interval_create_from_date_string("$differenceDay days"));
+
+        return date_format($date, "Y-m-d");
     }
 }
