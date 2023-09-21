@@ -269,9 +269,8 @@
                                 <th>{{$data->Sewing_actual}}</th>
                                 <th>{{$data->washing_complete_plan}}</th>
                                 <th>{{$data->washing_complete_actual}}</th>
-                                <th></th>
+                                <th>{{$data->finishing_complete_plan}}</th>
                                 <th>{{$data->washing_complete_actual}}</th>
-                                <th></th>
                                 <th>{{$data->finishing_complete_actual}}</th>
                                 <th></th>
                                 <th></th>
@@ -284,6 +283,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th>{{$data->final_aql_date_plan}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
