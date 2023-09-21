@@ -144,6 +144,14 @@ class PurchageOrderController extends Controller
                 $orderItem->save();
             }
         }
+        $purchaseOrder=PurchageOrder::find($purchaseOrder->id);
+        /* plan date work */
+        if($purchaseOrder) {
+            if($purchaseOrder->fabric_type=1) {
+
+            }
+        }
+      
         $crtical=new CriticalPath();
         $crtical->po_id=$purchaseOrder->id;
         $crtical->save();

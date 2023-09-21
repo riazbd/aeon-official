@@ -989,118 +989,97 @@
 
             return newDateString;
         }
-
-        // $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
-        // $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
-        // $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
-        // $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
-        // $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
-        // $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
-        // $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
-        // $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
-        // $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
-        // $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
-        // $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
-        // $('#care_label_approval').val(subtractDaysFromDate($('#care_lavel_date').val(), 4));
-        // $('#material_inhouse_plan').val(subtractDaysFromDate($('#material_inhouse_actual').val(), 4));
-        // $('#pp_meeting_plan').val(subtractDaysFromDate($('#pp_meeting_actual').val(), 4));
-        // $('#cutting_date_plan').val(subtractDaysFromDate($('#cutting_date_actual').val(), 4));
-        // $('#embellishment_plan').val(subtractDaysFromDate($('#embellishment_actual').val(), 4));
-        // $('#Sewing_plan').val(subtractDaysFromDate($('#Sewing_actual').val(), 4));
-        // $('#washing_complete_plan').val(subtractDaysFromDate($('#washing_complete_actual').val(), 4));
-        // $('#finishing_complete_plan').val(subtractDaysFromDate($('#finishing_complete_actual').val(), 4));
-
         /*
          */
-        const datePairs = [
-            ['official_po_sent_actual_date', 'official_po_sent_plan_date'],
-            ['colour_std_print_artwork_sent_to_supplier_actual_date', 'colour_std_print_artwork_sent_to_supplier_plan_date'],
-            ['lab_dip_approval_actual_date', 'lab_dip_approval_plan_date'],
-            ['embellishment_s_o_approval_actual_date', 'embellishment_s_o_approval_plan_date'],
-            ['fabric_ordered_actual_date', 'fabric_ordered_plan_date'],
-            ['bulk_fabric_knit_down_approval_actual_date', 'bulk_fabric_knit_down_approval_plan_date'],
-            ['bulk_yarn_fabric_actual_date', 'bulk_yarn_fabric_plan_date'],
-            ['development_photo_sample_sent_actual_date', 'development_photo_sample_sent_plan_date'],
-            ['fit_approval_actual', 'fit_approval_plan'],
-            ['size_set_actual', 'size_set_approval'],
-            ['pp_actual', 'pp_approval'],
-            ['care_lavel_date', 'care_label_approval'],
-            ['material_inhouse_actual', 'material_inhouse_plan'],
-            ['pp_meeting_actual', 'pp_meeting_plan'],
-            ['cutting_date_actual', 'cutting_date_plan'],
-            ['embellishment_actual', 'embellishment_plan'],
-            ['Sewing_actual', 'Sewing_plan'],
-            ['washing_complete_actual', 'washing_complete_plan'],
-            ['finishing_complete_actual', 'finishing_complete_plan']
-        ];
+        // const datePairs = [
+        //     ['official_po_sent_actual_date', 'official_po_sent_plan_date'],
+        //     ['colour_std_print_artwork_sent_to_supplier_actual_date', 'colour_std_print_artwork_sent_to_supplier_plan_date'],
+        //     ['lab_dip_approval_actual_date', 'lab_dip_approval_plan_date'],
+        //     ['embellishment_s_o_approval_actual_date', 'embellishment_s_o_approval_plan_date'],
+        //     ['fabric_ordered_actual_date', 'fabric_ordered_plan_date'],
+        //     ['bulk_fabric_knit_down_approval_actual_date', 'bulk_fabric_knit_down_approval_plan_date'],
+        //     ['bulk_yarn_fabric_actual_date', 'bulk_yarn_fabric_plan_date'],
+        //     ['development_photo_sample_sent_actual_date', 'development_photo_sample_sent_plan_date'],
+        //     ['fit_approval_actual', 'fit_approval_plan'],
+        //     ['size_set_actual', 'size_set_approval'],
+        //     ['pp_actual', 'pp_approval'],
+        //     ['care_lavel_date', 'care_label_approval'],
+        //     ['material_inhouse_actual', 'material_inhouse_plan'],
+        //     ['pp_meeting_actual', 'pp_meeting_plan'],
+        //     ['cutting_date_actual', 'cutting_date_plan'],
+        //     ['embellishment_actual', 'embellishment_plan'],
+        //     ['Sewing_actual', 'Sewing_plan'],
+        //     ['washing_complete_actual', 'washing_complete_plan'],
+        //     ['finishing_complete_actual', 'finishing_complete_plan']
+        // ];
 
-        // Loop through datePairs and set plan dates from actual dates
-        for (const [actualDateId, planDateId] of datePairs) {
-            const actualDate = $('#' + actualDateId).val();
+        // // Loop through datePairs and set plan dates from actual dates
+        // for (const [actualDateId, planDateId] of datePairs) {
+        //     const actualDate = $('#' + actualDateId).val();
 
-            if (actualDate) { // Check if actualDate is not null or undefined
-                const planDate = subtractDaysFromDate(actualDate, 4);
-                $('#' + planDateId).val(planDate);
-            } else {
-                // Handle the case where actualDate is null or undefined
-                console.warn("Actual date is missing for element with ID: " + actualDateId);
-            }
-        }
-        $('#official_po_sent_actual_date').on('change', function() {
-            $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
-        });
-        $('#colour_std_print_artwork_sent_to_supplier_actual_date').on('change', function() {
-            $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
-        });
-        $('#lab_dip_approval_actual_date').on('change', function() {
-            $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
-        });
-        $('#embellishment_s_o_approval_actual_date').on('change', function() {
-            $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
-        });
-        $('#fabric_ordered_actual_date').on('change', function() {
-            $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
-        });
-        $('#bulk_fabric_knit_down_approval_actual_date').on('change', function() {
-            $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
-        });
-        $('#bulk_yarn_fabric_actual_date').on('change', function() {
-            $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
-        });
-        $('#development_photo_sample_sent_actual_date').on('change', function() {
-            $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
-        });
-        $('#fit_approval_actual').on('change', function() {
-            $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
-        });
-        $('#size_set_actual').on('change', function() {
-            $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
-        });
-        $('#pp_actual').on('change', function() {
-            $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
-        });
-        $('#material_inhouse_actual').on('change', function() {
-            $('#material_inhouse_plan').val(subtractDaysFromDate($('#material_inhouse_actual').val(), 4));
-        });
-        $('#pp_meeting_actual').on('change', function() {
-            $('#pp_meeting_plan').val(subtractDaysFromDate($('#pp_meeting_actual').val(), 4));
-        });
-        //
-        $('#cutting_date_actual').on('change', function() {
-            $('#cutting_date_plan').val(subtractDaysFromDate($('#cutting_date_actual').val(), 4));
-        });
-        $('#embellishment_actual').on('change', function() {
-            $('#embellishment_plan').val(subtractDaysFromDate($('#embellishment_actual').val(), 4));
-        });
-        $('#Sewing_actual').on('change', function() {
-            $('#Sewing_plan').val(subtractDaysFromDate($('#Sewing_actual').val(), 4));
-        });
-        $('#washing_complete_actual').on('change', function() {
-            $('#washing_complete_plan').val(subtractDaysFromDate($('#washing_complete_actual').val(), 4));
-        });
-        $('#finishing_complete_actual').on('change', function() {
-            $('#finishing_complete_plan').val(subtractDaysFromDate($('#finishing_complete_actual').val(), 4));
-        });
+        //     if (actualDate) { // Check if actualDate is not null or undefined
+        //         const planDate = subtractDaysFromDate(actualDate, 4);
+        //         $('#' + planDateId).val(planDate);
+        //     } else {
+        //         // Handle the case where actualDate is null or undefined
+        //         console.warn("Actual date is missing for element with ID: " + actualDateId);
+        //     }
+        // }
+        // $('#official_po_sent_actual_date').on('change', function() {
+        //     $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
+        // });
+        // $('#colour_std_print_artwork_sent_to_supplier_actual_date').on('change', function() {
+        //     $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
+        // });
+        // $('#lab_dip_approval_actual_date').on('change', function() {
+        //     $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
+        // });
+        // $('#embellishment_s_o_approval_actual_date').on('change', function() {
+        //     $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
+        // });
+        // $('#fabric_ordered_actual_date').on('change', function() {
+        //     $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
+        // });
+        // $('#bulk_fabric_knit_down_approval_actual_date').on('change', function() {
+        //     $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
+        // });
+        // $('#bulk_yarn_fabric_actual_date').on('change', function() {
+        //     $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
+        // });
+        // $('#development_photo_sample_sent_actual_date').on('change', function() {
+        //     $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
+        // });
+        // $('#fit_approval_actual').on('change', function() {
+        //     $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
+        // });
+        // $('#size_set_actual').on('change', function() {
+        //     $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
+        // });
+        // $('#pp_actual').on('change', function() {
+        //     $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
+        // });
+        // $('#material_inhouse_actual').on('change', function() {
+        //     $('#material_inhouse_plan').val(subtractDaysFromDate($('#material_inhouse_actual').val(), 4));
+        // });
+        // $('#pp_meeting_actual').on('change', function() {
+        //     $('#pp_meeting_plan').val(subtractDaysFromDate($('#pp_meeting_actual').val(), 4));
+        // });
+        // //
+        // $('#cutting_date_actual').on('change', function() {
+        //     $('#cutting_date_plan').val(subtractDaysFromDate($('#cutting_date_actual').val(), 4));
+        // });
+        // $('#embellishment_actual').on('change', function() {
+        //     $('#embellishment_plan').val(subtractDaysFromDate($('#embellishment_actual').val(), 4));
+        // });
+        // $('#Sewing_actual').on('change', function() {
+        //     $('#Sewing_plan').val(subtractDaysFromDate($('#Sewing_actual').val(), 4));
+        // });
+        // $('#washing_complete_actual').on('change', function() {
+        //     $('#washing_complete_plan').val(subtractDaysFromDate($('#washing_complete_actual').val(), 4));
+        // });
+        // $('#finishing_complete_actual').on('change', function() {
+        //     $('#finishing_complete_plan').val(subtractDaysFromDate($('#finishing_complete_actual').val(), 4));
+        // });
 
         // Initially set the "Another Date" value when the page loads
         // updateAnotherDate();
