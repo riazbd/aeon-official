@@ -81,6 +81,62 @@ class CreateCriticalPathsTable extends Migration
             $table->string('material_inhouse_actual')->nullable();
             $table->string('pp_meeting_plan')->nullable();
             $table->string('pp_meeting_actual')->nullable();
+
+            $table->text('create_pp_meeting_schedule')->nullable();
+            $table->text('pp_meeting_report_upload')->nullable();
+            $table->text('cutting_date_plan')->nullable();
+            $table->text('cutting_date_actual')->nullable();
+            $table->text('embellishment_plan')->nullable();
+            $table->text('embellishment_actual')->nullable();
+            $table->text('Sewing_plan')->nullable();
+            $table->text('Sewing_actual')->nullable();
+            $table->text('washing_complete_plan')->nullable();
+            $table->text('washing_complete_actual')->nullable();
+
+            $table->text('finishing_complete_plan')->nullable();
+            $table->text('finishing_complete_actual')->nullable();
+            $table->text('sewing_inline_inspection_date_plan')->nullable();
+            $table->text('sewing_inline_inspection_date_actual')->nullable();
+            $table->text('create_inline_inspection_schdule')->nullable();
+            $table->text('sewing_inline_inspection_report_upload')->nullable();
+            $table->text('finishing_inline_inspection_report')->nullable();
+            $table->text('pre_final_date_plan')->nullable();
+            $table->text('pre_final_date_actual')->nullable();
+            $table->text('create_aql_schedule')->nullable();
+
+            $table->text('pre_final_aql_report_schedule')->nullable();
+            $table->text('final_aql_date_plan')->nullable();
+            $table->text('final_aql_date_actual')->nullable();
+            $table->text('final_aql_report_upload')->nullable();
+            $table->text('production_sample_approval_plan')->nullable();
+            $table->text('production_sample_approval_actual')->nullable();
+            $table->text('production_sample_dispatch')->nullable();
+            $table->text('production_sample_upload')->nullable();
+            $table->text('shipment_booking_with_acs_plan')->nullable();
+            $table->text('shipment_booking_with_acs_actual')->nullable();
+
+            $table->text('sa_approval_plan')->nullable();
+            $table->text('sa_approval_actual')->nullable();
+            $table->text('ex_factory_date_po')->nullable();
+            $table->text('revised_ex_factory_date')->nullable();
+            $table->text('actual_ex_factory_date')->nullable();
+            $table->text('shipped_units')->nullable();
+            $table->text('orginal_eta_sa_date')->nullable();
+            $table->text('revised_eta_sa_date')->nullable();
+            $table->text('ship_mode_sea_air')->nullable();
+            $table->text('forward_ref')->nullable();
+
+            $table->text('late_delivery_discounts_crp')->nullable();
+            $table->text('invoice_num')->nullable();
+            $table->text('invoice_create_date')->nullable();
+            $table->text('payment_receive_date')->nullable();
+            $table->text('vendor_last_update_date')->nullable();
+            $table->text('reason_for_change_affect_shipment')->nullable();
+            $table->text('aeon_comments_date')->nullable();
+            $table->text('vendor_comments_date')->nullable();
+            $table->text('sa_eta_5_days')->nullable();
+            $table->text('note')->nullable();
+
             $table->timestamps();
         });
     }

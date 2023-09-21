@@ -144,17 +144,32 @@ class PurchageOrderController extends Controller
                 $orderItem->save();
             }
         }
-        $purchaseOrder=PurchageOrder::find($purchaseOrder->id);
-        /* plan date work */
-        if($purchaseOrder) {
-            if($purchaseOrder->fabric_type=1) {
+       
 
-            }
-        }
+       
       
         $crtical=new CriticalPath();
         $crtical->po_id=$purchaseOrder->id;
+         
+         // $purchaseOrder=PurchageOrder::find($purchaseOrder->id);
+          /* plan date work */
+   //=IFERROR(AJ10-15,"") AJ10 =Fabric order plan
+   //$crtical->crticalfabric_ordered_plan_date
+   //$crtical->official_po_sent_plan_date
+
+   /*critical fabric depends on IF(E10="solid",AP10-30,IF(AND(E10="AOP/ Special Yarn"),AP10-40,IF(AND(E10="Import"),AP10-65)))
+   *E10 =fabric type
+   */
+        //   if($purchaseOrder) {
+        //     if($purchaseOrder->fabric_type=1) {
+
+        //     }
+        // }
+        /**
+         * 
+         */
         $crtical->save();
+      
         $crticalDetails=new CriticalDetails();
         $crticalDetails->critical_id=$crtical->id;
         $crticalDetails->save();

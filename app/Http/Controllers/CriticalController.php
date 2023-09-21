@@ -29,8 +29,7 @@ class CriticalController extends Controller
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
-            ->select('*', 'purchage_orders.*','critical_paths.colour as aColor','purchage_orders.care_lavel_date as careDate','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName','critical_details.*'
+            ->select('*', 'purchage_orders.*','critical_paths.colour as aColor','purchage_orders.care_lavel_date as careDate','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName'
             , DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered'))
             ->get();
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
@@ -84,7 +83,6 @@ class CriticalController extends Controller
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->join('critical_details', 'critical_details.critical_id', '=', 'critical_paths.id')
             ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'buyers.name as buyerName',
             DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
             )
@@ -107,7 +105,7 @@ class CriticalController extends Controller
     public function update(Request $request, $id)
     {
         $criticalPath = CriticalPath::where('po_id', $id)->first();
-        $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
+       // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
         $po_find = PurchageOrder::find($id);
         if (isset($criticalPath)) {
 
@@ -266,7 +264,7 @@ class CriticalController extends Controller
             // Add more conditions for other fields as needed
 
             // Update the model with the data
-            $criticalPath->update($updateData);
+           
 
             if (isset($request->care_lavel_date)) {
                 $data['care_lavel_date'] = $request->care_lavel_date;
@@ -277,91 +275,91 @@ class CriticalController extends Controller
             $po_find->update($data);
 
             if (isset($request->cutting_date_actual)) {
-                $details['cutting_date_actual'] = $request->cutting_date_actual;
+                $updateData['cutting_date_actual'] = $request->cutting_date_actual;
             }
             if (isset($request->cutting_date_plan)) {
-                $details['cutting_date_plan'] = $request->cutting_date_plan;
+                $updateData['cutting_date_plan'] = $request->cutting_date_plan;
             }
             if (isset($request->embellishment_actual)) {
-                $details['embellishment_actual'] = $request->embellishment_actual;
+                $updateData['embellishment_actual'] = $request->embellishment_actual;
             }
             if (isset($request->embellishment_plan)) {
-                $details['embellishment_plan'] = $request->embellishment_plan;
+                $updateData['embellishment_plan'] = $request->embellishment_plan;
             }
             if (isset($request->Sewing_actual)) {
-                $details['Sewing_actual'] = $request->Sewing_actual;
+                $updateData['Sewing_actual'] = $request->Sewing_actual;
             }
             if (isset($request->Sewing_plan)) {
-                $details['Sewing_plan'] = $request->Sewing_plan;
+                $updateData['Sewing_plan'] = $request->Sewing_plan;
             }
             if (isset($request->washing_complete_actual)) {
-                $details['washing_complete_actual'] = $request->washing_complete_actual;
+                $updateData['washing_complete_actual'] = $request->washing_complete_actual;
             }
             if (isset($request->washing_complete_plan)) {
-                $details['washing_complete_plan'] = $request->washing_complete_plan;
+                $updateData['washing_complete_plan'] = $request->washing_complete_plan;
             }
             if (isset($request->finishing_complete_actual)) {
-                $details['finishing_complete_actual'] = $request->finishing_complete_actual;
+                $updateData['finishing_complete_actual'] = $request->finishing_complete_actual;
             }
             if (isset($request->finishing_complete_plan)) {
-                $details['finishing_complete_plan'] = $request->finishing_complete_plan;
+                $updateData['finishing_complete_plan'] = $request->finishing_complete_plan;
             }
             if (isset($request->sewing_inline_inspection_date_actual)) {
-                $details['sewing_inline_inspection_date_actual'] = $request->sewing_inline_inspection_date_actual;
+                $updateData['sewing_inline_inspection_date_actual'] = $request->sewing_inline_inspection_date_actual;
             }
             if (isset($request->finishing_inline_inspection_report)) {
-                $details['finishing_inline_inspection_report'] = $request->finishing_inline_inspection_report;
+                $updateData['finishing_inline_inspection_report'] = $request->finishing_inline_inspection_report;
             }
             if (isset($request->pre_final_date_actual)) {
-                $details['pre_final_date_actual'] = $request->pre_final_date_actual;
+                $updateData['pre_final_date_actual'] = $request->pre_final_date_actual;
             }
             if (isset($request->create_aql_schedule)) {
-                $details['create_aql_schedule'] = $request->create_aql_schedule;
+                $updateData['create_aql_schedule'] = $request->create_aql_schedule;
             }
             if (isset($request->final_aql_date_actual)) {
-                $details['final_aql_date_actual'] = $request->final_aql_date_actual;
+                $updateData['final_aql_date_actual'] = $request->final_aql_date_actual;
             }
             if (isset($request->production_sample_approval_actual)) {
-                $details['production_sample_approval_actual'] = $request->production_sample_approval_actual;
+                $updateData['production_sample_approval_actual'] = $request->production_sample_approval_actual;
             }
             if (isset($request->production_sample_dispatch)) {
-                $details['production_sample_dispatch'] = $request->production_sample_dispatch;
+                $updateData['production_sample_dispatch'] = $request->production_sample_dispatch;
             }
             if (isset($request->shipment_booking_with_acs_actual)) {
-                $details['shipment_booking_with_acs_actual'] = $request->shipment_booking_with_acs_actual;
+                $updateData['shipment_booking_with_acs_actual'] = $request->shipment_booking_with_acs_actual;
             }
             if (isset($request->sa_approval_actual)) {
-                $details['sa_approval_actual'] = $request->sa_approval_actual;
+                $updateData['sa_approval_actual'] = $request->sa_approval_actual;
             }
             if (isset($request->late_delivery_discounts_crp)) {
-                $details['late_delivery_discounts_crp'] = $request->late_delivery_discounts_crp;
+                $updateData['late_delivery_discounts_crp'] = $request->late_delivery_discounts_crp;
             }
             if (isset($request->invoice_create_date)) {
-                $details['invoice_create_date'] = $request->invoice_create_date;
+                $updateData['invoice_create_date'] = $request->invoice_create_date;
             }
             if (isset($request->payment_receive_date)) {
-                $details['payment_receive_date'] = $request->payment_receive_date;
+                $updateData['payment_receive_date'] = $request->payment_receive_date;
             }
             if (isset($request->reason_for_change_affect_shipment)) {
-                $details['reason_for_change_affect_shipment'] = $request->reason_for_change_affect_shipment;
+                $updateData['reason_for_change_affect_shipment'] = $request->reason_for_change_affect_shipment;
             }
             if (isset($request->aeon_comments_date)) {
-                $details['aeon_comments_date'] = $request->aeon_comments_date;
+                $updateData['aeon_comments_date'] = $request->aeon_comments_date;
             }
             if (isset($request->vendor_comments_date)) {
-                $details['vendor_comments_date'] = $request->vendor_comments_date;
+                $updateData['vendor_comments_date'] = $request->vendor_comments_date;
             }
             if (isset($request->sa_eta_5_days)) {
-                $details['sa_eta_5_days'] = $request->sa_eta_5_days;
+                $updateData['sa_eta_5_days'] = $request->sa_eta_5_days;
             }
             if (isset($request->note)) {
-                $details['note'] = $request->note;
+                $updateData['note'] = $request->note;
             }
             if (isset($request->create_pp_meeting_schedule)) {
-                $details['create_pp_meeting_schedule'] = $request->create_pp_meeting_schedule;
+                $updateData['create_pp_meeting_schedule'] = $request->create_pp_meeting_schedule;
             }
 
-            $criticlDetails->update($details);
+            $criticalPath->update($updateData);
             return redirect()->back()->with('success', 'Data saved successfully!');
         }
     }
