@@ -285,6 +285,25 @@ class PurchageOrderController extends Controller
             else {
                 $crtical->pre_final_date_plan="";
             }
+
+            if (!empty($crtical->ex_factory_date_po)) {
+                $crtical->sa_approval_plan = $this->dateCalculate($crtical->ex_factory_date_po, 5);
+            }
+            else {
+                $crtical->sa_approval_plan="";
+            }
+            if (!empty($crtical->sa_approval_plan)) {
+                $crtical->production_sample_approval_plan = $this->dateCalculate($crtical->sa_approval_plan, 4);
+            }
+            else {
+                $crtical->production_sample_approval_plan="";
+            }
+
+            if (!empty($crtical->ex_factory_date_po)) {
+                $crtical->shipment_booking_with_acs_plan = $this->dateCalculate($crtical->ex_factory_date_po, 21);
+            }else{
+                $crtical->shipment_booking_with_acs_plan="";
+            }
             
 
             $crtical->save();
