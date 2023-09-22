@@ -253,6 +253,20 @@ class PurchageOrderController extends Controller
             }else {
                 $crtical->development_photo_sample_sent_plan_date="";
             }
+            if (!empty($crtical->pp_meeting_plan)) {
+                $crtical->care_label_approval = $this->dateCalculate($crtical->pp_meeting_plan, 10);
+            }
+            else {
+                $crtical->care_label_approval="";
+            }
+            if (!empty($crtical->pp_meeting_plan)) {
+                $crtical->material_inhouse_plan = $this->dateCalculate($crtical->pp_meeting_plan, 2);
+            }
+            else {
+                $crtical->material_inhouse_plan="";
+            }
+            
+
             $crtical->save();
         }
         if ($request->input('download_pdf') == 'yes') {
