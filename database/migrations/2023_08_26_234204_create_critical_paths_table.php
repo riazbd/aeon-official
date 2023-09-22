@@ -100,6 +100,8 @@ class CreateCriticalPathsTable extends Migration
             $table->text('create_inline_inspection_schdule')->nullable();
             $table->text('sewing_inline_inspection_report_upload')->nullable();
             $table->text('finishing_inline_inspection_report')->nullable();
+            $table->text('finishing_inline_inspection_date_plan')->nullable();
+            $table->text('finishing_inline_inspection_date_actual')->nullable();
             $table->text('pre_final_date_plan')->nullable();
             $table->text('pre_final_date_actual')->nullable();
             $table->text('create_aql_schedule')->nullable();

@@ -245,7 +245,7 @@
                                 <th>{{$data->fit_approval_actual}}</th>
                                 <th>{{$data->fit_dispatch}}</th>
                                 <th></th>
-                                <th>size set{{$data->size_set_approval}}</th>
+                                <th>{{$data->size_set_approval}}</th>
                                 <th>{{$data->size_set_actual}}</th>
                                 <th>{{$data->size_set_dispatch}}</th>
                                 <th></th>
@@ -275,8 +275,8 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->finishing_inline_inspection_date_plan}}</th>
+                                <th>{{$data->finishing_inline_inspection_date_actual}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
