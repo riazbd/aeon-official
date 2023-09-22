@@ -278,6 +278,13 @@ class PurchageOrderController extends Controller
             else {
                 $crtical->sewing_inline_inspection_date_plan="";
             }
+
+            if (!empty($crtical->final_aql_date_plan)) {
+                $crtical->pre_final_date_plan = $this->dateCalculate($crtical->final_aql_date_plan, 3);
+            }
+            else {
+                $crtical->pre_final_date_plan="";
+            }
             
 
             $crtical->save();

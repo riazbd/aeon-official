@@ -279,8 +279,8 @@
                                 <th>{{$data->finishing_inline_inspection_date_actual}}</th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->pre_final_date_plan}}</th>
+                                <th>{{$data->pre_final_date_actual}}</th>
                                 <th></th>
                                 <th></th>
                                 <th>{{$data->final_aql_date_plan}}</th>
