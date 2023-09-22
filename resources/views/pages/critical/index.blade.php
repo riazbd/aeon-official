@@ -245,7 +245,7 @@
                                 <th>{{$data->fit_approval_actual}}</th>
                                 <th>{{$data->fit_dispatch}}</th>
                                 <th></th>
-                                <th>{{$data->size_set_approval}}</th>
+                                <th>size set{{$data->size_set_approval}}</th>
                                 <th>{{$data->size_set_actual}}</th>
                                 <th>{{$data->size_set_dispatch}}</th>
                                 <th></th>
