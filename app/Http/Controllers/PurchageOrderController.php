@@ -144,12 +144,170 @@ class PurchageOrderController extends Controller
                 $orderItem->save();
             }
         }
-        $crtical=new CriticalPath();
-        $crtical->po_id=$purchaseOrder->id;
-        $crtical->save();
-        $crticalDetails=new CriticalDetails();
-        $crticalDetails->critical_id=$crtical->id;
-        $crticalDetails->save();
+
+
+
+        $poFind = PurchageOrder::find($purchaseOrder->id);
+        if ($poFind) {
+            $crtical = new CriticalPath();
+            $crtical->po_id = $purchaseOrder->id;
+            $crtical->ex_factory_date_po = $purchaseOrder->ex_factory_date;
+            if (!empty($purchaseOrder->ex_factory_date)) {
+                $crtical->final_aql_date_plan = $this->dateCalculate($purchaseOrder->ex_factory_date, 7);
+            } else {
+                $crtical->final_aql_date_plan = "";
+            }
+            if (!empty($crtical->final_aql_date_plan)) {
+                $crtical->finishing_complete_plan = $this->dateCalculate($crtical->final_aql_date_plan, 2);
+            } else {
+                $crtical->finishing_complete_plan = "";
+            }
+            if (!empty($crtical->finishing_complete_plan)) {
+                $crtical->washing_complete_plan = $this->dateCalculate($crtical->finishing_complete_plan, 5);
+            } else {
+                $crtical->washing_complete_plan = "";
+            }
+            if (!empty($crtical->washing_complete_plan)) {
+                $crtical->Sewing_plan = $this->dateCalculate($crtical->washing_complete_plan, 15);
+            } else {
+                $crtical->Sewing_plan = "";
+            }
+            if (!empty($crtical->Sewing_plan)) {
+                $crtical->embellishment_plan = $this->dateCalculate($crtical->Sewing_plan, 15);
+            } else {
+                $crtical->embellishment_plan = "";
+            }
+            if (!empty($crtical->embellishment_plan)) {
+                $crtical->cutting_date_plan = $this->dateCalculate($crtical->embellishment_plan, 2);
+            } else {
+                $crtical->cutting_date_plan = "";
+            }
+            if (!empty($crtical->cutting_date_plan)) {
+                $crtical->bulk_yarn_fabric_plan_date = $this->dateCalculate($crtical->cutting_date_plan, 7);
+            } else {
+                $crtical->bulk_yarn_fabric_plan_date = "";
+            }
+            if ($poFind->fabric_type == 3) {
+                if (!empty($crtical->bulk_yarn_fabric_plan_date)) {
+                    $crtical->fabric_ordered_plan_date = $this->dateCalculate($crtical->bulk_yarn_fabric_plan_date, 65);
+                }
+            }
+            if ($poFind->fabric_type == 2) {
+                if (!empty($crtical->bulk_yarn_fabric_plan_date)) {
+                    $crtical->fabric_ordered_plan_date = $this->dateCalculate($crtical->bulk_yarn_fabric_plan_date, 40);
+                }
+            }
+            if ($poFind->fabric_type == 2) {
+                if (!empty($crtical->bulk_yarn_fabric_plan_date)) {
+                    $crtical->fabric_ordered_plan_date = $this->dateCalculate($crtical->bulk_yarn_fabric_plan_date, 30);
+                }
+            }
+            $crtical->fabric_type = $poFind->fabric_type;
+
+            if (!empty($crtical->fabric_ordered_plan_date)) {
+                $crtical->official_po_sent_plan_date = $this->dateCalculate($crtical->fabric_ordered_plan_date, 15);
+            } else {
+                $crtical->official_po_sent_plan_date = "";
+            }
+            if (!empty($crtical->cutting_date_plan)) {
+                $crtical->pp_meeting_plan = $this->dateCalculate($crtical->cutting_date_plan, 3);
+            } else {
+                $crtical->pp_meeting_plan = "";
+            }
+            if (!empty($crtical->pp_meeting_plan)) {
+                $crtical->pp_approval = $this->dateCalculate($crtical->pp_meeting_plan, 10);
+            } else {
+                $crtical->pp_approval = "";
+            }
+            if (!empty($crtical->pp_approval)) {
+                $crtical->embellishment_s_o_approval_plan_date = $this->dateCalculate($crtical->pp_approval, 14);
+            } else {
+                $crtical->embellishment_s_o_approval_plan_date = "";
+            }
+            if (!empty($crtical->embellishment_s_o_approval_plan_date)) {
+                $crtical->colour_std_print_artwork_sent_to_supplier_plan_date = $this->dateCalculate($crtical->embellishment_s_o_approval_plan_date, 7);
+            } else {
+                $crtical->colour_std_print_artwork_sent_to_supplier_plan_date = "";
+            }
+            if (!empty($crtical->embellishment_s_o_approval_plan_date)) {
+                $crtical->lab_dip_approval_plan_date = $this->dateCalculate($crtical->embellishment_s_o_approval_plan_date, 7);
+            } else {
+                $crtical->lab_dip_approval_plan_date = "";
+            }
+            if ($crtical->size_set_actual == "NA") {
+                $crtical->size_set_approval = "NA";
+            } else {
+                if (!empty($crtical->pp_approval)) {
+                    $crtical->size_set_approval = $this->dateCalculate($crtical->pp_approval, 14);
+                }
+            }
+            if ($crtical->fit_approval_actual == "NA") {
+                $crtical->fit_approval_plan = $crtical->size_set_approval;
+            } else {
+                if (!empty($crtical->size_set_approval)) {
+                    $crtical->fit_approval_plan = $this->dateCalculate($crtical->size_set_approval, 14);
+                }
+            }
+            if (!empty($crtical->fit_approval_plan)) {
+                $crtical->development_photo_sample_sent_plan_date = $this->dateCalculate($crtical->fit_approval_plan, 10);
+            }else {
+                $crtical->development_photo_sample_sent_plan_date="";
+            }
+            if (!empty($crtical->pp_meeting_plan)) {
+                $crtical->care_label_approval = $this->dateCalculate($crtical->pp_meeting_plan, 10);
+            }
+            else {
+                $crtical->care_label_approval="";
+            }
+            if (!empty($crtical->pp_meeting_plan)) {
+                $crtical->material_inhouse_plan = $this->dateCalculate($crtical->pp_meeting_plan, 2);
+            }
+            else {
+                $crtical->material_inhouse_plan="";
+            }
+            if (!empty($crtical->final_aql_date_plan)) {
+                $crtical->finishing_inline_inspection_date_plan = $this->dateCalculate($crtical->final_aql_date_plan, 3);
+            }
+            else {
+                $crtical->finishing_inline_inspection_date_plan="";
+            }
+
+            if (!empty($crtical->finishing_inline_inspection_date_plan)) {
+                $crtical->sewing_inline_inspection_date_plan = $this->dateCalculate($crtical->finishing_inline_inspection_date_plan, 4);
+            }
+            else {
+                $crtical->sewing_inline_inspection_date_plan="";
+            }
+
+            if (!empty($crtical->final_aql_date_plan)) {
+                $crtical->pre_final_date_plan = $this->dateCalculate($crtical->final_aql_date_plan, 3);
+            }
+            else {
+                $crtical->pre_final_date_plan="";
+            }
+
+            if (!empty($crtical->ex_factory_date_po)) {
+                $crtical->sa_approval_plan = $this->dateCalculate($crtical->ex_factory_date_po, 5);
+            }
+            else {
+                $crtical->sa_approval_plan="";
+            }
+            if (!empty($crtical->sa_approval_plan)) {
+                $crtical->production_sample_approval_plan = $this->dateCalculate($crtical->sa_approval_plan, 4);
+            }
+            else {
+                $crtical->production_sample_approval_plan="";
+            }
+
+            if (!empty($crtical->ex_factory_date_po)) {
+                $crtical->shipment_booking_with_acs_plan = $this->dateCalculate($crtical->ex_factory_date_po, 21);
+            }else{
+                $crtical->shipment_booking_with_acs_plan="";
+            }
+            
+
+            $crtical->save();
+        }
         if ($request->input('download_pdf') == 'yes') {
             if ($request->input('select_buyer') == 1) {
                 $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
@@ -249,5 +407,13 @@ class PurchageOrderController extends Controller
         $po->delete();
 
         return redirect()->back();
+    }
+
+    private function dateCalculate($calculateDateFrom, $differenceDay)
+    {
+        $date = date_create($calculateDateFrom);
+        date_sub($date, date_interval_create_from_date_string("$differenceDay days"));
+
+        return date_format($date, "Y-m-d");
     }
 }

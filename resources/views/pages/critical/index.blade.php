@@ -123,6 +123,7 @@
                                 <th>Care App<br />(Plan)</th>
                                 <th>Care App<br />(actual)</th>
                                 <th>Material<br />(Plan)</th>
+                                <th>Material<br />(actual)</th>
                                 <th>PP Meet<br />(Plan)</th>
                                 <th>PP Meet<br />(actual)</th>
                                 <th>Create PP<br /> Meet Schedule</th>
@@ -173,6 +174,11 @@
                                 <th>Inv No</th>
                                 <th>Inv No<br />Create </th>
                                 <th>Payment</th>
+                                <th>Reason For Change</th>
+                                <th>Aeon Commnets Date</th>
+                                <th>Vendor Comments Date</th>
+                                <th>S/A ETA 5</th>
+                                <th>Note</th>
 
                                 <!-- Add more headers here -->
                             </tr>
@@ -217,8 +223,8 @@
                                 <th>{{$data->official_po_sent_actual_date}}</th>
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
-                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
-                                <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
+                                <th>{{$data->lab_dip_approval_plan_date}}</th>
+                                <th>{{$data->lab_dip_approval_actual_date}}</th>
                                 <th>{{$data->embellishment_s_o_approval_plan_date}}</th>
                                 <th>{{$data->embellishment_s_o_approval_actual_date}}</th>
                                 <th>{{$data->embellishment_s_o_dispatch_details}}</th>
@@ -231,52 +237,53 @@
                                 <th></th>
                                 <th>{{$data->bulk_yarn_fabric_plan_date}}</th>
                                 <th>{{$data->bulk_yarn_fabric_actual_date}}</th>
+                                <th>{{$data->development_photo_sample_sent_plan_date}}</th>
+                                <th>{{$data->development_photo_sample_sent_actual_date}}</th>
+                                <th>{{$data->development_photo_sample_dispatch_details}}</th>
                                 <th></th>
+                                <th>{{$data->fit_approval_plan}}</th>
+                                <th>{{$data->fit_approval_actual}}</th>
+                                <th>{{$data->fit_dispatch}}</th>
                                 <th></th>
+                                <th>{{$data->size_set_approval}}</th>
+                                <th>{{$data->size_set_actual}}</th>
+                                <th>{{$data->size_set_dispatch}}</th>
                                 <th></th>
+                                <th>{{$data->pp_approval}}</th>
+                                <th>{{$data->pp_actual}}</th>
+                                <th>{{$data->pp_dispatch}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th><input readonly id="care_plan_date" type="text"  name="care_plan_date" class="col-md-12"></th>
+                                <th>{{$data->care_label_approval}}</th>
                                 <th>{{$data->care_lavel_date}}</th>
+                                <th>{{$data->material_inhouse_plan}}</th>
+                                <th>{{$data->material_inhouse_actual}}</th>
+                                <th>{{$data->pp_meeting_plan}}</th>
+                                <th>{{$data->pp_meeting_actual}}</th>
+                                <th>{{$data->create_pp_meeting_schedule}}</th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->cutting_date_plan}}</th>
                                 <th>{{$data->cutting_date_actual}}</th>
-                                <th></th>
+                                <th>{{$data->embellishment_plan}}</th>
                                 <th>{{$data->embellishment_actual}}</th>
-                                <th></th>
+                                <th>{{$data->Sewing_plan}}</th>
                                 <th>{{$data->Sewing_actual}}</th>
-                                <th></th>
+                                <th>{{$data->washing_complete_plan}}</th>
                                 <th>{{$data->washing_complete_actual}}</th>
-                                <th></th>
+                                <th>{{$data->finishing_complete_plan}}</th>
                                 <th>{{$data->washing_complete_actual}}</th>
-                                <th></th>
                                 <th>{{$data->finishing_complete_actual}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th>{{$data->finishing_inline_inspection_date_plan}}</th>
+                                <th>{{$data->finishing_inline_inspection_date_actual}}</th>
                                 <th></th>
                                 <th></th>
+                                <th>{{$data->pre_final_date_plan}}</th>
+                                <th>{{$data->pre_final_date_actual}}</th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->final_aql_date_plan}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -300,6 +307,11 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th>{{$data->reason_for_change_affect_shipment}}</th>
+                                <th>{{$data->aeon_comments_date}}</th>
+                                <th>{{$data->vendor_comments_date}}</th>
+                                <th>{{$data->sa_eta_5_days}}</th>
+                                <th>{{$data->note}}</th>
                                 <!-- Add more headers here -->
                             </tr>
                             @endforeach
@@ -338,6 +350,12 @@
                                     <th> </th>
                                     <th></th>
                                     <th> </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>

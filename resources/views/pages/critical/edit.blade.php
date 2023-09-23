@@ -507,25 +507,25 @@
                 <div id="flush-collapseSix" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="care_app_plan" placeholder="Care Approval Plan" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->care_label_approval}}" name="care_label_approval" id="care_label_approval" placeholder="Care Approval Plan" class="form-control" />
                             <label for="careApprovalPlan">Care Approval Plan</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$po_find->care_lavel_date}}" name="care_lavel_date" placeholder="Care Approval Actual" class="form-control" />
+                            <input readonly type="date" value="{{$po_find->care_lavel_date}}" name="care_lavel_date" id="care_lavel_date" placeholder="Care Approval Actual" class="form-control" />
                             <label for="careApprovalActual">Care Approval Actual</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->material_inhouse_plan}}" name="material_inhouse_plan" placeholder="Material Inhouse date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->material_inhouse_plan}}" name="material_inhouse_plan" placeholder="Material Inhouse date (Plan)" class="form-control" id="material_inhouse_plan" />
                             <label for="materialInhouseDatePlan">Material Inhouse date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->material_inhouse_actual}}" name="material_inhouse_actual" placeholder="Material Inhouse date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->material_inhouse_actual}}" name="material_inhouse_actual" placeholder="Material Inhouse date (Actual)" class="form-control" id="material_inhouse_actual" />
                             <label for="materialInhouseDateActual">Material Inhouse date (Actual)</label>
                         </div>
                     </div>
@@ -533,19 +533,19 @@
                 <div id="flush-collapseSix" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->pp_meeting_plan}}" name="pp_meeting_plan" placeholder="PP Meeting Date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->pp_meeting_plan}}" name="pp_meeting_plan" id="pp_meeting_plan" placeholder="PP Meeting Date (Plan)" class="form-control" />
                             <label for="ppMeetingDatePlan">PP Meeting Date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->pp_meeting_actual}}" name="pp_meeting_actual" placeholder="PP Meeting Date (Actual)" class="form-control" />
+                            <input type="date" value="{{$criticalPath->pp_meeting_actual}}" name="pp_meeting_actual" id="pp_meeting_actual" placeholder="PP Meeting Date (Actual)" class="form-control" />
                             <label for="ppMeetingDateActual">PP Meeting Date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="pp_meet_schedule" placeholder="Create PP Meeting Schedule" class="form-control" />
+                            <input type="date" value="{{$criticalPath->create_pp_meeting_schedule}}" name="create_pp_meeting_schedule" placeholder="Create PP Meeting Schedule" class="form-control" />
                             <label for="createPPMeetingSchedule">Create PP Meeting Schedule</label>
                         </div>
                     </div>
@@ -571,25 +571,25 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="cut_date_plan" placeholder="Cutting date (Plan)" class="form-control" />
+                            <input readonly id="cutting_date_plan" type="text" value="{{$criticalPath->cutting_date_plan}}" name="cutting_date_plan" placeholder="Cutting date (Plan)" class="form-control" />
                             <label for="cuttingDatePlan">Cutting date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->cutting_date_actual}}" name="cutting_date_actual" placeholder="Cutting date (Actual)" class="form-control" />
+                            <input type="date" id="cutting_date_actual" value="{{$criticalPath->cutting_date_actual}}" name="cutting_date_actual" placeholder="Cutting date (Actual)" class="form-control" />
                             <label for="cuttingDateActual">Cutting date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="emb_plan" placeholder="Embellishment (Plan)" class="form-control" />
+                            <input readonly id="embellishment_plan" type="text" value="{{$criticalPath->embellishment_plan}}" name="embellishment_plan" placeholder="Embellishment (Plan)" class="form-control" />
                             <label for="embellishmentPlan">Embellishment (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->embellishment_actual}}" name="embellishment_actual" placeholder="Embellishment (Actual)" class="form-control" />
+                            <input type="date" id="embellishment_actual" value="{{$criticalPath->embellishment_actual}}" name="embellishment_actual" placeholder="Embellishment (Actual)" class="form-control" />
                             <label for="embellishmentActual">Embellishment (Actual)</label>
                         </div>
                     </div>
@@ -597,19 +597,19 @@
                 <div id="flush-collapseSeven" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="sew_start_plan" placeholder="Sewing Start date (Plan)" class="form-control" />
+                            <input readonly type="text" id="Sewing_plan" value="{{$criticalPath->Sewing_plan}}" name="Sewing_plan" placeholder="Sewing Start date (Plan)" class="form-control" />
                             <label for="sewingStartDatePlan">Sewing Start date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->Sewing_actual}}" name="Sewing_actual" placeholder="Sewing Start date (Actual)" class="form-control" />
+                            <input type="date" id="Sewing_actual" value="{{$criticalPath->Sewing_actual}}" name="Sewing_actual" placeholder="Sewing Start date (Actual)" class="form-control" />
                             <label for="sewingStartDateActual">Sewing Start date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="wash_date_plan" placeholder="Washing complete date (Plan)" class="form-control" />
+                            <input readonly type="text" id="washing_complete_plan" value="{{$criticalPath->washing_complete_plan}}" name="washing_complete_plan" placeholder="Washing complete date (Plan)" class="form-control" />
                             <label for="washingCompleteDatePlan">Washing complete date (Plan)</label>
                         </div>
                     </div>
@@ -617,19 +617,19 @@
                 <div id="flush-collapseSeven" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->washing_complete_actual}}" name="washing_complete_actual" placeholder="Washing complete date (Actual)" class="form-control" />
+                            <input type="date" id="washing_complete_actual" value="{{$criticalPath->washing_complete_actual}}" name="washing_complete_actual" placeholder="Washing complete date (Actual)" class="form-control" />
                             <label for="washingCompleteDateActual">Washing complete date (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="finish_com_date_plan" placeholder="Finishing complete date (Plan)" class="form-control" />
+                            <input readonly type="text" id="finishing_complete_plan" value="{{$criticalPath->finishing_complete_plan}}" name="finishing_complete_plan" placeholder="Finishing complete date (Plan)" class="form-control" />
                             <label for="finishingCompleteDatePlan">Finishing complete date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->finishing_complete_actual}}" name="finishing_complete_actual" placeholder="Finishing complete date (Actual)" class="form-control" />
+                            <input type="date" id="finishing_complete_actual" value="{{$criticalPath->finishing_complete_actual}}" name="finishing_complete_actual" placeholder="Finishing complete date (Actual)" class="form-control" />
                             <label for="finishingCompleteDateActual">Finishing complete date (Actual)</label>
                         </div>
                     </div>
@@ -989,55 +989,97 @@
 
             return newDateString;
         }
-       
-        $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
-        $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
-        $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
-        $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
-        $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
-        $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
-        $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
-        $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
-        $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
-        $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
-        $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
-       
-        
-        $('#official_po_sent_actual_date').on('change', function() {
-            $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
-        });
-        $('#colour_std_print_artwork_sent_to_supplier_actual_date').on('change', function() {
-            $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
-        });
-        $('#lab_dip_approval_actual_date').on('change', function() {
-            $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
-        });
-        $('#embellishment_s_o_approval_actual_date').on('change', function() {
-            $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
-        });
-        $('#fabric_ordered_actual_date').on('change', function() {
-            $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
-        });
-        $('#bulk_fabric_knit_down_approval_actual_date').on('change', function() {
-            $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
-        });
-        $('#bulk_yarn_fabric_actual_date').on('change', function() {
-            $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
-        });
-        $('#development_photo_sample_sent_actual_date').on('change', function() {
-            $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
-        });
-        $('#fit_approval_actual').on('change', function() {
-            $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
-        });
-        $('#size_set_actual').on('change', function() {
-            $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
-        });
-        $('#pp_actual').on('change', function() {
-            $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
-        });
+        /*
+         */
+        // const datePairs = [
+        //     ['official_po_sent_actual_date', 'official_po_sent_plan_date'],
+        //     ['colour_std_print_artwork_sent_to_supplier_actual_date', 'colour_std_print_artwork_sent_to_supplier_plan_date'],
+        //     ['lab_dip_approval_actual_date', 'lab_dip_approval_plan_date'],
+        //     ['embellishment_s_o_approval_actual_date', 'embellishment_s_o_approval_plan_date'],
+        //     ['fabric_ordered_actual_date', 'fabric_ordered_plan_date'],
+        //     ['bulk_fabric_knit_down_approval_actual_date', 'bulk_fabric_knit_down_approval_plan_date'],
+        //     ['bulk_yarn_fabric_actual_date', 'bulk_yarn_fabric_plan_date'],
+        //     ['development_photo_sample_sent_actual_date', 'development_photo_sample_sent_plan_date'],
+        //     ['fit_approval_actual', 'fit_approval_plan'],
+        //     ['size_set_actual', 'size_set_approval'],
+        //     ['pp_actual', 'pp_approval'],
+        //     ['care_lavel_date', 'care_label_approval'],
+        //     ['material_inhouse_actual', 'material_inhouse_plan'],
+        //     ['pp_meeting_actual', 'pp_meeting_plan'],
+        //     ['cutting_date_actual', 'cutting_date_plan'],
+        //     ['embellishment_actual', 'embellishment_plan'],
+        //     ['Sewing_actual', 'Sewing_plan'],
+        //     ['washing_complete_actual', 'washing_complete_plan'],
+        //     ['finishing_complete_actual', 'finishing_complete_plan']
+        // ];
 
+        // // Loop through datePairs and set plan dates from actual dates
+        // for (const [actualDateId, planDateId] of datePairs) {
+        //     const actualDate = $('#' + actualDateId).val();
 
+        //     if (actualDate) { // Check if actualDate is not null or undefined
+        //         const planDate = subtractDaysFromDate(actualDate, 4);
+        //         $('#' + planDateId).val(planDate);
+        //     } else {
+        //         // Handle the case where actualDate is null or undefined
+        //         console.warn("Actual date is missing for element with ID: " + actualDateId);
+        //     }
+        // }
+        // $('#official_po_sent_actual_date').on('change', function() {
+        //     $('#official_po_sent_plan_date').val(subtractDaysFromDate($('#official_po_sent_actual_date').val(), 4));
+        // });
+        // $('#colour_std_print_artwork_sent_to_supplier_actual_date').on('change', function() {
+        //     $('#colour_std_print_artwork_sent_to_supplier_plan_date').val(subtractDaysFromDate($('#colour_std_print_artwork_sent_to_supplier_actual_date').val(), 4));
+        // });
+        // $('#lab_dip_approval_actual_date').on('change', function() {
+        //     $('#lab_dip_approval_plan_date').val(subtractDaysFromDate($('#lab_dip_approval_actual_date').val(), 4));
+        // });
+        // $('#embellishment_s_o_approval_actual_date').on('change', function() {
+        //     $('#embellishment_s_o_approval_plan_date').val(subtractDaysFromDate($('#embellishment_s_o_approval_actual_date').val(), 4));
+        // });
+        // $('#fabric_ordered_actual_date').on('change', function() {
+        //     $('#fabric_ordered_plan_date').val(subtractDaysFromDate($('#fabric_ordered_actual_date').val(), 4));
+        // });
+        // $('#bulk_fabric_knit_down_approval_actual_date').on('change', function() {
+        //     $('#bulk_fabric_knit_down_approval_plan_date').val(subtractDaysFromDate($('#bulk_fabric_knit_down_approval_actual_date').val(), 4));
+        // });
+        // $('#bulk_yarn_fabric_actual_date').on('change', function() {
+        //     $('#bulk_yarn_fabric_plan_date').val(subtractDaysFromDate($('#bulk_yarn_fabric_actual_date').val(), 4));
+        // });
+        // $('#development_photo_sample_sent_actual_date').on('change', function() {
+        //     $('#development_photo_sample_sent_plan_date').val(subtractDaysFromDate($('#development_photo_sample_sent_actual_date').val(), 4));
+        // });
+        // $('#fit_approval_actual').on('change', function() {
+        //     $('#fit_approval_plan').val(subtractDaysFromDate($('#fit_approval_actual').val(), 4));
+        // });
+        // $('#size_set_actual').on('change', function() {
+        //     $('#size_set_approval').val(subtractDaysFromDate($('#size_set_actual').val(), 4));
+        // });
+        // $('#pp_actual').on('change', function() {
+        //     $('#pp_approval').val(subtractDaysFromDate($('#pp_actual').val(), 4));
+        // });
+        // $('#material_inhouse_actual').on('change', function() {
+        //     $('#material_inhouse_plan').val(subtractDaysFromDate($('#material_inhouse_actual').val(), 4));
+        // });
+        // $('#pp_meeting_actual').on('change', function() {
+        //     $('#pp_meeting_plan').val(subtractDaysFromDate($('#pp_meeting_actual').val(), 4));
+        // });
+        // //
+        // $('#cutting_date_actual').on('change', function() {
+        //     $('#cutting_date_plan').val(subtractDaysFromDate($('#cutting_date_actual').val(), 4));
+        // });
+        // $('#embellishment_actual').on('change', function() {
+        //     $('#embellishment_plan').val(subtractDaysFromDate($('#embellishment_actual').val(), 4));
+        // });
+        // $('#Sewing_actual').on('change', function() {
+        //     $('#Sewing_plan').val(subtractDaysFromDate($('#Sewing_actual').val(), 4));
+        // });
+        // $('#washing_complete_actual').on('change', function() {
+        //     $('#washing_complete_plan').val(subtractDaysFromDate($('#washing_complete_actual').val(), 4));
+        // });
+        // $('#finishing_complete_actual').on('change', function() {
+        //     $('#finishing_complete_plan').val(subtractDaysFromDate($('#finishing_complete_actual').val(), 4));
+        // });
 
         // Initially set the "Another Date" value when the page loads
         // updateAnotherDate();
