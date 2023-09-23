@@ -92,6 +92,8 @@
                                 <th>Col std sent <br /> to sup (actual)</th>
                                 <th>Lab dip /<br />App (Plan)</th>
                                 <th>Lab dip /<br />App (Actual)</th>
+                                <th>Lab dip /<br />Details</th>
+                                <th>Lab dip /<br />Image</th>
                                 <th>Embe S/O /<br /> App (Plan)</th>
                                 <th>Embe S/O /<br /> App (Actual)</th>
                                 <th>Embe S/O /<br /> App Dis </th>
@@ -224,54 +226,56 @@
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
                                 <th>{{$data->lab_dip_approval_plan_date}}</th>
-                                <th>{{$data->lab_dip_approval_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_approval_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->lab_dip_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_dispatch_details}}</th>
+                                <th style="background-color: <?php echo empty($data->lab_dip_image) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_image}}</th>
                                 <th>{{$data->embellishment_s_o_approval_plan_date}}</th>
-                                <th>{{$data->embellishment_s_o_approval_actual_date}}</th>
-                                <th>{{$data->embellishment_s_o_dispatch_details}}</th>
-                                <th></th>
-                                <th>{{$data->fabric_ordered_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->embellishment_s_o_approval_actual_date) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_approval_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->embellishment_s_o_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_dispatch_details}}</th>
+                                <th style="background-color: <?php echo empty($data->embellishment_s_o_image) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_image}}</th>
+                                <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : 'transparent'; ?>">{{$data->fabric_ordered_actual_date}}</th>
                                 <th>{{$data->fabric_ordered_plan_date}}</th>
-                                <th>{{$data->bulk_fabric_knit_down_approval_plan_date}}</th>
-                                <th>{{$data->bulk_fabric_knit_down_approval_actual_date}}</th>
-                                <th>{{$data->bulk_fabric_knit_down_dispatch_details}}</th>
-                                <th></th>
+                                <th >{{$data->bulk_fabric_knit_down_approval_plan_date}}</th>
+                                <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_approval_actual_date) ? 'red' : 'transparent'; ?>">{{$data->bulk_fabric_knit_down_approval_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->bulk_fabric_knit_down_dispatch_details}}</th>
+                                <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->bulk_yarn_fabric_plan_date}}</th>
-                                <th>{{$data->bulk_yarn_fabric_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->bulk_yarn_fabric_actual_date) ? 'red' : 'transparent'; ?>">{{$data->bulk_yarn_fabric_actual_date}}</th>
                                 <th>{{$data->development_photo_sample_sent_plan_date}}</th>
-                                <th>{{$data->development_photo_sample_sent_actual_date}}</th>
-                                <th>{{$data->development_photo_sample_dispatch_details}}</th>
-                                <th></th>
-                                <th>{{$data->fit_approval_plan}}</th>
-                                <th>{{$data->fit_approval_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->development_photo_sample_sent_actual_date) ? 'red' : 'transparent'; ?>">{{$data->development_photo_sample_sent_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->development_photo_sample_dispatch_details}}</th>
+                                <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_sample_image) ? 'red' : 'transparent'; ?>"></th>
+                                <th >{{$data->fit_approval_plan}}</th>
+                                <th >{{$data->fit_approval_actual}}</th>
                                 <th>{{$data->fit_dispatch}}</th>
-                                <th></th>
+                                <th style="background-color: <?php echo empty($data->fit_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->size_set_approval}}</th>
                                 <th>{{$data->size_set_actual}}</th>
                                 <th>{{$data->size_set_dispatch}}</th>
-                                <th></th>
+                                <th style="background-color: <?php echo empty($data->size_set_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->pp_approval}}</th>
-                                <th>{{$data->pp_actual}}</th>
-                                <th>{{$data->pp_dispatch}}</th>
-                                <th></th>
+                                <th style="background-color: <?php echo empty($data->pp_actual) ? 'red' : 'transparent'; ?>">{{$data->pp_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->pp_dispatch) ? 'red' : 'transparent'; ?>">{{$data->pp_dispatch}}</th>
+                                <th style="background-color: <?php echo empty($data->pp_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->care_label_approval}}</th>
-                                <th>{{$data->care_lavel_date}}</th>
+                                <th style="background-color: <?php echo empty($data->care_lavel_date) ? 'red' : 'transparent'; ?>">{{$data->care_lavel_date}}</th>
                                 <th>{{$data->material_inhouse_plan}}</th>
-                                <th>{{$data->material_inhouse_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->material_inhouse_actual) ? 'red' : 'transparent'; ?>">{{$data->material_inhouse_actual}}</th>
                                 <th>{{$data->pp_meeting_plan}}</th>
-                                <th>{{$data->pp_meeting_actual}}</th>
-                                <th>{{$data->create_pp_meeting_schedule}}</th>
-                                <th></th>
+                                <th style="background-color: <?php echo empty($data->pp_meeting_actual) ? 'red' : 'transparent'; ?>">{{$data->pp_meeting_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->create_pp_meeting_schedule) ? 'red' : 'transparent'; ?>">{{$data->create_pp_meeting_schedule}}</th>
+                                <th style="background-color: <?php echo empty($data->pp_meeting_report_upload) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->cutting_date_plan}}</th>
-                                <th>{{$data->cutting_date_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->cutting_date_actual) ? 'red' : 'transparent'; ?>">{{$data->cutting_date_actual}}</th>
                                 <th>{{$data->embellishment_plan}}</th>
-                                <th>{{$data->embellishment_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->embellishment_actual) ? 'red' : 'transparent'; ?>">{{$data->embellishment_actual}}</th>
                                 <th>{{$data->Sewing_plan}}</th>
-                                <th>{{$data->Sewing_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->Sewing_actual) ? 'red' : 'transparent'; ?>">{{$data->Sewing_actual}}</th>
                                 <th>{{$data->washing_complete_plan}}</th>
-                                <th>{{$data->washing_complete_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->washing_complete_actual) ? 'red' : 'transparent'; ?>">{{$data->washing_complete_actual}}</th>
                                 <th>{{$data->finishing_complete_plan}}</th>
+                                <th style="background-color: <?php echo empty($data->finishing_complete_actual) ? 'red' : 'transparent'; ?>">{{$data->finishing_complete_actual}}</th>
                                 <th>{{$data->washing_complete_actual}}</th>
-                                <th>{{$data->finishing_complete_actual}}</th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -280,7 +284,7 @@
                                 <th></th>
                                 <th></th>
                                 <th>{{$data->pre_final_date_plan}}</th>
-                                <th>{{$data->pre_final_date_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->pre_final_date_actual) ? 'red' : 'transparent'; ?>">{{$data->pre_final_date_actual}}</th>
                                 <th></th>
                                 <th></th>
                                 <th>{{$data->final_aql_date_plan}}</th>
@@ -350,6 +354,7 @@
                                     <th> </th>
                                     <th></th>
                                     <th> </th>
+                                    <th></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
