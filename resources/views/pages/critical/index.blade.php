@@ -8,6 +8,7 @@
         border: 1px solid #000;
         /* Add a 1px black border to the table */
     }
+
     th,
     td {
         border: 1px solid #000;
@@ -17,6 +18,27 @@
     }
 </style>
 <!-- <div class="container"> -->
+<?php
+
+function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
+{
+    // Convert the date strings to DateTime objects
+    $planDate = new DateTime($planDateStr);
+    $actualDate = new DateTime($actualDateStr);
+
+    // Calculate the difference in days
+    $dateDifference = $planDate->diff($actualDate)->days;
+
+    // Define the background color based on the date difference
+    if (empty($actualDateStr) || $dateDifference < 0) {
+        return 'red'; // Invalid date or empty actual date
+    } elseif ($dateDifference == 10) {
+        return 'red'; // Difference is 2 days
+    } else {
+        return 'yellow'; // Other differences
+    }
+}
+?>
 <section class="content">
     <div class="row">
         <div class="col-12">
@@ -189,11 +211,11 @@
                             @foreach($criticalPath as $data)
                             <tr>
                                 <th>
-                                    <input id="po_id" type="hidden" name="po_id" value="{{$data->id}}">
-                                <a href="{{ route('critical.edit',$data->po_id) }}" > <i class="fas fa-edit"></i></a>
-                                   
-                                    <a style="margin-left:2px;" href="#" >
-                                    <i class="fas fa-trash-alt"></i>
+                                    <input class="po_id" id="po_id" type="hidden" name="po_id" value="{{$data->po_id}}">
+                                    <a href="{{ route('critical.edit',$data->po_id) }}"> <i class="fas fa-edit"></i></a>
+
+                                    <a style="margin-left:2px;" href="#">
+                                        <i class="fas fa-trash-alt"></i>
                                     </a>
                                 </th>
                                 <th>{{$data->po_no}}</th>
@@ -202,7 +224,7 @@
                                 <th>{{$data->season}}</th>
                                 <th>ratul</th>
                                 <th>
-                                {{$data->fabric_type == 1 ? 'Local Fabric' : ($data->fabric_type == 2 ? 'Special Yarn/ AOP Fabric' : 'Imported Fabric')}}
+                                    {{$data->fabric_type == 1 ? 'Local Fabric' : ($data->fabric_type == 2 ? 'Special Yarn/ AOP Fabric' : 'Imported Fabric')}}
                                 </th>
                                 <th>{{$data->block_repeat_initial == 1 ? 'Initial':($data->block_repeat_initial == 2 ?'Repeat':'')}}</th>
                                 <th>{{$data->vendorName}}</th>
@@ -226,7 +248,8 @@
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_plan_date}}</th>
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
                                 <th>{{$data->lab_dip_approval_plan_date}}</th>
-                                <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : 'transparent'; ?>"><input type="date" id="lab_dip_approval_actual_date" name="lab_dip_approval_actual_date" value="{{$data->lab_dip_approval_actual_date}}"/></th>
+
+                                <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->lab_dip_approval_actual_date) ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date,$data->lab_dip_approval_actual_date) : ''; ?>" type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date" name="lab_dip_approval_actual_date" value="{{$data->lab_dip_approval_actual_date}}" /></th>
                                 <th style="background-color: <?php echo empty($data->lab_dip_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->lab_dip_image) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_image}}</th>
                                 <th>{{$data->embellishment_s_o_approval_plan_date}}</th>
@@ -235,7 +258,7 @@
                                 <th style="background-color: <?php echo empty($data->embellishment_s_o_image) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_image}}</th>
                                 <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : 'transparent'; ?>">{{$data->fabric_ordered_actual_date}}</th>
                                 <th>{{$data->fabric_ordered_plan_date}}</th>
-                                <th >{{$data->bulk_fabric_knit_down_approval_plan_date}}</th>
+                                <th>{{$data->bulk_fabric_knit_down_approval_plan_date}}</th>
                                 <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_approval_actual_date) ? 'red' : 'transparent'; ?>">{{$data->bulk_fabric_knit_down_approval_actual_date}}</th>
                                 <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->bulk_fabric_knit_down_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : 'transparent'; ?>"></th>
@@ -245,8 +268,8 @@
                                 <th style="background-color: <?php echo empty($data->development_photo_sample_sent_actual_date) ? 'red' : 'transparent'; ?>">{{$data->development_photo_sample_sent_actual_date}}</th>
                                 <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->development_photo_sample_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_sample_image) ? 'red' : 'transparent'; ?>"></th>
-                                <th >{{$data->fit_approval_plan}}</th>
-                                <th >{{$data->fit_approval_actual}}</th>
+                                <th>{{$data->fit_approval_plan}}</th>
+                                <th>{{$data->fit_approval_actual}}</th>
                                 <th>{{$data->fit_dispatch}}</th>
                                 <th style="background-color: <?php echo empty($data->fit_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->size_set_approval}}</th>
@@ -330,7 +353,7 @@
                                 <th> <input id="brand" type="text" class="col-md-12"></th>
                                 <th> <input id="department" type="text" class="col-md-12"></th>
                                 <th></th>
-                                <th</th>
+                                <th< /th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -461,18 +484,24 @@
 <!-- <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> -->
 <script>
     $(document).ready(function() {
+
         var table = $("#table_id").DataTable({
             scrollX: true,
             searching: true,
 
-            "columnDefs": [
-                { "orderable": true, "targets": 0 },
-                { "orderable": false,"targets": [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49,50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90,91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104,105, 106, 107,108,109] } // Specify the column indices (0-based) that should be non-orderable
+            "columnDefs": [{
+                    "orderable": true,
+                    "targets": 0
+                },
+                {
+                    "orderable": false,
+                    "targets": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109]
+                } // Specify the column indices (0-based) that should be non-orderable
             ],
         });
         // $('#care_plan_date').on('change', function() {
         //     const selectedDate = $(this).val();
-           
+
 
         // });
 
@@ -508,37 +537,37 @@
 
 
 
-        $("#lab_dip_approval_actual_date").on("keyup", function (e) {
-        // Check if the Enter key (key code 13) is pressed
-        if (e.keyCode === 13) {
+        $(".lab_dip_approval_actual_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
 
-            //var enteredDate = $(this).val();
-            
-            // Get the hidden po_id value
-            var po_id = $("#po_id").val();
-            // Get the entered date
-            var enteredDate = $(this).val();
-          //  alert(po_id+"Date"+enteredDate);
-            // Perform the AJAX call here
-            $.ajax({
-                url: "{{route('process.date')}}",// Replace with your server-side endpoint
-                method: 'POST', // You can use GET or POST depending on your server-side handling
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    enteredDate: enteredDate,
-                    po_id:po_id
-                },
-                success: function (response) {
-                    // Handle the response from the server
-                    console.log(response);
-                },
-                error: function (xhr, status, error) {
-                    // Handle errors here
-                    console.error(xhr.responseText);
-                }
-            });
-        }
-    });
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
 
     });
 </script>
