@@ -378,9 +378,16 @@ class CriticalController extends Controller
     public function processDate(Request $request)
     {
         // Your code to process the date goes here
-        $selectedDate = $request->input('care_plan_date');
-        $id = $request->input('id');
+        $selectedDate = $request->input('enteredDate');
+        $id = $request->input('po_id');
 
+        $criticalPath=CriticalPath::where('po_id',$id)->orderBy('id','desc')->first();
+        $updateData=[]; 
+        if($criticalPath) {
+            $updateData['lab_dip_approval_actual_date']=$selectedDate;
+            $criticalPath->update($updateData);
+        }
+        //dd($selectedDate,$id);
         // Perform some logic with $selectedDate
 
         // Return a response (e.g., JSON)
