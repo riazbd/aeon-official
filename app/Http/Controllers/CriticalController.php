@@ -390,6 +390,10 @@ class CriticalController extends Controller
             if($request->input('type')=="embellishment_s_o_approval_actual_date") {
                 $updateData['embellishment_s_o_approval_actual_date']=$selectedDate;
             }
+            if($request->input('type')=="fabric_ordered_actual_date") {
+                $updateData['fabric_ordered_actual_date']=$selectedDate;
+            }
+            
             $criticalPath->update($updateData);
         }
         //dd($selectedDate,$id);

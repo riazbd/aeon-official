@@ -263,7 +263,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                
                                 <th style="background-color: <?php echo empty($data->embellishment_s_o_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->embellishment_s_o_image) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_image}}</th>
-                                <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : 'transparent'; ?>">{{$data->fabric_ordered_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->fabric_ordered_actual_date)&& $data->fabric_ordered_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->fabric_ordered_plan_date,$data->fabric_ordered_actual_date) : ($data->fabric_ordered_actual_date=="NA"?'RED':''); ?>" type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date" name="fabric_ordered_actual_date" value="{{$data->fabric_ordered_actual_date}}" /></th> 
                                 <th>{{$data->fabric_ordered_plan_date}}</th>
                                 <th>{{$data->bulk_fabric_knit_down_approval_plan_date}}</th>
                                 <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_approval_actual_date) ? 'red' : 'transparent'; ?>">{{$data->bulk_fabric_knit_down_approval_actual_date}}</th>
@@ -576,7 +576,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                 });
             }
         });
-
+        
         $(".embellishment_s_o_approval_actual_date").on("keyup", function(e) {
             // Check if the Enter key (key code 13) is pressed
             if (e.keyCode === 13) {
@@ -596,6 +596,39 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'embellishment_s_o_approval_actual_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+
+        $(".fabric_ordered_actual_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'fabric_ordered_actual_date'
                     },
                     success: function(response) {
                         // Handle the response from the server
