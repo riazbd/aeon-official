@@ -8,6 +8,7 @@ use App\Models\CriticalPath;
 use App\Models\OrderItem;
 use App\Models\PurchageOrder;
 use App\Models\Vendor;
+use DateTime;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -304,8 +305,15 @@ class PurchageOrderController extends Controller
             }else{
                 $crtical->shipment_booking_with_acs_plan="";
             }
-            
-
+            $crtical->official_po_sent_actual_date=date('Y-m-d');
+            if (!empty($crtical->ex_factory_date_po)) {
+                $ex_factory_date_po = new DateTime($crtical->ex_factory_date_po);
+                $official_po_sent_actual_date=new DateTime($crtical->official_po_sent_actual_date);
+               
+                $crtical->lead_times = $ex_factory_date_po->diff($official_po_sent_actual_date)->days;
+            }else{
+                $crtical->lead_times="";
+            }
             $crtical->save();
         }
         if ($request->input('download_pdf') == 'yes') {
