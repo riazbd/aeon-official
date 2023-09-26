@@ -28,17 +28,22 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
 
     // Calculate the difference in days
     $dateDifference = $planDate->diff($actualDate)->days;
-
     // Define the background color based on the date difference
     if (empty($actualDateStr) || $dateDifference < 0) {
         return 'red'; // Invalid date or empty actual date
-    } elseif ($dateDifference == 10) {
+    } elseif ($dateDifference <= 10) {
+        return 'green'; // Difference is 2 days
+    } 
+    elseif ($dateDifference > 10) {
         return 'red'; // Difference is 2 days
-    } else {
-        return 'yellow'; // Other differences
+    }
+    else {
+       // return 'yellow'; // Other differences
     }
 }
 ?>
+
+<?php //dd(setBackgroundColorBasedOnDateDifference(2023-03-13,2023-03-23));?>
 <section class="content">
     <div class="row">
         <div class="col-12">
@@ -249,7 +254,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
                                 <th>{{$data->lab_dip_approval_plan_date}}</th>
 
-                                <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->lab_dip_approval_actual_date)&& $data->lab_dip_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date,$data->lab_dip_approval_actual_date) : $data->lab_dip_approval_actual_date=="NA"?'RED':''; ?>" type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date" name="lab_dip_approval_actual_date" value="{{$data->lab_dip_approval_actual_date}}" /></th>
+                                <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->lab_dip_approval_actual_date)&& $data->lab_dip_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date,$data->lab_dip_approval_actual_date) : ($data->lab_dip_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date" name="lab_dip_approval_actual_date" value="{{$data->lab_dip_approval_actual_date}}" /></th>
                                 <th style="background-color: <?php echo empty($data->lab_dip_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->lab_dip_image) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_image}}</th>
                                 <th>{{$data->embellishment_s_o_approval_plan_date}}</th>
