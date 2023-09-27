@@ -28,17 +28,22 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
 
     // Calculate the difference in days
     $dateDifference = $planDate->diff($actualDate)->days;
-
     // Define the background color based on the date difference
     if (empty($actualDateStr) || $dateDifference < 0) {
         return 'red'; // Invalid date or empty actual date
-    } elseif ($dateDifference == 10) {
+    } elseif ($dateDifference <= 10) {
+        return 'green'; // Difference is 2 days
+    } 
+    elseif ($dateDifference > 10) {
         return 'red'; // Difference is 2 days
-    } else {
-        return 'yellow'; // Other differences
+    }
+    else {
+       // return 'yellow'; // Other differences
     }
 }
 ?>
+
+<?php //dd(setBackgroundColorBasedOnDateDifference(2023-03-13,2023-03-23));?>
 <section class="content">
     <div class="row">
         <div class="col-12">
@@ -249,17 +254,19 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th>{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}</th>
                                 <th>{{$data->lab_dip_approval_plan_date}}</th>
 
-                                <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->lab_dip_approval_actual_date) ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date,$data->lab_dip_approval_actual_date) : ''; ?>" type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date" name="lab_dip_approval_actual_date" value="{{$data->lab_dip_approval_actual_date}}" /></th>
+                                <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->lab_dip_approval_actual_date)&& $data->lab_dip_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date,$data->lab_dip_approval_actual_date) : ($data->lab_dip_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date" name="lab_dip_approval_actual_date" value="{{$data->lab_dip_approval_actual_date}}" /></th>
                                 <th style="background-color: <?php echo empty($data->lab_dip_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->lab_dip_image) ? 'red' : 'transparent'; ?>">{{$data->lab_dip_image}}</th>
                                 <th>{{$data->embellishment_s_o_approval_plan_date}}</th>
-                                <th style="background-color: <?php echo empty($data->embellishment_s_o_approval_actual_date) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_approval_actual_date}}</th>
+
+                                <th style="background-color: <?php echo empty($data->embellishment_s_o_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->embellishment_s_o_approval_actual_date)&& $data->embellishment_s_o_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->embellishment_s_o_approval_plan_date,$data->embellishment_s_o_approval_actual_date) : ($data->embellishment_s_o_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="embellishment_s_o_approval_actual_date" class="embellishment_s_o_approval_actual_date" name="embellishment_s_o_approval_actual_date" value="{{$data->embellishment_s_o_approval_actual_date}}" /></th>
+                               
                                 <th style="background-color: <?php echo empty($data->embellishment_s_o_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->embellishment_s_o_image) ? 'red' : 'transparent'; ?>">{{$data->embellishment_s_o_image}}</th>
-                                <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : 'transparent'; ?>">{{$data->fabric_ordered_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->fabric_ordered_actual_date)&& $data->fabric_ordered_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->fabric_ordered_plan_date,$data->fabric_ordered_actual_date) : ($data->fabric_ordered_actual_date=="NA"?'RED':''); ?>" type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date" name="fabric_ordered_actual_date" value="{{$data->fabric_ordered_actual_date}}" /></th> 
                                 <th>{{$data->fabric_ordered_plan_date}}</th>
                                 <th>{{$data->bulk_fabric_knit_down_approval_plan_date}}</th>
-                                <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_approval_actual_date) ? 'red' : 'transparent'; ?>">{{$data->bulk_fabric_knit_down_approval_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->bulk_fabric_knit_down_approval_actual_date)&& $data->bulk_fabric_knit_down_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->bulk_fabric_knit_down_approval_plan_date,$data->bulk_fabric_knit_down_approval_actual_date) : ($data->bulk_fabric_knit_down_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="bulk_fabric_knit_down_approval_actual_date" class="bulk_fabric_knit_down_approval_actual_date" name="bulk_fabric_knit_down_approval_actual_date" value="{{$data->bulk_fabric_knit_down_approval_actual_date}}" /></th>
                                 <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->bulk_fabric_knit_down_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->bulk_yarn_fabric_plan_date}}</th>
@@ -535,7 +542,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
         //     });
         // });
 
-
+        
 
         $(".lab_dip_approval_actual_date").on("keyup", function(e) {
             // Check if the Enter key (key code 13) is pressed
@@ -554,7 +561,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     data: {
                         _token: '{{ csrf_token() }}',
                         enteredDate: enteredDate,
-                        po_id: po_id
+                        po_id: po_id,
+                        type:'lab_dip_approval_actual_date'
                     },
                     success: function(response) {
                         // Handle the response from the server
@@ -568,6 +576,103 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                 });
             }
         });
+        
+        $(".embellishment_s_o_approval_actual_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
 
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'embellishment_s_o_approval_actual_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        
+        $(".fabric_ordered_actual_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'fabric_ordered_actual_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".bulk_fabric_knit_down_approval_actual_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'bulk_fabric_knit_down_approval_actual_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
     });
 </script>
