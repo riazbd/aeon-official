@@ -441,6 +441,12 @@ class CriticalController extends Controller
             if($request->input('type')=="pre_final_date_actual") {
                 $updateData['pre_final_date_actual']=$selectedDate;
             }
+            if($request->input('type')=="final_aql_date_actual") {
+                $updateData['final_aql_date_actual']=$selectedDate;
+            }
+            if($request->input('type')=="production_sample_approval_actual") {
+                $updateData['production_sample_approval_actual']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
