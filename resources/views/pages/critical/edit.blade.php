@@ -432,7 +432,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->development_photo_sample_sent_actual_date}}" name="development_photo_sample_sent_actual_date" id="development_photo_sample_sent_actual_date" placeholder="Development sample (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->development_photo_sample_sent_actual_date)&& $criticalPath->development_photo_sample_sent_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->development_photo_sample_sent_plan_date,$criticalPath->development_photo_sample_sent_actual_date) : ($criticalPath->development_photo_sample_sent_actual_date=="NA"?'RED':''); ?>" type="text" id="development_photo_sample_sent_actual_date" class="development_photo_sample_sent_actual_date form-control" name="development_photo_sample_sent_actual_date" value="{{$criticalPath->development_photo_sample_sent_actual_date}}" />
+                            
                             <label for="devSampleActual">Development sample (Actual)</label>
                         </div>
                     </div>
@@ -456,7 +457,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->fit_approval_actual}}" name="fit_approval_actual" id="fit_approval_actual" placeholder="Fit - Approval (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->fit_approval_actual)&& $criticalPath->fit_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->fit_approval_plan,$criticalPath->fit_approval_actual) : ($criticalPath->fit_approval_actual=="NA"?'RED':''); ?>" type="text" id="fit_approval_actual" class="fit_approval_actual form-control" name="fit_approval_actual" value="{{$criticalPath->fit_approval_actual}}" />
+                          
                             <label for="fitApprovalActual">Fit - Approval (Actual)</label>
                         </div>
                     </div>
@@ -481,8 +483,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->size_set_actual}}" name="size_set_actual" id="size_set_actual" placeholder="Size set Approval (Actual)" class="form-control" />
-                            <label for="sizeSetApprovalActual">Size set Approval (Actual)</label>
+                        <input style="color: <?php echo (!empty($criticalPath->size_set_actual)&& $criticalPath->size_set_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->size_set_approval,$criticalPath->size_set_actual) : ($criticalPath->size_set_actual=="NA"?'RED':''); ?>" type="text" id="size_set_actual" class="size_set_actual form-control" name="size_set_actual" value="{{$criticalPath->size_set_actual}}" />
+                        <label for="sizeSetApprovalPlan">Size set Approval (Actual)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -505,7 +507,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->pp_actual}}" name="pp_actual" id="pp_actual" placeholder="PP approval (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->pp_actual)&& $criticalPath->pp_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pp_approval,$criticalPath->pp_actual) : ($criticalPath->pp_actual=="NA"?'RED':''); ?>" type="text" id="pp_actual" class="pp_actual form-control" name="pp_actual" value="{{$criticalPath->pp_actual}}" />
+                           
                             <label for="ppApprovalActual">PP approval (Actual)</label>
                         </div>
                     </div>
