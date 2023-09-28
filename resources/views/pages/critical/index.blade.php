@@ -309,7 +309,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th style="background-color: <?php echo empty($data->embellishment_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->embellishment_actual)&& $data->embellishment_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->embellishment_plan,$data->embellishment_actual) : ($data->embellishment_actual=="NA"?'RED':''); ?>" type="text" id="embellishment_actual" class="embellishment_actual" name="embellishment_actual" value="{{$data->embellishment_actual}}" /></th>
                                
                                 <th>{{$data->Sewing_plan}}</th>
-                                <th style="background-color: <?php echo empty($data->Sewing_actual) ? 'red' : 'transparent'; ?>">{{$data->Sewing_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->Sewing_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->Sewing_actual)&& $data->Sewing_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->Sewing_plan,$data->Sewing_actual) : ($data->Sewing_actual=="NA"?'RED':''); ?>" type="text" id="Sewing_actual" class="Sewing_actual" name="Sewing_actual" value="{{$data->Sewing_actual}}" /></th>
+                                
                                 <th>{{$data->washing_complete_plan}}</th>
                                 <th style="background-color: <?php echo empty($data->washing_complete_actual) ? 'red' : 'transparent'; ?>">{{$data->washing_complete_actual}}</th>
                                 <th>{{$data->finishing_complete_plan}}</th>
@@ -992,6 +993,38 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'cutting_date_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".Sewing_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'Sewing_actual'
                     },
                     success: function(response) {
                         // Handle the response from the server

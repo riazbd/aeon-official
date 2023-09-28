@@ -426,6 +426,9 @@ class CriticalController extends Controller
             if($request->input('type')=="embellishment_actual") {
                 $updateData['embellishment_actual']=$selectedDate;
             }
+            if($request->input('type')=="Sewing_actual") {
+                $updateData['Sewing_actual']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
