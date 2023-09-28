@@ -405,6 +405,12 @@ class CriticalController extends Controller
             if($request->input('type')=="fit_approval_actual") {
                 $updateData['fit_approval_actual']=$selectedDate;
             }
+            if($request->input('type')=="size_set_actual") {
+                $updateData['size_set_actual']=$selectedDate;
+            }
+            if($request->input('type')=="pp_actual") {
+                $updateData['pp_actual']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }

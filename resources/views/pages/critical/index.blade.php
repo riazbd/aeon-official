@@ -282,11 +282,13 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th>{{$data->fit_dispatch}}</th>
                                 <th style="background-color: <?php echo empty($data->fit_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->size_set_approval}}</th>
-                                <th>{{$data->size_set_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->size_set_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->size_set_actual)&& $data->size_set_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->size_set_approval,$data->size_set_actual) : ($data->size_set_actual=="NA"?'RED':''); ?>" type="text" id="size_set_actual" class="size_set_actual" name="size_set_actual" value="{{$data->size_set_actual}}" /></th>
+                              
                                 <th>{{$data->size_set_dispatch}}</th>
                                 <th style="background-color: <?php echo empty($data->size_set_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->pp_approval}}</th>
-                                <th style="background-color: <?php echo empty($data->pp_actual) ? 'red' : 'transparent'; ?>">{{$data->pp_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->pp_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->pp_actual)&& $data->pp_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->pp_approval,$data->pp_actual) : ($data->pp_actual=="NA"?'RED':''); ?>" type="text" id="pp_actual" class="pp_actual" name="pp_actual" value="{{$data->pp_actual}}" /></th>
+                              
                                 <th style="background-color: <?php echo empty($data->pp_dispatch) ? 'red' : 'transparent'; ?>">{{$data->pp_dispatch}}</th>
                                 <th style="background-color: <?php echo empty($data->pp_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->care_label_approval}}</th>
@@ -761,6 +763,70 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'fit_approval_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".size_set_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'size_set_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".pp_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'pp_actual'
                     },
                     success: function(response) {
                         // Handle the response from the server
