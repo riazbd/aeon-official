@@ -292,9 +292,11 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th style="background-color: <?php echo empty($data->pp_dispatch) ? 'red' : 'transparent'; ?>">{{$data->pp_dispatch}}</th>
                                 <th style="background-color: <?php echo empty($data->pp_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->care_label_approval}}</th>
-                                <th style="background-color: <?php echo empty($data->care_lavel_date) ? 'red' : 'transparent'; ?>">{{$data->care_lavel_date}}</th>
+                                <th style="background-color: <?php echo empty($data->care_lavel_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->care_lavel_date)&& $data->care_lavel_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->care_label_approval,$data->care_lavel_date) : ($data->care_lavel_date=="NA"?'RED':''); ?>" type="text" id="care_lavel_date" class="care_lavel_date" name="care_lavel_date" value="{{$data->care_lavel_date}}" /></th>
+                                
                                 <th>{{$data->material_inhouse_plan}}</th>
-                                <th style="background-color: <?php echo empty($data->material_inhouse_actual) ? 'red' : 'transparent'; ?>">{{$data->material_inhouse_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->material_inhouse_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->material_inhouse_actual)&& $data->material_inhouse_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->material_inhouse_plan,$data->material_inhouse_actual) : ($data->material_inhouse_actual=="NA"?'RED':''); ?>" type="text" id="material_inhouse_actual" class="material_inhouse_actual" name="material_inhouse_actual" value="{{$data->material_inhouse_actual}}" /></th>
+                                
                                 <th>{{$data->pp_meeting_plan}}</th>
                                 <th style="background-color: <?php echo empty($data->pp_meeting_actual) ? 'red' : 'transparent'; ?>">{{$data->pp_meeting_actual}}</th>
                                 <th style="background-color: <?php echo empty($data->create_pp_meeting_schedule) ? 'red' : 'transparent'; ?>">{{$data->create_pp_meeting_schedule}}</th>
@@ -827,6 +829,70 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'pp_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".care_lavel_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'care_lavel_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".material_inhouse_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'material_inhouse_actual'
                     },
                     success: function(response) {
                         // Handle the response from the server

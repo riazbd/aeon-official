@@ -411,6 +411,12 @@ class CriticalController extends Controller
             if($request->input('type')=="pp_actual") {
                 $updateData['pp_actual']=$selectedDate;
             }
+            if($request->input('type')=="care_lavel_date") {
+                $updateData['care_lavel_date']=$selectedDate;
+            }
+            if($request->input('type')=="material_inhouse_actual") {
+                $updateData['material_inhouse_actual']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
