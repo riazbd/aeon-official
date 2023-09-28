@@ -298,13 +298,16 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th style="background-color: <?php echo empty($data->material_inhouse_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->material_inhouse_actual)&& $data->material_inhouse_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->material_inhouse_plan,$data->material_inhouse_actual) : ($data->material_inhouse_actual=="NA"?'RED':''); ?>" type="text" id="material_inhouse_actual" class="material_inhouse_actual" name="material_inhouse_actual" value="{{$data->material_inhouse_actual}}" /></th>
                                 
                                 <th>{{$data->pp_meeting_plan}}</th>
-                                <th style="background-color: <?php echo empty($data->pp_meeting_actual) ? 'red' : 'transparent'; ?>">{{$data->pp_meeting_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->pp_meeting_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->pp_meeting_actual)&& $data->pp_meeting_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->pp_meeting_plan,$data->pp_meeting_actual) : ($data->pp_meeting_actual=="NA"?'RED':''); ?>" type="text" id="pp_meeting_actual" class="pp_meeting_actual" name="pp_meeting_actual" value="{{$data->pp_meeting_actual}}" /></th>
+                                
                                 <th style="background-color: <?php echo empty($data->create_pp_meeting_schedule) ? 'red' : 'transparent'; ?>">{{$data->create_pp_meeting_schedule}}</th>
                                 <th style="background-color: <?php echo empty($data->pp_meeting_report_upload) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->cutting_date_plan}}</th>
-                                <th style="background-color: <?php echo empty($data->cutting_date_actual) ? 'red' : 'transparent'; ?>">{{$data->cutting_date_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->cutting_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->cutting_date_actual)&& $data->cutting_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->cutting_date_plan,$data->cutting_date_actual) : ($data->cutting_date_actual=="NA"?'RED':''); ?>" type="text" id="cutting_date_actual" class="cutting_date_actual" name="cutting_date_actual" value="{{$data->cutting_date_actual}}" /></th>
+                                
                                 <th>{{$data->embellishment_plan}}</th>
-                                <th style="background-color: <?php echo empty($data->embellishment_actual) ? 'red' : 'transparent'; ?>">{{$data->embellishment_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->embellishment_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->embellishment_actual)&& $data->embellishment_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->embellishment_plan,$data->embellishment_actual) : ($data->embellishment_actual=="NA"?'RED':''); ?>" type="text" id="embellishment_actual" class="embellishment_actual" name="embellishment_actual" value="{{$data->embellishment_actual}}" /></th>
+                               
                                 <th>{{$data->Sewing_plan}}</th>
                                 <th style="background-color: <?php echo empty($data->Sewing_actual) ? 'red' : 'transparent'; ?>">{{$data->Sewing_actual}}</th>
                                 <th>{{$data->washing_complete_plan}}</th>
@@ -893,6 +896,102 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'material_inhouse_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".pp_meeting_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'pp_meeting_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".cutting_date_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'cutting_date_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".embellishment_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'cutting_date_actual'
                     },
                     success: function(response) {
                         // Handle the response from the server
