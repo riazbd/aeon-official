@@ -339,8 +339,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th style="background-color: <?php echo empty($data->production_sample_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->production_sample_approval_actual)&& $data->production_sample_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->production_sample_approval_plan,$data->production_sample_approval_actual) : ($data->production_sample_approval_actual=="NA"?'RED':''); ?>" type="text" id="production_sample_approval_actual" class="production_sample_approval_actual" name="production_sample_approval_actual" value="{{$data->production_sample_approval_actual}}" /></th>
                                 <th></th>
                                 <th></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->shipment_booking_with_acs_plan}}</th>
+                                <th style="background-color: <?php echo empty($data->shipment_booking_with_acs_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->shipment_booking_with_acs_actual)&& $data->shipment_booking_with_acs_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->shipment_booking_with_acs_plan,$data->shipment_booking_with_acs_actual) : ($data->shipment_booking_with_acs_actual=="NA"?'RED':''); ?>" type="text" id="shipment_booking_with_acs_actual" class="shipment_booking_with_acs_actual" name="shipment_booking_with_acs_actual" value="{{$data->shipment_booking_with_acs_actual}}" /></th>
                                 <th></th>
                                 <th></th>
                                 <th>{{$data->ex_factory_date}}</th>
@@ -1221,6 +1221,38 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'production_sample_approval_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".shipment_booking_with_acs_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'shipment_booking_with_acs_actual'
                     },
                     success: function(response) {
                         // Handle the response from the server
