@@ -312,11 +312,11 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th style="background-color: <?php echo empty($data->Sewing_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->Sewing_actual)&& $data->Sewing_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->Sewing_plan,$data->Sewing_actual) : ($data->Sewing_actual=="NA"?'RED':''); ?>" type="text" id="Sewing_actual" class="Sewing_actual" name="Sewing_actual" value="{{$data->Sewing_actual}}" /></th>
                                 
                                 <th>{{$data->washing_complete_plan}}</th>
-                                <th style="background-color: <?php echo empty($data->washing_complete_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->washing_complete_actual)&& $data->washing_complete_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->washing_complete_plan,$data->washing_complete_actual) : ($data->washing_complete_actual=="NA"?'RED':''); ?>" type="text" id="development_photo_sample_sent_actual_date" class="development_photo_sample_sent_actual_date" name="development_photo_sample_sent_actual_date" value="{{$data->development_photo_sample_sent_actual_date}}" /></th>
+                                <th style="background-color: <?php echo empty($data->washing_complete_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->washing_complete_actual)&& $data->washing_complete_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->washing_complete_plan,$data->washing_complete_actual) : ($data->washing_complete_actual=="NA"?'RED':''); ?>" type="text" id="washing_complete_actual" class="washing_complete_actual" name="washing_complete_actual" value="{{$data->washing_complete_actual}}" /></th>
 
                                 <th>{{$data->finishing_complete_plan}}</th>
                                 <th style="background-color: <?php echo empty($data->finishing_complete_actual) ? 'red' : 'transparent'; ?>">{{$data->finishing_complete_actual}}</th>
-                                <th>{{$data->washing_complete_actual}}</th>
+                                <th></th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
