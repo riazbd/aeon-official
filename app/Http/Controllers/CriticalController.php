@@ -435,6 +435,9 @@ class CriticalController extends Controller
             if($request->input('type')=="finishing_complete_actual") {
                 $updateData['finishing_complete_actual']=$selectedDate;
             }
+            if($request->input('type')=="sewing_inline_inspection_date_actual") {
+                $updateData['sewing_inline_inspection_date_actual']=$selectedDate;
+            }
             if($request->input('type')=="finishing_inline_inspection_date_actual") {
                 $updateData['finishing_inline_inspection_date_actual']=$selectedDate;
             }

@@ -317,8 +317,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th>{{$data->finishing_complete_plan}}</th>
                                 <th style="background-color: <?php echo empty($data->finishing_complete_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->finishing_complete_actual)&& $data->finishing_complete_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->finishing_complete_plan,$data->finishing_complete_actual) : ($data->finishing_complete_actual=="NA"?'RED':''); ?>" type="text" id="finishing_complete_actual" class="finishing_complete_actual" name="finishing_complete_actual" value="{{$data->finishing_complete_actual}}" /></th>
                                 
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->sewing_inline_inspection_date_plan}}</th>
+                                <th style="background-color: <?php echo empty($data->sewing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->sewing_inline_inspection_date_actual)&& $data->sewing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->sewing_inline_inspection_date_plan,$data->sewing_inline_inspection_date_actual) : ($data->sewing_inline_inspection_date_actual=="NA"?'RED':''); ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual" name="sewing_inline_inspection_date_actual" value="{{$data->sewing_inline_inspection_date_actual}}" /></th>
                                 <th></th>
                                 <th></th>
                                 <th>{{$data->finishing_inline_inspection_date_plan}}</th>
@@ -1093,6 +1093,38 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'finishing_complete_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".sewing_inline_inspection_date_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'sewing_inline_inspection_date_actual'
                     },
                     success: function(response) {
                         // Handle the response from the server
