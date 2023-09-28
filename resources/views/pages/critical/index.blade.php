@@ -993,7 +993,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         _token: '{{ csrf_token() }}',
                         enteredDate: enteredDate,
                         po_id: po_id,
-                        type:'cutting_date_actual'
+                        type:'embellishment_actual'
                     },
                     success: function(response) {
                         // Handle the response from the server
