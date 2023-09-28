@@ -320,7 +320,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
 
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->embellishment_s_o_approval_actual_date}}" name="embellishment_s_o_approval_actual_date" id="embellishment_s_o_approval_actual_date" placeholder="Embellishment - S/O Approval (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->embellishment_s_o_approval_actual_date)&& $criticalPath->embellishment_s_o_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->embellishment_s_o_approval_actual_date) : ($criticalPath->embellishment_s_o_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="embellishment_s_o_approval_actual_date" class="embellishment_s_o_approval_actual_date form-control" name="embellishment_s_o_approval_actual_date" value="{{$criticalPath->embellishment_s_o_approval_actual_date}}" />
                             <label for="embellishmentApprovalActual">Embellishment - S/O Approval (Actual)</label>
                         </div>
                     </div>
