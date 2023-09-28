@@ -277,7 +277,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->development_photo_sample_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->fit_approval_plan}}</th>
-                                <th>{{$data->fit_approval_actual}}</th>
+                                <th style="background-color: <?php echo empty($data->fit_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->fit_approval_actual)&& $data->fit_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->fit_approval_plan,$data->fit_approval_actual) : ($data->fit_approval_actual=="NA"?'RED':''); ?>" type="text" id="fit_approval_actual" class="fit_approval_actual" name="fit_approval_actual" value="{{$data->fit_approval_actual}}" /></th>
+                            
                                 <th>{{$data->fit_dispatch}}</th>
                                 <th style="background-color: <?php echo empty($data->fit_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->size_set_approval}}</th>
@@ -728,6 +729,38 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'development_photo_sample_sent_actual_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".fit_approval_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'fit_approval_actual'
                     },
                     success: function(response) {
                         // Handle the response from the server

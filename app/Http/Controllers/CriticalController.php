@@ -402,6 +402,9 @@ class CriticalController extends Controller
             if($request->input('type')=="development_photo_sample_sent_actual_date") {
                 $updateData['development_photo_sample_sent_actual_date']=$selectedDate;
             }
+            if($request->input('type')=="fit_approval_actual") {
+                $updateData['fit_approval_actual']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
