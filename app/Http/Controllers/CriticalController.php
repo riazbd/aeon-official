@@ -450,6 +450,9 @@ class CriticalController extends Controller
             if($request->input('type')=="shipment_booking_with_acs_actual") {
                 $updateData['shipment_booking_with_acs_actual']=$selectedDate;
             }
+            if($request->input('type')=="sa_approval_actual") {
+                $updateData['sa_approval_actual']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
