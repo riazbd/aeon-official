@@ -396,6 +396,12 @@ class CriticalController extends Controller
             if($request->input('type')=="bulk_fabric_knit_down_approval_actual_date") {
                 $updateData['bulk_fabric_knit_down_approval_actual_date']=$selectedDate;
             }
+            if($request->input('type')=="bulk_yarn_fabric_actual_date") {
+                $updateData['bulk_yarn_fabric_actual_date']=$selectedDate;
+            }
+            if($request->input('type')=="development_photo_sample_sent_actual_date") {
+                $updateData['development_photo_sample_sent_actual_date']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }

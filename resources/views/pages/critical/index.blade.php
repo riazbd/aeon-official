@@ -270,9 +270,10 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->bulk_fabric_knit_down_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->bulk_yarn_fabric_plan_date}}</th>
-                                <th style="background-color: <?php echo empty($data->bulk_yarn_fabric_actual_date) ? 'red' : 'transparent'; ?>">{{$data->bulk_yarn_fabric_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->bulk_yarn_fabric_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->bulk_yarn_fabric_actual_date)&& $data->bulk_yarn_fabric_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->bulk_yarn_fabric_plan_date,$data->bulk_yarn_fabric_actual_date) : ($data->bulk_yarn_fabric_actual_date=="NA"?'RED':''); ?>" type="text" id="bulk_yarn_fabric_actual_date" class="bulk_yarn_fabric_actual_date" name="bulk_yarn_fabric_actual_date" value="{{$data->bulk_yarn_fabric_actual_date}}" /></th>
                                 <th>{{$data->development_photo_sample_sent_plan_date}}</th>
-                                <th style="background-color: <?php echo empty($data->development_photo_sample_sent_actual_date) ? 'red' : 'transparent'; ?>">{{$data->development_photo_sample_sent_actual_date}}</th>
+                                <th style="background-color: <?php echo empty($data->development_photo_sample_sent_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->development_photo_sample_sent_actual_date)&& $data->development_photo_sample_sent_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->development_photo_sample_sent_plan_date,$data->development_photo_sample_sent_actual_date) : ($data->development_photo_sample_sent_actual_date=="NA"?'RED':''); ?>" type="text" id="development_photo_sample_sent_actual_date" class="development_photo_sample_sent_actual_date" name="development_photo_sample_sent_actual_date" value="{{$data->development_photo_sample_sent_actual_date}}" /></th>
+                
                                 <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_details) ? 'red' : 'transparent'; ?>">{{$data->development_photo_sample_dispatch_details}}</th>
                                 <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_sample_image) ? 'red' : 'transparent'; ?>"></th>
                                 <th>{{$data->fit_approval_plan}}</th>
@@ -661,6 +662,72 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type:'bulk_fabric_knit_down_approval_actual_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+
+        
+        $(".bulk_yarn_fabric_actual_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'bulk_yarn_fabric_actual_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".development_photo_sample_sent_actual_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{route('process.date')}}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type:'development_photo_sample_sent_actual_date'
                     },
                     success: function(response) {
                         // Handle the response from the server
