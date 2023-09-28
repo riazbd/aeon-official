@@ -432,6 +432,15 @@ class CriticalController extends Controller
             if($request->input('type')=="washing_complete_actual") {
                 $updateData['washing_complete_actual']=$selectedDate;
             }
+            if($request->input('type')=="finishing_complete_actual") {
+                $updateData['finishing_complete_actual']=$selectedDate;
+            }
+            if($request->input('type')=="finishing_inline_inspection_date_actual") {
+                $updateData['finishing_inline_inspection_date_actual']=$selectedDate;
+            }
+            if($request->input('type')=="pre_final_date_actual") {
+                $updateData['pre_final_date_actual']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
