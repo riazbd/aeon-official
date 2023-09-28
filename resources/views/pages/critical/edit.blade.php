@@ -352,13 +352,15 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
 
                     <div class="col-md-4">
                         <div class="form-floating">
+                            
                             <input readonly type="text" value="{{$criticalPath->fabric_ordered_plan_date}}" name="fabric_ordered_plan_date" id="fabric_ordered_plan_date" placeholder="Fabric Ordered (plan)" class="form-control" />
                             <label for="fabricOrderedPlan">Fabric Ordered (plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->fabric_ordered_actual_date}}" name="fabric_ordered_actual_date" id="fabric_ordered_actual_date" placeholder="Fabric Ordered (actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->fabric_ordered_actual_date)&& $criticalPath->fabric_ordered_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->fabric_ordered_plan_date,$criticalPath->fabric_ordered_actual_date) : ($criticalPath->fabric_ordered_actual_date=="NA"?'RED':''); ?>" type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date form-control" name="fabric_ordered_actual_date" value="{{$criticalPath->fabric_ordered_actual_date}}" />
+                          
                             <label for="fabricOrderedActual">Fabric Ordered (actual)</label>
                         </div>
                     </div>
