@@ -202,7 +202,7 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="{{$criticalPath->lead_times}}" name="lead_times" id="leadTimes" placeholder="Lead Times" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->lead_times}}" name="lead_times" id="leadTimes" placeholder="Lead Times" class="form-control" />
                             <label for="leadTimes">Lead Times</label>
                         </div>
                     </div>
