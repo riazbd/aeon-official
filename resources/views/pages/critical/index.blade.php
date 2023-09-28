@@ -341,8 +341,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                                 <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->sa_approval_actual)&& $data->sa_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan,$data->sa_approval_actual) : ($data->sa_approval_actual=="NA"?'RED':''); ?>" type="text" id="sa_approval_actual" class="sa_approval_actual" name="sa_approval_actual" value="{{$data->sa_approval_actual}}" /></th>
                                 <th>{{$data->shipment_booking_with_acs_plan}}</th>
                                 <th style="background-color: <?php echo empty($data->shipment_booking_with_acs_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->shipment_booking_with_acs_actual)&& $data->shipment_booking_with_acs_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->shipment_booking_with_acs_plan,$data->shipment_booking_with_acs_actual) : ($data->shipment_booking_with_acs_actual=="NA"?'RED':''); ?>" type="text" id="shipment_booking_with_acs_actual" class="shipment_booking_with_acs_actual" name="shipment_booking_with_acs_actual" value="{{$data->shipment_booking_with_acs_actual}}" /></th>
-                                <th></th>
-                                <th></th>
+                                <th>{{$data->sa_approval_plan}}</th>
+                                <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo (!empty($data->sa_approval_actual)&& $data->sa_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan,$data->sa_approval_actual) : ($data->sa_approval_actual=="NA"?'RED':''); ?>" type="text" id="sa_approval_actual" class="sa_approval_actual" name="sa_approval_actual" value="{{$data->sa_approval_actual}}" /></th>
                                 <th>{{$data->ex_factory_date}}</th>
                                 <th></th>
                                 <th></th>
