@@ -18,6 +18,29 @@
         float: right;
     }
 </style>
+<?php
+function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
+{
+    // Convert the date strings to DateTime objects
+    $planDate = new DateTime($planDateStr);
+    $actualDate = new DateTime($actualDateStr);
+
+    // Calculate the difference in days
+    $dateDifference = $planDate->diff($actualDate)->days;
+    // Define the background color based on the date difference
+    if (empty($actualDateStr) || $dateDifference < 0) {
+        return 'red'; // Invalid date or empty actual date
+    } elseif ($dateDifference <= 10) {
+        return 'green'; // Difference is 2 days
+    } 
+    elseif ($dateDifference > 10) {
+        return 'red'; // Difference is 2 days
+    }
+    else {
+       // return 'yellow'; // Other differences
+    }
+}
+?>
 <div class="container">
     @if (session('success'))
     <div class="alert alert-success alert-dismissible">
@@ -202,7 +225,7 @@
 
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="{{$criticalPath->lead_times}}" name="lead_times" id="leadTimes" placeholder="Lead Times" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->lead_times}}" name="lead_times" id="leadTimes" placeholder="Lead Times" class="form-control" />
                             <label for="leadTimes">Lead Times</label>
                         </div>
                     </div>
@@ -226,7 +249,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->official_po_sent_actual_date}}" name="official_po_sent_actual_date" id="official_po_sent_actual_date" placeholder="Official PO sent (Actual)" class="form-control" />
+                            <input readonly type="date" value="{{$criticalPath->official_po_sent_actual_date}}" name="official_po_sent_actual_date" id="official_po_sent_actual_date" placeholder="Official PO sent (Actual)" class="form-control" />
                             <label for="actualPO">Official PO sent (Actual)</label>
                         </div>
                     </div>

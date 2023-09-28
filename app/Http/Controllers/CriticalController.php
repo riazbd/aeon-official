@@ -396,6 +396,66 @@ class CriticalController extends Controller
             if($request->input('type')=="bulk_fabric_knit_down_approval_actual_date") {
                 $updateData['bulk_fabric_knit_down_approval_actual_date']=$selectedDate;
             }
+            if($request->input('type')=="bulk_yarn_fabric_actual_date") {
+                $updateData['bulk_yarn_fabric_actual_date']=$selectedDate;
+            }
+            if($request->input('type')=="development_photo_sample_sent_actual_date") {
+                $updateData['development_photo_sample_sent_actual_date']=$selectedDate;
+            }
+            if($request->input('type')=="fit_approval_actual") {
+                $updateData['fit_approval_actual']=$selectedDate;
+            }
+            if($request->input('type')=="size_set_actual") {
+                $updateData['size_set_actual']=$selectedDate;
+            }
+            if($request->input('type')=="pp_actual") {
+                $updateData['pp_actual']=$selectedDate;
+            }
+            if($request->input('type')=="care_lavel_date") {
+                $updateData['care_lavel_date']=$selectedDate;
+            }
+            if($request->input('type')=="material_inhouse_actual") {
+                $updateData['material_inhouse_actual']=$selectedDate;
+            }
+            if($request->input('type')=="pp_meeting_actual") {
+                $updateData['pp_meeting_actual']=$selectedDate;
+            }
+            if($request->input('type')=="cutting_date_actual") {
+                $updateData['cutting_date_actual']=$selectedDate;
+            }
+            if($request->input('type')=="embellishment_actual") {
+                $updateData['embellishment_actual']=$selectedDate;
+            }
+            if($request->input('type')=="Sewing_actual") {
+                $updateData['Sewing_actual']=$selectedDate;
+            }
+            if($request->input('type')=="washing_complete_actual") {
+                $updateData['washing_complete_actual']=$selectedDate;
+            }
+            if($request->input('type')=="finishing_complete_actual") {
+                $updateData['finishing_complete_actual']=$selectedDate;
+            }
+            if($request->input('type')=="sewing_inline_inspection_date_actual") {
+                $updateData['sewing_inline_inspection_date_actual']=$selectedDate;
+            }
+            if($request->input('type')=="finishing_inline_inspection_date_actual") {
+                $updateData['finishing_inline_inspection_date_actual']=$selectedDate;
+            }
+            if($request->input('type')=="pre_final_date_actual") {
+                $updateData['pre_final_date_actual']=$selectedDate;
+            }
+            if($request->input('type')=="final_aql_date_actual") {
+                $updateData['final_aql_date_actual']=$selectedDate;
+            }
+            if($request->input('type')=="production_sample_approval_actual") {
+                $updateData['production_sample_approval_actual']=$selectedDate;
+            }
+            if($request->input('type')=="shipment_booking_with_acs_actual") {
+                $updateData['shipment_booking_with_acs_actual']=$selectedDate;
+            }
+            if($request->input('type')=="sa_approval_actual") {
+                $updateData['sa_approval_actual']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
