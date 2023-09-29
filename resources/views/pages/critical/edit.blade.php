@@ -688,13 +688,14 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                 <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="sew_ins_date_plan" placeholder="Sewing Inspection date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->sewing_inline_inspection_date_plan}}" name="sew_ins_date_plan" placeholder="Sewing Inspection date (Plan)" class="form-control" />
                             <label for="sewingInspectionDatePlan">Sewing Inspection date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->sewing_inline_inspection_date_actual}}" name="sewing_inline_inspection_date_actual" placeholder="Sewing Inline Inspection date (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->sewing_inline_inspection_date_actual)&& $criticalPath->sewing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sewing_inline_inspection_date_plan,$criticalPath->sewing_inline_inspection_date_actual) : ($criticalPath->sewing_inline_inspection_date_actual=="NA"?'RED':''); ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual form-control" name="sewing_inline_inspection_date_actual" value="{{$criticalPath->sewing_inline_inspection_date_actual}}" />
+                            
                             <label for="sewingInlineInspectionDateActual">Sewing Inline Inspection date (Actual)</label>
                         </div>
                     </div>
@@ -712,13 +713,14 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="fini_in_ins_date_plan" placeholder="Finishing Inline Inspection date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->finishing_inline_inspection_date_plan}}" name="finishing_inline_inspection_date_plan" placeholder="Finishing Inline Inspection date (Plan)" class="form-control" />
                             <label for="finishingInlineInspectionDatePlan">Finishing Inline Inspection date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->finishing_inline_inspection_report}}" name="finishing_inline_inspection_report" placeholder="Finishing Inline Inspection date (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->finishing_inline_inspection_date_actual)&& $criticalPath->finishing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->finishing_inline_inspection_date_plan,$criticalPath->finishing_inline_inspection_date_actual) : ($criticalPath->finishing_inline_inspection_date_actual=="NA"?'RED':''); ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual form-control" name="finishing_inline_inspection_date_actual" value="{{$criticalPath->finishing_inline_inspection_date_actual}}" />
+                         
                             <label for="finishingInlineInspectionDateActual">Finishing Inline Inspection date (Actual)</label>
                         </div>
                     </div>
