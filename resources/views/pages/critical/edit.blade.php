@@ -572,7 +572,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->pp_meeting_actual}}" name="pp_meeting_actual" id="pp_meeting_actual" placeholder="PP Meeting Date (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->pp_meeting_actual)&& $criticalPath->pp_meeting_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->pp_meeting_actual) : ($criticalPath->pp_meeting_actual=="NA"?'RED':''); ?>" type="text" id="pp_meeting_actual" class="pp_meeting_actual form-control" name="pp_meeting_actual" value="{{$criticalPath->pp_meeting_actual}}" />
+                            
                             <label for="ppMeetingDateActual">PP Meeting Date (Actual)</label>
                         </div>
                     </div>
