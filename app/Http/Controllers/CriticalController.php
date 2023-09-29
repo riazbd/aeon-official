@@ -384,6 +384,9 @@ class CriticalController extends Controller
         $criticalPath=CriticalPath::where('po_id',$id)->orderBy('id','desc')->first();
         $updateData=[]; 
         if($criticalPath) {
+            if($request->input('type')=="colour_std_print_artwork_sent_to_supplier_actual_date") {
+                $updateData['colour_std_print_artwork_sent_to_supplier_actual_date']=$selectedDate;
+            }
             if($request->input('type')=="lab_dip_approval_actual_date") {
                 $updateData['lab_dip_approval_actual_date']=$selectedDate;
             }
