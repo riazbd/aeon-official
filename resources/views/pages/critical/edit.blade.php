@@ -795,13 +795,14 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                 <div id="flush-collapseNine" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="pp_sam_app" placeholder="Production Sample Approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->production_sample_approval_plan}}" name="production_sample_approval_plan" placeholder="Production Sample Approval (Plan)" class="form-control" />
                             <label for="productionSampleApprovalPlan">Production Sample Approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->production_sample_approval_actual}}" name="production_sample_approval_actual" placeholder="Production Sample Approval (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->production_sample_approval_actual)&& $criticalPath->production_sample_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->production_sample_approval_plan,$criticalPath->production_sample_approval_actual) : ($criticalPath->production_sample_approval_actual=="NA"?'RED':''); ?>" type="text" id="production_sample_approval_actual" class="production_sample_approval_actual form-control" name="production_sample_approval_actual" value="{{$criticalPath->production_sample_approval_actual}}" />
+                           
                             <label for="productionSampleApprovalActual">Production Sample Approval (Actual)</label>
                         </div>
                     </div>
@@ -819,13 +820,14 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="shi_acs_plan" placeholder="Shipment Booking with ACS (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->shipment_booking_with_acs_plan}}" name="shipment_booking_with_acs_plan" placeholder="Shipment Booking with ACS (Plan)" class="form-control" />
                             <label for="shipmentBookingACSPlan">Shipment Booking with ACS (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->shipment_booking_with_acs_actual}}" name="shipment_booking_with_acs_actual" placeholder="Shipment Booking with ACS (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->shipment_booking_with_acs_actual)&& $criticalPath->shipment_booking_with_acs_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->shipment_booking_with_acs_plan,$criticalPath->shipment_booking_with_acs_actual) : ($criticalPath->shipment_booking_with_acs_actual=="NA"?'RED':''); ?>" type="text" id="shipment_booking_with_acs_actual" class="shipment_booking_with_acs_actual form-control" name="shipment_booking_with_acs_actual" value="{{$criticalPath->shipment_booking_with_acs_actual}}" />
+                            
                             <label for="shipmentBookingACSActual">Shipment Booking with ACS (Actual)</label>
                         </div>
                     </div>
@@ -834,13 +836,14 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                 <div id="flush-collapseNine" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="sa_app_plan" placeholder="SA approval (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->sa_approval_plan}}" name="sa_approval_plan" placeholder="SA approval (Plan)" class="form-control" />
                             <label for="saApprovalPlan">SA approval (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->sa_approval_actual}}" name="sa_approval_actual" placeholder="SA approval (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->sa_approval_actual)&& $criticalPath->sa_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sa_approval_plan,$criticalPath->sa_approval_actual) : ($criticalPath->sa_approval_actual=="NA"?'RED':''); ?>" type="text" id="sa_approval_actual" class="sa_approval_actual form-control" name="sa_approval_actual" value="{{$criticalPath->sa_approval_actual}}" />
+                            
                             <label for="saApprovalActual">SA approval (Actual)</label>
                         </div>
                     </div>
