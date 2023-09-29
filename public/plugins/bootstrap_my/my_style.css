@@ -215,12 +215,17 @@ table tbody tr td.id-t
 .layout-navbar-fixed .wrapper .brand-link {
     border-bottom: 3px solid #16452A;
     height: 100px;
+    width: 265px
 }
 
 .layout-navbar-fixed.sidebar-mini-md.sidebar-collapse .wrapper .brand-link,
 .layout-navbar-fixed.sidebar-mini-xs.sidebar-collapse .wrapper .brand-link,
 .layout-navbar-fixed.sidebar-mini.sidebar-collapse .wrapper .brand-link {
     height: 100px;
+}
+
+.main-sidebar:hover .brand-link {
+    width: 265px !important;
 }
 
 
@@ -236,6 +241,7 @@ table tbody tr td.id-t
 
 .content-wrapper {
     background-color: #fff;
+    padding-top: 50px;
 }
 
 [class*=sidebar-light] .brand-link, [class*=sidebar-light] .brand-link .pushmenu {
@@ -247,16 +253,25 @@ table tbody tr td.id-t
 }
 
 .content-wrapper-container {
-    max-height: calc(100vh - 151px) !important;
+    /* max-height: calc(100vh - 151px) !important; */
     position: relative;
     margin-top: 101px;
-    overflow-y: scroll;
 }
 
 .content-wrapper {
     /* min-height: 100vh !important; */
-    height: 100% !important;
+    max-height: calc(100vh - 100px) !important;
+    margin-left: 265px !important;
+    margin-top: 0px !important;
+}
 
+.main-sidebar {
+    width: 265px !important;
+}
+
+th::before, th::after {
+    content-visibility: hidden;
+    right: 0.5px;
 }
 
 .main-footer {
@@ -289,6 +304,15 @@ border-radius: 5px;
     width: auto; /* Width of the scrollbar */
     height: 5px;
   }
+
+.dataTables_scrollBody::-webkit-scrollbar {
+    width: auto;
+    height: 5px;
+}
+
+table.dataTable tr.odd {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
 
 
 /* button card design */

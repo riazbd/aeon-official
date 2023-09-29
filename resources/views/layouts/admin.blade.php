@@ -42,6 +42,12 @@
     <link rel="stylesheet" type="text/css"
         href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" />
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/zf/jszip-3.10.1/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/datatables.min.css"
+        rel="stylesheet">
+
+
+
 </head>
 
 <body
@@ -177,6 +183,9 @@
     <script src="{{ asset('plugins/sweetalert2-theme-bootstrap-4/sweet-alerts.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.datatables.net/v/zf/jszip-3.10.1/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/datatables.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
     <!-- MyJs -->
     <script src="{{ asset('plugins/bootstrap_my/myScripts.js') }}" type="text/javascript"></script>
 
