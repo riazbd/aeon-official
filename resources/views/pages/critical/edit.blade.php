@@ -557,7 +557,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->material_inhouse_actual}}" name="material_inhouse_actual" placeholder="Material Inhouse date (Actual)" class="form-control" id="material_inhouse_actual" />
+                        <input style="color: <?php echo (!empty($criticalPath->material_inhouse_actual)&& $criticalPath->material_inhouse_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->material_inhouse_plan,$criticalPath->material_inhouse_actual) : ($criticalPath->material_inhouse_actual=="NA"?'RED':''); ?>" type="text" id="material_inhouse_actual" class="material_inhouse_actual form-control" name="material_inhouse_actual" value="{{$criticalPath->material_inhouse_actual}}" />
+                           
                             <label for="materialInhouseDateActual">Material Inhouse date (Actual)</label>
                         </div>
                     </div>
