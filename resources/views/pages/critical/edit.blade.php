@@ -732,13 +732,14 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="pre_final_date_plan" placeholder="Pre Final Date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->pre_final_date_plan}}" name="pre_final_date_plan" placeholder="Pre Final Date (Plan)" class="form-control" />
                             <label for="preFinalDatePlan">Pre Final Date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->pre_final_date_actual}}" name="pre_final_date_actual" placeholder="Pre Final Date (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->pre_final_date_actual)&& $criticalPath->pre_final_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pre_final_date_plan,$criticalPath->pre_final_date_actual) : ($criticalPath->pre_final_date_actual=="NA"?'RED':''); ?>" type="text" id="pre_final_date_actual" class="pre_final_date_actual form-control" name="pre_final_date_actual" value="{{$criticalPath->pre_final_date_actual}}" />
+                            
                             <label for="preFinalDateActual">Pre Final Date (Actual)</label>
                         </div>
                     </div>
@@ -756,13 +757,14 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="final_aql_date_plan" placeholder="Final AQL date (Plan)" class="form-control" />
+                            <input readonly type="text" value="{{$criticalPath->final_aql_date_plan}}" name="final_aql_date_plan" placeholder="Final AQL date (Plan)" class="form-control" />
                             <label for="finalAQLDatePlan">Final AQL date (Plan)</label>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->final_aql_date_actual}}" name="final_aql_date_actual" placeholder="Final AQL date (Actual)" class="form-control" />
+                        <input style="color: <?php echo (!empty($criticalPath->final_aql_date_actual)&& $criticalPath->final_aql_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->final_aql_date_plan,$criticalPath->final_aql_date_actual) : ($criticalPath->final_aql_date_actual=="NA"?'RED':''); ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual form-control" name="final_aql_date_actual" value="{{$criticalPath->final_aql_date_actual}}" />
+                            
                             <label for="finalAQLDateActual">Final AQL date (Actual)</label>
                         </div>
                     </div>
