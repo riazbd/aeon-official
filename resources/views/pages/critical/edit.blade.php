@@ -359,7 +359,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->fabric_ordered_actual_date)&& $criticalPath->fabric_ordered_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->fabric_ordered_plan_date,$criticalPath->fabric_ordered_actual_date) : ($criticalPath->fabric_ordered_actual_date=="NA"?'RED':''); ?>" type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date form-control" name="fabric_ordered_actual_date" value="{{$criticalPath->fabric_ordered_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->fabric_ordered_actual_date)&& $criticalPath->fabric_ordered_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->fabric_ordered_plan_date,$criticalPath->fabric_ordered_actual_date) : ($criticalPath->fabric_ordered_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->fabric_ordered_actual_date)?'red':''; ?>" type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date form-control" name="fabric_ordered_actual_date" value="{{$criticalPath->fabric_ordered_actual_date}}" />
                           
                             <label for="fabricOrderedActual">Fabric Ordered (actual)</label>
                         </div>
@@ -377,7 +377,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                 <div id="flush-collapseFour" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->bulk_fabric_knit_down_approval_actual_date)&& $criticalPath->bulk_fabric_knit_down_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->bulk_fabric_knit_down_approval_plan_date,$criticalPath->bulk_fabric_knit_down_approval_actual_date) : ($criticalPath->bulk_fabric_knit_down_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="bulk_fabric_knit_down_approval_actual_date" class="bulk_fabric_knit_down_approval_actual_date form-control" name="bulk_fabric_knit_down_approval_actual_date" value="{{$criticalPath->bulk_fabric_knit_down_approval_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->bulk_fabric_knit_down_approval_actual_date)&& $criticalPath->bulk_fabric_knit_down_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->bulk_fabric_knit_down_approval_plan_date,$criticalPath->bulk_fabric_knit_down_approval_actual_date) : ($criticalPath->bulk_fabric_knit_down_approval_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->bulk_fabric_knit_down_approval_actual_date)?'red':''; ?>" type="text" id="bulk_fabric_knit_down_approval_actual_date" class="bulk_fabric_knit_down_approval_actual_date form-control" name="bulk_fabric_knit_down_approval_actual_date" value="{{$criticalPath->bulk_fabric_knit_down_approval_actual_date}}" />
                            
                             <label for="bulkFabricApprovalActual">Bulk Fabric/ Knit Down Approval (Actual)</label>
                         </div>
@@ -402,7 +402,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->bulk_yarn_fabric_actual_date)&& $criticalPath->bulk_yarn_fabric_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->bulk_yarn_fabric_plan_date,$criticalPath->bulk_yarn_fabric_actual_date) : ($criticalPath->bulk_yarn_fabric_actual_date=="NA"?'RED':''); ?>" type="text" id="bulk_yarn_fabric_actual_date" class="bulk_yarn_fabric_actual_date form-control" name="bulk_yarn_fabric_actual_date" value="{{$criticalPath->bulk_yarn_fabric_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->bulk_yarn_fabric_actual_date)&& $criticalPath->bulk_yarn_fabric_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->bulk_yarn_fabric_plan_date,$criticalPath->bulk_yarn_fabric_actual_date) : ($criticalPath->bulk_yarn_fabric_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->bulk_yarn_fabric_actual_date)?'red':''; ?>" type="text" id="bulk_yarn_fabric_actual_date" class="bulk_yarn_fabric_actual_date form-control" name="bulk_yarn_fabric_actual_date" value="{{$criticalPath->bulk_yarn_fabric_actual_date}}" />
                           
                             <label for="bulkYarnInhouseActual">Bulk Yarn / Fabric Inhouse (Actual)</label>
                         </div>
