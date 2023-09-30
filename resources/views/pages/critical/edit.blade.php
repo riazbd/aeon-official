@@ -694,7 +694,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->sewing_inline_inspection_date_actual)&& $criticalPath->sewing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sewing_inline_inspection_date_plan,$criticalPath->sewing_inline_inspection_date_actual) : ($criticalPath->sewing_inline_inspection_date_actual=="NA"?'RED':''); ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual form-control" name="sewing_inline_inspection_date_actual" value="{{$criticalPath->sewing_inline_inspection_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->sewing_inline_inspection_date_actual)&& $criticalPath->sewing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sewing_inline_inspection_date_plan,$criticalPath->sewing_inline_inspection_date_actual) : ($criticalPath->sewing_inline_inspection_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->sewing_inline_inspection_date_actual)?'red':''; ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual form-control" name="sewing_inline_inspection_date_actual" value="{{$criticalPath->sewing_inline_inspection_date_actual}}" />
                             
                             <label for="sewingInlineInspectionDateActual">Sewing Inline Inspection date (Actual)</label>
                         </div>
@@ -719,7 +719,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->finishing_inline_inspection_date_actual)&& $criticalPath->finishing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->finishing_inline_inspection_date_plan,$criticalPath->finishing_inline_inspection_date_actual) : ($criticalPath->finishing_inline_inspection_date_actual=="NA"?'RED':''); ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual form-control" name="finishing_inline_inspection_date_actual" value="{{$criticalPath->finishing_inline_inspection_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->finishing_inline_inspection_date_actual)&& $criticalPath->finishing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->finishing_inline_inspection_date_plan,$criticalPath->finishing_inline_inspection_date_actual) : ($criticalPath->finishing_inline_inspection_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->finishing_inline_inspection_date_actual)?'red':''; ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual form-control" name="finishing_inline_inspection_date_actual" value="{{$criticalPath->finishing_inline_inspection_date_actual}}" />
                          
                             <label for="finishingInlineInspectionDateActual">Finishing Inline Inspection date (Actual)</label>
                         </div>
@@ -738,7 +738,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->pre_final_date_actual)&& $criticalPath->pre_final_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pre_final_date_plan,$criticalPath->pre_final_date_actual) : ($criticalPath->pre_final_date_actual=="NA"?'RED':''); ?>" type="text" id="pre_final_date_actual" class="pre_final_date_actual form-control" name="pre_final_date_actual" value="{{$criticalPath->pre_final_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->pre_final_date_actual)&& $criticalPath->pre_final_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pre_final_date_plan,$criticalPath->pre_final_date_actual) : ($criticalPath->pre_final_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->pre_final_date_actual)?'red':''; ?>" type="text" id="pre_final_date_actual" class="pre_final_date_actual form-control" name="pre_final_date_actual" value="{{$criticalPath->pre_final_date_actual}}" />
                             
                             <label for="preFinalDateActual">Pre Final Date (Actual)</label>
                         </div>
@@ -763,7 +763,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->final_aql_date_actual)&& $criticalPath->final_aql_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->final_aql_date_plan,$criticalPath->final_aql_date_actual) : ($criticalPath->final_aql_date_actual=="NA"?'RED':''); ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual form-control" name="final_aql_date_actual" value="{{$criticalPath->final_aql_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->final_aql_date_actual)&& $criticalPath->final_aql_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->final_aql_date_plan,$criticalPath->final_aql_date_actual) : ($criticalPath->final_aql_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->final_aql_date_actual)?'red':''; ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual form-control" name="final_aql_date_actual" value="{{$criticalPath->final_aql_date_actual}}" />
                             
                             <label for="finalAQLDateActual">Final AQL date (Actual)</label>
                         </div>
