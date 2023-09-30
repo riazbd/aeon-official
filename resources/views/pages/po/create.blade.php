@@ -170,6 +170,7 @@
                                         <option value="1">Local Fabric</option>
                                         <option value="2">Special Yarn/ AOP Fabric</option>
                                         <option value="3">Imported Fabric</option>
+                                        <option value="4">Solid</option>
                                     </select></div>
                             </div>
                             <div class="form-group row">

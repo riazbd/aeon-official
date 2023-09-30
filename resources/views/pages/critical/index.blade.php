@@ -357,7 +357,8 @@
                             <th>{{ $data->fabric_weight }}</th>
                             <th>{{ $data->fabric_mill }}</th>
                             <th>{{ $data->lead_times }}</th>
-                            <th>{{ $data->treated_as_priority_order == 1 ? 'Regular Lead Item' : ($data->treated_as_priority_order == 2 ? 'Short Term Item' : '') }}
+                            <!-- <th>{{ $data->treated_as_priority_order == 1 ? 'Regular Lead Item' : ($data->treated_as_priority_order == 2 ? 'Short Term Item' : '') }} -->
+                            <th>{{ $data->treated_as_priority_order  }}
                             </th>
                             <th>{{ $data->official_po_sent_plan_date }}</th>
                             <th>{{ $data->official_po_sent_actual_date }}</th>

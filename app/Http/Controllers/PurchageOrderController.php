@@ -314,6 +314,27 @@ class PurchageOrderController extends Controller
             }else{
                 $crtical->lead_times="";
             }
+            if( $crtical->fabric_type=4) {
+                if($crtical->lead_times>=75) {
+                    $crtical->treated_as_priority_order="Regular Lead Time";
+                }else{
+                    $crtical->treated_as_priority_order="Short Lead Time";
+                }
+            }
+            if( $crtical->fabric_type=2) {
+                if($crtical->lead_times>=90) {
+                    $crtical->treated_as_priority_order="Regular Lead Time";
+                }else{
+                    $crtical->treated_as_priority_order="Short Lead Time";
+                }
+            }
+            if( $crtical->fabric_type=3) {
+                if($crtical->lead_times>=120) {
+                    $crtical->treated_as_priority_order="Regular Lead Time";
+                }else{
+                    $crtical->treated_as_priority_order="Short Lead Time";
+                }
+            }
             $crtical->save();
         }
         if ($request->input('download_pdf') == 'yes') {
