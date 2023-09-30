@@ -557,7 +557,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->material_inhouse_actual)&& $criticalPath->material_inhouse_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->material_inhouse_plan,$criticalPath->material_inhouse_actual) : ($criticalPath->material_inhouse_actual=="NA"?'RED':''); ?>" type="text" id="material_inhouse_actual" class="material_inhouse_actual form-control" name="material_inhouse_actual" value="{{$criticalPath->material_inhouse_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->material_inhouse_actual)&& $criticalPath->material_inhouse_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->material_inhouse_plan,$criticalPath->material_inhouse_actual) : ($criticalPath->material_inhouse_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->material_inhouse_actual)?'red':''; ?>" type="text" id="material_inhouse_actual" class="material_inhouse_actual form-control" name="material_inhouse_actual" value="{{$criticalPath->material_inhouse_actual}}" />
                            
                             <label for="materialInhouseDateActual">Material Inhouse date (Actual)</label>
                         </div>
@@ -572,7 +572,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->pp_meeting_actual)&& $criticalPath->pp_meeting_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->pp_meeting_actual) : ($criticalPath->pp_meeting_actual=="NA"?'RED':''); ?>" type="text" id="pp_meeting_actual" class="pp_meeting_actual form-control" name="pp_meeting_actual" value="{{$criticalPath->pp_meeting_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->pp_meeting_actual)&& $criticalPath->pp_meeting_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->pp_meeting_actual) : ($criticalPath->pp_meeting_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->pp_meeting_actual)?'red':''; ?>" type="text" id="pp_meeting_actual" class="pp_meeting_actual form-control" name="pp_meeting_actual" value="{{$criticalPath->pp_meeting_actual}}" />
                             
                             <label for="ppMeetingDateActual">PP Meeting Date (Actual)</label>
                         </div>
