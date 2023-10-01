@@ -278,7 +278,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date)&& $criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date) : ($criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date=="NA"?'RED':''); ?>" type="text" id="colour_std_print_artwork_sent_to_supplier_actual_date" class="colour_std_print_artwork_sent_to_supplier_actual_date form-control" name="colour_std_print_artwork_sent_to_supplier_actual_date" value="{{$criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date)&& $criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date) : ($criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date=="NA"?'RED':'');  ?>;background-color:<?php echo empty($criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date)?'red':''; ?>" type="text" id="colour_std_print_artwork_sent_to_supplier_actual_date" class="colour_std_print_artwork_sent_to_supplier_actual_date form-control" name="colour_std_print_artwork_sent_to_supplier_actual_date" value="{{$criticalPath->colour_std_print_artwork_sent_to_supplier_actual_date}}" />
                            
                             <label for="colourArtworkActual">Colour std sent supplier (Actual)</label>
                         </div>
@@ -291,7 +291,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->lab_dip_approval_actual_date)&& $criticalPath->lab_dip_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->lab_dip_approval_plan_date,$criticalPath->lab_dip_approval_actual_date) : ($criticalPath->lab_dip_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date form-control" name="lab_dip_approval_actual_date" value="{{$criticalPath->lab_dip_approval_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->lab_dip_approval_actual_date)&& $criticalPath->lab_dip_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->lab_dip_approval_plan_date,$criticalPath->lab_dip_approval_actual_date) : ($criticalPath->lab_dip_approval_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->lab_dip_approval_actual_date)?'red':''; ?>" type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date form-control" name="lab_dip_approval_actual_date" value="{{$criticalPath->lab_dip_approval_actual_date}}" />
                            
                             <label for="labDipApprovalActual">Lab dip Approval (Actual)</label>
                         </div>
@@ -320,7 +320,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
 
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->embellishment_s_o_approval_actual_date)&& $criticalPath->embellishment_s_o_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->embellishment_s_o_approval_actual_date) : ($criticalPath->embellishment_s_o_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="embellishment_s_o_approval_actual_date" class="embellishment_s_o_approval_actual_date form-control" name="embellishment_s_o_approval_actual_date" value="{{$criticalPath->embellishment_s_o_approval_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->embellishment_s_o_approval_actual_date)&& $criticalPath->embellishment_s_o_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->embellishment_s_o_approval_actual_date) : ($criticalPath->embellishment_s_o_approval_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->embellishment_s_o_approval_actual_date)?'red':''; ?>" type="text" id="embellishment_s_o_approval_actual_date" class="embellishment_s_o_approval_actual_date form-control" name="embellishment_s_o_approval_actual_date" value="{{$criticalPath->embellishment_s_o_approval_actual_date}}" />
                             <label for="embellishmentApprovalActual">Embellishment - S/O Approval (Actual)</label>
                         </div>
                     </div>
@@ -359,7 +359,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->fabric_ordered_actual_date)&& $criticalPath->fabric_ordered_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->fabric_ordered_plan_date,$criticalPath->fabric_ordered_actual_date) : ($criticalPath->fabric_ordered_actual_date=="NA"?'RED':''); ?>" type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date form-control" name="fabric_ordered_actual_date" value="{{$criticalPath->fabric_ordered_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->fabric_ordered_actual_date)&& $criticalPath->fabric_ordered_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->fabric_ordered_plan_date,$criticalPath->fabric_ordered_actual_date) : ($criticalPath->fabric_ordered_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->fabric_ordered_actual_date)?'red':''; ?>" type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date form-control" name="fabric_ordered_actual_date" value="{{$criticalPath->fabric_ordered_actual_date}}" />
                           
                             <label for="fabricOrderedActual">Fabric Ordered (actual)</label>
                         </div>
@@ -377,7 +377,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                 <div id="flush-collapseFour" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->bulk_fabric_knit_down_approval_actual_date)&& $criticalPath->bulk_fabric_knit_down_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->bulk_fabric_knit_down_approval_plan_date,$criticalPath->bulk_fabric_knit_down_approval_actual_date) : ($criticalPath->bulk_fabric_knit_down_approval_actual_date=="NA"?'RED':''); ?>" type="text" id="bulk_fabric_knit_down_approval_actual_date" class="bulk_fabric_knit_down_approval_actual_date form-control" name="bulk_fabric_knit_down_approval_actual_date" value="{{$criticalPath->bulk_fabric_knit_down_approval_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->bulk_fabric_knit_down_approval_actual_date)&& $criticalPath->bulk_fabric_knit_down_approval_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->bulk_fabric_knit_down_approval_plan_date,$criticalPath->bulk_fabric_knit_down_approval_actual_date) : ($criticalPath->bulk_fabric_knit_down_approval_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->bulk_fabric_knit_down_approval_actual_date)?'red':''; ?>" type="text" id="bulk_fabric_knit_down_approval_actual_date" class="bulk_fabric_knit_down_approval_actual_date form-control" name="bulk_fabric_knit_down_approval_actual_date" value="{{$criticalPath->bulk_fabric_knit_down_approval_actual_date}}" />
                            
                             <label for="bulkFabricApprovalActual">Bulk Fabric/ Knit Down Approval (Actual)</label>
                         </div>
@@ -402,7 +402,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->bulk_yarn_fabric_actual_date)&& $criticalPath->bulk_yarn_fabric_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->bulk_yarn_fabric_plan_date,$criticalPath->bulk_yarn_fabric_actual_date) : ($criticalPath->bulk_yarn_fabric_actual_date=="NA"?'RED':''); ?>" type="text" id="bulk_yarn_fabric_actual_date" class="bulk_yarn_fabric_actual_date form-control" name="bulk_yarn_fabric_actual_date" value="{{$criticalPath->bulk_yarn_fabric_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->bulk_yarn_fabric_actual_date)&& $criticalPath->bulk_yarn_fabric_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->bulk_yarn_fabric_plan_date,$criticalPath->bulk_yarn_fabric_actual_date) : ($criticalPath->bulk_yarn_fabric_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->bulk_yarn_fabric_actual_date)?'red':''; ?>" type="text" id="bulk_yarn_fabric_actual_date" class="bulk_yarn_fabric_actual_date form-control" name="bulk_yarn_fabric_actual_date" value="{{$criticalPath->bulk_yarn_fabric_actual_date}}" />
                           
                             <label for="bulkYarnInhouseActual">Bulk Yarn / Fabric Inhouse (Actual)</label>
                         </div>
@@ -432,7 +432,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->development_photo_sample_sent_actual_date)&& $criticalPath->development_photo_sample_sent_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->development_photo_sample_sent_plan_date,$criticalPath->development_photo_sample_sent_actual_date) : ($criticalPath->development_photo_sample_sent_actual_date=="NA"?'RED':''); ?>" type="text" id="development_photo_sample_sent_actual_date" class="development_photo_sample_sent_actual_date form-control" name="development_photo_sample_sent_actual_date" value="{{$criticalPath->development_photo_sample_sent_actual_date}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->development_photo_sample_sent_actual_date)&& $criticalPath->development_photo_sample_sent_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->development_photo_sample_sent_plan_date,$criticalPath->development_photo_sample_sent_actual_date) : ($criticalPath->development_photo_sample_sent_actual_date=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->development_photo_sample_sent_actual_date)?'red':''; ?>" type="text" id="development_photo_sample_sent_actual_date" class="development_photo_sample_sent_actual_date form-control" name="development_photo_sample_sent_actual_date" value="{{$criticalPath->development_photo_sample_sent_actual_date}}" />
                             
                             <label for="devSampleActual">Development sample (Actual)</label>
                         </div>
@@ -457,7 +457,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->fit_approval_actual)&& $criticalPath->fit_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->fit_approval_plan,$criticalPath->fit_approval_actual) : ($criticalPath->fit_approval_actual=="NA"?'RED':''); ?>" type="text" id="fit_approval_actual" class="fit_approval_actual form-control" name="fit_approval_actual" value="{{$criticalPath->fit_approval_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->fit_approval_actual)&& $criticalPath->fit_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->fit_approval_plan,$criticalPath->fit_approval_actual) : ($criticalPath->fit_approval_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->fit_approval_actual)?'red':''; ?>" type="text" id="fit_approval_actual" class="fit_approval_actual form-control" name="fit_approval_actual" value="{{$criticalPath->fit_approval_actual}}" />
                           
                             <label for="fitApprovalActual">Fit - Approval (Actual)</label>
                         </div>
@@ -483,7 +483,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->size_set_actual)&& $criticalPath->size_set_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->size_set_approval,$criticalPath->size_set_actual) : ($criticalPath->size_set_actual=="NA"?'RED':''); ?>" type="text" id="size_set_actual" class="size_set_actual form-control" name="size_set_actual" value="{{$criticalPath->size_set_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->size_set_actual)&& $criticalPath->size_set_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->size_set_approval,$criticalPath->size_set_actual) : ($criticalPath->size_set_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->size_set_actual)?'red':''; ?>" type="text" id="size_set_actual" class="size_set_actual form-control" name="size_set_actual" value="{{$criticalPath->size_set_actual}}" />
                         <label for="sizeSetApprovalPlan">Size set Approval (Actual)</label>
                         </div>
                     </div>
@@ -507,7 +507,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->pp_actual)&& $criticalPath->pp_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pp_approval,$criticalPath->pp_actual) : ($criticalPath->pp_actual=="NA"?'RED':''); ?>" type="text" id="pp_actual" class="pp_actual form-control" name="pp_actual" value="{{$criticalPath->pp_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->pp_actual)&& $criticalPath->pp_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pp_approval,$criticalPath->pp_actual) : ($criticalPath->pp_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->pp_actual)?'red':''; ?>" type="text" id="pp_actual" class="pp_actual form-control" name="pp_actual" value="{{$criticalPath->pp_actual}}" />
                            
                             <label for="ppApprovalActual">PP approval (Actual)</label>
                         </div>
@@ -557,7 +557,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->material_inhouse_actual)&& $criticalPath->material_inhouse_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->material_inhouse_plan,$criticalPath->material_inhouse_actual) : ($criticalPath->material_inhouse_actual=="NA"?'RED':''); ?>" type="text" id="material_inhouse_actual" class="material_inhouse_actual form-control" name="material_inhouse_actual" value="{{$criticalPath->material_inhouse_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->material_inhouse_actual)&& $criticalPath->material_inhouse_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->material_inhouse_plan,$criticalPath->material_inhouse_actual) : ($criticalPath->material_inhouse_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->material_inhouse_actual)?'red':''; ?>" type="text" id="material_inhouse_actual" class="material_inhouse_actual form-control" name="material_inhouse_actual" value="{{$criticalPath->material_inhouse_actual}}" />
                            
                             <label for="materialInhouseDateActual">Material Inhouse date (Actual)</label>
                         </div>
@@ -572,7 +572,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->pp_meeting_actual)&& $criticalPath->pp_meeting_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->pp_meeting_actual) : ($criticalPath->pp_meeting_actual=="NA"?'RED':''); ?>" type="text" id="pp_meeting_actual" class="pp_meeting_actual form-control" name="pp_meeting_actual" value="{{$criticalPath->pp_meeting_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->pp_meeting_actual)&& $criticalPath->pp_meeting_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->colour_std_print_artwork_sent_to_supplier_plan_date,$criticalPath->pp_meeting_actual) : ($criticalPath->pp_meeting_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->pp_meeting_actual)?'red':''; ?>" type="text" id="pp_meeting_actual" class="pp_meeting_actual form-control" name="pp_meeting_actual" value="{{$criticalPath->pp_meeting_actual}}" />
                             
                             <label for="ppMeetingDateActual">PP Meeting Date (Actual)</label>
                         </div>
@@ -611,7 +611,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->cutting_date_actual)&& $criticalPath->cutting_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->cutting_date_plan,$criticalPath->cutting_date_actual) : ($criticalPath->cutting_date_actual=="NA"?'RED':''); ?>" type="text" id="cutting_date_actual" class="cutting_date_actual form-control" name="cutting_date_actual" value="{{$criticalPath->cutting_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->cutting_date_actual)&& $criticalPath->cutting_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->cutting_date_plan,$criticalPath->cutting_date_actual) : ($criticalPath->cutting_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->cutting_date_actual)?'red':''; ?>" type="text" id="cutting_date_actual" class="cutting_date_actual form-control" name="cutting_date_actual" value="{{$criticalPath->cutting_date_actual}}" />
                             
                             <label for="cuttingDateActual">Cutting date (Actual)</label>
                         </div>
@@ -624,7 +624,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->embellishment_actual)&& $criticalPath->embellishment_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->embellishment_plan,$criticalPath->embellishment_actual) : ($criticalPath->embellishment_actual=="NA"?'RED':''); ?>" type="text" id="embellishment_actual" class="embellishment_actual form-control" name="embellishment_actual" value="{{$criticalPath->embellishment_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->embellishment_actual)&& $criticalPath->embellishment_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->embellishment_plan,$criticalPath->embellishment_actual) : ($criticalPath->embellishment_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->embellishment_actual)?'red':''; ?>" type="text" id="embellishment_actual" class="embellishment_actual form-control" name="embellishment_actual" value="{{$criticalPath->embellishment_actual}}" />
                             
                             <label for="embellishmentActual">Embellishment (Actual)</label>
                         </div>
@@ -639,7 +639,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->Sewing_actual)&& $criticalPath->Sewing_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->Sewing_plan,$criticalPath->Sewing_actual) : ($criticalPath->Sewing_actual=="NA"?'RED':''); ?>" type="text" id="Sewing_actual" class="Sewing_actual form-control" name="Sewing_actual" value="{{$criticalPath->Sewing_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->Sewing_actual)&& $criticalPath->Sewing_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->Sewing_plan,$criticalPath->Sewing_actual) : ($criticalPath->Sewing_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->Sewing_actual)?'red':''; ?>" type="text" id="Sewing_actual" class="Sewing_actual form-control" name="Sewing_actual" value="{{$criticalPath->Sewing_actual}}" />
                            
                             <label for="sewingStartDateActual">Sewing Start date (Actual)</label>
                         </div>
@@ -654,7 +654,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                 <div id="flush-collapseSeven" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->washing_complete_actual)&& $criticalPath->washing_complete_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->washing_complete_plan,$criticalPath->washing_complete_actual) : ($criticalPath->washing_complete_actual=="NA"?'RED':''); ?>" type="text" id="washing_complete_actual" class="washing_complete_actual form-control" name="washing_complete_actual" value="{{$criticalPath->washing_complete_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->washing_complete_actual)&& $criticalPath->washing_complete_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->washing_complete_plan,$criticalPath->washing_complete_actual) : ($criticalPath->washing_complete_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->washing_complete_actual)?'red':''; ?>" type="text" id="washing_complete_actual" class="washing_complete_actual form-control" name="washing_complete_actual" value="{{$criticalPath->washing_complete_actual}}" />
                             
                             <label for="washingCompleteDateActual">Washing complete date (Actual)</label>
                         </div>
@@ -667,7 +667,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->finishing_complete_actual)&& $criticalPath->finishing_complete_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->finishing_complete_plan,$criticalPath->finishing_complete_actual) : ($criticalPath->finishing_complete_actual=="NA"?'RED':''); ?>" type="text" id="finishing_complete_actual" class="finishing_complete_actual form-control" name="finishing_complete_actual" value="{{$criticalPath->finishing_complete_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->finishing_complete_actual)&& $criticalPath->finishing_complete_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->finishing_complete_plan,$criticalPath->finishing_complete_actual) : ($criticalPath->finishing_complete_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->finishing_complete_actual)?'red':''; ?>" type="text" id="finishing_complete_actual" class="finishing_complete_actual form-control" name="finishing_complete_actual" value="{{$criticalPath->finishing_complete_actual}}" />
                             
                             <label for="finishingCompleteDateActual">Finishing complete date (Actual)</label>
                         </div>
@@ -694,7 +694,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->sewing_inline_inspection_date_actual)&& $criticalPath->sewing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sewing_inline_inspection_date_plan,$criticalPath->sewing_inline_inspection_date_actual) : ($criticalPath->sewing_inline_inspection_date_actual=="NA"?'RED':''); ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual form-control" name="sewing_inline_inspection_date_actual" value="{{$criticalPath->sewing_inline_inspection_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->sewing_inline_inspection_date_actual)&& $criticalPath->sewing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sewing_inline_inspection_date_plan,$criticalPath->sewing_inline_inspection_date_actual) : ($criticalPath->sewing_inline_inspection_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->sewing_inline_inspection_date_actual)?'red':''; ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual form-control" name="sewing_inline_inspection_date_actual" value="{{$criticalPath->sewing_inline_inspection_date_actual}}" />
                             
                             <label for="sewingInlineInspectionDateActual">Sewing Inline Inspection date (Actual)</label>
                         </div>
@@ -719,7 +719,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->finishing_inline_inspection_date_actual)&& $criticalPath->finishing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->finishing_inline_inspection_date_plan,$criticalPath->finishing_inline_inspection_date_actual) : ($criticalPath->finishing_inline_inspection_date_actual=="NA"?'RED':''); ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual form-control" name="finishing_inline_inspection_date_actual" value="{{$criticalPath->finishing_inline_inspection_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->finishing_inline_inspection_date_actual)&& $criticalPath->finishing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->finishing_inline_inspection_date_plan,$criticalPath->finishing_inline_inspection_date_actual) : ($criticalPath->finishing_inline_inspection_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->finishing_inline_inspection_date_actual)?'red':''; ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual form-control" name="finishing_inline_inspection_date_actual" value="{{$criticalPath->finishing_inline_inspection_date_actual}}" />
                          
                             <label for="finishingInlineInspectionDateActual">Finishing Inline Inspection date (Actual)</label>
                         </div>
@@ -738,7 +738,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->pre_final_date_actual)&& $criticalPath->pre_final_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pre_final_date_plan,$criticalPath->pre_final_date_actual) : ($criticalPath->pre_final_date_actual=="NA"?'RED':''); ?>" type="text" id="pre_final_date_actual" class="pre_final_date_actual form-control" name="pre_final_date_actual" value="{{$criticalPath->pre_final_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->pre_final_date_actual)&& $criticalPath->pre_final_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pre_final_date_plan,$criticalPath->pre_final_date_actual) : ($criticalPath->pre_final_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->pre_final_date_actual)?'red':''; ?>" type="text" id="pre_final_date_actual" class="pre_final_date_actual form-control" name="pre_final_date_actual" value="{{$criticalPath->pre_final_date_actual}}" />
                             
                             <label for="preFinalDateActual">Pre Final Date (Actual)</label>
                         </div>
@@ -763,7 +763,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->final_aql_date_actual)&& $criticalPath->final_aql_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->final_aql_date_plan,$criticalPath->final_aql_date_actual) : ($criticalPath->final_aql_date_actual=="NA"?'RED':''); ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual form-control" name="final_aql_date_actual" value="{{$criticalPath->final_aql_date_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->final_aql_date_actual)&& $criticalPath->final_aql_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->final_aql_date_plan,$criticalPath->final_aql_date_actual) : ($criticalPath->final_aql_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->final_aql_date_actual)?'red':''; ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual form-control" name="final_aql_date_actual" value="{{$criticalPath->final_aql_date_actual}}" />
                             
                             <label for="finalAQLDateActual">Final AQL date (Actual)</label>
                         </div>
@@ -801,7 +801,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->production_sample_approval_actual)&& $criticalPath->production_sample_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->production_sample_approval_plan,$criticalPath->production_sample_approval_actual) : ($criticalPath->production_sample_approval_actual=="NA"?'RED':''); ?>" type="text" id="production_sample_approval_actual" class="production_sample_approval_actual form-control" name="production_sample_approval_actual" value="{{$criticalPath->production_sample_approval_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->production_sample_approval_actual)&& $criticalPath->production_sample_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->production_sample_approval_plan,$criticalPath->production_sample_approval_actual) : ($criticalPath->production_sample_approval_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->production_sample_approval_actual)?'red':''; ?>" type="text" id="production_sample_approval_actual" class="production_sample_approval_actual form-control" name="production_sample_approval_actual" value="{{$criticalPath->production_sample_approval_actual}}" />
                            
                             <label for="productionSampleApprovalActual">Production Sample Approval (Actual)</label>
                         </div>
@@ -826,7 +826,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->shipment_booking_with_acs_actual)&& $criticalPath->shipment_booking_with_acs_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->shipment_booking_with_acs_plan,$criticalPath->shipment_booking_with_acs_actual) : ($criticalPath->shipment_booking_with_acs_actual=="NA"?'RED':''); ?>" type="text" id="shipment_booking_with_acs_actual" class="shipment_booking_with_acs_actual form-control" name="shipment_booking_with_acs_actual" value="{{$criticalPath->shipment_booking_with_acs_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->shipment_booking_with_acs_actual)&& $criticalPath->shipment_booking_with_acs_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->shipment_booking_with_acs_plan,$criticalPath->shipment_booking_with_acs_actual) : ($criticalPath->shipment_booking_with_acs_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->shipment_booking_with_acs_actual)?'red':''; ?>" type="text" id="shipment_booking_with_acs_actual" class="shipment_booking_with_acs_actual form-control" name="shipment_booking_with_acs_actual" value="{{$criticalPath->shipment_booking_with_acs_actual}}" />
                             
                             <label for="shipmentBookingACSActual">Shipment Booking with ACS (Actual)</label>
                         </div>
@@ -842,7 +842,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->sa_approval_actual)&& $criticalPath->sa_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sa_approval_plan,$criticalPath->sa_approval_actual) : ($criticalPath->sa_approval_actual=="NA"?'RED':''); ?>" type="text" id="sa_approval_actual" class="sa_approval_actual form-control" name="sa_approval_actual" value="{{$criticalPath->sa_approval_actual}}" />
+                        <input style="color: <?php echo (!empty($criticalPath->sa_approval_actual)&& $criticalPath->sa_approval_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sa_approval_plan,$criticalPath->sa_approval_actual) : ($criticalPath->sa_approval_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->sa_approval_actual)?'red':''; ?>" type="text" id="sa_approval_actual" class="sa_approval_actual form-control" name="sa_approval_actual" value="{{$criticalPath->sa_approval_actual}}" />
                             
                             <label for="saApprovalActual">SA approval (Actual)</label>
                         </div>

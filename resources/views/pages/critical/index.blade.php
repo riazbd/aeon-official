@@ -163,17 +163,17 @@
                         <th style=" background-color: rgba(0, 0, 0, 0.05);">1000</th>
                     </tr> --}}
                     <tr>
-                        <th style=" background-color: rgba(0, 0, 0, 0.05); font-style:italic;" colspan="21">
+                        <th style=" background-color: rgba(0, 0, 0, 0.05); font-style:italic;" colspan="22">
                             General Information</th>
                         <th style="font-style:italic; " colspan="4">Purchase Order
                             information</th>
-                        <th style=" background-color: rgba(0, 0, 0, 0.05);font-style:italic;" colspan="7">
+                        <th style=" background-color: rgba(0, 0, 0, 0.05);font-style:italic;" colspan="10">
                             Lab dips and Embellishment Information</th>
                         <th style=" font-style:italic;" colspan="8">Bulk Fabric Information
                         </th>
                         <th style=" background-color: rgba(0, 0, 0, 0.05); font-style:italic;" colspan="16">
                             Sample Approval Information </th>
-                        <th style="font-style:italic;" colspan="7">PP Meeting Details</th>
+                        <th style="font-style:italic;" colspan="8">PP Meeting Details</th>
                         <th style=" background-color: rgba(0, 0, 0, 0.05); font-style:italic;" colspan="10">
                             Production Information</th>
                         <th style=" font-style:italic;" colspan="16">Inspection Information
@@ -357,7 +357,8 @@
                             <th>{{ $data->fabric_weight }}</th>
                             <th>{{ $data->fabric_mill }}</th>
                             <th>{{ $data->lead_times }}</th>
-                            <th>{{ $data->treated_as_priority_order == 1 ? 'Regular Lead Item' : ($data->treated_as_priority_order == 2 ? 'Short Term Item' : '') }}
+                            <!-- <th>{{ $data->treated_as_priority_order == 1 ? 'Regular Lead Item' : ($data->treated_as_priority_order == 2 ? 'Short Term Item' : '') }} -->
+                            <th>{{ $data->treated_as_priority_order  }}
                             </th>
                             <th>{{ $data->official_po_sent_plan_date }}</th>
                             <th>{{ $data->official_po_sent_actual_date }}</th>
