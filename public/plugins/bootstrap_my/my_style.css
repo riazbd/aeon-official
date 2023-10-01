@@ -260,9 +260,11 @@ table tbody tr td.id-t
 
 .content-wrapper {
     /* min-height: 100vh !important; */
-    max-height: calc(100vh - 100px) !important;
+    /* min-height: calc(100vh - 100px) !important; */
     margin-left: 265px !important;
     margin-top: 0px !important;
+    height: 100% !important;
+    padding-bottom: 100px !important;
 }
 
 .main-sidebar {
@@ -286,7 +288,8 @@ th::before, th::after {
     color: #073D1C;
     font-size: 1.2rem;
     font-weight: 500;
-    position: relative;
+    position: fixed;
+    bottom: 0;
 }
 
 ::-webkit-scrollbar {
