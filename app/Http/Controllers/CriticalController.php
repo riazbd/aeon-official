@@ -391,6 +391,9 @@ class CriticalController extends Controller
             if($request->input('type')=="lab_dip_approval_actual_date") {
                 $updateData['lab_dip_approval_actual_date']=$selectedDate;
             }
+            if($request->input('type')=="lab_dip_dispatch_details") {
+                $updateData['lab_dip_dispatch_details']=$selectedDate;
+            }
             if($request->input('type')=="embellishment_s_o_approval_actual_date") {
                 $updateData['embellishment_s_o_approval_actual_date']=$selectedDate;
             }
