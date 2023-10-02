@@ -463,6 +463,12 @@ class CriticalController extends Controller
             if($request->input('type')=="vendor_comments_date") {
                 $updateData['vendor_comments_date']=$selectedDate;
             }
+            if($request->input('type')=="aeon_comments_date") {
+                $updateData['aeon_comments_date']=$selectedDate;
+            }
+            if($request->input('type')=="reason_for_change_affect_shipment") {
+                $updateData['reason_for_change_affect_shipment']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
