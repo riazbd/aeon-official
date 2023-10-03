@@ -507,7 +507,7 @@ $aStyleNo=$orderItem="";
                     <th></th>
                     <th></th>
                     <th></th>
-                    <th></th>
+                    <th><input type="text" id="payment_receive_date" class="payment_receive_date" name="payment_receive_date" value="{{ $data->payment_receive_date }}" /></th>
                  
                     <th><input type="text" id="reason_for_change_affect_shipment" class="reason_for_change_affect_shipment" name="reason_for_change_affect_shipment" value="{{ $data->reason_for_change_affect_shipment }}" /></th>
                     <th><input type="text" id="aeon_comments_date" class="aeon_comments_date" name="aeon_comments_date" value="{{ $data->aeon_comments_date }}" /></th>
@@ -1610,6 +1610,38 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'reason_for_change_affect_shipment'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".payment_receive_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'payment_receive_date'
                     },
                     success: function(response) {
                         // Handle the response from the server

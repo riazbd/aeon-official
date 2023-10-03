@@ -472,6 +472,9 @@ class CriticalController extends Controller
             if($request->input('type')=="reason_for_change_affect_shipment") {
                 $updateData['reason_for_change_affect_shipment']=$selectedDate;
             }
+            if($request->input('type')=="payment_receive_date") {
+                $updateData['payment_receive_date']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
