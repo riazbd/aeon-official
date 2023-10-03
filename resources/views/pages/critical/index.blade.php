@@ -358,6 +358,9 @@ $aStyleNo=$orderItem="";
                    $orderItem = OrderItem::where('po_id', $data->po_id)
                    ->orderBy('id', 'asc')
                    ->first();
+                   $sumValue = OrderItem::where('po_id', $data->po_id)
+                   ->sum('value');
+                  // dd($sumValue);
               // dd($orderItem->id);
                if ($orderItem) {
                    // Access the columns of the retrieved record
@@ -374,8 +377,8 @@ $aStyleNo=$orderItem="";
                     <th>{{ $orderItem->style_no }}</th>
                     <th>{{ $data->TotalItemsOrdered }}</th>
                     <th>{{ $data->style_note }}</th>
-                    <th>{{ $data->total_value }}</th>
-                    <th>{{ $data->style_description }}</th>
+                    <th>{{ intval($sumValue) }}</th>
+                    <th>{{ $data->description }}</th>
                     <th>{{ $orderItem->colour }}</th>
                     <th>{{ $data->careDate }}</th>
                     <th>{{ $data->fabric_ref }}</th>
