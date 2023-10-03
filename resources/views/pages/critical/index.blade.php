@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+
 <style>
     table {
         table-layout: auto !important;
@@ -119,7 +120,7 @@
 </style>
 <!-- <div class="container"> -->
 <?php
-
+use App\Models\OrderItem;
 function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
 {
     // Convert the date strings to DateTime objects
@@ -142,6 +143,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
 ?>
 
 <?php //dd(setBackgroundColorBasedOnDateDifference(2023-03-13,2023-03-23));
+$aStyleNo=$orderItem="";
 ?>
 <section class="content">
     <div style="" class="table-container">
@@ -352,14 +354,29 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </th>
                     <th>{{ $data->vendorName }}</th>
                     <th>{{$data->manufatureName}} </th>
-                   
+                   <?php
+                   $orderItem = OrderItem::where('po_id', $data->po_id)
+                   ->orderBy('id', 'asc')
+                   ->first();
+              // dd($orderItem->id);
+               if ($orderItem) {
+                   // Access the columns of the retrieved record
+                   $aStyleNo = $orderItem->style_no;    
+                   // Output the value in your Blade template
+                  // echo "<th>$aStyleNo</th>";
+               } else {
+                   // Handle the case when no record is found
+                  // echo "<th>No record found</th>";
+               }
+               ?>
+                   ?>
                     <th>{{ $data->plm }}</th>
-                    <th>{{ $data->aStyleNo }}</th>
+                    <th>{{ $orderItem->style_no }}</th>
                     <th>{{ $data->TotalItemsOrdered }}</th>
                     <th>{{ $data->style_note }}</th>
                     <th>{{ $data->total_value }}</th>
                     <th>{{ $data->style_description }}</th>
-                    <th>{{ $data->aColor }}</th>
+                    <th>{{ $orderItem->colour }}</th>
                     <th>{{ $data->careDate }}</th>
                     <th>{{ $data->fabric_ref }}</th>
                     <th>{{ $data->fabric_content }} </th>
