@@ -382,7 +382,7 @@ $aStyleNo=$orderItem="";
                     <th>{{ $orderItem->colour }}</th>
                     <th>{{ $data->careDate }}</th>
                     <th>{{ $data->fabric_ref }}</th>
-                    <th>{{ $data->fabric_content }} </th>
+                    <th>{{ $data->aFabriccontent }} </th>
                     <th>{{ $data->fabric_weight }}</th>
                     <th>{{ $data->fabric_mill }}</th>
                     <th>{{ $data->lead_times }}</th>
