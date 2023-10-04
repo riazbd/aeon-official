@@ -397,6 +397,18 @@ class CriticalController extends Controller
             if($request->input('type')=="embellishment_s_o_approval_actual_date") {
                 $updateData['embellishment_s_o_approval_actual_date']=$selectedDate;
             }
+            if($request->input('type')=="embellishment_s_o_dispatch_details") {
+                $updateData['embellishment_s_o_dispatch_details']=$selectedDate;
+            }
+            if($request->input('type')=="bulk_fabric_knit_down_dispatch_details") {
+                $updateData['bulk_fabric_knit_down_dispatch_details']=$selectedDate;
+            }
+            if($request->input('type')=="development_photo_sample_dispatch_details") {
+                $updateData['development_photo_sample_dispatch_details']=$selectedDate;
+            }
+            if($request->input('type')=="fit_dispatch") {
+                $updateData['fit_dispatch']=$selectedDate;
+            }
             if($request->input('type')=="fabric_ordered_actual_date") {
                 $updateData['fabric_ordered_actual_date']=$selectedDate;
             }
