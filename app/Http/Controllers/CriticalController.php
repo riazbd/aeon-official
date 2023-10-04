@@ -26,10 +26,11 @@ class CriticalController extends Controller
         $vendor = Vendor::orderBy('id', 'desc')->get();
         $criticalPath = CriticalPath::orderBy('critical_paths.id', 'desc')
             ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+            ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->select('*', 'purchage_orders.*','critical_paths.colour as aColor','purchage_orders.care_lavel_date as careDate','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName'
+            ->select('*','manufacturers.name as manufatureName' ,'purchage_orders.*','purchage_orders.fabric_content as aFabriccontent','critical_paths.colour as aColor','purchage_orders.care_lavel_date as careDate','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName'
             , DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered'))
             ->get();
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
@@ -390,6 +391,9 @@ class CriticalController extends Controller
             if($request->input('type')=="lab_dip_approval_actual_date") {
                 $updateData['lab_dip_approval_actual_date']=$selectedDate;
             }
+            if($request->input('type')=="lab_dip_dispatch_details") {
+                $updateData['lab_dip_dispatch_details']=$selectedDate;
+            }
             if($request->input('type')=="embellishment_s_o_approval_actual_date") {
                 $updateData['embellishment_s_o_approval_actual_date']=$selectedDate;
             }
@@ -458,6 +462,18 @@ class CriticalController extends Controller
             }
             if($request->input('type')=="sa_approval_actual") {
                 $updateData['sa_approval_actual']=$selectedDate;
+            }
+            if($request->input('type')=="vendor_comments_date") {
+                $updateData['vendor_comments_date']=$selectedDate;
+            }
+            if($request->input('type')=="aeon_comments_date") {
+                $updateData['aeon_comments_date']=$selectedDate;
+            }
+            if($request->input('type')=="reason_for_change_affect_shipment") {
+                $updateData['reason_for_change_affect_shipment']=$selectedDate;
+            }
+            if($request->input('type')=="payment_receive_date") {
+                $updateData['payment_receive_date']=$selectedDate;
             }
             
             $criticalPath->update($updateData);
