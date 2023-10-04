@@ -409,6 +409,12 @@ class CriticalController extends Controller
             if($request->input('type')=="fit_dispatch") {
                 $updateData['fit_dispatch']=$selectedDate;
             }
+            if($request->input('type')=="size_set_dispatch") {
+                $updateData['size_set_dispatch']=$selectedDate;
+            }
+            if($request->input('type')=="pp_dispatch") {
+                $updateData['pp_dispatch']=$selectedDate;
+            }
             if($request->input('type')=="fabric_ordered_actual_date") {
                 $updateData['fabric_ordered_actual_date']=$selectedDate;
             }
