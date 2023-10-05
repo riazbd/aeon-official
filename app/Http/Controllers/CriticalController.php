@@ -12,6 +12,7 @@ use App\Models\Vendor;
 use CreateCriticalDetailsTable;
 use Illuminate\Http\Request;
 use DB;
+use DateTime;
 class CriticalController extends Controller
 {
     /**
@@ -495,9 +496,17 @@ class CriticalController extends Controller
             }
             if($request->input('type')=="revised_ex_factory_date") {
                 $updateData['revised_ex_factory_date']=$selectedDate;
+                if(!empty($updateData['revised_ex_factory_date'])) {
+                    $updateData['revised_eta_sa_date']=$this->dateAddCalculate($updateData['revised_ex_factory_date'], 52);
+                }
+               
+             
             }
             if($request->input('type')=="actual_ex_factory_date") {
                 $updateData['actual_ex_factory_date']=$selectedDate;
+            }
+            if($request->input('type')=="shipped_units") {
+                $updateData['shipped_units']=$selectedDate;
             }
             if($request->input('type')=="shipped_units") {
                 $updateData['shipped_units']=$selectedDate;
@@ -511,4 +520,13 @@ class CriticalController extends Controller
         // Return a response (e.g., JSON)
         return response()->json(['result' => 'success', 'id' => $id, 'message' => 'Date processed successfully']);
     }
+    private function dateAddCalculate($calculateDateFrom, $differenceDay)
+    {
+        $date = date_create($calculateDateFrom);
+        date_add($date, date_interval_create_from_date_string("$differenceDay days"));
+
+        return date_format($date, "Y-m-d");
+    }
 }
+
+

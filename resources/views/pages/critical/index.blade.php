@@ -502,7 +502,7 @@ $aStyleNo=$orderItem="";
                     <th><input type="text" value=" {{ $data->shipped_units }} " name="shipped_units" class="shipped_units" id="shipped_units"/></th>
                     
                     <th>{{ $data->orginal_eta_sa_date }}</th>
-                    <th></th>
+                    <th>{{ $data->revised_eta_sa_date }}</th>
                     <th></th>
                     <th></th>
                     <th></th>
