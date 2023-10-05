@@ -497,10 +497,11 @@ $aStyleNo=$orderItem="";
                     <th>{{ $data->sa_approval_plan }}</th>
                     <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="sa_approval_actual" class="sa_approval_actual" name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th>
                     <th>{{ $data->ex_factory_date }}</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->revised_ex_factory_date }} " name="revised_ex_factory_date" class="revised_ex_factory_date" id="revised_ex_factory_date"/></th>
+                    <th><input type="text" value=" {{ $data->actual_ex_factory_date }} " name="actual_ex_factory_date" class="actual_ex_factory_date" id="actual_ex_factory_date"/></th>
+                    <th><input type="text" value=" {{ $data->shipped_units }} " name="shipped_units" class="shipped_units" id="shipped_units"/></th>
+                    
+                    <th>{{ $data->orginal_eta_sa_date }}</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -1834,6 +1835,102 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'pp_dispatch'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".revised_ex_factory_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'revised_ex_factory_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".actual_ex_factory_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'actual_ex_factory_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".shipped_units").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'shipped_units'
                     },
                     success: function(response) {
                         // Handle the response from the server

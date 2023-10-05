@@ -493,6 +493,15 @@ class CriticalController extends Controller
             if($request->input('type')=="payment_receive_date") {
                 $updateData['payment_receive_date']=$selectedDate;
             }
+            if($request->input('type')=="revised_ex_factory_date") {
+                $updateData['revised_ex_factory_date']=$selectedDate;
+            }
+            if($request->input('type')=="actual_ex_factory_date") {
+                $updateData['actual_ex_factory_date']=$selectedDate;
+            }
+            if($request->input('type')=="shipped_units") {
+                $updateData['shipped_units']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
