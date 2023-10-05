@@ -503,7 +503,7 @@ $aStyleNo=$orderItem="";
                     
                     <th>{{ $data->orginal_eta_sa_date }}</th>
                     <th>{{ $data->revised_eta_sa_date }}</th>
-                    <th></th>
+                    <th>{{$data->ship_mode}}</th>
                     <th></th>
                     <th></th>
                     <th></th>
