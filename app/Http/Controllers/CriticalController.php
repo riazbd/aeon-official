@@ -602,6 +602,118 @@ class CriticalController extends Controller
             // pp_meet_img add end
 
 
+
+            // sew_file add end add  start
+
+            if ($request->hasFile('sew_file')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('sew_file')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('sew_file')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('sew_file')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $sew_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['sewing_inline_inspection_report_upload'] = $sew_file_img_path;
+            }
+
+
+
+            // sew_file add end
+
+
+            // finish_inline_file add end add  start
+
+            if ($request->hasFile('finish_inline_file')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('finish_inline_file')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('finish_inline_file')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('finish_inline_file')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $finish_inline_file_sew_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['finishing_inline_inspection_report'] = $finish_inline_file_sew_file_img_path;
+            }
+
+
+
+            // finish_inline_file add end
+
+
+
+            // pre_final_aql_report add end add  start
+
+            if ($request->hasFile('pre_final_aql_report')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('pre_final_aql_report')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('pre_final_aql_report')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('pre_final_aql_report')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $pre_final_aql_report_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['pre_final_aql_report_schedule'] = $pre_final_aql_report_file_img_path;
+            }
+
+
+
+            // pre_final_aql_report add end
+
+
+            // final_aql_file add end add  start
+
+            if ($request->hasFile('final_aql_file')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('final_aql_file')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('final_aql_file')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('final_aql_file')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $final_aql_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['final_aql_report_upload'] = $final_aql_file_img_path;
+            }
+
+
+
+            // final_aql_file add end
+
+
+            // pp_sam_img add end add  start
+
+            if ($request->hasFile('pp_sam_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('pp_sam_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('pp_sam_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('pp_sam_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $final_aql_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['production_sample_upload'] = $final_aql_file_img_path;
+            }
+
+
+
+            // pp_sam_img add end
+
+
             $criticalPath->update($updateData);
             return redirect()->back()->with('success', 'Data saved successfully!');
         }

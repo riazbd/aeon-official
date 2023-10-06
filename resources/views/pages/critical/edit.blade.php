@@ -953,6 +953,10 @@
                     <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse"
                         aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                         <div class="col-md-4">
+                            @php
+                                $report_file_name = substr($criticalPath->sewing_inline_inspection_report_upload, 14);
+                            @endphp
+                            <span>{{ $report_file_name }}</span>
                             <input type="file" name="sew_file" />
                             <label for="">Sewing Inline Inspection Report </label>
                         </div>
@@ -982,6 +986,12 @@
                     <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse"
                         aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                         <div class="col-md-3">
+
+                            @php
+                                $finish_inline_file_edited_file_name = substr($criticalPath->finishing_inline_inspection_report, 14);
+                            @endphp
+                            <span>{{ $finish_inline_file_edited_file_name }}</span>
+
                             <input type="file" name="finish_inline_file" />
                             <label for="">Finishing Inline Inspection Report </label>
                         </div>
@@ -1013,6 +1023,11 @@
                     <div id="flush-collapseEight" class="rowItem rowBottom row accordion-collapse collapse"
                         aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
                         <div class="col-md-3">
+
+                            @php
+                                $pre_final_aql_report_edited_file_name = substr($criticalPath->pre_final_aql_report_schedule, 14);
+                            @endphp
+                            <span>{{ $pre_final_aql_report_edited_file_name }}</span>
                             <input type="file" name="pre_final_aql_report" />
                             <label for="">Pre Final Date AQL Report </label>
                         </div>
@@ -1041,6 +1056,12 @@
                             </div>
                         </div>
                         <div class="col-md-3">
+
+                            @php
+                                $final_aql_file_name = substr($criticalPath->final_aql_report_upload, 14);
+                            @endphp
+                            <span>{{ $final_aql_file_name }}</span>
+
                             <input type="file" name="final_aql_file" />
                             <label for="">Final AQL Report Upload </label>
                         </div>
@@ -1095,6 +1116,11 @@
                     <div id="flush-collapseNine" class="rowItem row accordion-collapse collapse"
                         aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
                         <div class="col-md-3">
+
+                            @php
+                                $pp_sam_img_edited_file_name = substr($criticalPath->production_sample_upload, 14);
+                            @endphp
+                            <span>{{ $pp_sam_img_edited_file_name }}</span>
                             <input type="file" name="pp_sam_img" />
                             <label for="">Production Sample Image </label>
                         </div>

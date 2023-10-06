@@ -125,7 +125,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-
+    
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -689,7 +689,8 @@
                             @endphp
                             <th style="background-color: <?php echo empty($data->pp_meeting_report_upload) ? 'red' : 'transparent'; ?>">
 
-                                <a href="{{ asset($data->pp_meeting_report_upload) }}" target="_blank">{{ $pp_meet_img_file_name }}</a>
+                                <a href="{{ asset($data->pp_meeting_report_upload) }}"
+                                    target="_blank">{{ $pp_meet_img_file_name }}</a>
 
                             </th>
 
@@ -732,7 +733,7 @@
 
 
 
-
+                            {{-- inspection section --}}
 
 
 
@@ -743,7 +744,15 @@
                                     name="sewing_inline_inspection_date_actual"
                                     value="{{ $data->sewing_inline_inspection_date_actual }}" /></th>
                             <th></th>
-                            <th></th>
+                            <th>
+                                @php
+                                    $sew_file_edit_file_name = substr($data->sewing_inline_inspection_report_upload, 14);
+                                @endphp
+
+                                <a href="{{ asset($data->sewing_inline_inspection_report_upload) }}"
+                                    target="_blank">{{ $sew_file_edit_file_name }}</a>
+                            </th>
+
                             <th>{{ $data->finishing_inline_inspection_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->finishing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->finishing_inline_inspection_date_actual) && $data->finishing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->finishing_inline_inspection_date_plan, $data->finishing_inline_inspection_date_actual) : ($data->finishing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="finishing_inline_inspection_date_actual"
@@ -752,20 +761,43 @@
                                     value="{{ $data->finishing_inline_inspection_date_actual }}" /></th>
 
                             <th></th>
-                            <th></th>
+                            @php
+                                $finish_inline_file_edit_file_name = substr($data->finishing_inline_inspection_report, 14);
+                            @endphp
+
+                            <th>
+                                <a href="{{ asset($data->finishing_inline_inspection_report) }}"
+                                    target="_blank">{{ $finish_inline_file_edit_file_name }}</a>
+                            </th>
+
+
                             <th>{{ $data->pre_final_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->pre_final_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pre_final_date_actual) && $data->pre_final_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pre_final_date_plan, $data->pre_final_date_actual) : ($data->pre_final_date_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="pre_final_date_actual" class="pre_final_date_actual"
                                     name="pre_final_date_actual" value="{{ $data->pre_final_date_actual }}" /></th>
 
                             <th></th>
-                            <th></th>
+                            @php
+                                $pre_final_aql_report_edit_file_name = substr($data->pre_final_aql_report_schedule, 14);
+                            @endphp
+
+                            <th>
+                                <a href="{{ asset($data->pre_final_aql_report_schedule) }}"
+                                    target="_blank">{{ $pre_final_aql_report_edit_file_name }}</a>
+                            </th>
                             <th>{{ $data->final_aql_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->final_aql_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->final_aql_date_actual) && $data->final_aql_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->final_aql_date_plan, $data->final_aql_date_actual) : ($data->final_aql_date_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="final_aql_date_actual" class="final_aql_date_actual"
                                     name="final_aql_date_actual" value="{{ $data->final_aql_date_actual }}" /></th>
                             <th></th>
-                            <th></th>
+                            @php
+                                $final_aql_file_edit_file_name = substr($data->final_aql_report_upload, 14);
+                            @endphp
+
+                            <th>
+                                <a href="{{ asset($data->final_aql_report_upload) }}"
+                                    target="_blank">{{ $final_aql_file_edit_file_name }}</a>
+                            </th>
 
 
 
@@ -782,10 +814,25 @@
                                     class="production_sample_approval_actual" name="production_sample_approval_actual"
                                     value="{{ $data->production_sample_approval_actual }}" /></th>
                             <th>{{ $data->sa_approval_plan }}</th>
-                            <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?>"
+
+
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
-                                    name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th>
+                                    name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
+
+                            @php
+                                $pp_sam_img_edit_file_name = substr($data->production_sample_upload, 14);
+                            @endphp
+
+                            <th>
+                                <a href="{{ asset($data->production_sample_upload) }}"
+                                    target="_blank">{{ $pp_sam_img_edit_file_name }}</a>
+                            </th>
+
+
+
                             <th>{{ $data->shipment_booking_with_acs_plan }}</th>
+
                             <th style="background-color: <?php echo empty($data->shipment_booking_with_acs_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->shipment_booking_with_acs_actual) && $data->shipment_booking_with_acs_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->shipment_booking_with_acs_plan, $data->shipment_booking_with_acs_actual) : ($data->shipment_booking_with_acs_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="shipment_booking_with_acs_actual"
                                     class="shipment_booking_with_acs_actual" name="shipment_booking_with_acs_actual"
