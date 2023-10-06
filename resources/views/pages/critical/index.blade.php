@@ -487,7 +487,7 @@ $aStyleNo=$orderItem="";
                     
                     <th>{{ $data->final_aql_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->final_aql_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->final_aql_date_actual) && $data->final_aql_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->final_aql_date_plan, $data->final_aql_date_actual) : ($data->final_aql_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual" name="final_aql_date_actual" value="{{ $data->final_aql_date_actual }}" /></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->final_aql_report_upload }} " name="final_aql_report_upload" class="final_aql_report_upload" id="final_aql_report_upload"/></th>
                     <th></th>
                     <th>{{ $data->production_sample_approval_plan }}</th>
                     <th style="background-color: <?php echo empty($data->production_sample_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->production_sample_approval_actual) && $data->production_sample_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->production_sample_approval_plan, $data->production_sample_approval_actual) : ($data->production_sample_approval_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="production_sample_approval_actual" class="production_sample_approval_actual" name="production_sample_approval_actual" value="{{ $data->production_sample_approval_actual }}" /></th>
@@ -2092,6 +2092,38 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'pre_final_aql_report_schedule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".final_aql_report_upload").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'final_aql_report_upload'
                     },
                     success: function(response) {
                         // Handle the response from the server

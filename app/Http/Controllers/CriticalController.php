@@ -526,6 +526,9 @@ class CriticalController extends Controller
             if($request->input('type')=="pre_final_aql_report_schedule") {
                 $updateData['pre_final_aql_report_schedule']=$selectedDate;
             }
+            if($request->input('type')=="final_aql_report_upload") {
+                $updateData['final_aql_report_upload']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
