@@ -870,7 +870,8 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="text" value="" name="re_ex_fac_date_po" placeholder="Revised Ex-factory Date" class="form-control" />
+                        <input type="text" value=" {{ $criticalPath->revised_ex_factory_date }} " name="revised_ex_factory_date" class="revised_ex_factory_date form-control" id="revised_ex_factory_date"/>
+                           
                             <label for="revisedExFactoryDate">Revised Ex-factory Date</label>
                         </div>
                     </div>
