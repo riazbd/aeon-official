@@ -745,7 +745,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input type="date" value="{{$criticalPath->create_aql_schedule}}" name="create_aql_schedule" placeholder="Create AQL Schedule" class="form-control" />
+                            <input type="text" value="{{$criticalPath->create_aql_schedule}}" name="create_aql_schedule" placeholder="Create AQL Schedule" class="create_aql_schedule form-control"  id="create_aql_schedule"/>
                             <label for="createAQLSchedule">Create AQL Schedule(Actual)</label>
                         </div>
                     </div>
@@ -770,7 +770,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-3">
                         <div class="form-floating">
-                            <input readonly type="text" value="" name="create_aql_sch" placeholder="Create AQL Schedule" class="form-control" />
+                            <input  type="text" value="{{$criticalPath->create_aql_schedule}}" name="create_aql_schedule" placeholder="Create AQL Schedule" id="create_aql_schedule" class="create_aql_schedule form-control" />
                             <label for="createAQLSchedule">Create AQL Schedule</label>
                         </div>
                     </div>
