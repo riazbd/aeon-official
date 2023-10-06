@@ -511,6 +511,12 @@ class CriticalController extends Controller
             if($request->input('type')=="shipped_units") {
                 $updateData['shipped_units']=$selectedDate;
             }
+            if($request->input('type')=="create_pp_meeting_schedule") {
+                $updateData['create_pp_meeting_schedule']=$selectedDate;
+            }
+            if($request->input('type')=="create_inline_inspection_schdule") {
+                $updateData['create_inline_inspection_schdule']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }

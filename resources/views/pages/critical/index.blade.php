@@ -450,7 +450,7 @@ $aStyleNo=$orderItem="";
                     <th>{{ $data->pp_meeting_plan }}</th>
                     <th style="background-color: <?php echo empty($data->pp_meeting_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pp_meeting_actual) && $data->pp_meeting_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pp_meeting_plan, $data->pp_meeting_actual) : ($data->pp_meeting_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="pp_meeting_actual" class="pp_meeting_actual" name="pp_meeting_actual" value="{{ $data->pp_meeting_actual }}" /></th>
 
-                    <th style="background-color: <?php echo empty($data->create_pp_meeting_schedule) ? 'red' : 'transparent'; ?>">{{ $data->create_pp_meeting_schedule }}
+                    <th style="background-color: <?php echo empty($data->create_pp_meeting_schedule) ? 'red' : 'transparent'; ?>"><input type="text" value=" {{ $data->create_pp_meeting_schedule }}" name="create_pp_meeting_schedule" class="create_pp_meeting_schedule" id="create_pp_meeting_schedule"/>
                     </th>
                     <th style="background-color: <?php echo empty($data->pp_meeting_report_upload) ? 'red' : 'transparent'; ?>"></th>
                     <th>{{ $data->cutting_date_plan }}</th>
@@ -472,7 +472,7 @@ $aStyleNo=$orderItem="";
 
                     <th>{{ $data->sewing_inline_inspection_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->sewing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sewing_inline_inspection_date_actual) && $data->sewing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sewing_inline_inspection_date_plan, $data->sewing_inline_inspection_date_actual) : ($data->sewing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual" name="sewing_inline_inspection_date_actual" value="{{ $data->sewing_inline_inspection_date_actual }}" /></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->create_inline_inspection_schdule }} " name="create_inline_inspection_schdule" class="create_inline_inspection_schdule" id="create_inline_inspection_schdule"/></th>
                     <th></th>
                     <th>{{ $data->finishing_inline_inspection_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->finishing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->finishing_inline_inspection_date_actual) && $data->finishing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->finishing_inline_inspection_date_plan, $data->finishing_inline_inspection_date_actual) : ($data->finishing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual" name="finishing_inline_inspection_date_actual" value="{{ $data->finishing_inline_inspection_date_actual }}" /></th>
@@ -1931,6 +1931,70 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'shipped_units'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".create_pp_meeting_schedule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'create_pp_meeting_schedule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".create_inline_inspection_schdule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'create_inline_inspection_schdule'
                     },
                     success: function(response) {
                         // Handle the response from the server
