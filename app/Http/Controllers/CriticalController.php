@@ -532,6 +532,15 @@ class CriticalController extends Controller
             if($request->input('type')=="forward_ref") {
                 $updateData['forward_ref']=$selectedDate;
             }
+            if($request->input('type')=="late_delivery_discounts_crp") {
+                $updateData['late_delivery_discounts_crp']=$selectedDate;
+            }
+            if($request->input('type')=="invoice_num") {
+                $updateData['invoice_num']=$selectedDate;
+            }
+            if($request->input('type')=="invoice_create_date") {
+                $updateData['invoice_create_date']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }

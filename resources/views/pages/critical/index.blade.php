@@ -506,9 +506,9 @@ $aStyleNo=$orderItem="";
                     <th>{{ $data->revised_eta_sa_date }}</th>
                     <th>{{$data->ship_mode}}</th>
                     <th><input type="text" value=" {{ $data->forward_ref }} " name="forward_ref" class="forward_ref" id="forward_ref"/></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->late_delivery_discounts_crp }} " name="late_delivery_discounts_crp" class="late_delivery_discounts_crp" id="late_delivery_discounts_crp"/></th>
+                    <th><input type="text" value=" {{ $data->invoice_num }} " name="invoice_num" class="invoice_num" id="invoice_num"/></th>
+                    <th><input type="text" value=" {{ $data->invoice_create_date }} " name="invoice_create_date" class="invoice_create_date" id="invoice_create_date"/></th>
                     <th><input type="text" id="payment_receive_date" class="payment_receive_date" name="payment_receive_date" value="{{ $data->payment_receive_date }}" /></th>
                  
                     <th><input type="text" id="reason_for_change_affect_shipment" class="reason_for_change_affect_shipment" name="reason_for_change_affect_shipment" value="{{ $data->reason_for_change_affect_shipment }}" /></th>
@@ -2156,6 +2156,102 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'forward_ref'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".late_delivery_discounts_crp").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'late_delivery_discounts_crp'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".invoice_num").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'invoice_num'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".invoice_create_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'invoice_create_date'
                     },
                     success: function(response) {
                         // Handle the response from the server
