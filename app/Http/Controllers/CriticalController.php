@@ -545,6 +545,7 @@ class CriticalController extends Controller
                 $updateData['sa_eta_5_days']=$selectedDate;
             }
             
+            
             $criticalPath->update($updateData);
         }
         //dd($selectedDate,$id);
