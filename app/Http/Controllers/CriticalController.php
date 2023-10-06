@@ -547,6 +547,9 @@ class CriticalController extends Controller
             if($request->input('type')=="sa_eta_5_days") {
                 $updateData['sa_eta_5_days']=$selectedDate;
             }
+            if($request->input('type')=="production_sample_dispatch") {
+                $updateData['production_sample_dispatch']=$selectedDate;
+            }
             
             
             $criticalPath->update($updateData);

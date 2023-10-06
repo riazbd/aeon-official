@@ -294,7 +294,7 @@ $aStyleNo=$orderItem="";
                     <th>Prod Sple (Plan)</th>
                     <th>Prod Sple (act)</th>
                     <th>Prod Sple Dis</th>
-                    <th>Prod Sple Dis</th>
+                    <th>Prod Sple Image</th>
                     <th>Ship Book ACS (Plan)</th>
                     <th>Ship Book ACS (act)</th>
                     <th>SA app(Plan) </th>
@@ -494,8 +494,8 @@ $aStyleNo=$orderItem="";
                     <th><input type="text" value=" {{ $data->create_aql_schedule }} " name="create_aql_schedule" class="create_aql_schedule" id="create_aql_schedule"/></th>
                     <th>{{ $data->production_sample_approval_plan }}</th>
                     <th style="background-color: <?php echo empty($data->production_sample_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->production_sample_approval_actual) && $data->production_sample_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->production_sample_approval_plan, $data->production_sample_approval_actual) : ($data->production_sample_approval_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="production_sample_approval_actual" class="production_sample_approval_actual" name="production_sample_approval_actual" value="{{ $data->production_sample_approval_actual }}" /></th>
-                    <th>{{ $data->sa_approval_plan }}</th>
-                    <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="sa_approval_actual" class="sa_approval_actual" name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th>
+                    <th><input type="text" value=" {{ $data->production_sample_dispatch }}" name="production_sample_dispatch" class="production_sample_dispatch" id="production_sample_dispatch"/></th>
+                    <th></th>
                     <th>{{ $data->shipment_booking_with_acs_plan }}</th>
                     <th style="background-color: <?php echo empty($data->shipment_booking_with_acs_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->shipment_booking_with_acs_actual) && $data->shipment_booking_with_acs_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->shipment_booking_with_acs_plan, $data->shipment_booking_with_acs_actual) : ($data->shipment_booking_with_acs_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="shipment_booking_with_acs_actual" class="shipment_booking_with_acs_actual" name="shipment_booking_with_acs_actual" value="{{ $data->shipment_booking_with_acs_actual }}" /></th>
                     <th>{{ $data->sa_approval_plan }}</th>
@@ -2319,6 +2319,38 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'sa_eta_5_days'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".production_sample_dispatch").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'production_sample_dispatch'
                     },
                     success: function(response) {
                         // Handle the response from the server
