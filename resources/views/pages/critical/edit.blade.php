@@ -701,7 +701,7 @@ function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
-                            <input type="text" value="" name="inline_inspect_sche" placeholder="Create Inline Inspection Schedule" class="form-control" />
+                            <input type="text" value="{{$criticalPath->pre_final_aql_report_schedule}}" name="pre_final_aql_report_schedule" placeholder="Create Inline Inspection Schedule" id="pre_final_aql_report_schedule" class=" pre_final_aql_report_schedule form-control" />
                             <label for="createInlineInspectionSchedule">Create Inline Inspection Schedule</label>
                         </div>
                     </div>

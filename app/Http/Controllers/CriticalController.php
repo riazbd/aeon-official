@@ -360,6 +360,9 @@ class CriticalController extends Controller
             if (isset($request->create_pp_meeting_schedule)) {
                 $updateData['create_pp_meeting_schedule'] = $request->create_pp_meeting_schedule;
             }
+            if (isset($request->pre_final_aql_report_schedule)) {
+                $updateData['pre_final_aql_report_schedule'] = $request->pre_final_aql_report_schedule;
+            }
 
             $criticalPath->update($updateData);
             return redirect()->back()->with('success', 'Data saved successfully!');
