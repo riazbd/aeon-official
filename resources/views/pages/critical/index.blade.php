@@ -514,7 +514,7 @@ $aStyleNo=$orderItem="";
                     <th><input type="text" id="reason_for_change_affect_shipment" class="reason_for_change_affect_shipment" name="reason_for_change_affect_shipment" value="{{ $data->reason_for_change_affect_shipment }}" /></th>
                     <th><input type="text" id="aeon_comments_date" class="aeon_comments_date" name="aeon_comments_date" value="{{ $data->aeon_comments_date }}" /></th>
                     <th><input type="text" id="vendor_comments_date" class="vendor_comments_date" name="vendor_comments_date" value="{{ $data->vendor_comments_date }}" /></th>
-                    <th>{{ $data->sa_eta_5_days }}</th>
+                    <th><input type="text" value="{{ $data->sa_eta_5_days }}" name="sa_eta_5_days" id="sa_eta_5_days" class="sa_eta_5_days"/></th>
                     <th>{{ $data->note }}</th>
                     <!-- Add more headers here -->
                 </tr>
@@ -2252,6 +2252,38 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'invoice_create_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".sa_eta_5_days").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'sa_eta_5_days'
                     },
                     success: function(response) {
                         // Handle the response from the server

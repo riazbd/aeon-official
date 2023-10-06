@@ -541,6 +541,9 @@ class CriticalController extends Controller
             if($request->input('type')=="invoice_create_date") {
                 $updateData['invoice_create_date']=$selectedDate;
             }
+            if($request->input('type')=="sa_eta_5_days") {
+                $updateData['sa_eta_5_days']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
