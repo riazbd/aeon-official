@@ -505,7 +505,7 @@ $aStyleNo=$orderItem="";
                     <th>{{ $data->orginal_eta_sa_date }}</th>
                     <th>{{ $data->revised_eta_sa_date }}</th>
                     <th>{{$data->ship_mode}}</th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->forward_ref }} " name="forward_ref" class="forward_ref" id="forward_ref"/></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -2124,6 +2124,38 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'final_aql_report_upload'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".forward_ref").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'forward_ref'
                     },
                     success: function(response) {
                         // Handle the response from the server

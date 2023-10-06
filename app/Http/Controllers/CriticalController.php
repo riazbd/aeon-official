@@ -529,6 +529,9 @@ class CriticalController extends Controller
             if($request->input('type')=="final_aql_report_upload") {
                 $updateData['final_aql_report_upload']=$selectedDate;
             }
+            if($request->input('type')=="forward_ref") {
+                $updateData['forward_ref']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }
