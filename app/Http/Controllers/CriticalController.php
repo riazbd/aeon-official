@@ -517,6 +517,15 @@ class CriticalController extends Controller
             if($request->input('type')=="create_inline_inspection_schdule") {
                 $updateData['create_inline_inspection_schdule']=$selectedDate;
             }
+            if($request->input('type')=="pre_final_aql_report_schedule") {
+                $updateData['pre_final_aql_report_schedule']=$selectedDate;
+            }
+            if($request->input('type')=="create_aql_schedule") {
+                $updateData['create_aql_schedule']=$selectedDate;
+            }
+            if($request->input('type')=="pre_final_aql_report_schedule") {
+                $updateData['pre_final_aql_report_schedule']=$selectedDate;
+            }
             
             $criticalPath->update($updateData);
         }

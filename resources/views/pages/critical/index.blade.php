@@ -477,13 +477,14 @@ $aStyleNo=$orderItem="";
                     <th>{{ $data->finishing_inline_inspection_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->finishing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->finishing_inline_inspection_date_actual) && $data->finishing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->finishing_inline_inspection_date_plan, $data->finishing_inline_inspection_date_actual) : ($data->finishing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual" name="finishing_inline_inspection_date_actual" value="{{ $data->finishing_inline_inspection_date_actual }}" /></th>
 
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->pre_final_aql_report_schedule }} " name="pre_final_aql_report_schedule" class="pre_final_aql_report_schedule" id="pre_final_aql_report_schedule"/></th>
                     <th></th>
                     <th>{{ $data->pre_final_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->pre_final_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pre_final_date_actual) && $data->pre_final_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pre_final_date_plan, $data->pre_final_date_actual) : ($data->pre_final_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="pre_final_date_actual" class="pre_final_date_actual" name="pre_final_date_actual" value="{{ $data->pre_final_date_actual }}" /></th>
 
-                    <th></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->create_aql_schedule }} " name="create_aql_schedule" class="create_aql_schedule" id="create_aql_schedule"/></th>
+                    <th><input type="text" value=" {{ $data->pre_final_aql_report_schedule }} " name="pre_final_aql_report_schedule" class="pre_final_aql_report_schedule" id="pre_final_aql_report_schedule"/></th>
+                    
                     <th>{{ $data->final_aql_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->final_aql_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->final_aql_date_actual) && $data->final_aql_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->final_aql_date_plan, $data->final_aql_date_actual) : ($data->final_aql_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual" name="final_aql_date_actual" value="{{ $data->final_aql_date_actual }}" /></th>
                     <th></th>
@@ -1995,6 +1996,102 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'create_inline_inspection_schdule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".pre_final_aql_report_schedule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'pre_final_aql_report_schedule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".create_aql_schedule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'create_aql_schedule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".pre_final_aql_report_schedule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'pre_final_aql_report_schedule'
                     },
                     success: function(response) {
                         // Handle the response from the server
