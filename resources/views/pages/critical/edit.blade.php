@@ -627,79 +627,7 @@
                     </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingEight">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
-                        Inspection Information
-                    </button>
-                </h2>
-                <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse toplabel" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->sewing_inline_inspection_date_plan}}" name="sew_ins_date_plan" placeholder="Sewing Inspection date (Plan)" class="form-control" />
-                            <label for="sewingInspectionDatePlan">Sewing Inspection date (Plan)</label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->sewing_inline_inspection_date_actual)&& $criticalPath->sewing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->sewing_inline_inspection_date_plan,$criticalPath->sewing_inline_inspection_date_actual) : ($criticalPath->sewing_inline_inspection_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->sewing_inline_inspection_date_actual)?'red':''; ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual form-control" name="sewing_inline_inspection_date_actual" value="{{$criticalPath->sewing_inline_inspection_date_actual}}" />
-                            
-                            <label for="sewingInlineInspectionDateActual">Sewing Inline Inspection date (Actual)</label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="text" value="{{$criticalPath->pre_final_aql_report_schedule}}" name="pre_final_aql_report_schedule" placeholder="Create Inline Inspection Schedule" id="pre_final_aql_report_schedule" class=" pre_final_aql_report_schedule form-control" />
-                            <label for="createInlineInspectionSchedule">Create Inline Inspection Schedule</label>
-                        </div>
-                    </div>
-                </div>
-                <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-                    <div class="col-md-4">
-                        <input type="file" name="sew_file" />
-                        <label for="">Sewing Inline Inspection Report </label>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->finishing_inline_inspection_date_plan}}" name="finishing_inline_inspection_date_plan" placeholder="Finishing Inline Inspection date (Plan)" class="form-control" />
-                            <label for="finishingInlineInspectionDatePlan">Finishing Inline Inspection date (Plan)</label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->finishing_inline_inspection_date_actual)&& $criticalPath->finishing_inline_inspection_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->finishing_inline_inspection_date_plan,$criticalPath->finishing_inline_inspection_date_actual) : ($criticalPath->finishing_inline_inspection_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->finishing_inline_inspection_date_actual)?'red':''; ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual form-control" name="finishing_inline_inspection_date_actual" value="{{$criticalPath->finishing_inline_inspection_date_actual}}" />
-                         
-                            <label for="finishingInlineInspectionDateActual">Finishing Inline Inspection date (Actual)</label>
-                        </div>
-                    </div>
-                </div>
-                <div id="flush-collapseEight" class="rowItem row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-                    <div class="col-md-3">
-                        <input type="file" name="finish_inline_file" />
-                        <label for="">Finishing Inline Inspection Report </label>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-floating">
-                            <input readonly type="text" value="{{$criticalPath->pre_final_date_plan}}" name="pre_final_date_plan" placeholder="Pre Final Date (Plan)" class="form-control" />
-                            <label for="preFinalDatePlan">Pre Final Date (Plan)</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->pre_final_date_actual)&& $criticalPath->pre_final_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->pre_final_date_plan,$criticalPath->pre_final_date_actual) : ($criticalPath->pre_final_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->pre_final_date_actual)?'red':''; ?>" type="text" id="pre_final_date_actual" class="pre_final_date_actual form-control" name="pre_final_date_actual" value="{{$criticalPath->pre_final_date_actual}}" />
-                            
-                            <label for="preFinalDateActual">Pre Final Date (Actual)</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-floating">
-                            <input type="text" value="{{$criticalPath->create_aql_schedule}}" name="create_aql_schedule" placeholder="Create AQL Schedule" class="create_aql_schedule form-control"  id="create_aql_schedule"/>
-                            <label for="createAQLSchedule">Create AQL Schedule(Actual)</label>
- 
-
-                        </div>
-                    </div>
-                </div>
+            
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -870,23 +798,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="form-floating">
-                        <input style="color: <?php echo (!empty($criticalPath->final_aql_date_actual)&& $criticalPath->final_aql_date_actual!=="NA") ? setBackgroundColorBasedOnDateDifference($criticalPath->final_aql_date_plan,$criticalPath->final_aql_date_actual) : ($criticalPath->final_aql_date_actual=="NA"?'RED':''); ?>;background-color:<?php echo empty($criticalPath->final_aql_date_actual)?'red':''; ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual form-control" name="final_aql_date_actual" value="{{$criticalPath->final_aql_date_actual}}" />
-                            
-                            <label for="finalAQLDateActual">Final AQL date (Actual)</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-floating">
-                            <input  type="text" value="{{$criticalPath->create_aql_schedule}}" name="create_aql_schedule" placeholder="Create AQL Schedule" id="create_aql_schedule" class="create_aql_schedule form-control" />
-                            <label for="createAQLSchedule">Create AQL Schedule</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <input type="file" name="final_aql_file" />
-                        <label for="">Final AQL Report Upload </label>
-                    </div>
+                   
 
                 </div>
                 <div id="flush-collapseEight" class="rowItem rowBottom row accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
