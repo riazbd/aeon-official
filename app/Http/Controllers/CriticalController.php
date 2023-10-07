@@ -12,6 +12,7 @@ use App\Models\Vendor;
 use CreateCriticalDetailsTable;
 use Illuminate\Http\Request;
 use DB;
+
 use DateTime;
 class CriticalController extends Controller
 {
@@ -31,8 +32,19 @@ class CriticalController extends Controller
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->select('*','manufacturers.name as manufatureName' ,'purchage_orders.*','purchage_orders.fabric_content as aFabriccontent','critical_paths.colour as aColor','purchage_orders.care_lavel_date as careDate','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'vendors.name as vendorName', 'buyers.name as buyerName'
-            , DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered'))
+            ->select(
+                '*',
+                'manufacturers.name as manufatureName',
+                'purchage_orders.*',
+                'purchage_orders.fabric_content as aFabriccontent',
+                'critical_paths.colour as aColor',
+                'purchage_orders.care_lavel_date as careDate',
+                'critical_paths.style_no as aStyleNo',
+                'departments.name as deptName',
+                'vendors.name as vendorName',
+                'buyers.name as buyerName',
+                DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
+            )
             ->get();
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
         //
@@ -85,15 +97,22 @@ class CriticalController extends Controller
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
             ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->select('*', 'purchage_orders.*', 'vendors.name as vendorName', 'critical_paths.colour as colourName','critical_paths.style_no as aStyleNo', 'departments.name as deptName', 'buyers.name as buyerName',
-            DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
+            ->select(
+                '*',
+                'purchage_orders.*',
+                'vendors.name as vendorName',
+                'critical_paths.colour as colourName',
+                'critical_paths.style_no as aStyleNo',
+                'departments.name as deptName',
+                'buyers.name as buyerName',
+                DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
             )
             ->first();
-            $po_find=PurchageOrder::find($id);
-           // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
+        $po_find = PurchageOrder::find($id);
+        // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
         //    $totalItemsOrdered = DB::select("SELECT SUM(qty_ordered) AS TotalItemsOrdered FROM order_items WHERE po_id=?", [$criticalPath->po_id]);
         //   array($totalItemsOrdered);
-        return view('pages.critical.edit', compact('criticalPath','po_find'));
+        return view('pages.critical.edit', compact('criticalPath', 'po_find'));
         //
     }
 
@@ -106,15 +125,17 @@ class CriticalController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request->all());
+
         $criticalPath = CriticalPath::where('po_id', $id)->first();
-       // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
+        // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
         $po_find = PurchageOrder::find($id);
         if (isset($criticalPath)) {
 
             // Check if the fields are set in the request
             $updateData = [];
             $data = [];
-            $details=[];
+            $details = [];
             if (isset($request->fabric_ref)) {
                 $updateData['fabric_ref'] = $request->fabric_ref;
             }
@@ -266,7 +287,7 @@ class CriticalController extends Controller
             // Add more conditions for other fields as needed
 
             // Update the model with the data
-           
+
 
             if (isset($request->care_lavel_date)) {
                 $data['care_lavel_date'] = $request->care_lavel_date;
@@ -364,6 +385,339 @@ class CriticalController extends Controller
                 $updateData['pre_final_aql_report_schedule'] = $request->pre_final_aql_report_schedule;
             }
 
+            // image add  start
+
+            if ($request->hasFile('image')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('image')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('image')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('image')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $filePath = 'storage/logos/' . $newFileName;
+
+                $updateData['image'] = $filePath;
+            }
+
+
+
+            // image add end
+
+            // lab_dip_image add  start
+
+            if ($request->hasFile('lab_dip_image')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('lab_dip_image')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('lab_dip_image')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('lab_dip_image')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $lab_dip_filePath = 'storage/logos/' . $newFileName;
+
+                $updateData['lab_dip_image'] = $lab_dip_filePath;
+            }
+
+
+
+            // lab_dip_image add end
+
+
+            // emb_so_img add  start
+
+            if ($request->hasFile('emb_so_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('emb_so_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('emb_so_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('emb_so_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $lab_dip_filePath = 'storage/logos/' . $newFileName;
+
+                $updateData['embellishment_s_o_image'] = $lab_dip_filePath;
+            }
+
+
+
+            // emb_so_img add end
+
+
+
+
+
+            // bulk_fabric_knit_down_image add  start
+
+            if ($request->hasFile('bulk_fabric_knit_down_image')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('bulk_fabric_knit_down_image')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('bulk_fabric_knit_down_image')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('bulk_fabric_knit_down_image')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $bulk_fabric_knit_down_imagefilePath = 'storage/logos/' . $newFileName;
+
+                $updateData['bulk_fabric_knit_down_image'] = $bulk_fabric_knit_down_imagefilePath;
+            }
+
+
+
+            // bulk_fabric_knit_down_image add end
+
+
+
+
+            // dev_photo add  start
+
+            if ($request->hasFile('dev_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('dev_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('dev_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('dev_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $dev_photo_path = 'storage/logos/' . $newFileName;
+
+                $updateData['development_photo_sample_dispatch_sample_image'] = $dev_photo_path;
+            }
+
+
+
+            // dev_photo add end
+
+
+            // fit_photo add  start
+
+            if ($request->hasFile('fit_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('fit_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('fit_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('fit_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $fit_image_path = 'storage/logos/' . $newFileName;
+
+                $updateData['fit_sample_image'] = $fit_image_path;
+            }
+
+
+
+            // fit_photo add end
+
+
+            // size_set add  start
+
+            if ($request->hasFile('size_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('size_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('size_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('size_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $fit_image_path = 'storage/logos/' . $newFileName;
+
+                $updateData['size_set_image'] = $fit_image_path;
+            }
+
+
+
+            // size_set add end
+
+
+            // // size_set add  start
+
+            if ($request->hasFile('size_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('size_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('size_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('size_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $fit_image_path = 'storage/logos/' . $newFileName;
+
+                $updateData['size_set_image'] = $fit_image_path;
+            }
+
+
+
+            // pp_sample_image add end add  start
+
+            if ($request->hasFile('pp_app_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('pp_app_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('pp_app_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('pp_app_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $pp_sample_image_path = 'storage/logos/' . $newFileName;
+
+                $updateData['pp_sample_image'] = $pp_sample_image_path;
+            }
+
+
+
+            // pp_sample_image add end
+
+
+            // pp_meet_img add end add  start
+
+            if ($request->hasFile('pp_meet_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('pp_meet_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('pp_meet_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $fileStorePath = $request->file('pp_meet_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $pp_meet_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['pp_meeting_report_upload'] = $pp_meet_img_path;
+            }
+
+
+
+            // pp_meet_img add end
+
+
+
+            // sew_file add end add  start
+
+            if ($request->hasFile('sew_file')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('sew_file')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('sew_file')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('sew_file')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $sew_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['sewing_inline_inspection_report_upload'] = $sew_file_img_path;
+            }
+
+
+
+            // sew_file add end
+
+
+            // finish_inline_file add end add  start
+
+            if ($request->hasFile('finish_inline_file')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('finish_inline_file')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('finish_inline_file')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('finish_inline_file')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $finish_inline_file_sew_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['finishing_inline_inspection_report'] = $finish_inline_file_sew_file_img_path;
+            }
+
+
+
+            // finish_inline_file add end
+
+
+
+            // pre_final_aql_report add end add  start
+
+            if ($request->hasFile('pre_final_aql_report')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('pre_final_aql_report')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('pre_final_aql_report')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('pre_final_aql_report')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $pre_final_aql_report_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['pre_final_aql_report_schedule'] = $pre_final_aql_report_file_img_path;
+            }
+
+
+
+            // pre_final_aql_report add end
+
+
+            // final_aql_file add end add  start
+
+            if ($request->hasFile('final_aql_file')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('final_aql_file')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('final_aql_file')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('final_aql_file')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $final_aql_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['final_aql_report_upload'] = $final_aql_file_img_path;
+            }
+
+
+
+            // final_aql_file add end
+
+
+            // pp_sam_img add end add  start
+
+            if ($request->hasFile('pp_sam_img')) {
+                $destinationPath = 'public/logos';
+                $mainName = pathinfo($request->file('pp_sam_img')->getClientOriginalName(), PATHINFO_FILENAME);
+                // Get the file extension from the uploaded logo
+                $extension = $request->file('pp_sam_img')->getClientOriginalExtension();
+                // Generate a unique file name with the main name, current timestamp, and extension
+                $newFileName = $mainName . '_' . time() . '.' . $extension;
+                // Move the logo file to the specified destination path
+                $sewfileStorePath = $request->file('pp_sam_img')->storeAs($destinationPath, $newFileName);
+                // Set the logo path to the Buyer model attribute
+                $final_aql_file_img_path = 'storage/logos/' . $newFileName;
+
+                $updateData['production_sample_upload'] = $final_aql_file_img_path;
+            }
+
+
+
+            // pp_sam_img add end
+
+
             $criticalPath->update($updateData);
             return redirect()->back()->with('success', 'Data saved successfully!');
         }
@@ -386,117 +740,118 @@ class CriticalController extends Controller
         $selectedDate = $request->input('enteredDate');
         $id = $request->input('po_id');
 
-        $criticalPath=CriticalPath::where('po_id',$id)->orderBy('id','desc')->first();
-        $updateData=[]; 
-        if($criticalPath) {
-            if($request->input('type')=="colour_std_print_artwork_sent_to_supplier_actual_date") {
-                $updateData['colour_std_print_artwork_sent_to_supplier_actual_date']=$selectedDate;
+        $criticalPath = CriticalPath::where('po_id', $id)->orderBy('id', 'desc')->first();
+        $updateData = [];
+        if ($criticalPath) {
+            if ($request->input('type') == "colour_std_print_artwork_sent_to_supplier_actual_date") {
+                $updateData['colour_std_print_artwork_sent_to_supplier_actual_date'] = $selectedDate;
             }
-            if($request->input('type')=="lab_dip_approval_actual_date") {
-                $updateData['lab_dip_approval_actual_date']=$selectedDate;
+            if ($request->input('type') == "lab_dip_approval_actual_date") {
+                $updateData['lab_dip_approval_actual_date'] = $selectedDate;
             }
-            if($request->input('type')=="lab_dip_dispatch_details") {
-                $updateData['lab_dip_dispatch_details']=$selectedDate;
+            if ($request->input('type') == "lab_dip_dispatch_details") {
+                $updateData['lab_dip_dispatch_details'] = $selectedDate;
             }
-            if($request->input('type')=="embellishment_s_o_approval_actual_date") {
-                $updateData['embellishment_s_o_approval_actual_date']=$selectedDate;
+            if ($request->input('type') == "embellishment_s_o_approval_actual_date") {
+                $updateData['embellishment_s_o_approval_actual_date'] = $selectedDate;
             }
-            if($request->input('type')=="embellishment_s_o_dispatch_details") {
-                $updateData['embellishment_s_o_dispatch_details']=$selectedDate;
+            if ($request->input('type') == "embellishment_s_o_dispatch_details") {
+                $updateData['embellishment_s_o_dispatch_details'] = $selectedDate;
             }
-            if($request->input('type')=="bulk_fabric_knit_down_dispatch_details") {
-                $updateData['bulk_fabric_knit_down_dispatch_details']=$selectedDate;
+            if ($request->input('type') == "bulk_fabric_knit_down_dispatch_details") {
+                $updateData['bulk_fabric_knit_down_dispatch_details'] = $selectedDate;
             }
-            if($request->input('type')=="development_photo_sample_dispatch_details") {
-                $updateData['development_photo_sample_dispatch_details']=$selectedDate;
+            if ($request->input('type') == "development_photo_sample_dispatch_details") {
+                $updateData['development_photo_sample_dispatch_details'] = $selectedDate;
             }
-            if($request->input('type')=="fit_dispatch") {
-                $updateData['fit_dispatch']=$selectedDate;
+            if ($request->input('type') == "fit_dispatch") {
+                $updateData['fit_dispatch'] = $selectedDate;
             }
-            if($request->input('type')=="size_set_dispatch") {
-                $updateData['size_set_dispatch']=$selectedDate;
+            if ($request->input('type') == "size_set_dispatch") {
+                $updateData['size_set_dispatch'] = $selectedDate;
             }
-            if($request->input('type')=="pp_dispatch") {
-                $updateData['pp_dispatch']=$selectedDate;
+            if ($request->input('type') == "pp_dispatch") {
+                $updateData['pp_dispatch'] = $selectedDate;
             }
-            if($request->input('type')=="fabric_ordered_actual_date") {
-                $updateData['fabric_ordered_actual_date']=$selectedDate;
+            if ($request->input('type') == "fabric_ordered_actual_date") {
+                $updateData['fabric_ordered_actual_date'] = $selectedDate;
             }
-            if($request->input('type')=="bulk_fabric_knit_down_approval_actual_date") {
-                $updateData['bulk_fabric_knit_down_approval_actual_date']=$selectedDate;
+            if ($request->input('type') == "bulk_fabric_knit_down_approval_actual_date") {
+                $updateData['bulk_fabric_knit_down_approval_actual_date'] = $selectedDate;
             }
-            if($request->input('type')=="bulk_yarn_fabric_actual_date") {
-                $updateData['bulk_yarn_fabric_actual_date']=$selectedDate;
+            if ($request->input('type') == "bulk_yarn_fabric_actual_date") {
+                $updateData['bulk_yarn_fabric_actual_date'] = $selectedDate;
             }
-            if($request->input('type')=="development_photo_sample_sent_actual_date") {
-                $updateData['development_photo_sample_sent_actual_date']=$selectedDate;
+            if ($request->input('type') == "development_photo_sample_sent_actual_date") {
+                $updateData['development_photo_sample_sent_actual_date'] = $selectedDate;
             }
-            if($request->input('type')=="fit_approval_actual") {
-                $updateData['fit_approval_actual']=$selectedDate;
+            if ($request->input('type') == "fit_approval_actual") {
+                $updateData['fit_approval_actual'] = $selectedDate;
             }
-            if($request->input('type')=="size_set_actual") {
-                $updateData['size_set_actual']=$selectedDate;
+            if ($request->input('type') == "size_set_actual") {
+                $updateData['size_set_actual'] = $selectedDate;
             }
-            if($request->input('type')=="pp_actual") {
-                $updateData['pp_actual']=$selectedDate;
+            if ($request->input('type') == "pp_actual") {
+                $updateData['pp_actual'] = $selectedDate;
             }
-            if($request->input('type')=="care_lavel_date") {
-                $updateData['care_lavel_date']=$selectedDate;
+            if ($request->input('type') == "care_lavel_date") {
+                $updateData['care_lavel_date'] = $selectedDate;
             }
-            if($request->input('type')=="material_inhouse_actual") {
-                $updateData['material_inhouse_actual']=$selectedDate;
+            if ($request->input('type') == "material_inhouse_actual") {
+                $updateData['material_inhouse_actual'] = $selectedDate;
             }
-            if($request->input('type')=="pp_meeting_actual") {
-                $updateData['pp_meeting_actual']=$selectedDate;
+            if ($request->input('type') == "pp_meeting_actual") {
+                $updateData['pp_meeting_actual'] = $selectedDate;
             }
-            if($request->input('type')=="cutting_date_actual") {
-                $updateData['cutting_date_actual']=$selectedDate;
+            if ($request->input('type') == "cutting_date_actual") {
+                $updateData['cutting_date_actual'] = $selectedDate;
             }
-            if($request->input('type')=="embellishment_actual") {
-                $updateData['embellishment_actual']=$selectedDate;
+            if ($request->input('type') == "embellishment_actual") {
+                $updateData['embellishment_actual'] = $selectedDate;
             }
-            if($request->input('type')=="Sewing_actual") {
-                $updateData['Sewing_actual']=$selectedDate;
+            if ($request->input('type') == "Sewing_actual") {
+                $updateData['Sewing_actual'] = $selectedDate;
             }
-            if($request->input('type')=="washing_complete_actual") {
-                $updateData['washing_complete_actual']=$selectedDate;
+            if ($request->input('type') == "washing_complete_actual") {
+                $updateData['washing_complete_actual'] = $selectedDate;
             }
-            if($request->input('type')=="finishing_complete_actual") {
-                $updateData['finishing_complete_actual']=$selectedDate;
+            if ($request->input('type') == "finishing_complete_actual") {
+                $updateData['finishing_complete_actual'] = $selectedDate;
             }
-            if($request->input('type')=="sewing_inline_inspection_date_actual") {
-                $updateData['sewing_inline_inspection_date_actual']=$selectedDate;
+            if ($request->input('type') == "sewing_inline_inspection_date_actual") {
+                $updateData['sewing_inline_inspection_date_actual'] = $selectedDate;
             }
-            if($request->input('type')=="finishing_inline_inspection_date_actual") {
-                $updateData['finishing_inline_inspection_date_actual']=$selectedDate;
+            if ($request->input('type') == "finishing_inline_inspection_date_actual") {
+                $updateData['finishing_inline_inspection_date_actual'] = $selectedDate;
             }
-            if($request->input('type')=="pre_final_date_actual") {
-                $updateData['pre_final_date_actual']=$selectedDate;
+            if ($request->input('type') == "pre_final_date_actual") {
+                $updateData['pre_final_date_actual'] = $selectedDate;
             }
-            if($request->input('type')=="final_aql_date_actual") {
-                $updateData['final_aql_date_actual']=$selectedDate;
+            if ($request->input('type') == "final_aql_date_actual") {
+                $updateData['final_aql_date_actual'] = $selectedDate;
             }
-            if($request->input('type')=="production_sample_approval_actual") {
-                $updateData['production_sample_approval_actual']=$selectedDate;
+            if ($request->input('type') == "production_sample_approval_actual") {
+                $updateData['production_sample_approval_actual'] = $selectedDate;
             }
-            if($request->input('type')=="shipment_booking_with_acs_actual") {
-                $updateData['shipment_booking_with_acs_actual']=$selectedDate;
+            if ($request->input('type') == "shipment_booking_with_acs_actual") {
+                $updateData['shipment_booking_with_acs_actual'] = $selectedDate;
             }
-            if($request->input('type')=="sa_approval_actual") {
-                $updateData['sa_approval_actual']=$selectedDate;
+            if ($request->input('type') == "sa_approval_actual") {
+                $updateData['sa_approval_actual'] = $selectedDate;
             }
-            if($request->input('type')=="vendor_comments_date") {
-                $updateData['vendor_comments_date']=$selectedDate;
+            if ($request->input('type') == "vendor_comments_date") {
+                $updateData['vendor_comments_date'] = $selectedDate;
             }
-            if($request->input('type')=="aeon_comments_date") {
-                $updateData['aeon_comments_date']=$selectedDate;
+            if ($request->input('type') == "aeon_comments_date") {
+                $updateData['aeon_comments_date'] = $selectedDate;
             }
-            if($request->input('type')=="reason_for_change_affect_shipment") {
-                $updateData['reason_for_change_affect_shipment']=$selectedDate;
+            if ($request->input('type') == "reason_for_change_affect_shipment") {
+                $updateData['reason_for_change_affect_shipment'] = $selectedDate;
             }
-            if($request->input('type')=="payment_receive_date") {
-                $updateData['payment_receive_date']=$selectedDate;
+            if ($request->input('type') == "payment_receive_date") {
+                $updateData['payment_receive_date'] = $selectedDate;
             }
+
             if($request->input('type')=="revised_ex_factory_date") {
                 $updateData['revised_ex_factory_date']=$selectedDate;
                 if(!empty($updateData['revised_ex_factory_date'])) {
@@ -553,7 +908,6 @@ class CriticalController extends Controller
             if($request->input('type')=="revised_ex_factory_date") {
                 $updateData['revised_ex_factory_date']=$selectedDate;
             }
-            
             
             $criticalPath->update($updateData);
         }
