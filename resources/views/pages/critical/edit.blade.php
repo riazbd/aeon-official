@@ -1260,25 +1260,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
-                        <div class="form-floating">
-                        <input type="text" value=" {{ $criticalPath->revised_ex_factory_date }} " name="revised_ex_factory_date" class="revised_ex_factory_date form-control" id="revised_ex_factory_date"/>
-                           
-                            <label for="revisedExFactoryDate">Revised Ex-factory Date</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-floating">
-                            <input type="text" value="" name="ac_ex_fac_date" placeholder="Actual Ex-factory Date" class="form-control" />
-                            <label for="actualExFactoryDate">Actual Ex-factory Date</label>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-floating">
-                            <input type="text" value="" name="ship_uni" placeholder="Shipped Units" class="form-control" />
-                            <label for="shippedUnits">Shipped Units</label>
-                        </div>
-                    </div>
+                    
 
 
                 </div>
