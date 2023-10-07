@@ -294,7 +294,7 @@ $aStyleNo=$orderItem="";
                     <th>Prod Sple (Plan)</th>
                     <th>Prod Sple (act)</th>
                     <th>Prod Sple Dis</th>
-                    <th>Prod Sple Dis</th>
+                    <th>Prod Sple Image</th>
                     <th>Ship Book ACS (Plan)</th>
                     <th>Ship Book ACS (act)</th>
                     <th>SA app(Plan) </th>
@@ -392,7 +392,10 @@ $aStyleNo=$orderItem="";
                     <th>{{ $data->official_po_sent_plan_date }}</th>
                     <th>{{ $data->official_po_sent_actual_date }}</th>
                     <th>{{ $data->colour_std_print_artwork_sent_to_supplier_plan_date }}</th>
-                    <th>{{ $data->colour_std_print_artwork_sent_to_supplier_actual_date }}</th>
+                    <th>
+                    <input style="color: <?php echo (!empty($data->colour_std_print_artwork_sent_to_supplier_actual_date)&& $data->colour_std_print_artwork_sent_to_supplier_actual_date!=="NA") ? setBackgroundColorBasedOnDateDifference($data->colour_std_print_artwork_sent_to_supplier_plan_date,$data->colour_std_print_artwork_sent_to_supplier_actual_date) : ($data->colour_std_print_artwork_sent_to_supplier_actual_date=="NA"?'RED':''); ?>" type="text" id="colour_std_print_artwork_sent_to_supplier_actual_date" class="colour_std_print_artwork_sent_to_supplier_actual_date" name="colour_std_print_artwork_sent_to_supplier_actual_date" value="{{$data->colour_std_print_artwork_sent_to_supplier_actual_date}}" />
+                    </th>
+                   
                     <th>{{ $data->lab_dip_approval_plan_date }}</th>
 
                     <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->lab_dip_approval_actual_date) && $data->lab_dip_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date, $data->lab_dip_approval_actual_date) : ($data->lab_dip_approval_actual_date == 'NA' ? 'RED' : ''); ?>" type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date" name="lab_dip_approval_actual_date" value="{{ $data->lab_dip_approval_actual_date }}" /></th>
@@ -450,7 +453,7 @@ $aStyleNo=$orderItem="";
                     <th>{{ $data->pp_meeting_plan }}</th>
                     <th style="background-color: <?php echo empty($data->pp_meeting_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pp_meeting_actual) && $data->pp_meeting_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pp_meeting_plan, $data->pp_meeting_actual) : ($data->pp_meeting_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="pp_meeting_actual" class="pp_meeting_actual" name="pp_meeting_actual" value="{{ $data->pp_meeting_actual }}" /></th>
 
-                    <th style="background-color: <?php echo empty($data->create_pp_meeting_schedule) ? 'red' : 'transparent'; ?>">{{ $data->create_pp_meeting_schedule }}
+                    <th style="background-color: <?php echo empty($data->create_pp_meeting_schedule) ? 'red' : 'transparent'; ?>"><input type="text" value=" {{ $data->create_pp_meeting_schedule }}" name="create_pp_meeting_schedule" class="create_pp_meeting_schedule" id="create_pp_meeting_schedule"/>
                     </th>
                     <th style="background-color: <?php echo empty($data->pp_meeting_report_upload) ? 'red' : 'transparent'; ?>"></th>
                     <th>{{ $data->cutting_date_plan }}</th>
@@ -472,47 +475,49 @@ $aStyleNo=$orderItem="";
 
                     <th>{{ $data->sewing_inline_inspection_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->sewing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sewing_inline_inspection_date_actual) && $data->sewing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sewing_inline_inspection_date_plan, $data->sewing_inline_inspection_date_actual) : ($data->sewing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="sewing_inline_inspection_date_actual" class="sewing_inline_inspection_date_actual" name="sewing_inline_inspection_date_actual" value="{{ $data->sewing_inline_inspection_date_actual }}" /></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->create_inline_inspection_schdule }} " name="create_inline_inspection_schdule" class="create_inline_inspection_schdule" id="create_inline_inspection_schdule"/></th>
                     <th></th>
                     <th>{{ $data->finishing_inline_inspection_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->finishing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->finishing_inline_inspection_date_actual) && $data->finishing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->finishing_inline_inspection_date_plan, $data->finishing_inline_inspection_date_actual) : ($data->finishing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="finishing_inline_inspection_date_actual" class="finishing_inline_inspection_date_actual" name="finishing_inline_inspection_date_actual" value="{{ $data->finishing_inline_inspection_date_actual }}" /></th>
 
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->pre_final_aql_report_schedule }} " name="pre_final_aql_report_schedule" class="pre_final_aql_report_schedule" id="pre_final_aql_report_schedule"/></th>
                     <th></th>
                     <th>{{ $data->pre_final_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->pre_final_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pre_final_date_actual) && $data->pre_final_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pre_final_date_plan, $data->pre_final_date_actual) : ($data->pre_final_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="pre_final_date_actual" class="pre_final_date_actual" name="pre_final_date_actual" value="{{ $data->pre_final_date_actual }}" /></th>
 
-                    <th></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->create_aql_schedule }} " name="create_aql_schedule" class="create_aql_schedule" id="create_aql_schedule"/></th>
+                    <th><input type="text" value=" {{ $data->pre_final_aql_report_schedule }} " name="pre_final_aql_report_schedule" class="pre_final_aql_report_schedule" id="pre_final_aql_report_schedule"/></th>
+                    
                     <th>{{ $data->final_aql_date_plan }}</th>
                     <th style="background-color: <?php echo empty($data->final_aql_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->final_aql_date_actual) && $data->final_aql_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->final_aql_date_plan, $data->final_aql_date_actual) : ($data->final_aql_date_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="final_aql_date_actual" class="final_aql_date_actual" name="final_aql_date_actual" value="{{ $data->final_aql_date_actual }}" /></th>
-                    <th></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->final_aql_report_upload }} " name="final_aql_report_upload" class="final_aql_report_upload" id="final_aql_report_upload"/></th>
+                    <th><input type="text" value=" {{ $data->create_aql_schedule }} " name="create_aql_schedule" class="create_aql_schedule" id="create_aql_schedule"/></th>
                     <th>{{ $data->production_sample_approval_plan }}</th>
                     <th style="background-color: <?php echo empty($data->production_sample_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->production_sample_approval_actual) && $data->production_sample_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->production_sample_approval_plan, $data->production_sample_approval_actual) : ($data->production_sample_approval_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="production_sample_approval_actual" class="production_sample_approval_actual" name="production_sample_approval_actual" value="{{ $data->production_sample_approval_actual }}" /></th>
-                    <th>{{ $data->sa_approval_plan }}</th>
-                    <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="sa_approval_actual" class="sa_approval_actual" name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th>
+                    <th><input type="text" value=" {{ $data->production_sample_dispatch }}" name="production_sample_dispatch" class="production_sample_dispatch" id="production_sample_dispatch"/></th>
+                    <th></th>
                     <th>{{ $data->shipment_booking_with_acs_plan }}</th>
                     <th style="background-color: <?php echo empty($data->shipment_booking_with_acs_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->shipment_booking_with_acs_actual) && $data->shipment_booking_with_acs_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->shipment_booking_with_acs_plan, $data->shipment_booking_with_acs_actual) : ($data->shipment_booking_with_acs_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="shipment_booking_with_acs_actual" class="shipment_booking_with_acs_actual" name="shipment_booking_with_acs_actual" value="{{ $data->shipment_booking_with_acs_actual }}" /></th>
                     <th>{{ $data->sa_approval_plan }}</th>
                     <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="sa_approval_actual" class="sa_approval_actual" name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th>
                     <th>{{ $data->ex_factory_date }}</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th><input type="text" value=" {{ $data->revised_ex_factory_date }} " name="revised_ex_factory_date" class="revised_ex_factory_date" id="revised_ex_factory_date"/></th>
+                    <th><input type="text" value=" {{ $data->actual_ex_factory_date }} " name="actual_ex_factory_date" class="actual_ex_factory_date" id="actual_ex_factory_date"/></th>
+                    <th><input type="text" value=" {{ $data->shipped_units }} " name="shipped_units" class="shipped_units" id="shipped_units"/></th>
+                    
+                    <th>{{ $data->orginal_eta_sa_date }}</th>
+                    <th>{{ $data->revised_eta_sa_date }}</th>
+                    <th>{{$data->ship_mode}}</th>
+                    <th><input type="text" value=" {{ $data->forward_ref }} " name="forward_ref" class="forward_ref" id="forward_ref"/></th>
+                    <th><input type="text" value=" {{ $data->late_delivery_discounts_crp }} " name="late_delivery_discounts_crp" class="late_delivery_discounts_crp" id="late_delivery_discounts_crp"/></th>
+                    <th><input type="text" value=" {{ $data->invoice_num }} " name="invoice_num" class="invoice_num" id="invoice_num"/></th>
+                    <th><input type="text" value=" {{ $data->invoice_create_date }} " name="invoice_create_date" class="invoice_create_date" id="invoice_create_date"/></th>
                     <th><input type="text" id="payment_receive_date" class="payment_receive_date" name="payment_receive_date" value="{{ $data->payment_receive_date }}" /></th>
                  
                     <th><input type="text" id="reason_for_change_affect_shipment" class="reason_for_change_affect_shipment" name="reason_for_change_affect_shipment" value="{{ $data->reason_for_change_affect_shipment }}" /></th>
                     <th><input type="text" id="aeon_comments_date" class="aeon_comments_date" name="aeon_comments_date" value="{{ $data->aeon_comments_date }}" /></th>
                     <th><input type="text" id="vendor_comments_date" class="vendor_comments_date" name="vendor_comments_date" value="{{ $data->vendor_comments_date }}" /></th>
-                    <th>{{ $data->sa_eta_5_days }}</th>
+                    <th><input type="text" value="{{ $data->sa_eta_5_days }}" name="sa_eta_5_days" id="sa_eta_5_days" class="sa_eta_5_days"/></th>
                     <th>{{ $data->note }}</th>
                     <!-- Add more headers here -->
                 </tr>
@@ -723,6 +728,38 @@ $aStyleNo=$orderItem="";
 
 
 
+        $(".colour_std_print_artwork_sent_to_supplier_actual_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'colour_std_print_artwork_sent_to_supplier_actual_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
         $(".lab_dip_approval_actual_date").on("keyup", function(e) {
             // Check if the Enter key (key code 13) is pressed
             if (e.keyCode === 13) {
@@ -1834,6 +1871,486 @@ $aStyleNo=$orderItem="";
                         enteredDate: enteredDate,
                         po_id: po_id,
                         type: 'pp_dispatch'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".revised_ex_factory_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'revised_ex_factory_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".actual_ex_factory_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'actual_ex_factory_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".shipped_units").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'shipped_units'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".create_pp_meeting_schedule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'create_pp_meeting_schedule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".create_inline_inspection_schdule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'create_inline_inspection_schdule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".pre_final_aql_report_schedule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'pre_final_aql_report_schedule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".create_aql_schedule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'create_aql_schedule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".pre_final_aql_report_schedule").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'pre_final_aql_report_schedule'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".final_aql_report_upload").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'final_aql_report_upload'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".forward_ref").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'forward_ref'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".late_delivery_discounts_crp").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'late_delivery_discounts_crp'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".invoice_num").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'invoice_num'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".invoice_create_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'invoice_create_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".sa_eta_5_days").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'sa_eta_5_days'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+        $(".production_sample_dispatch").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'production_sample_dispatch'
                     },
                     success: function(response) {
                         // Handle the response from the server

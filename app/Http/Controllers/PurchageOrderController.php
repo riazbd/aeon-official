@@ -335,6 +335,14 @@ class PurchageOrderController extends Controller
                     $crtical->treated_as_priority_order="Short Lead Time";
                 }
             }
+
+            if (!empty($crtical->ex_factory_date_po)) {
+               
+                $crtical->orginal_eta_sa_date = $this->dateAddCalculate($crtical->ex_factory_date_po, 52);
+            }else{
+                $crtical->orginal_eta_sa_date="";
+            }
+
             $crtical->save();
         }
         if ($request->input('download_pdf') == 'yes') {
@@ -442,6 +450,14 @@ class PurchageOrderController extends Controller
     {
         $date = date_create($calculateDateFrom);
         date_sub($date, date_interval_create_from_date_string("$differenceDay days"));
+
+        return date_format($date, "Y-m-d");
+    }
+
+    private function dateAddCalculate($calculateDateFrom, $differenceDay)
+    {
+        $date = date_create($calculateDateFrom);
+        date_add($date, date_interval_create_from_date_string("$differenceDay days"));
 
         return date_format($date, "Y-m-d");
     }
