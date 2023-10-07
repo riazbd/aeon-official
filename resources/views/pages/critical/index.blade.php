@@ -1024,10 +1024,6 @@
     </section>
     <!-- </div> -->
 
-    .buttons-copy {
-        margin-left: 1px !important;
-    }
-</style>
 <!-- <div class="container"> -->
 <?php
 
