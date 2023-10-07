@@ -1031,25 +1031,7 @@
 <!-- <div class="container"> -->
 <?php
 
-function setBackgroundColorBasedOnDateDifference($planDateStr, $actualDateStr)
-{
-    // Convert the date strings to DateTime objects
-    $planDate = new DateTime($planDateStr);
-    $actualDate = new DateTime($actualDateStr);
 
-    // Calculate the difference in days
-    $dateDifference = $planDate->diff($actualDate)->days;
-    // Define the background color based on the date difference
-    if (empty($actualDateStr) || $dateDifference < 0) {
-        return 'red'; // Invalid date or empty actual date
-    } elseif ($dateDifference <= 10) {
-        return 'green'; // Difference is 2 days
-    } elseif ($dateDifference > 10) {
-        return 'red'; // Difference is 2 days
-    } else {
-        // return 'yellow'; // Other differences
-    }
-}
 ?>
 
 <?php //dd(setBackgroundColorBasedOnDateDifference(2023-03-13,2023-03-23));
