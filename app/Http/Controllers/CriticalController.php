@@ -13,6 +13,7 @@ use CreateCriticalDetailsTable;
 use Illuminate\Http\Request;
 use DB;
 
+use DateTime;
 class CriticalController extends Controller
 {
     /**
@@ -379,6 +380,9 @@ class CriticalController extends Controller
             }
             if (isset($request->create_pp_meeting_schedule)) {
                 $updateData['create_pp_meeting_schedule'] = $request->create_pp_meeting_schedule;
+            }
+            if (isset($request->pre_final_aql_report_schedule)) {
+                $updateData['pre_final_aql_report_schedule'] = $request->pre_final_aql_report_schedule;
             }
 
             // image add  start
@@ -848,6 +852,63 @@ class CriticalController extends Controller
                 $updateData['payment_receive_date'] = $selectedDate;
             }
 
+            if($request->input('type')=="revised_ex_factory_date") {
+                $updateData['revised_ex_factory_date']=$selectedDate;
+                if(!empty($updateData['revised_ex_factory_date'])) {
+                    $updateData['revised_eta_sa_date']=$this->dateAddCalculate($updateData['revised_ex_factory_date'], 52);
+                }
+               
+             
+            }
+            if($request->input('type')=="actual_ex_factory_date") {
+                $updateData['actual_ex_factory_date']=$selectedDate;
+            }
+            if($request->input('type')=="shipped_units") {
+                $updateData['shipped_units']=$selectedDate;
+            }
+            if($request->input('type')=="shipped_units") {
+                $updateData['shipped_units']=$selectedDate;
+            }
+            if($request->input('type')=="create_pp_meeting_schedule") {
+                $updateData['create_pp_meeting_schedule']=$selectedDate;
+            }
+            if($request->input('type')=="create_inline_inspection_schdule") {
+                $updateData['create_inline_inspection_schdule']=$selectedDate;
+            }
+            if($request->input('type')=="pre_final_aql_report_schedule") {
+                $updateData['pre_final_aql_report_schedule']=$selectedDate;
+            }
+            if($request->input('type')=="create_aql_schedule") {
+                $updateData['create_aql_schedule']=$selectedDate;
+            }
+            if($request->input('type')=="pre_final_aql_report_schedule") {
+                $updateData['pre_final_aql_report_schedule']=$selectedDate;
+            }
+            if($request->input('type')=="final_aql_report_upload") {
+                $updateData['final_aql_report_upload']=$selectedDate;
+            }
+            if($request->input('type')=="forward_ref") {
+                $updateData['forward_ref']=$selectedDate;
+            }
+            if($request->input('type')=="late_delivery_discounts_crp") {
+                $updateData['late_delivery_discounts_crp']=$selectedDate;
+            }
+            if($request->input('type')=="invoice_num") {
+                $updateData['invoice_num']=$selectedDate;
+            }
+            if($request->input('type')=="invoice_create_date") {
+                $updateData['invoice_create_date']=$selectedDate;
+            }
+            if($request->input('type')=="sa_eta_5_days") {
+                $updateData['sa_eta_5_days']=$selectedDate;
+            }
+            if($request->input('type')=="production_sample_dispatch") {
+                $updateData['production_sample_dispatch']=$selectedDate;
+            }
+            if($request->input('type')=="revised_ex_factory_date") {
+                $updateData['revised_ex_factory_date']=$selectedDate;
+            }
+            
             $criticalPath->update($updateData);
         }
         //dd($selectedDate,$id);
@@ -856,4 +917,13 @@ class CriticalController extends Controller
         // Return a response (e.g., JSON)
         return response()->json(['result' => 'success', 'id' => $id, 'message' => 'Date processed successfully']);
     }
+    private function dateAddCalculate($calculateDateFrom, $differenceDay)
+    {
+        $date = date_create($calculateDateFrom);
+        date_add($date, date_interval_create_from_date_string("$differenceDay days"));
+
+        return date_format($date, "Y-m-d");
+    }
 }
+
+
