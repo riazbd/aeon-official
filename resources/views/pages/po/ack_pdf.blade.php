@@ -40,7 +40,7 @@
         <tr>
             <td colspan="3"
                 style="width: 583.25pt;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;height: 42.1pt;vertical-align: top;">
-                <img src="{{ public_path('logos/Ackermans_logo.svg') }}" alt=""
+                <img src="{{ public_path('logos/Ackermans_Logo.svg') }}" alt=""
                     style="width: 100px; padding: 5px;">
             </td>
             <td colspan="9"
@@ -102,7 +102,7 @@
                 style="width: 58.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:  left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:1.65pt;margin-right:  0in;margin-left:1.4pt;line-height:7.85pt;'>
-                    <strong><span style="font-size:9px;">MRP&nbsp;PO&nbsp;Number&nbsp;:</span></strong>
+                    <strong><span style="font-size:9px;">PO&nbsp;Number&nbsp;:</span></strong>
                 </p>
             </td>
             <td colspan="2"
