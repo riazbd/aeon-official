@@ -104,7 +104,7 @@
                                         id="buyer_price" name="buyer_price" required></div>
                             </div>
                             <div class="form-group row">
-                                <label for="vendor_price" class="col-5 text-right">Vendor Price<span
+                                <label for="vendor_price" class="col-5 text-right">FOB INV<span
                                         style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="vendor_price" name="vendor_price" required></div>
@@ -228,7 +228,7 @@
 
 
                             <div class="form-group row">
-                                <label for="style_note" class="col-5 text-right">Final Price<span
+                                <label for="style_note" class="col-5 text-right">FACTORY FOB<span
                                         style="color:red">*</span>:</label>
                                 <div class="col-7"><input type="text" class="form-control form-control-sm"
                                         id="style_note" name="style_note" required></div>
@@ -315,7 +315,7 @@
                                     <th scope="col">QTY Ordered</th>
                                     <th scope="col" id="inner_qty">Inner QTY</th>
                                     <th scope="col" id="outer_qty">Outer Case QTY</th>
-                                    <th scope="col">Supplier Price </th>
+                                    <th scope="col">FACTORY FOB INV </th>
 
                                     <th scope="col">Value</th>
                                     <th scope="col">Selling Price
@@ -576,7 +576,7 @@
 
                 // Update the text content of the Vendor Price Difference note
                 vendorPriceDifferenceElement.text(
-                    `*Vendor Price is ${roundedPercentageDifference}% less than Buyer Price.`);
+                    `*FOB INV is ${roundedPercentageDifference}% less than Buyer Price.`);
 
 
                 vendorPriceDifferenceElement.addClass('text-danger');
@@ -726,7 +726,7 @@
                             } else {
                                 // Handle the case where vendorPriceInput is not a valid number
                                 alert(
-                                    'Please enter a valid numerical value in the vendor price field.'
+                                    'Please enter a valid numerical value in the FOB INV field.'
                                 );
                             }
 
@@ -885,7 +885,7 @@
 
                             $('#plm_line').text("Cat.")
                             $('#style_number_line').text('Swing Tag')
-                            $('#inner_qty').text('Vendor Price')
+                            $('#inner_qty').text('FOB INV')
                             $('#outer_qty').text('Accessories Price')
 
                             // disable fields
