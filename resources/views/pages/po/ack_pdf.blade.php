@@ -40,7 +40,8 @@
         <tr>
             <td colspan="3"
                 style="width: 583.25pt;border-bottom: 1pt solid black;border-left: 1pt solid black;border-image: initial;border-top: none;padding: 0in;height: 42.1pt;vertical-align: top;">
-                <img src="{{ public_path('logos/mrp_logo.png') }}" alt="" style="width: 100px; padding: 5px;">
+                <img src="{{ public_path('logos/Ackermans_logo.svg') }}" alt=""
+                    style="width: 100px; padding: 5px;">
             </td>
             <td colspan="9"
                 style="width: 583.25pt;border-right: 1pt solid black;border-bottom: 1pt solid black;border-image: initial;border-top: none;padding: 0in;height: 42.1pt;vertical-align: top;">
@@ -49,9 +50,9 @@
                     <div>
                         <p
                             style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:4.0pt;margin-right:212.85pt;margin-left:100pt;'>
-                            <strong><span style="font-size:7px;">Hammarsdale (Primary) , ERF 249 Cliffdale, Keystone
-                                    Park
-                                    3700 ,&nbsp;Hammarsdale&nbsp;South Africa</span></strong>
+                            <strong><span style="font-size:7px;">1 PRODUKSIE ST, KUILS RIVER INDUSTRIAL , CAPE TOWN
+                                    7580&nbsp; PO BOX 78 , KUILS RIVER , CAPE TOWN , 7579,S.A&nbsp;ACKERMANS
+                                    (PROPRIETARY LIMITED)</span></strong>
                         </p>
 
                     </div>
@@ -320,7 +321,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:21.45pt;margin-left:22.4pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Cat</span></strong>
+                    <strong><span style="font-size:8px;">Brand</span></strong>
                 </p>
             </td>
             <td
@@ -331,7 +332,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:22.4pt;margin-left:21.25pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Swing Tag</span></strong>
+                    <strong><span style="font-size:8px;">Style Number</span></strong>
                 </p>
             </td>
             <td
@@ -353,7 +354,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:19.2pt;margin-left:18.15pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">Item</span></strong>
+                    <strong><span style="font-size:8px;">SKU</span></strong>
                 </p>
             </td>
             <td
@@ -382,7 +383,7 @@
                 </p>
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:0in;margin-right:2.25pt;margin-left:2.25pt;line-height:6.8pt;'>
-                    <strong><span style="font-size:8px;">FOB INV</span></strong>
+                    <strong><span style="font-size:8px;">Units Per Carton</span></strong>
                 </p>
             </td>
 
@@ -390,7 +391,7 @@
                 style="width: 34.75pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top; background-color:yellowgreen">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.55pt;margin-right:2.2pt;margin-left:11.75pt;text-indent:-9.75pt;line-height:7.5pt;'>
-                    <strong><span style="font-size:8px;">INV LABELS AND ACCESSORIES</span></strong>
+                    <strong><span style="font-size:8px;">Number Of Cartons</span></strong>
                 </p>
             </td>
 
@@ -398,7 +399,7 @@
                 style="width: 36.65pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:left;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.55pt;margin-right:6.8pt;margin-left:10.75pt;text-indent:-4.3pt;line-height:7.5pt;'>
-                    <strong><span style="font-size:8px;">FOB INV</span></strong>
+                    <strong><span style="font-size:8px;">FACTORY Price</span></strong>
                 </p>
             </td>
 
@@ -417,7 +418,7 @@
                 style="width: 92.05pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 16.55pt;vertical-align: top;">
                 <p
                     style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:.55pt;margin-right:37.65pt;margin-left:36.3pt;line-height:7.5pt;'>
-                    <strong><span style="font-size:8px;">Selling&nbsp;Price</span></strong>
+                    <strong><span style="font-size:8px;">RSP</span></strong>
                 </p>
             </td>
         </tr>
@@ -497,7 +498,7 @@
                     style="width: 92.05pt;border-top: none;border-left: none;border-bottom: 1pt solid black;border-right: 1pt solid black;padding: 0in;height: 12.85pt;vertical-align: top;">
                     <p
                         style='margin:0in;margin-bottom:.0001pt;text-align:center;font-size:15px;font-family:"Calibri",sans-serif;margin-top:4.5pt;margin-right:34.9pt;margin-left:35.55pt;line-height:7.4pt;'>
-                        <span style="font-size:9px;">{{ $tableData->selling_price }}</span>
+                        <span style="font-size:9px;">R{{ $tableData->selling_price }}</span>
                     </p>
                 </td>
             </tr>

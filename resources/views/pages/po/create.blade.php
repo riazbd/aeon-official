@@ -1165,6 +1165,295 @@
 
                         }
 
+                        if ($('#select_buyer_upload').val() === '3') {
+
+                            console.log(response);
+
+                            $('#plm_line').text("Brand")
+                            $('#style_number_line').text('Style Number')
+                            $('#inner_qty').text('No Of Cartons')
+                            $('#outer_qty').text('Units Per Carton')
+
+                            // disable fields
+                            $('#select_buyer, #select_vendor').addClass(
+                                'select-readonly');
+
+
+                            const data = JSON.parse(response);
+
+                            // Use moment to parse the input date
+                            const dateObject = moment(data.keys['Book by'].replace(/ /g, '-'),
+                                "DD-MMM-YYYY");
+
+                            const approvedDateObject = moment(data.keys[
+                                'Date Ordered'].replace(/ /g, '-'), "DD-MMM-YYYY")
+
+
+
+                            document.getElementById('plm-label-form').style.display = "none";
+                            $('#plm').prop('required', false);
+                            $('#plm').prop('type', 'hidden');
+
+                            $('#access_price').val('0.15')
+
+
+
+                            // Use moment to format the date in "MM/DD/YYYY" format
+                            const formattedDate = dateObject.format("yyyy-MM-DD");
+
+                            const formattedApprovedDate = approvedDateObject.format(
+                                "yyyy-MM-DD");
+
+                            const poNo = data.keys['Confirmation Report for'];
+                            // const price = data.data[0]["Supplier Foreign \nCost Price"];
+                            // const supplierNo = data.keys['Supplier'];
+                            // const supplierName = data.keys['Supplier Name'];
+
+                            const currency = 'USD';
+                            // const terms = data.keys['Payment Terms'].match(
+                            //     /^(\w)\w+\s+(\w)\w+\s+at\s+(\w)/i)[1] + data.keys[
+                            //     'Payment Terms'].match(/^(\w)\w+\s+(\w)\w+\s+at\s+(\w)/i)[
+                            //     2] + '@' + data.keys['Payment Terms'].match(/at\s+(\w+)/i)[
+                            //     1];
+
+                            // const shipMode = data.keys['Ship Method'];
+
+
+                            // Update the form fields with the extracted data
+                            $('#ww_po_no').val(poNo);
+                            // $('#buyer_price').val(price);
+                            // $('#supplier_no').val(supplierNo);
+                            $('#supplier_name').val('CREATION LOYAL HONG KONG');
+                            // $('#currency').val(currency.match(/^(\w+)\s+(\w+)/i)[1] + " " +
+                            //     currency.match(/^(\w+)\s+(\w+)/i)[2]);
+                            $('#currency').val(currency);
+                            $('#early-buyer-date').val(formattedDate);
+                            $('#payment_terms').val(data.keys['Incoterm']);
+                            $('#ship_mode').val('Sea');
+                            $('#buyer_price').val(data.tables['size_summery'][0]['Cost (USD)']);
+                            $('#approval_date').val(formattedApprovedDate)
+                            $('#description').val(data.keys['Style Short Desc'])
+
+                            // ex factory date
+                            const buyerDate = new Date($('#early-buyer-date').val());
+                            const exFactoryDate = new Date(buyerDate);
+                            exFactoryDate.setDate(exFactoryDate.getDate() -
+                                14); // Subtract 14 days
+
+                            const exFactoryDateFormatted = exFactoryDate.toISOString().split(
+                                'T')[
+                                0]; // Convert date to YYYY-MM-DD format
+                            $('#ex_factory_date').val(exFactoryDateFormatted);
+
+                            updateVendorPriceAndDifference();
+
+                            updateDifferenceNote();
+
+                            let accessPriceValue = parseFloat($('#access_price')
+                                .val());
+
+                            const styleNote = 'Price: ' + (parseFloat($('#vendor_price')
+                                    .val())) +
+                                " " + "+" + " " + accessPriceValue + ' ' + '=' +
+                                " " + ((parseFloat($('#vendor_price')
+                                    .val()) + accessPriceValue).toFixed(2)).toString()
+
+                            $('#style_note').val(styleNote);
+                            // price update
+                            // $('#buyer_price').on('change', function() {
+                            //     updateVendorPriceAndDifference();
+                            //     // const accessPriceValue = parseFloat($('#access_price')
+
+                            //     const styleNote = 'Price: ' + (parseFloat($(
+                            //                 '#vendor_price')
+                            //             .val())).toString() +
+                            //         " " + "+" + " " + parseFloat($('#access_price')
+                            //             .val()).toString() + ' ' + '=' +
+                            //         " " + (parseFloat($('#vendor_price')
+                            //             .val()) + parseFloat($('#access_price')
+                            //             .val())).toString()
+
+                            //     $('#style_note').val(styleNote);
+                            // })
+
+                            $('#item-table-body').empty()
+
+                            const tbody = $('#item-table-body');
+
+                            console.log(accessPriceValue);
+
+                            data.tables['size_summery'].forEach((item, index) => {
+                                const newRow = `
+        <tr>
+            <td>${index+1}</td>
+            <td><input type="text" name="items[${index}][plm]" value=""></td>
+            <td><input type="text" name="items[${index}][style_no]" value=""></td>
+            <td><input type="text" name="items[${index}][colour]" value="${item['Colour']}"></td>
+            <td><input type="text" name="items[${index}][item_no]" value="${item['Sku']}"></td>
+            <td><input type="text" name="items[${index}][size]" value="${item["Size"]}"></td>
+            <td><input type="text" name="items[${index}][qty_ordered]" value="${item["Quantity"]}"></td>
+            <td><input type="text" class="vendor-price" name="items[${index}][inner_qty]" value="${data['tables']['carton_summery'][index]['Carton']}"></td>
+            <td><input type="text" class="outer_qty" name="items[${index}][outer_case_qty]" value="${data['tables']['carton_summery'][index]['Cartons']}"></td>
+            <td><input type="text" class="supplier_price" name="items[${index}][supplier_price]" value="${((parseFloat($('#vendor_price')
+        .val()) + accessPriceValue).toFixed(2)).toString()}"></td>
+
+            <td><input type="text" class="total_price" name="items[${index}][value]" value="${((parseFloat($('#vendor_price').val())+accessPriceValue) * parseFloat(item["Quantity"])).toFixed(2)}"></td>
+            <td><input type="text" name="items[${index}][selling_price]" value="${item["RSP Price"]}"></td>
+        </tr>
+    `;
+                                tbody.append(newRow);
+
+
+                            });
+
+                            const valueInputs = document.querySelectorAll(
+                                '.supplier_price');
+
+                            const vendorPriceInputs = document.querySelectorAll(
+                                '.vendor-price');
+
+                            const accessoriesInputs = document.querySelectorAll(
+                                '.outer_qty');
+
+                            const totalInputs = document.querySelectorAll(
+                                '.total_price');
+
+                            console.log(valueInputs);
+
+
+
+
+                            accessPrice.addEventListener("change", function() {
+                                // Get the new value entered in the changed input field
+
+                                let newAccessPrice = parseFloat($('#access_price')
+                                    .val());
+
+                                const newStyleNote = 'Price: ' + (parseFloat($(
+                                            '#vendor_price')
+                                        .val())).toString() +
+                                    " " + "+" + " " + newAccessPrice.toString() + ' ' +
+                                    '=' +
+                                    " " + ((parseFloat($('#vendor_price').val()) +
+                                        newAccessPrice).toFixed(2)).toString()
+
+                                $('#style_note').val(newStyleNote);
+
+                                Array.prototype.forEach.call(vendorPriceInputs,
+                                    function(input, index) {
+                                        input.value = $('#vendor_price').val()
+                                    })
+
+                                // Array.prototype.forEach.call(accessoriesInputs,
+                                //     function(input, index) {
+                                //         input.value = newAccessPrice
+                                //     })
+
+                                Array.prototype.forEach.call(valueInputs, function(
+                                    input, index) {
+                                    let newFinalPrice = (parseFloat($(
+                                            '#vendor_price').val()) +
+                                        newAccessPrice).toString()
+
+                                    input.value = newFinalPrice
+                                });
+
+                                data.tables['size_summery'].forEach((item, index) => {
+                                    const totalPrice = totalInputs[index];
+
+                                    let newFinalPrice = (parseFloat($(
+                                            '#vendor_price').val()) +
+                                        newAccessPrice)
+                                    let newFinalTotalPrice = newFinalPrice *
+                                        parseFloat(item[
+                                            "Quantity"])
+
+                                    console.log(parseFloat($(
+                                        '#vendor_price').val()));
+
+                                    console.log(newFinalPrice);
+
+                                    console.log(parseFloat(item[
+                                        "Quantity"]));
+
+                                    totalPrice.value = newFinalTotalPrice
+                                })
+
+                                Array.prototype.forEach.call(totalInputs, function(
+                                    input, index) {
+
+                                });
+                            });
+
+                            document.getElementById('vendor_price').addEventListener("change",
+                                function() {
+                                    // Get the new value entered in the changed input field
+                                    updateVendorPriceAndDifference()
+                                    let newAccessPrice = parseFloat($('#access_price')
+                                        .val());
+
+                                    const newStyleNote = 'Price: ' + (parseFloat($(
+                                                '#vendor_price')
+                                            .val())).toString() +
+                                        " " + "+" + " " + newAccessPrice.toString() + ' ' +
+                                        '=' +
+                                        " " + ((parseFloat($('#vendor_price').val()) +
+                                            newAccessPrice).toFixed(2)).toString()
+
+                                    $('#style_note').val(newStyleNote);
+
+                                    // Array.prototype.forEach.call(vendorPriceInputs,
+                                    //     function(input, index) {
+                                    //         input.value = $('#vendor_price').val()
+                                    //     })
+
+                                    // Array.prototype.forEach.call(accessoriesInputs,
+                                    //     function(input, index) {
+                                    //         input.value = newAccessPrice
+                                    //     })
+
+                                    Array.prototype.forEach.call(valueInputs, function(
+                                        input, index) {
+                                        let newFinalPrice = ((parseFloat($(
+                                                    '#vendor_price').val()) +
+                                                newAccessPrice).toFixed(2))
+                                            .toString()
+
+                                        input.value = newFinalPrice
+                                    });
+
+                                    data.tables['size_summery'].forEach((item, index) => {
+                                        const totalPrice = totalInputs[index];
+
+                                        let newFinalPrice = (parseFloat($(
+                                                '#vendor_price').val()) +
+                                            newAccessPrice)
+                                        let newFinalTotalPrice = newFinalPrice *
+                                            parseFloat(item[
+                                                "Quantity"])
+
+                                        console.log(parseFloat($(
+                                            '#vendor_price').val()));
+
+                                        console.log(newFinalPrice);
+
+                                        console.log(parseFloat(item[
+                                            "Quantity"]));
+
+                                        totalPrice.value = newFinalTotalPrice
+                                    })
+
+                                    Array.prototype.forEach.call(totalInputs, function(
+                                        input, index) {
+
+                                    });
+                                });
+
+
+                        }
+
+
+
                     },
                     error: function(xhr, status, error) {
                         console.error('Error uploading PDF:', error);

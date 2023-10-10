@@ -181,5 +181,36 @@ class PdfController extends Controller
 
             // return response()->json(['data' => null]);
         }
+
+        if ($request->input('select_buyer_upload') == 3) {
+            $pdfFilePath = $request->file('pdf_file')->store('uploads', 'public');
+
+            // Get the public path of the stored file
+            $publicFilePath = Storage::disk('public')->path($pdfFilePath);
+            Log::info('File path: ' . $pdfFilePath);
+
+            // Assuming the Flask server is running on http://127.0.0.1:5000
+            $flaskServerUrl = env('PYTHON_API_URL') . '/extract_ack';
+
+            // Make a POST request to the Flask server
+            $client = new Client();
+            $response = $client->post($flaskServerUrl, [
+                'multipart' => [
+                    [
+                        'name' => 'file',
+                        'contents' => fopen($publicFilePath, 'r'),
+                        'filename' => basename($publicFilePath),
+                    ],
+                ],
+            ]);
+
+            // Get the JSON response from the Flask server
+            $jsonResponse = $response->getBody()->getContents();
+
+            // Return the JSON response as the HTTP response
+            return response()->json($jsonResponse);
+
+            // return response()->json(['data' => null]);
+        }
     }
 }
