@@ -817,7 +817,7 @@
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -871,7 +871,12 @@
 
 
                             <th></th>
-                            <th></th>
+
+
+                            <th><input type="text" id="payment_receive_date" class="payment_receive_date"
+                                    name="invoice_num" value="{{ $data->invoice_num }}" /></th>
+
+
                             <th></th>
                             <th><input type="text" id="payment_receive_date" class="payment_receive_date"
                                     name="payment_receive_date" value="{{ $data->payment_receive_date }}" /></th>
@@ -1024,13 +1029,11 @@
     </section>
     <!-- </div> -->
 
-<!-- <div class="container"> -->
-<?php
-
-
-?>
-<!-- </div> -->
-
+    <!-- <div class="container"> -->
+    <?php
+    
+    ?>
+    <!-- </div> -->
 @endsection
 
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
