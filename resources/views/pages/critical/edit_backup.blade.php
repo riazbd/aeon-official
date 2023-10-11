@@ -1214,35 +1214,32 @@
                         </h2>
                         <div id="flush-collapseTen" class="rowItem row accordion-collapse collapse toplabel"
                             aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
-
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input type="date" value="{{ $criticalPath->ex_factory_date_po }}"
-                                        name="ex_factory_date_po" placeholder="Ex-factory Date PO"
+                                    <input type="date" value="{{ $criticalPath->ex_factory_date }}"
+                                        name="ex_factory_date" placeholder="Ex-factory Date PO"
                                         class="form-control" />
                                     <label for="exFactoryDatePO">Ex-factory Date PO</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input type="text" value="{{ $criticalPath->revised_ex_factory_date }}"
-                                        name="revised_ex_factory_date" placeholder="Revised Ex-factory Date"
-                                        class="form-control" />
+                                    <input type="text" value="" name="re_ex_fac_date_po"
+                                        placeholder="Revised Ex-factory Date" class="form-control" />
                                     <label for="revisedExFactoryDate">Revised Ex-factory Date</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input type="text" value="{{ $criticalPath->actual_ex_factory_date }}"
-                                        name="actual_ex_factory_date" placeholder="Actual Ex-factory Date"
-                                        class="form-control" />
+                                    <input type="text" value="" name="ac_ex_fac_date"
+                                        placeholder="Actual Ex-factory Date" class="form-control" />
                                     <label for="actualExFactoryDate">Actual Ex-factory Date</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input type="text" value="{{ $criticalPath->shipped_units }}"
-                                        name="shipped_units" placeholder="Shipped Units" class="form-control" />
+                                    <input type="text" value="" name="ship_uni" placeholder="Shipped Units"
+                                        class="form-control" />
                                     <label for="shippedUnits">Shipped Units</label>
                                 </div>
                             </div>
@@ -1252,32 +1249,29 @@
                             aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input type="text" value="{{ $criticalPath->orginal_eta_sa_date }}"
-                                        name="orginal_eta_sa_date" placeholder="Original ETA SA date"
-                                        class="form-control" />
+                                    <input type="text" value="" name=""
+                                        placeholder="Original ETA SA date" class="form-control" />
                                     <label for="originalETASADate">Original ETA SA date</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input type="text" value="{{ $criticalPath->revised_eta_sa_date }}"
-                                        name="revised_eta_sa_date" placeholder="Revised ETA SA date"
-                                        class="form-control" />
+                                    <input type="text" value="" name=""
+                                        placeholder="Revised ETA SA date" class="form-control" />
                                     <label for="revisedETASADate">Revised ETA SA date</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input type="text" value="{{ $criticalPath->ship_mode_sea_air }}"
-                                        name="ship_mode_sea_air" placeholder="Ship mode" class="form-control" />
+                                    <input type="text" value="" name="" placeholder="Ship mode"
+                                        class="form-control" />
                                     <label for="shipMode">Ship mode</label>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input type="text" value="{{ $criticalPath->forward_ref }}"
-                                        name="forward_ref" placeholder="Forwarder ref/ Vessel name or AWB"
-                                        class="form-control" />
+                                    <input type="text" value="" name=""
+                                        placeholder="Forwarder ref/ Vessel name or AWB" class="form-control" />
                                     <label for="forwarderRef">Forwarder ref/ Vessel name</label>
                                 </div>
                             </div>

@@ -293,61 +293,9 @@ class CriticalController extends Controller
             if (isset($request->care_lavel_date)) {
                 $data['care_lavel_date'] = $request->care_lavel_date;
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // Ex-Factory
-
-
-            if (isset($request->ex_factory_date_po)) {
-                $data['ex_factory_date_po'] = $request->ex_factory_date_po;
+            if (isset($request->ex_factory_date)) {
+                $data['ex_factory_date'] = $request->ex_factory_date;
             }
-            if (isset($request->revised_ex_factory_date)) {
-                $data['revised_ex_factory_date'] = $request->revised_ex_factory_date;
-            }
-            if (isset($request->actual_ex_factory_date)) {
-                $data['actual_ex_factory_date'] = $request->actual_ex_factory_date;
-            }
-            if (isset($request->shipped_units)) {
-                $data['shipped_units'] = $request->shipped_units;
-            }
-            if (isset($request->orginal_eta_sa_date)) {
-                $data['orginal_eta_sa_date'] = $request->orginal_eta_sa_date;
-            }
-            if (isset($request->revised_eta_sa_date)) {
-                $data['revised_eta_sa_date'] = $request->revised_eta_sa_date;
-            }
-            if (isset($request->ship_mode_sea_air)) {
-                $data['ship_mode_sea_air'] = $request->ship_mode_sea_air;
-            }
-            if (isset($request->forward_ref)) {
-                $data['forward_ref'] = $request->forward_ref;
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             $po_find->update($data);
 
             if (isset($request->cutting_date_actual)) {
@@ -409,16 +357,27 @@ class CriticalController extends Controller
             }
 
 
+
+
             if (isset($request->late_delivery_discounts_crp)) {
                 $updateData['late_delivery_discounts_crp'] = $request->late_delivery_discounts_crp;
             }
+
+
             // Here invoice code
             if (isset($request->invoice_num)) {
                 $updateData['invoice_num'] = $request->invoice_num;
             }
+
+
+
             if (isset($request->invoice_create_date)) {
                 $updateData['invoice_create_date'] = $request->invoice_create_date;
             }
+
+
+
+
 
 
 
