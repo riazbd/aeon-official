@@ -112,6 +112,7 @@ class CriticalController extends Controller
         // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
         //    $totalItemsOrdered = DB::select("SELECT SUM(qty_ordered) AS TotalItemsOrdered FROM order_items WHERE po_id=?", [$criticalPath->po_id]);
         //   array($totalItemsOrdered);
+       
         return view('pages.critical.edit', compact('criticalPath', 'po_find'));
         //
     }
