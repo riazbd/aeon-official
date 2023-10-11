@@ -583,9 +583,45 @@
 
             }
 
+            function updateVendorPriceAndDifferenceMRP() {
+                const buyerPrice = parseFloat($('#buyer_price').val()).toFixed(2);
+                let vendorPrice = parseFloat($('#vendor_price').val()).toFixed(2);
+
+                // If Vendor Price is not provided, calculate it as 8% less than the Buyer Price
+                if (isNaN(vendorPrice)) {
+                    vendorPrice = buyerPrice / 1.12; // 8% less than the Buyer Price
+                }
+
+                // Calculate the percentage difference between Buyer Price and Vendor Price
+                const percentageDifference = ((buyerPrice - vendorPrice) / buyerPrice) * 100;
+
+                // Round the percentageDifference to 2 decimal places
+                const roundedPercentageDifference = parseFloat(percentageDifference.toFixed(2));
+
+                // Get the elements
+                const vendorPriceElement = $('#vendor_price');
+                const vendorPriceDifferenceElement = $('#vendor_price_difference');
+
+                // Update the value of the Vendor Price field
+                vendorPriceElement.val(parseFloat(vendorPrice).toFixed(2));
+
+                // Update the text content of the Vendor Price Difference note
+                vendorPriceDifferenceElement.text(
+                    `*FOB INV is ${roundedPercentageDifference}% less than Buyer Price.`);
+
+
+                vendorPriceDifferenceElement.addClass('text-danger');
+
+            }
+
             // Add event listener to the "Buyer Price" input to update the Vendor Price and Vendor Price Difference note
             $('#buyer_price').on('input', function() {
-                updateVendorPriceAndDifference();
+                if ($('#select_buyer').val() == '2') {
+                    updateVendorPriceAndDifferenceMRP()
+                } else {
+                    updateVendorPriceAndDifference();
+                }
+
             });
 
             // Add event listener to the "Vendor Price" input to update the Vendor Price and Vendor Price Difference note
@@ -824,6 +860,8 @@
                                     updateVendorPriceAndDifference()
                                     // Get the new value entered in the changed input field
 
+
+
                                     let newAccessPrice = parseFloat($('#access_price')
                                         .val());
 
@@ -908,7 +946,7 @@
                             $('#plm').prop('required', false);
                             $('#plm').prop('type', 'hidden');
 
-                            $('#access_price').val('0.15')
+                            $('#access_price').val('0')
 
 
 
@@ -958,7 +996,7 @@
                                 0]; // Convert date to YYYY-MM-DD format
                             $('#ex_factory_date').val(exFactoryDateFormatted);
 
-                            updateVendorPriceAndDifference();
+                            updateVendorPriceAndDifferenceMRP();
 
                             updateDifferenceNote();
 
@@ -971,7 +1009,75 @@
                                 " " + ((parseFloat($('#vendor_price')
                                     .val()) + accessPriceValue).toFixed(2)).toString()
 
-                            $('#style_note').val(styleNote);
+                            $('#style_note').val(parseFloat($('#vendor_price')
+                                .val()) + accessPriceValue);
+
+                            document.getElementById('style_note').addEventListener('change',
+                                function() {
+                                    let newAccessPrice = parseFloat(parseFloat($(
+                                            '#style_note')
+                                        .val()) - parseFloat($('#vendor_price')
+                                        .val())).toFixed(2);
+
+                                    $('#access_price').val(newAccessPrice)
+                                    // const newStyleNote = 'Price: ' + (parseFloat($(
+                                    //             '#vendor_price')
+                                    //         .val())).toString() +
+                                    //     " " + "+" + " " + newAccessPrice.toString() + ' ' +
+                                    //     '=' +
+                                    //     " " + ((parseFloat($('#vendor_price').val()) +
+                                    //         newAccessPrice).toFixed(2)).toString()
+
+                                    // $('#style_note').val((parseFloat($(
+                                    //         '#vendor_price')
+                                    //     .val()) + newAccessPrice).toFixed(2));
+
+                                    Array.prototype.forEach.call(vendorPriceInputs,
+                                        function(input, index) {
+                                            input.value = $('#vendor_price').val()
+                                        })
+
+                                    Array.prototype.forEach.call(accessoriesInputs,
+                                        function(input, index) {
+                                            input.value = newAccessPrice
+                                        })
+
+                                    Array.prototype.forEach.call(valueInputs, function(
+                                        input, index) {
+                                        let newFinalPrice = (parseFloat($(
+                                                '#vendor_price').val()) +
+                                            parseFloat(newAccessPrice))
+
+                                        input.value = newFinalPrice
+                                    });
+
+                                    data.inner_table.forEach((item, index) => {
+                                        const totalPrice = totalInputs[index];
+
+                                        let newFinalPrice = (parseFloat($(
+                                                '#vendor_price').val()) +
+                                            parseFloat(newAccessPrice))
+                                        let newFinalTotalPrice = parseFloat(
+                                            newFinalPrice *
+                                            parseFloat(item[
+                                                "Qty"])).toFixed(2)
+
+                                        console.log(parseFloat($(
+                                            '#vendor_price').val()));
+
+                                        console.log(newFinalPrice);
+
+                                        console.log(parseFloat(item[
+                                            "Qty"]));
+
+                                        totalPrice.value = newFinalTotalPrice
+                                    })
+
+                                    Array.prototype.forEach.call(totalInputs, function(
+                                        input, index) {
+
+                                    });
+                                })
                             // price update
                             // $('#buyer_price').on('change', function() {
                             //     updateVendorPriceAndDifference();
@@ -1048,9 +1154,13 @@
                                     " " + "+" + " " + newAccessPrice.toString() + ' ' +
                                     '=' +
                                     " " + ((parseFloat($('#vendor_price').val()) +
-                                        newAccessPrice).toFixed(2)).toString()
+                                        parseFloat(newAccessPrice)).toFixed(2))
+                                    .toString()
 
-                                $('#style_note').val(newStyleNote);
+                                $('#style_note').val((parseFloat($(
+                                            '#vendor_price')
+                                        .val()) + parseFloat(newAccessPrice))
+                                    .toFixed(2));
 
                                 Array.prototype.forEach.call(vendorPriceInputs,
                                     function(input, index) {
@@ -1064,9 +1174,10 @@
 
                                 Array.prototype.forEach.call(valueInputs, function(
                                     input, index) {
-                                    let newFinalPrice = (parseFloat($(
+                                    let newFinalPrice = parseFloat(parseFloat($(
                                             '#vendor_price').val()) +
-                                        newAccessPrice).toString()
+                                        parseFloat(newAccessPrice)).toFixed(
+                                        2)
 
                                     input.value = newFinalPrice
                                 });
@@ -1076,10 +1187,11 @@
 
                                     let newFinalPrice = (parseFloat($(
                                             '#vendor_price').val()) +
-                                        newAccessPrice)
-                                    let newFinalTotalPrice = newFinalPrice *
+                                        parseFloat(newAccessPrice))
+                                    let newFinalTotalPrice = parseFloat(
+                                        newFinalPrice *
                                         parseFloat(item[
-                                            "Qty"])
+                                            "Qty"])).toFixed(2)
 
                                     console.log(parseFloat($(
                                         '#vendor_price').val()));
@@ -1113,7 +1225,9 @@
                                         " " + ((parseFloat($('#vendor_price').val()) +
                                             newAccessPrice).toFixed(2)).toString()
 
-                                    $('#style_note').val(newStyleNote);
+                                    $('#style_note').val((parseFloat($('#vendor_price')
+                                            .val()) +
+                                        parseFloat(newAccessPrice)).toFixed(2));
 
                                     Array.prototype.forEach.call(vendorPriceInputs,
                                         function(input, index) {
@@ -1128,8 +1242,9 @@
                                     Array.prototype.forEach.call(valueInputs, function(
                                         input, index) {
                                         let newFinalPrice = ((parseFloat($(
-                                                    '#vendor_price').val()) +
-                                                newAccessPrice).toFixed(2))
+                                                        '#vendor_price').val()) +
+                                                    parseFloat(newAccessPrice))
+                                                .toFixed(2))
                                             .toString()
 
                                         input.value = newFinalPrice
@@ -1140,10 +1255,11 @@
 
                                         let newFinalPrice = (parseFloat($(
                                                 '#vendor_price').val()) +
-                                            newAccessPrice)
-                                        let newFinalTotalPrice = newFinalPrice *
+                                            parseFloat(newAccessPrice))
+                                        let newFinalTotalPrice = parseFloat(
+                                            newFinalPrice *
                                             parseFloat(item[
-                                                "Qty"])
+                                                "Qty"])).toFixed(2)
 
                                         console.log(parseFloat($(
                                             '#vendor_price').val()));
@@ -1161,6 +1277,7 @@
 
                                     });
                                 });
+
 
 
                         }
