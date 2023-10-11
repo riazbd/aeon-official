@@ -1290,7 +1290,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="text" value="" name="" placeholder="Invoice Number"
+                                <input type="text" value="{{$criticalPath->invoice_num}}" name="invoice_num" placeholder="Invoice Number"
                                     class="form-control" />
                                 <label for="invoiceNumber">Invoice Number</label>
                             </div>

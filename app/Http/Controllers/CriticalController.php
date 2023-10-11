@@ -385,6 +385,9 @@ class CriticalController extends Controller
             if (isset($request->pre_final_aql_report_schedule)) {
                 $updateData['pre_final_aql_report_schedule'] = $request->pre_final_aql_report_schedule;
             }
+            if (isset($request->invoice_num)) {
+                $updateData['invoice_num'] = $request->invoice_num;
+            }
 
             // image add  start
 
