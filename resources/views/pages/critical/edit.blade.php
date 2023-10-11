@@ -1218,15 +1218,15 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="text" value="" name="ac_ex_fac_date"
-                                    placeholder="Actual Ex-factory Date" class="form-control" />
+                                <input type="text" value="{{$criticalPath->actual_ex_factory_date}}" name="actual_ex_factory_date"
+                                    placeholder="Actual Ex-factory Date" id="actual_ex_factory_date" class="actual_ex_factory_date form-control" />
                                 <label for="actualExFactoryDate">Actual Ex-factory Date</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="text" value="" name="ship_uni" placeholder="Shipped Units"
-                                    class="form-control" />
+                                <input readonly type="text" value="{{ $criticalPath->shipped_units }}" name="shipped_units" placeholder="Shipped Units"
+                                    class="shipped_units form-control" />
                                 <label for="shippedUnits">Shipped Units</label>
                             </div>
                         </div>
@@ -1236,28 +1236,28 @@
                         aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="text" value="" name=""
-                                    placeholder="Original ETA SA date" class="form-control" />
+                                <input type="text" value="{{$criticalPath->orginal_eta_sa_date}}" name="orginal_eta_sa_date"
+                                    placeholder="Original ETA SA date" id="orginal_eta_sa_date" class="orginal_eta_sa_date form-control" />
                                 <label for="originalETASADate">Original ETA SA date</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="text" value="" name=""
-                                    placeholder="Revised ETA SA date" class="form-control" />
+                                <input type="text" value="{{$criticalPath->revised_eta_sa_date}}" name="revised_eta_sa_date"
+                                    placeholder="Revised ETA SA date" class="revised_eta_sa_date form-control" />
                                 <label for="revisedETASADate">Revised ETA SA date</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="text" value="" name="" placeholder="Ship mode"
+                                <input readonly type="text" value="{{$po_find->ship_mode}}" name="{{$po_find->ship_mode}}" placeholder="Ship mode"
                                     class="form-control" />
                                 <label for="shipMode">Ship mode</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="text" value="" name=""
+                                <input type="text" value="{{$criticalPath->forward_ref}}" name="forward_ref"
                                     placeholder="Forwarder ref/ Vessel name or AWB" class="form-control" />
                                 <label for="forwarderRef">Forwarder ref/ Vessel name</label>
                             </div>
@@ -1284,21 +1284,21 @@
                             <div class="form-floating">
                                 <input type="text" value="{{ $criticalPath->late_delivery_discounts_crp }}"
                                     name="late_delivery_discounts_crp" placeholder="Late Delivery Discounts - CRP"
-                                    class="form-control" />
+                                    class="late_delivery_discounts_crp form-control" />
                                 <label for="lateDeliveryDiscounts">Late Delivery Discounts - CRP</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="text" value="" name="" placeholder="Invoice Number"
+                                <input type="text" value="{{$criticalPath->invoice_num}}" name="invoice_num" placeholder="Invoice Number"
                                     class="form-control" />
                                 <label for="invoiceNumber">Invoice Number</label>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-floating">
-                                <input type="date" value="{{ $criticalPath->invoice_create_date }}"
-                                    name="invoice_create_date" placeholder="Invoice Date" class="form-control" />
+                                <input  type="text" value="{{ $criticalPath->invoice_create_date }}"
+                                    name="invoice_create_date" placeholder="Invoice Date" class=" invoice_create_date form-control" />
                                 <label for="invoiceDate">Invoice Date</label>
                             </div>
                         </div>
@@ -1306,7 +1306,7 @@
                             <div class="form-floating">
                                 <input type="date" value="{{ $criticalPath->payment_receive_date }}"
                                     name="payment_receive_date" placeholder="Payment Receive Date"
-                                    class="form-control" />
+                                    class="payment_receive_date form-control" />
                                 <label for="paymentReceiveDate">Payment Receive Date</label>
                             </div>
                         </div>
@@ -1332,7 +1332,7 @@
                                 <input type="text" value="{{ $criticalPath->reason_for_change_affect_shipment }}"
                                     name="reason_for_change_affect_shipment"
                                     placeholder="Reason for major change likely to affect shipment"
-                                    class="form-control" />
+                                    class="reason_for_change_affect_shipment form-control" />
                                 <label for="majorChangeReason">Reason for major change </label>
                             </div>
                         </div>
@@ -1340,7 +1340,7 @@
                             <div class="form-floating">
                                 <input type="date" value="{{ $criticalPath->aeon_comments_date }}"
                                     name="aeon_comments_date" placeholder="AEON Comments - Date 12 Dec 22"
-                                    class="form-control" />
+                                    class="aeon_comments_date form-control" />
                                 <label for="aeonComments">AEON Comments - Date 12 Dec 22</label>
                             </div>
                         </div>
@@ -1348,7 +1348,7 @@
                             <div class="form-floating">
                                 <input type="date" value="{{ $criticalPath->vendor_comments_date }}"
                                     name="vendor_comments_date" placeholder="Vendor Comments - Date 14 Dec 22"
-                                    class="form-control" />
+                                    class="vendor_comments_date form-control" />
                                 <label for="vendorComments">Vendor Comments - Date 14 Dec 22</label>
                             </div>
                         </div>
@@ -1359,7 +1359,7 @@
                         <div class="col-md-3">
                             <div class="form-floating">
                                 <input type="text" value="{{ $criticalPath->sa_eta_5_days }}"
-                                    name="sa_eta_5_days" placeholder="SA ETA +5 Days?" class="form-control" />
+                                    name="sa_eta_5_days" placeholder="SA ETA +5 Days?" class="sa_eta_5_days form-control" />
                                 <label for="saEtaPlusFiveDays">SA ETA +5 Days?</label>
                             </div>
                         </div>
