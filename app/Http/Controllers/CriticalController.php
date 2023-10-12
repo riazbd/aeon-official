@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use DB;
 
 use DateTime;
+
 class CriticalController extends Controller
 {
     /**
@@ -112,7 +113,7 @@ class CriticalController extends Controller
         // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
         //    $totalItemsOrdered = DB::select("SELECT SUM(qty_ordered) AS TotalItemsOrdered FROM order_items WHERE po_id=?", [$criticalPath->po_id]);
         //   array($totalItemsOrdered);
-       
+
         return view('pages.critical.edit', compact('criticalPath', 'po_find'));
         //
     }
@@ -387,6 +388,26 @@ class CriticalController extends Controller
             }
             if (isset($request->invoice_num)) {
                 $updateData['invoice_num'] = $request->invoice_num;
+            }
+
+            if (isset($request->re_ex_fac_date_po)) {
+                $updateData['revised_ex_factory_date'] = $request->re_ex_fac_date_po;
+            }
+
+            if (isset($request->actual_ex_factory_date)) {
+                $updateData['actual_ex_factory_date'] = $request->actual_ex_factory_date;
+            }
+
+            if (isset($request->revised_eta_sa_date)) {
+                $updateData['revised_eta_sa_date'] = $request->revised_eta_sa_date;
+            }
+
+            if (isset($request->orginal_eta_sa_date)) {
+                $updateData['orginal_eta_sa_date'] = $request->orginal_eta_sa_date;
+            }
+
+            if (isset($request->forward_ref)) {
+                $updateData['forward_ref'] = $request->forward_ref;
             }
 
             // image add  start
@@ -856,63 +877,61 @@ class CriticalController extends Controller
                 $updateData['payment_receive_date'] = $selectedDate;
             }
 
-            if($request->input('type')=="revised_ex_factory_date") {
-                $updateData['revised_ex_factory_date']=$selectedDate;
-                if(!empty($updateData['revised_ex_factory_date'])) {
-                    $updateData['revised_eta_sa_date']=$this->dateAddCalculate($updateData['revised_ex_factory_date'], 52);
+            if ($request->input('type') == "revised_ex_factory_date") {
+                $updateData['revised_ex_factory_date'] = $selectedDate;
+                if (!empty($updateData['revised_ex_factory_date'])) {
+                    $updateData['revised_eta_sa_date'] = $this->dateAddCalculate($updateData['revised_ex_factory_date'], 52);
                 }
-               
-             
             }
-            if($request->input('type')=="actual_ex_factory_date") {
-                $updateData['actual_ex_factory_date']=$selectedDate;
+            if ($request->input('type') == "actual_ex_factory_date") {
+                $updateData['actual_ex_factory_date'] = $selectedDate;
             }
-            if($request->input('type')=="shipped_units") {
-                $updateData['shipped_units']=$selectedDate;
+            if ($request->input('type') == "shipped_units") {
+                $updateData['shipped_units'] = $selectedDate;
             }
-            if($request->input('type')=="shipped_units") {
-                $updateData['shipped_units']=$selectedDate;
+            if ($request->input('type') == "shipped_units") {
+                $updateData['shipped_units'] = $selectedDate;
             }
-            if($request->input('type')=="create_pp_meeting_schedule") {
-                $updateData['create_pp_meeting_schedule']=$selectedDate;
+            if ($request->input('type') == "create_pp_meeting_schedule") {
+                $updateData['create_pp_meeting_schedule'] = $selectedDate;
             }
-            if($request->input('type')=="create_inline_inspection_schdule") {
-                $updateData['create_inline_inspection_schdule']=$selectedDate;
+            if ($request->input('type') == "create_inline_inspection_schdule") {
+                $updateData['create_inline_inspection_schdule'] = $selectedDate;
             }
-            if($request->input('type')=="pre_final_aql_report_schedule") {
-                $updateData['pre_final_aql_report_schedule']=$selectedDate;
+            if ($request->input('type') == "pre_final_aql_report_schedule") {
+                $updateData['pre_final_aql_report_schedule'] = $selectedDate;
             }
-            if($request->input('type')=="create_aql_schedule") {
-                $updateData['create_aql_schedule']=$selectedDate;
+            if ($request->input('type') == "create_aql_schedule") {
+                $updateData['create_aql_schedule'] = $selectedDate;
             }
-            if($request->input('type')=="pre_final_aql_report_schedule") {
-                $updateData['pre_final_aql_report_schedule']=$selectedDate;
+            if ($request->input('type') == "pre_final_aql_report_schedule") {
+                $updateData['pre_final_aql_report_schedule'] = $selectedDate;
             }
-            if($request->input('type')=="final_aql_report_upload") {
-                $updateData['final_aql_report_upload']=$selectedDate;
+            if ($request->input('type') == "final_aql_report_upload") {
+                $updateData['final_aql_report_upload'] = $selectedDate;
             }
-            if($request->input('type')=="forward_ref") {
-                $updateData['forward_ref']=$selectedDate;
+            if ($request->input('type') == "forward_ref") {
+                $updateData['forward_ref'] = $selectedDate;
             }
-            if($request->input('type')=="late_delivery_discounts_crp") {
-                $updateData['late_delivery_discounts_crp']=$selectedDate;
+            if ($request->input('type') == "late_delivery_discounts_crp") {
+                $updateData['late_delivery_discounts_crp'] = $selectedDate;
             }
-            if($request->input('type')=="invoice_num") {
-                $updateData['invoice_num']=$selectedDate;
+            if ($request->input('type') == "invoice_num") {
+                $updateData['invoice_num'] = $selectedDate;
             }
-            if($request->input('type')=="invoice_create_date") {
-                $updateData['invoice_create_date']=$selectedDate;
+            if ($request->input('type') == "invoice_create_date") {
+                $updateData['invoice_create_date'] = $selectedDate;
             }
-            if($request->input('type')=="sa_eta_5_days") {
-                $updateData['sa_eta_5_days']=$selectedDate;
+            if ($request->input('type') == "sa_eta_5_days") {
+                $updateData['sa_eta_5_days'] = $selectedDate;
             }
-            if($request->input('type')=="production_sample_dispatch") {
-                $updateData['production_sample_dispatch']=$selectedDate;
+            if ($request->input('type') == "production_sample_dispatch") {
+                $updateData['production_sample_dispatch'] = $selectedDate;
             }
-            if($request->input('type')=="revised_ex_factory_date") {
-                $updateData['revised_ex_factory_date']=$selectedDate;
+            if ($request->input('type') == "revised_ex_factory_date") {
+                $updateData['revised_ex_factory_date'] = $selectedDate;
             }
-            
+
             $criticalPath->update($updateData);
         }
         //dd($selectedDate,$id);
@@ -929,5 +948,3 @@ class CriticalController extends Controller
         return date_format($date, "Y-m-d");
     }
 }
-
-

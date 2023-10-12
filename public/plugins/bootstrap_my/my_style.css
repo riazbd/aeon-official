@@ -265,6 +265,7 @@ table tbody tr td.id-t
     margin-top: 0px !important;
     height: 100% !important;
     padding-bottom: 100px !important;
+    overflow-y: scroll;
 }
 
 .main-sidebar {

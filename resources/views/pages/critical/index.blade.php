@@ -81,7 +81,7 @@
         .dataTables_wrapper {
             position: relative;
             clear: both;
-            margin-top: 50px;
+            margin-top: 10px;
         }
 
         .dt-button-collection .dropdown {
@@ -125,7 +125,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-    
+
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -438,7 +438,7 @@
                                 // echo "<th>No record found</th>";
                             }
                             ?>
-                            ?>
+
                             <th>{{ $data->plm }}</th>
                             <th>{{ $orderItem->style_no }}</th>
                             <th>{{ $data->TotalItemsOrdered }}</th>
@@ -817,7 +817,7 @@
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -854,13 +854,13 @@
 
 
                             <th>{{ $data->ex_factory_date }}</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>{{ $data->revised_ex_factory_date }}</th>
+                            <th>{{ $data->actual_ex_factory_date }}</th>
+                            <th>{{ $data->TotalItemsOrdered }}</th>
+                            <th>{{ $data->orginal_eta_sa_date }}</th>
+                            <th>{{ $data->revised_eta_sa_date }}</th>
+                            <th>{{ $data->ship_mode }}</th>
+                            <th>{{ $data->forward_ref }}</th>
 
 
 
@@ -892,13 +892,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th></th>
-                        <th> <input id="po" type="text" class="form-control"
-                                style="border-radius: 0px !important" placeholder="Search Package Order..."></th>
-                        <th> <input id="brand" type="text" class="form-control"
-                                style="border-radius: 0px !important" placeholder="Search Brand Name..."></th>
-                        <th> <input id="department" type="text" class="form-control"
-                                style="border-radius: 0px !important" placeholder="Search Department Name..."></th>
+                        <th>Actions</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -906,24 +900,27 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th> </th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th> </th>
-                        <th></th>
-                        <th> </th>
                         <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th> </th>
                         <th></th>
-                        <th> </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -1024,13 +1021,11 @@
     </section>
     <!-- </div> -->
 
-<!-- <div class="container"> -->
-<?php
+    <!-- <div class="container"> -->
+    <?php
 
-
-?>
-<!-- </div> -->
-
+    ?>
+    <!-- </div> -->
 @endsection
 
 <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
@@ -1038,8 +1033,54 @@
     src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> -->
 <script>
     $(document).ready(function() {
+        var theadTh = $('table thead th:eq(11)');
+
+        // Select the 0 index th in the tfoot
+        var tfootTh = $('table tfoot th:eq(0)');
+
+        // Get the width of the thead th
+        var theadThWidth = theadTh.width() + 20;
+
+        // Set the width of the tfoot th to match the thead th
+        tfootTh.css('min-width', theadThWidth);
+        // tfootTh.css('padding', '10px');
+        $('table tfoot th').each(function(index) {
+            console.log(index);
+            if (index != 0) {
+                var theadIndex = index + 11;
+                var title = $('table thead th').eq(theadIndex).text();
+                $(this).html('<input type="text" placeholder="Search ' + title +
+                    '" class="form-control column-search-input" />');
+                // $('.column-search-input').each(function() {
+                //     var placeholder = $(this).attr('placeholder');
+                //     var placeholderLength = placeholder.length;
+
+                //     // Calculate the minimum width based on placeholder length
+                var maxWidth = $('table thead th').eq(theadIndex).width() + 20;
+
+                $(this).css('max-width', maxWidth);
+            }
+        });
+
+
 
         var table = $("#table_id").DataTable({
+            initComplete: function() {
+                // Apply the search
+                this.api()
+                    .columns()
+                    .every(function() {
+                        var that = this;
+
+                        $('input', this.footer()).on('keyup change clear', function() {
+                            if (that.search() !== this.value) {
+                                that.search(this.value).draw();
+                            }
+                        });
+                    });
+            },
+            scrollY: "400px",
+            scrollCollapse: true,
             scrollX: true,
             searching: true,
 
@@ -1073,15 +1114,15 @@
         // });
 
 
-        $('#po').on('keyup', function() {
-            table.search(this.value).draw();
-        });
-        $('#brand').on('keyup', function() {
-            table.search(this.value).draw();
-        });
-        $('#department').on('keyup', function() {
-            table.search(this.value).draw();
-        });
+        // $('#po').on('keyup', function() {
+        //     table.search(this.value).draw();
+        // });
+        // $('#brand').on('keyup', function() {
+        //     table.search(this.value).draw();
+        // });
+        // $('#department').on('keyup', function() {
+        //     table.search(this.value).draw();
+        // });
 
         // $('#care_plan_date').change(function() {
         //     var selectedDate = $(this).val();
