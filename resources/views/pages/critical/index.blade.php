@@ -113,6 +113,10 @@
             background-color: #073D1C !important;
         }
 
+        .dataTables_scrollBody {
+            max-height: 400px !important;
+        }
+
         .buttons-copy {
             margin-left: 1px !important;
         }
@@ -125,7 +129,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-    
+
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -290,7 +294,7 @@
 
 
 
-
+                        {{-- pp meeting --}}
 
                         <th>Care App(Plan)</th>
                         <th>Care App(actual)</th>
@@ -447,13 +451,19 @@
                             <th>{{ $data->description }}</th>
                             <th>{{ $orderItem->colour }}</th>
                             <th>{{ $data->careDate }}</th>
+
                             <th><input class="fabric_ref" id="fabric_ref" type="text" value="{{ $data->fabric_ref }}"
                                     name="fabric_ref" /></th>
                             <th>{{ $data->aFabriccontent }} </th>
+
                             <th><input class="fabric_weight" id="fabric_weight" type="text"
                                     value="{{ $data->fabric_weight }}" name="fabric_weight" /></th>
+
                             <th><input class="fabric_mill" id="fabric_mill" type="text" value="{{ $data->fabric_mill }}"
                                     name="fabric_mill" /></th>
+
+                            {{-- <th><input type="text" id="payment_receive_date" class="payment_receive_date"
+                                        name="payment_receive_date" value="{{ $data->payment_receive_date }}" /></th> --}}
 
 
 
@@ -667,9 +677,13 @@
 
 
                             <th>{{ $data->care_label_approval }}</th>
-                            <th style="background-color: <?php echo empty($data->care_lavel_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->care_lavel_date) && $data->care_lavel_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_lavel_date) : ($data->care_lavel_date == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="care_lavel_date" class="care_lavel_date" name="care_lavel_date"
-                                    value="{{ $data->care_lavel_date }}" /></th>
+
+                            <th style="background-color: <?php echo empty($data->care_lavel_date) ? 'red' : ''; ?>">
+
+                                <input style="color: <?php echo !empty($data->care_lavel_date) && $data->care_lavel_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_lavel_date) : ($data->care_lavel_date == 'NA' ? 'RED' : ''); ?>" type="text" id="care_lavel_date"
+                                    class="care_lavel_date" name="care_lavel_date"
+                                    value="{{ $data->care_lavel_date }}" />
+                            </th>
 
                             <th>{{ $data->material_inhouse_plan }}</th>
                             <th style="background-color: <?php echo empty($data->material_inhouse_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->material_inhouse_actual) && $data->material_inhouse_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->material_inhouse_plan, $data->material_inhouse_actual) : ($data->material_inhouse_actual == 'NA' ? 'RED' : ''); ?>"
@@ -817,7 +831,7 @@
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -869,7 +883,7 @@
 
 
 
-
+                            {{-- payment info --}}
                             <th></th>
                             <th></th>
                             <th></th>
@@ -879,6 +893,14 @@
                             <th><input type="text" id="reason_for_change_affect_shipment"
                                     class="reason_for_change_affect_shipment" name="reason_for_change_affect_shipment"
                                     value="{{ $data->reason_for_change_affect_shipment }}" /></th>
+
+
+
+
+
+                            {{-- last four --}}
+
+
                             <th><input type="text" id="aeon_comments_date" class="aeon_comments_date"
                                     name="aeon_comments_date" value="{{ $data->aeon_comments_date }}" /></th>
                             <th><input type="text" id="vendor_comments_date" class="vendor_comments_date"
@@ -1023,7 +1045,7 @@
 
     <!-- <div class="container"> -->
     <?php
-    
+
     ?>
     <!-- </div> -->
 @endsection
@@ -1036,20 +1058,7 @@
 
 
 
-        const table1 = document.getElementById('table_id');
 
-        // Save scroll positions
-        localStorage.setItem('tableScrollLeft', table1.scrollLeft);
-        localStorage.setItem('tableScrollTop', table1.scrollTop);
-
-        // Restore scroll positions
-        const tableScrollLeft = localStorage.getItem('tableScrollLeft');
-        const tableScrollTop = localStorage.getItem('tableScrollTop');
-
-        if (tableScrollLeft && tableScrollTop) {
-            table1.scrollLeft = tableScrollLeft;
-            table1.scrollTop = tableScrollTop;
-        }
 
 
 
@@ -1100,7 +1109,7 @@
                         });
                     });
             },
-            scrollY: "400px",
+            // scrollY: "400px",
             scrollCollapse: true,
             scrollX: true,
             searching: true,
@@ -1133,6 +1142,33 @@
                 'copy', 'excel', 'pdf', 'colvis'
             ],
         });
+
+
+
+
+
+        const table1 = document.getElementById('table_id');
+        const scrollBody = document.querySelector('.dataTables_scrollBody');
+        const tableScrollLeft = localStorage.getItem('tableScrollLeft');
+        const tableScrollTop = localStorage.getItem('tableScrollTop');
+        table1.addEventListener('scroll', function() {
+            localStorage.setItem('tableScrollLeft', table1.scrollLeft);
+        });
+        scrollBody.addEventListener('scroll', function() {
+            localStorage.setItem('tableScrollTop', scrollBody.scrollTop);
+        });
+
+        if (tableScrollLeft !== null) {
+            table1.scrollLeft = tableScrollLeft;
+        }
+        if (tableScrollTop !== null) {
+            scrollBody.scrollTop = tableScrollTop;
+        }
+
+
+
+
+
 
         // $('#care_plan_date').on('change', function() {
         //     const selectedDate = $(this).val();
@@ -2681,6 +2717,172 @@
                 });
             }
         });
+
+
+
+
+
+
+
+
+
+
+
+        // test
+
+        // $(".care_lavel_date").on("keyup", function(e) {
+        //     // Check if the Enter key (key code 13) is pressed
+        //     if (e.keyCode === 13) {
+
+        //         //var enteredDate = $(this).val();
+
+        //         // Get the hidden po_id value
+        //         var po_id = $(".po_id").val();
+        //         // Get the entered date
+        //         var enteredDate = $(this).val();
+        //         // Perform the AJAX call here
+        //         $.ajax({
+        //             url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+        //             method: 'POST', // You can use GET or POST depending on your server-side handling
+        //             data: {
+        //                 _token: '{{ csrf_token() }}',
+        //                 enteredDate: enteredDate,
+        //                 po_id: po_id,
+        //                 type: 'care_lavel_date'
+        //             },
+        //             success: function(response) {
+        //                 // Handle the response from the server
+        //                 console.log(response);
+        //                 location.reload();
+        //             },
+        //             error: function(xhr, status, error) {
+        //                 // Handle errors here
+        //                 console.error(xhr.responseText);
+        //             }
+        //         });
+        //     }
+        // });
+
+
+
+        $(".fabric_ref").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'fabric_ref'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+
+
+        $(".fabric_weight").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'fabric_weight'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+
+        $(".fabric_mill").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'fabric_mill'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         $(".invoice_num").on("keyup", function(e) {
             // Check if the Enter key (key code 13) is pressed
             if (e.keyCode === 13) {

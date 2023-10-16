@@ -877,6 +877,28 @@ class CriticalController extends Controller
                 $updateData['payment_receive_date'] = $selectedDate;
             }
 
+
+
+
+            // if ($request->input('type') == "care_lavel_date") {
+            //     $updateData['care_lavel_date'] = $selectedDate;
+            // }
+            if ($request->input('type') == "fabric_ref") {
+                $updateData['fabric_ref'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_weight") {
+                $updateData['fabric_weight'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_mill") {
+                $updateData['fabric_mill'] = $selectedDate;
+            }
+
+
+
+
+
+
+
             if ($request->input('type') == "revised_ex_factory_date") {
                 $updateData['revised_ex_factory_date'] = $selectedDate;
                 if (!empty($updateData['revised_ex_factory_date'])) {
