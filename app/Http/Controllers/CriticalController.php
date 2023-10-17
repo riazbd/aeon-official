@@ -127,7 +127,7 @@ class CriticalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request->all());
+        dd($request->all());
 
         $criticalPath = CriticalPath::where('po_id', $id)->first();
         // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
@@ -285,15 +285,18 @@ class CriticalController extends Controller
             if (isset($request->total_value)) {
                 $updateData['total_value'] = $request->total_value;
             }
+            if (isset($request->care_lavel_date)) {
+                $updateData['care_lavel_date'] = $request->care_lavel_date;
+            }
 
             // Add more conditions for other fields as needed
 
             // Update the model with the data
 
 
-            if (isset($request->care_lavel_date)) {
-                $data['care_lavel_date'] = $request->care_lavel_date;
-            }
+            // if (isset($request->care_lavel_date)) {
+            //     $data['care_lavel_date'] = $request->care_lavel_date;
+            // }
             if (isset($request->ex_factory_date)) {
                 $data['ex_factory_date'] = $request->ex_factory_date;
             }
@@ -761,6 +764,7 @@ class CriticalController extends Controller
 
     public function processDate(Request $request)
     {
+        //dd($request->all());
         // Your code to process the date goes here
         $selectedDate = $request->input('enteredDate');
         $id = $request->input('po_id');
@@ -819,8 +823,9 @@ class CriticalController extends Controller
             if ($request->input('type') == "pp_actual") {
                 $updateData['pp_actual'] = $selectedDate;
             }
-            if ($request->input('type') == "care_lavel_date") {
-                $updateData['care_lavel_date'] = $selectedDate;
+
+            if ($request->input('type') == "care_label_actual") {
+                $updateData['care_label_actual'] = $selectedDate;
             }
             if ($request->input('type') == "material_inhouse_actual") {
                 $updateData['material_inhouse_actual'] = $selectedDate;
@@ -880,9 +885,9 @@ class CriticalController extends Controller
 
 
 
-            // if ($request->input('type') == "care_lavel_date") {
-            //     $updateData['care_lavel_date'] = $selectedDate;
-            // }
+            if ($request->input('type') == "care_lavel_date") {
+                $updateData['care_lavel_date'] = $selectedDate;
+            }
             if ($request->input('type') == "fabric_ref") {
                 $updateData['fabric_ref'] = $selectedDate;
             }

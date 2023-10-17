@@ -129,7 +129,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-
+    
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -389,6 +389,7 @@
                             <th>
                                 <input class="po_id" id="po_id" type="hidden" name="po_id"
                                     value="{{ $data->po_id }}">
+
                                 <a href="{{ route('critical.edit', $data->po_id) }}"> <i class="fas fa-edit"
                                         style="color: #073D1C"></i></a>
 
@@ -678,11 +679,11 @@
 
                             <th>{{ $data->care_label_approval }}</th>
 
-                            <th style="background-color: <?php echo empty($data->care_lavel_date) ? 'red' : ''; ?>">
+                            <th style="background-color: <?php echo empty($data->care_label_actual) ? 'red' : ''; ?>">
 
-                                <input style="color: <?php echo !empty($data->care_lavel_date) && $data->care_lavel_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_lavel_date) : ($data->care_lavel_date == 'NA' ? 'RED' : ''); ?>" type="text" id="care_lavel_date"
-                                    class="care_lavel_date" name="care_lavel_date"
-                                    value="{{ $data->care_lavel_date }}" />
+                                <input style="color: <?php echo !empty($data->care_label_actual) && $data->care_label_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_label_actual) : ($data->care_label_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="care_label_actual"
+                                    class="care_label_actual" name="care_label_actual"
+                                    value="{{ $data->care_label_actual }}" />
                             </th>
 
                             <th>{{ $data->material_inhouse_plan }}</th>
@@ -831,7 +832,7 @@
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -1045,7 +1046,7 @@
 
     <!-- <div class="container"> -->
     <?php
-
+    
     ?>
     <!-- </div> -->
 @endsection
@@ -1565,38 +1566,39 @@
                 });
             }
         });
-        $(".care_lavel_date").on("keyup", function(e) {
-            // Check if the Enter key (key code 13) is pressed
-            if (e.keyCode === 13) {
+        // $(".care_lavel_date").on("keyup", function(e) {
+        //     // Check if the Enter key (key code 13) is pressed
+        //     if (e.keyCode === 13) {
 
-                //var enteredDate = $(this).val();
+        //         //var enteredDate = $(this).val();
 
-                // Get the hidden po_id value
-                var po_id = $(".po_id").val();
-                // Get the entered date
-                var enteredDate = $(this).val();
-                // Perform the AJAX call here
-                $.ajax({
-                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
-                    method: 'POST', // You can use GET or POST depending on your server-side handling
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                        enteredDate: enteredDate,
-                        po_id: po_id,
-                        type: 'care_lavel_date'
-                    },
-                    success: function(response) {
-                        // Handle the response from the server
-                        console.log(response);
-                        location.reload();
-                    },
-                    error: function(xhr, status, error) {
-                        // Handle errors here
-                        console.error(xhr.responseText);
-                    }
-                });
-            }
-        });
+        //         // Get the hidden po_id value
+        //         var po_id = $(".po_id").val();
+        //         // Get the entered date
+        //         var enteredDate = $(this).val();
+        //         // Perform the AJAX call here
+        //         $.ajax({
+        //             url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+        //             method: 'POST', // You can use GET or POST depending on your server-side handling
+        //             data: {
+        //                 _token: '{{ csrf_token() }}',
+        //                 enteredDate: enteredDate,
+        //                 po_id: po_id,
+        //                 type: 'care_lavel_date'
+        //             },
+        //             success: function(response) {
+        //                 // Handle the response from the server
+        //                 console.log(response);
+        //                 location.reload();
+        //             },
+        //             error: function(xhr, status, error) {
+        //                 // Handle errors here
+        //                 console.error(xhr.responseText);
+        //             }
+        //         });
+        //     }
+        // });
+
         $(".material_inhouse_actual").on("keyup", function(e) {
             // Check if the Enter key (key code 13) is pressed
             if (e.keyCode === 13) {
@@ -2730,38 +2732,38 @@
 
         // test
 
-        // $(".care_lavel_date").on("keyup", function(e) {
-        //     // Check if the Enter key (key code 13) is pressed
-        //     if (e.keyCode === 13) {
+        $(".care_label_actual").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
 
-        //         //var enteredDate = $(this).val();
+                //var enteredDate = $(this).val();
 
-        //         // Get the hidden po_id value
-        //         var po_id = $(".po_id").val();
-        //         // Get the entered date
-        //         var enteredDate = $(this).val();
-        //         // Perform the AJAX call here
-        //         $.ajax({
-        //             url: "{{ route('process.date') }}", // Replace with your server-side endpoint
-        //             method: 'POST', // You can use GET or POST depending on your server-side handling
-        //             data: {
-        //                 _token: '{{ csrf_token() }}',
-        //                 enteredDate: enteredDate,
-        //                 po_id: po_id,
-        //                 type: 'care_lavel_date'
-        //             },
-        //             success: function(response) {
-        //                 // Handle the response from the server
-        //                 console.log(response);
-        //                 location.reload();
-        //             },
-        //             error: function(xhr, status, error) {
-        //                 // Handle errors here
-        //                 console.error(xhr.responseText);
-        //             }
-        //         });
-        //     }
-        // });
+                // Get the hidden po_id value
+                var po_id = $(".po_id").val();
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'care_label_actual'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
 
 
 
