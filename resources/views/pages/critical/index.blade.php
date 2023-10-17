@@ -387,10 +387,11 @@
                     @foreach ($criticalPath as $data)
                         <tr>
                             <th>
+                                {{-- {{dd($data->id)}} --}}
                                 <input class="po_id" id="po_id" type="hidden" name="po_id"
-                                    value="{{ $data->po_id }}">
+                                    value="{{ $data->c_id }}">
 
-                                <a href="{{ route('critical.edit', $data->po_id) }}"> <i class="fas fa-edit"
+                                <a href="{{ route('critical.edit', $data->c_id) }}"> <i class="fas fa-edit"
                                         style="color: #073D1C"></i></a>
 
                                 <a style="margin-left:2px;" href="#">
@@ -454,14 +455,16 @@
                             <th>{{ $data->careDate }}</th>
 
                             <th><input class="fabric_ref" id="fabric_ref" type="text" value="{{ $data->fabric_ref }}"
-                                    name="fabric_ref" /></th>
+                                    name="fabric_ref" data-c-id={{ $data->c_id }} /></th>
+
                             <th>{{ $data->aFabriccontent }} </th>
 
                             <th><input class="fabric_weight" id="fabric_weight" type="text"
-                                    value="{{ $data->fabric_weight }}" name="fabric_weight" /></th>
+                                    value="{{ $data->fabric_weight }}" name="fabric_weight"
+                                    data-c-id={{ $data->c_id }} /></th>
 
                             <th><input class="fabric_mill" id="fabric_mill" type="text" value="{{ $data->fabric_mill }}"
-                                    name="fabric_mill" /></th>
+                                    name="fabric_mill" data-c-id={{ $data->c_id }} /></th>
 
                             {{-- <th><input type="text" id="payment_receive_date" class="payment_receive_date"
                                         name="payment_receive_date" value="{{ $data->payment_receive_date }}" /></th> --}}
@@ -491,13 +494,18 @@
                             <th>{{ $data->colour_std_print_artwork_sent_to_supplier_plan_date }}</th>
                             <th>{{ $data->colour_std_print_artwork_sent_to_supplier_actual_date }}</th>
                             <th>{{ $data->lab_dip_approval_plan_date }}</th>
+
+
                             <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->lab_dip_approval_actual_date) && $data->lab_dip_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date, $data->lab_dip_approval_actual_date) : ($data->lab_dip_approval_actual_date == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date"
-                                    name="lab_dip_approval_actual_date"
+                                    name="lab_dip_approval_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->lab_dip_approval_actual_date }}" /></th>
+
+
                             <th style="background-color: <?php echo empty($data->lab_dip_dispatch_details) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->lab_dip_dispatch_details) && $data->lab_dip_dispatch_details !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date, $data->lab_dip_approval_actual_date) : ($data->lab_dip_dispatch_details == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="lab_dip_dispatch_details" class="lab_dip_dispatch_details"
-                                    name="lab_dip_dispatch_details" value="{{ $data->lab_dip_dispatch_details }}" /></th>
+                                    name="lab_dip_dispatch_details" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->lab_dip_dispatch_details }}" /></th>
 
                             </th>
 
@@ -517,13 +525,13 @@
                             <th style="background-color: <?php echo empty($data->embellishment_s_o_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->embellishment_s_o_approval_actual_date) && $data->embellishment_s_o_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->embellishment_s_o_approval_plan_date, $data->embellishment_s_o_approval_actual_date) : ($data->embellishment_s_o_approval_actual_date == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="embellishment_s_o_approval_actual_date"
                                     class="embellishment_s_o_approval_actual_date"
-                                    name="embellishment_s_o_approval_actual_date"
+                                    name="embellishment_s_o_approval_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->embellishment_s_o_approval_actual_date }}" /></th>
 
                             <th style="background-color: <?php echo empty($data->embellishment_s_o_dispatch_details) ? 'red' : 'transparent'; ?>">
                                 <input type="text" value=" {{ $data->embellishment_s_o_dispatch_details }} "
-                                    name="embellishment_s_o_dispatch_details" class="embellishment_s_o_dispatch_details"
-                                    id="embellishment_s_o_dispatch_details" />
+                                    name="embellishment_s_o_dispatch_details" data-c-id={{ $data->c_id }}
+                                    class="embellishment_s_o_dispatch_details" id="embellishment_s_o_dispatch_details" />
                             </th>
 
                             <th style="background-color: <?php echo empty($data->embellishment_s_o_image) ? 'red' : 'transparent'; ?>">
@@ -548,18 +556,22 @@
 
                             <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->fabric_ordered_actual_date) && $data->fabric_ordered_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->fabric_ordered_plan_date, $data->fabric_ordered_actual_date) : ($data->fabric_ordered_actual_date == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date"
-                                    name="fabric_ordered_actual_date" value="{{ $data->fabric_ordered_actual_date }}" />
+                                    name="fabric_ordered_actual_date" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->fabric_ordered_actual_date }}" />
                             </th>
                             <th>{{ $data->fabric_ordered_plan_date }}</th>
                             <th>{{ $data->bulk_fabric_knit_down_approval_plan_date }}</th>
-                            <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->bulk_fabric_knit_down_approval_actual_date) && $data->bulk_fabric_knit_down_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->bulk_fabric_knit_down_approval_plan_date, $data->bulk_fabric_knit_down_approval_actual_date) : ($data->bulk_fabric_knit_down_approval_actual_date == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="bulk_fabric_knit_down_approval_actual_date"
+                            <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_approval_actual_date) ? 'red' : ''; ?>">
+                                <input style="color: <?php echo !empty($data->bulk_fabric_knit_down_approval_actual_date) && $data->bulk_fabric_knit_down_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->bulk_fabric_knit_down_approval_plan_date, $data->bulk_fabric_knit_down_approval_actual_date) : ($data->bulk_fabric_knit_down_approval_actual_date == 'NA' ? 'RED' : ''); ?>" type="text"
+                                    id="bulk_fabric_knit_down_approval_actual_date"
                                     class="bulk_fabric_knit_down_approval_actual_date"
-                                    name="bulk_fabric_knit_down_approval_actual_date"
-                                    value="{{ $data->bulk_fabric_knit_down_approval_actual_date }}" /></th>
+                                    name="bulk_fabric_knit_down_approval_actual_date" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->bulk_fabric_knit_down_approval_actual_date }}" />
+                            </th>
+
                             <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_dispatch_details) ? 'red' : 'transparent'; ?>">
                                 <input type="text" value=" {{ $data->bulk_fabric_knit_down_dispatch_details }} "
-                                    name="bulk_fabric_knit_down_dispatch_details"
+                                    name="bulk_fabric_knit_down_dispatch_details" data-c-id={{ $data->c_id }}
                                     class="bulk_fabric_knit_down_dispatch_details"
                                     id="bulk_fabric_knit_down_dispatch_details" />
                             </th>
@@ -580,7 +592,7 @@
                             <th>{{ $data->bulk_yarn_fabric_plan_date }}</th>
                             <th style="background-color: <?php echo empty($data->bulk_yarn_fabric_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->bulk_yarn_fabric_actual_date) && $data->bulk_yarn_fabric_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->bulk_yarn_fabric_plan_date, $data->bulk_yarn_fabric_actual_date) : ($data->bulk_yarn_fabric_actual_date == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="bulk_yarn_fabric_actual_date" class="bulk_yarn_fabric_actual_date"
-                                    name="bulk_yarn_fabric_actual_date"
+                                    name="bulk_yarn_fabric_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->bulk_yarn_fabric_actual_date }}" /></th>
 
 
@@ -594,13 +606,13 @@
                             <th style="background-color: <?php echo empty($data->development_photo_sample_sent_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->development_photo_sample_sent_actual_date) && $data->development_photo_sample_sent_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->development_photo_sample_sent_plan_date, $data->development_photo_sample_sent_actual_date) : ($data->development_photo_sample_sent_actual_date == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="development_photo_sample_sent_actual_date"
                                     class="development_photo_sample_sent_actual_date"
-                                    name="development_photo_sample_sent_actual_date"
+                                    name="development_photo_sample_sent_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->development_photo_sample_sent_actual_date }}" /></th>
 
                             <th style="background-color: <?php echo empty($data->development_photo_sample_dispatch_details) ? 'red' : 'transparent'; ?>">
                                 <input type="text" value=" {{ $data->development_photo_sample_dispatch_details }} "
-                                    name="development_photo_sample_dispatch_details"
-                                    class="development_photo_sample_dispatch_details"
+                                    name="development_photo_sample_dispatch_details" data-c-id={{ $data->c_id }}
+                                    class="development_photo_sample_dispatch_details" data-c-id={{ $data->c_id }}
                                     id="development_photo_sample_dispatch_details" />
                             </th>
 
@@ -616,10 +628,11 @@
                             <th>{{ $data->fit_approval_plan }}</th>
                             <th style="background-color: <?php echo empty($data->fit_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->fit_approval_actual) && $data->fit_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->fit_approval_plan, $data->fit_approval_actual) : ($data->fit_approval_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="fit_approval_actual" class="fit_approval_actual"
-                                    name="fit_approval_actual" value="{{ $data->fit_approval_actual }}" /></th>
+                                    name="fit_approval_actual" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->fit_approval_actual }}" /></th>
 
                             <th><input type="text" value=" {{ $data->fit_dispatch }} " name="fit_dispatch"
-                                    class="fit_dispatch" id="fit_dispatch" /></th>
+                                    data-c-id={{ $data->c_id }} class="fit_dispatch" id="fit_dispatch" /></th>
 
                             @php
                                 $fit_sample_name = substr($data->fit_sample_image, 14);
@@ -634,10 +647,11 @@
                             <th>{{ $data->size_set_approval }}</th>
                             <th style="background-color: <?php echo empty($data->size_set_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->size_set_actual) && $data->size_set_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->size_set_approval, $data->size_set_actual) : ($data->size_set_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="size_set_actual" class="size_set_actual" name="size_set_actual"
-                                    value="{{ $data->size_set_actual }}" /></th>
+                                    data-c-id={{ $data->c_id }} value="{{ $data->size_set_actual }}" /></th>
 
                             <th><input type="text" value=" {{ $data->size_set_dispatch }} " name="size_set_dispatch"
-                                    class="size_set_dispatch" id="size_set_dispatch" /></th>
+                                    data-c-id={{ $data->c_id }} class="size_set_dispatch" id="size_set_dispatch" />
+                            </th>
 
                             @php
                                 $size_set_image_file_name = substr($data->size_set_image, 14);
@@ -653,11 +667,11 @@
                             <th>{{ $data->pp_approval }}</th>
                             <th style="background-color: <?php echo empty($data->pp_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pp_actual) && $data->pp_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pp_approval, $data->pp_actual) : ($data->pp_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="pp_actual" class="pp_actual" name="pp_actual"
-                                    value="{{ $data->pp_actual }}" /></th>
+                                    value="{{ $data->pp_actual }}" data-c-id={{ $data->c_id }} /></th>
 
                             <th style="background-color: <?php echo empty($data->pp_dispatch) ? 'red' : ''; ?>"><input type="text"
                                     value=" {{ $data->pp_dispatch }} " name="pp_dispatch" class="pp_dispatch"
-                                    id="pp_dispatch" /></th>
+                                    id="pp_dispatch" data-c-id={{ $data->c_id }} /></th>
 
                             @php
                                 $pp_sample_image_file_name = substr($data->pp_sample_image, 14);
@@ -682,19 +696,21 @@
                             <th style="background-color: <?php echo empty($data->care_label_actual) ? 'red' : ''; ?>">
 
                                 <input style="color: <?php echo !empty($data->care_label_actual) && $data->care_label_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_label_actual) : ($data->care_label_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="care_label_actual"
-                                    class="care_label_actual" name="care_label_actual"
+                                    class="care_label_actual" name="care_label_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->care_label_actual }}" />
                             </th>
 
                             <th>{{ $data->material_inhouse_plan }}</th>
                             <th style="background-color: <?php echo empty($data->material_inhouse_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->material_inhouse_actual) && $data->material_inhouse_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->material_inhouse_plan, $data->material_inhouse_actual) : ($data->material_inhouse_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="material_inhouse_actual" class="material_inhouse_actual"
-                                    name="material_inhouse_actual" value="{{ $data->material_inhouse_actual }}" /></th>
+                                    name="material_inhouse_actual" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->material_inhouse_actual }}" /></th>
 
                             <th>{{ $data->pp_meeting_plan }}</th>
                             <th style="background-color: <?php echo empty($data->pp_meeting_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pp_meeting_actual) && $data->pp_meeting_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pp_meeting_plan, $data->pp_meeting_actual) : ($data->pp_meeting_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="pp_meeting_actual" class="pp_meeting_actual"
-                                    name="pp_meeting_actual" value="{{ $data->pp_meeting_actual }}" /></th>
+                                    name="pp_meeting_actual" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->pp_meeting_actual }}" /></th>
 
                             <th style="background-color: <?php echo empty($data->create_pp_meeting_schedule) ? 'red' : 'transparent'; ?>">{{ $data->create_pp_meeting_schedule }}
                             </th>
@@ -720,28 +736,32 @@
                             <th>{{ $data->cutting_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->cutting_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->cutting_date_actual) && $data->cutting_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->cutting_date_plan, $data->cutting_date_actual) : ($data->cutting_date_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="cutting_date_actual" class="cutting_date_actual"
-                                    name="cutting_date_actual" value="{{ $data->cutting_date_actual }}" /></th>
+                                    name="cutting_date_actual" value="{{ $data->cutting_date_actual }}"
+                                    data-c-id={{ $data->c_id }} /></th>
 
                             <th>{{ $data->embellishment_plan }}</th>
                             <th style="background-color: <?php echo empty($data->embellishment_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->embellishment_actual) && $data->embellishment_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->embellishment_plan, $data->embellishment_actual) : ($data->embellishment_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="embellishment_actual" class="embellishment_actual"
-                                    name="embellishment_actual" value="{{ $data->embellishment_actual }}" /></th>
+                                    name="embellishment_actual" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->embellishment_actual }}" /></th>
 
                             <th>{{ $data->Sewing_plan }}</th>
                             <th style="background-color: <?php echo empty($data->Sewing_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->Sewing_actual) && $data->Sewing_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->Sewing_plan, $data->Sewing_actual) : ($data->Sewing_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="Sewing_actual" class="Sewing_actual" name="Sewing_actual"
-                                    value="{{ $data->Sewing_actual }}" />
+                                    data-c-id={{ $data->c_id }} value="{{ $data->Sewing_actual }}" />
                             </th>
 
                             <th>{{ $data->washing_complete_plan }}</th>
                             <th style="background-color: <?php echo empty($data->washing_complete_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->washing_complete_actual) && $data->washing_complete_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->washing_complete_plan, $data->washing_complete_actual) : ($data->washing_complete_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="washing_complete_actual" class="washing_complete_actual"
-                                    name="washing_complete_actual" value="{{ $data->washing_complete_actual }}" /></th>
+                                    name="washing_complete_actual" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->washing_complete_actual }}" /></th>
 
                             <th>{{ $data->finishing_complete_plan }}</th>
                             <th style="background-color: <?php echo empty($data->finishing_complete_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->finishing_complete_actual) && $data->finishing_complete_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->finishing_complete_plan, $data->finishing_complete_actual) : ($data->finishing_complete_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="finishing_complete_actual" class="finishing_complete_actual"
-                                    name="finishing_complete_actual" value="{{ $data->finishing_complete_actual }}" />
+                                    name="finishing_complete_actual" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->finishing_complete_actual }}" />
                             </th>
 
 
@@ -757,7 +777,7 @@
                             <th style="background-color: <?php echo empty($data->sewing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sewing_inline_inspection_date_actual) && $data->sewing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sewing_inline_inspection_date_plan, $data->sewing_inline_inspection_date_actual) : ($data->sewing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="sewing_inline_inspection_date_actual"
                                     class="sewing_inline_inspection_date_actual"
-                                    name="sewing_inline_inspection_date_actual"
+                                    name="sewing_inline_inspection_date_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->sewing_inline_inspection_date_actual }}" /></th>
                             <th></th>
                             <th>
@@ -773,7 +793,7 @@
                             <th style="background-color: <?php echo empty($data->finishing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->finishing_inline_inspection_date_actual) && $data->finishing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->finishing_inline_inspection_date_plan, $data->finishing_inline_inspection_date_actual) : ($data->finishing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="finishing_inline_inspection_date_actual"
                                     class="finishing_inline_inspection_date_actual"
-                                    name="finishing_inline_inspection_date_actual"
+                                    name="finishing_inline_inspection_date_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->finishing_inline_inspection_date_actual }}" /></th>
 
                             <th></th>
@@ -790,7 +810,8 @@
                             <th>{{ $data->pre_final_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->pre_final_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pre_final_date_actual) && $data->pre_final_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pre_final_date_plan, $data->pre_final_date_actual) : ($data->pre_final_date_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="pre_final_date_actual" class="pre_final_date_actual"
-                                    name="pre_final_date_actual" value="{{ $data->pre_final_date_actual }}" /></th>
+                                    data-c-id={{ $data->c_id }} name="pre_final_date_actual"
+                                    value="{{ $data->pre_final_date_actual }}" /></th>
 
                             <th></th>
                             @php
@@ -804,7 +825,8 @@
                             <th>{{ $data->final_aql_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->final_aql_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->final_aql_date_actual) && $data->final_aql_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->final_aql_date_plan, $data->final_aql_date_actual) : ($data->final_aql_date_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="final_aql_date_actual" class="final_aql_date_actual"
-                                    name="final_aql_date_actual" value="{{ $data->final_aql_date_actual }}" /></th>
+                                    name="final_aql_date_actual" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->final_aql_date_actual }}" /></th>
                             <th></th>
                             @php
                                 $final_aql_file_edit_file_name = substr($data->final_aql_report_upload, 14);
@@ -828,11 +850,12 @@
                             <th style="background-color: <?php echo empty($data->production_sample_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->production_sample_approval_actual) && $data->production_sample_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->production_sample_approval_plan, $data->production_sample_approval_actual) : ($data->production_sample_approval_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="production_sample_approval_actual"
                                     class="production_sample_approval_actual" name="production_sample_approval_actual"
+                                    data-c-id={{ $data->c_id }}
                                     value="{{ $data->production_sample_approval_actual }}" /></th>
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -852,11 +875,13 @@
                             <th style="background-color: <?php echo empty($data->shipment_booking_with_acs_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->shipment_booking_with_acs_actual) && $data->shipment_booking_with_acs_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->shipment_booking_with_acs_plan, $data->shipment_booking_with_acs_actual) : ($data->shipment_booking_with_acs_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="shipment_booking_with_acs_actual"
                                     class="shipment_booking_with_acs_actual" name="shipment_booking_with_acs_actual"
+                                    data-c-id={{ $data->c_id }}
                                     value="{{ $data->shipment_booking_with_acs_actual }}" /></th>
                             <th>{{ $data->sa_approval_plan }}</th>
                             <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
-                                    name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th>
+                                    name="sa_approval_actual" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->sa_approval_actual }}" /></th>
 
 
 
@@ -889,10 +914,12 @@
                             <th></th>
                             <th></th>
                             <th><input type="text" id="payment_receive_date" class="payment_receive_date"
-                                    name="payment_receive_date" value="{{ $data->payment_receive_date }}" /></th>
+                                    name="payment_receive_date" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->payment_receive_date }}" /></th>
 
                             <th><input type="text" id="reason_for_change_affect_shipment"
                                     class="reason_for_change_affect_shipment" name="reason_for_change_affect_shipment"
+                                    data-c-id={{ $data->c_id }}
                                     value="{{ $data->reason_for_change_affect_shipment }}" /></th>
 
 
@@ -903,9 +930,11 @@
 
 
                             <th><input type="text" id="aeon_comments_date" class="aeon_comments_date"
-                                    name="aeon_comments_date" value="{{ $data->aeon_comments_date }}" /></th>
+                                    name="aeon_comments_date" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->aeon_comments_date }}" /></th>
                             <th><input type="text" id="vendor_comments_date" class="vendor_comments_date"
-                                    name="vendor_comments_date" value="{{ $data->vendor_comments_date }}" /></th>
+                                    name="vendor_comments_date" data-c-id={{ $data->c_id }}
+                                    value="{{ $data->vendor_comments_date }}" /></th>
                             <th>{{ $data->sa_eta_5_days }}</th>
                             <th>{{ $data->note }}</th>
                             <!-- Add more headers here -->
@@ -1217,7 +1246,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1249,7 +1278,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1281,7 +1310,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1314,7 +1343,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1347,7 +1376,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1379,7 +1408,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1413,7 +1442,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1445,7 +1474,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1477,7 +1506,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1509,7 +1538,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1541,7 +1570,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1573,7 +1602,7 @@
         //         //var enteredDate = $(this).val();
 
         //         // Get the hidden po_id value
-        //         var po_id = $(".po_id").val();
+        //         var po_id = $(this).data('c-id');
         //         // Get the entered date
         //         var enteredDate = $(this).val();
         //         // Perform the AJAX call here
@@ -1606,7 +1635,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1638,7 +1667,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1670,7 +1699,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1702,7 +1731,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1734,7 +1763,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1766,7 +1795,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1798,7 +1827,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1830,7 +1859,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1862,7 +1891,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1894,7 +1923,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1926,7 +1955,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1958,7 +1987,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -1990,7 +2019,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2022,7 +2051,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2054,7 +2083,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2086,7 +2115,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2118,7 +2147,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2150,7 +2179,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2182,7 +2211,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2214,7 +2243,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2246,7 +2275,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2278,7 +2307,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2310,7 +2339,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2342,7 +2371,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2374,7 +2403,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2406,7 +2435,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2438,7 +2467,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2470,7 +2499,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2502,7 +2531,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2534,7 +2563,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2566,7 +2595,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2598,7 +2627,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2630,7 +2659,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2662,7 +2691,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2694,7 +2723,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2739,7 +2768,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2774,7 +2803,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2808,7 +2837,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2841,7 +2870,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2892,7 +2921,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2924,7 +2953,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2956,7 +2985,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
@@ -2988,7 +3017,7 @@
                 //var enteredDate = $(this).val();
 
                 // Get the hidden po_id value
-                var po_id = $(".po_id").val();
+                var po_id = $(this).data('c-id');
                 // Get the entered date
                 var enteredDate = $(this).val();
                 // Perform the AJAX call here
