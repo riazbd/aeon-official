@@ -129,7 +129,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-    
+
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -391,7 +391,7 @@
                                 <input class="po_id" id="po_id" type="hidden" name="po_id"
                                     value="{{ $data->c_id }}">
 
-                                <a href="{{ route('critical.edit', $data->c_id) }}"> <i class="fas fa-edit"
+                                <a href="{{ route('critical.edit', $data->po_id) }}"> <i class="fas fa-edit"
                                         style="color: #073D1C"></i></a>
 
                                 <a style="margin-left:2px;" href="#">
@@ -695,7 +695,9 @@
 
                             <th style="background-color: <?php echo empty($data->care_label_actual) ? 'red' : ''; ?>">
 
-                                <input style="color: <?php echo !empty($data->care_label_actual) && $data->care_label_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_label_actual) : ($data->care_label_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="care_label_actual"
+                                <input style="color: <?php echo !empty($data->care_label_actual) && $data->care_label_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_label_actual) : ($data->care_label_actual == 'NA' ? 'RED' : ''); ?>"
+
+                                type="text" id="care_label_actual"
                                     class="care_label_actual" name="care_label_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->care_label_actual }}" />
                             </th>
@@ -855,7 +857,7 @@
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -1075,7 +1077,7 @@
 
     <!-- <div class="container"> -->
     <?php
-    
+
     ?>
     <!-- </div> -->
 @endsection

@@ -96,6 +96,14 @@ class CriticalController extends Controller
      */
     public function edit($id)
     {
+        //$users = User::where('status', 'active')->get();
+        //$criticalPath = CriticalPath::where('po_id', $id)->get();
+        //$criticalPath = CriticalPath::find($id);
+        //$criticalPath = CriticalPath::where('po_id', $id)->get();
+        //dd($criticalPath);
+        //dd($id);
+        //$criticalPath = CriticalPath::where('po_id', $id)->orderBy
+
         $criticalPath = CriticalPath::where('po_id', $id)->orderBy('critical_paths.id', 'desc')
             ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
@@ -117,6 +125,7 @@ class CriticalController extends Controller
         //    $totalItemsOrdered = DB::select("SELECT SUM(qty_ordered) AS TotalItemsOrdered FROM order_items WHERE po_id=?", [$criticalPath->po_id]);
         //   array($totalItemsOrdered);
 
+        //dd($criticalPath);
         return view('pages.critical.edit', compact('criticalPath', 'po_find'));
         //
     }
@@ -130,9 +139,9 @@ class CriticalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        //dd($request->all());
 
-        $criticalPath = CriticalPath::where('id', $id)->first();
+        $criticalPath = CriticalPath::where('po_id', $id)->first();
         // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
         $po_find = PurchageOrder::find($criticalPath->po_id);
         if (isset($criticalPath)) {
@@ -288,9 +297,10 @@ class CriticalController extends Controller
             if (isset($request->total_value)) {
                 $updateData['total_value'] = $request->total_value;
             }
-            if (isset($request->care_lavel_date)) {
-                $updateData['care_lavel_date'] = $request->care_lavel_date;
+            if (isset($request->care_label_actual)) {
+                $updateData['care_label_actual'] = $request->care_label_actual;
             }
+
 
             // Add more conditions for other fields as needed
 

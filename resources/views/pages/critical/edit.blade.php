@@ -1,3 +1,8 @@
+@php
+    //dd($criticalPath);
+@endphp
+
+
 @extends('layouts.admin')
 
 @section('content')
@@ -749,8 +754,8 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-floating">
-                                    <input readonly type="date" value="{{ $po_find->care_lavel_date }}"
-                                        name="care_lavel_date" id="care_lavel_date" placeholder="Care Approval Actual"
+                                    <input type="date" value="{{ $criticalPath->care_label_actual }}"
+                                        name="care_label_actual" id="care_lavel_date" placeholder="Care Approval Actual"
                                         class="form-control" />
                                     <label for="careApprovalActual">Care Approval Actual</label>
                                 </div>
