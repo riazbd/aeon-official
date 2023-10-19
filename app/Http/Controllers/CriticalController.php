@@ -35,8 +35,10 @@ class CriticalController extends Controller
             ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
             ->select(
                 '*',
+                'critical_paths.id as c_id',
                 'manufacturers.name as manufatureName',
                 'purchage_orders.*',
+                'purchage_orders.id as p_id',
                 'purchage_orders.fabric_content as aFabriccontent',
                 'critical_paths.colour as aColor',
                 'purchage_orders.care_lavel_date as careDate',
@@ -47,6 +49,7 @@ class CriticalController extends Controller
                 DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
             )
             ->get();
+        // dd($criticalPath);
         return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
         //
     }
@@ -93,6 +96,14 @@ class CriticalController extends Controller
      */
     public function edit($id)
     {
+        //$users = User::where('status', 'active')->get();
+        //$criticalPath = CriticalPath::where('po_id', $id)->get();
+        //$criticalPath = CriticalPath::find($id);
+        //$criticalPath = CriticalPath::where('po_id', $id)->get();
+        //dd($criticalPath);
+        //dd($id);
+        //$criticalPath = CriticalPath::where('po_id', $id)->orderBy
+
         $criticalPath = CriticalPath::where('po_id', $id)->orderBy('critical_paths.id', 'desc')
             ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
             ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
@@ -114,6 +125,7 @@ class CriticalController extends Controller
         //    $totalItemsOrdered = DB::select("SELECT SUM(qty_ordered) AS TotalItemsOrdered FROM order_items WHERE po_id=?", [$criticalPath->po_id]);
         //   array($totalItemsOrdered);
 
+        //dd($criticalPath);
         return view('pages.critical.edit', compact('criticalPath', 'po_find'));
         //
     }
@@ -131,7 +143,7 @@ class CriticalController extends Controller
 
         $criticalPath = CriticalPath::where('po_id', $id)->first();
         // $criticlDetails=CriticalDetails::where('critical_id',$criticalPath->id)->first();
-        $po_find = PurchageOrder::find($id);
+        $po_find = PurchageOrder::find($criticalPath->po_id);
         if (isset($criticalPath)) {
 
             // Check if the fields are set in the request
@@ -285,15 +297,19 @@ class CriticalController extends Controller
             if (isset($request->total_value)) {
                 $updateData['total_value'] = $request->total_value;
             }
+            if (isset($request->care_label_actual)) {
+                $updateData['care_label_actual'] = $request->care_label_actual;
+            }
+
 
             // Add more conditions for other fields as needed
 
             // Update the model with the data
 
 
-            if (isset($request->care_lavel_date)) {
-                $data['care_lavel_date'] = $request->care_lavel_date;
-            }
+            // if (isset($request->care_lavel_date)) {
+            //     $data['care_lavel_date'] = $request->care_lavel_date;
+            // }
             if (isset($request->ex_factory_date)) {
                 $data['ex_factory_date'] = $request->ex_factory_date;
             }
@@ -761,11 +777,12 @@ class CriticalController extends Controller
 
     public function processDate(Request $request)
     {
+        //dd($request->all());
         // Your code to process the date goes here
         $selectedDate = $request->input('enteredDate');
         $id = $request->input('po_id');
 
-        $criticalPath = CriticalPath::where('po_id', $id)->orderBy('id', 'desc')->first();
+        $criticalPath = CriticalPath::where('id', $id)->orderBy('id', 'desc')->first();
         $updateData = [];
         if ($criticalPath) {
             if ($request->input('type') == "colour_std_print_artwork_sent_to_supplier_actual_date") {
@@ -819,8 +836,9 @@ class CriticalController extends Controller
             if ($request->input('type') == "pp_actual") {
                 $updateData['pp_actual'] = $selectedDate;
             }
-            if ($request->input('type') == "care_lavel_date") {
-                $updateData['care_lavel_date'] = $selectedDate;
+
+            if ($request->input('type') == "care_label_actual") {
+                $updateData['care_label_actual'] = $selectedDate;
             }
             if ($request->input('type') == "material_inhouse_actual") {
                 $updateData['material_inhouse_actual'] = $selectedDate;
@@ -876,6 +894,28 @@ class CriticalController extends Controller
             if ($request->input('type') == "payment_receive_date") {
                 $updateData['payment_receive_date'] = $selectedDate;
             }
+
+
+
+
+            if ($request->input('type') == "care_lavel_date") {
+                $updateData['care_lavel_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_ref") {
+                $updateData['fabric_ref'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_weight") {
+                $updateData['fabric_weight'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_mill") {
+                $updateData['fabric_mill'] = $selectedDate;
+            }
+
+
+
+
+
+
 
             if ($request->input('type') == "revised_ex_factory_date") {
                 $updateData['revised_ex_factory_date'] = $selectedDate;
