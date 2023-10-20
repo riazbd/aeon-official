@@ -129,7 +129,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-
+    
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -446,12 +446,12 @@
                             ?>
 
                             <th>{{ $data->plm }}</th>
-                            <th>{{ $orderItem->style_no }}</th>
+                            <th>{{ isset($aStyleNo) ? $aStyleNo : null }}</th>
                             <th>{{ $data->TotalItemsOrdered }}</th>
                             <th>{{ $data->style_note }}</th>
                             <th>{{ intval($sumValue) }}</th>
                             <th>{{ $data->description }}</th>
-                            <th>{{ $orderItem->colour }}</th>
+                            <th>{{ $orderItem ? $orderItem->colour : null }}</th>
                             <th>{{ $data->careDate }}</th>
 
                             <th><input class="fabric_ref" id="fabric_ref" type="text" value="{{ $data->fabric_ref }}"
@@ -695,9 +695,7 @@
 
                             <th style="background-color: <?php echo empty($data->care_label_actual) ? 'red' : ''; ?>">
 
-                                <input style="color: <?php echo !empty($data->care_label_actual) && $data->care_label_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_label_actual) : ($data->care_label_actual == 'NA' ? 'RED' : ''); ?>"
-
-                                type="text" id="care_label_actual"
+                                <input style="color: <?php echo !empty($data->care_label_actual) && $data->care_label_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_label_actual) : ($data->care_label_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="care_label_actual"
                                     class="care_label_actual" name="care_label_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->care_label_actual }}" />
                             </th>
@@ -857,7 +855,7 @@
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -1077,7 +1075,7 @@
 
     <!-- <div class="container"> -->
     <?php
-
+    
     ?>
     <!-- </div> -->
 @endsection
