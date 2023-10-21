@@ -129,7 +129,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-    
+
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -855,7 +855,7 @@
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -1075,7 +1075,7 @@
 
     <!-- <div class="container"> -->
     <?php
-    
+
     ?>
     <!-- </div> -->
 @endsection
@@ -1085,13 +1085,6 @@
     src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script> -->
 <script>
     $(document).ready(function() {
-
-
-
-
-
-
-
 
         var theadTh = $('table thead th:eq(11)');
 
@@ -1141,6 +1134,7 @@
             },
             // scrollY: "400px",
             scrollCollapse: true,
+            // scrollX: true,
             scrollX: true,
             searching: true,
 
@@ -1177,20 +1171,33 @@
 
 
 
-        const table1 = document.getElementById('table_id');
+
         const scrollBody = document.querySelector('.dataTables_scrollBody');
-        const tableScrollLeft = localStorage.getItem('tableScrollLeft');
+
         const tableScrollTop = localStorage.getItem('tableScrollTop');
-        table1.addEventListener('scroll', function() {
-            localStorage.setItem('tableScrollLeft', table1.scrollLeft);
+
+        const table1 = document.querySelector('#table_id');
+
+        // Add a scroll event listener to the table
+        scrollBody.addEventListener('scroll', function() {
+            localStorage.setItem('tableScrollLeft', scrollBody.scrollLeft);
         });
+
+        // Retrieve the stored scroll position
+        const tableScrollLeft = localStorage.getItem('tableScrollLeft');
+
+        // Check if there's a stored scroll position and apply it after the table is drawn
+        if (tableScrollLeft) {
+            scrollBody.scrollLeft = tableScrollLeft; // Restore the scroll position
+        }
+
         scrollBody.addEventListener('scroll', function() {
             localStorage.setItem('tableScrollTop', scrollBody.scrollTop);
         });
 
-        if (tableScrollLeft !== null) {
-            table1.scrollLeft = tableScrollLeft;
-        }
+        // if (tableScrollLeft !== null) {
+        //     table1.scrollLeft = tableScrollLeft;
+        // }
         if (tableScrollTop !== null) {
             scrollBody.scrollTop = tableScrollTop;
         }

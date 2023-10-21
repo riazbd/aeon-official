@@ -813,8 +813,9 @@
                                             '#vendor_price')
                                         .val())) +
                                     " " + "+" + " " + newAccessPrice + ' ' + '=' +
-                                    " " + ((parseFloat($('#vendor_price').val()) +
-                                        newAccessPrice).toFixed(2)).toString()
+                                    " " + parseFloat(parseFloat($('#vendor_price')
+                                        .val()) +
+                                        newAccessPrice).toFixed(2)
 
                                 $('#style_note').val(newStyleNote);
 
@@ -824,7 +825,8 @@
                                             '#vendor_price').val()) +
                                         newAccessPrice).toString()
 
-                                    input.value = newFinalPrice
+                                    input.value = parseFloat(newFinalPrice)
+                                        .toFixed(2)
                                 });
 
                                 data.data.forEach((item, index) => {
@@ -833,9 +835,10 @@
                                     let newFinalPrice = (parseFloat($(
                                             '#vendor_price').val()) +
                                         newAccessPrice)
-                                    let newFinalTotalPrice = newFinalPrice *
+                                    let newFinalTotalPrice = parseFloat(
+                                        newFinalPrice *
                                         parseFloat(item[
-                                            "Qty Ordered"])
+                                            "Qty Ordered"])).toFixed(2)
 
                                     console.log(parseFloat($(
                                         '#vendor_price').val()));
@@ -874,16 +877,17 @@
                                                 '#vendor_price')
                                             .val())) +
                                         " " + "+" + " " + newAccessPrice + ' ' + '=' +
-                                        " " + (parseFloat($('#vendor_price').val()) +
-                                            newAccessPrice).toString()
+                                        " " + (parseFloat(parseFloat($('#vendor_price')
+                                                .val()) +
+                                            newAccessPrice).toFixed(2))
 
                                     $('#style_note').val(newStyleNote);
 
                                     Array.prototype.forEach.call(valueInputs, function(
                                         input, index) {
-                                        let newFinalPrice = (parseFloat($(
+                                        let newFinalPrice = parseFloat(parseFloat($(
                                                 '#vendor_price').val()) +
-                                            newAccessPrice).toString()
+                                            newAccessPrice).toFixed(2)
 
                                         input.value = newFinalPrice
                                     });
@@ -891,12 +895,13 @@
                                     data.data.forEach((item, index) => {
                                         const totalPrice = totalInputs[index];
 
-                                        let newFinalPrice = (parseFloat($(
+                                        let newFinalPrice = parseFloat(parseFloat($(
                                                 '#vendor_price').val()) +
-                                            newAccessPrice)
-                                        let newFinalTotalPrice = newFinalPrice *
+                                            newAccessPrice).toFixed(2)
+                                        let newFinalTotalPrice = parseFloat(
+                                            newFinalPrice *
                                             parseFloat(item[
-                                                "Qty Ordered"])
+                                                "Qty Ordered"])).toFixed(2)
 
                                         console.log(parseFloat($(
                                             '#vendor_price').val()));
@@ -959,7 +964,7 @@
                             const poNo = data.keys['Order No'];
                             // const price = data.data[0]["Supplier Foreign \nCost Price"];
                             const supplierNo = data.keys['Supplier'];;
-                            const supplierName = data.keys['Supplier Name'];;
+                            const supplierName = data.keys['Supplier Name'];
 
                             const currency = data.keys['Currency'];
                             const terms = data.keys['Payment Terms'].match(
@@ -975,7 +980,7 @@
                             $('#ww_po_no').val(poNo);
                             // $('#buyer_price').val(price);
                             $('#supplier_no').val(supplierNo);
-                            $('#supplier_name').val(supplierName);
+                            $('#supplier_name').val(supplierName.replace('MRP', ''));
                             $('#currency').val(currency.match(/^(\w+)\s+(\w+)/i)[1] + " " +
                                 currency.match(/^(\w+)\s+(\w+)/i)[2]);
                             $('#early-buyer-date').val(formattedDate);
@@ -1285,8 +1290,10 @@
                         if ($('#select_buyer_upload').val() === '3') {
 
                             console.log(response);
+                            $('#supplier_no').val('3754')
 
                             $('#plm_line').text("Brand")
+
                             $('#style_number_line').text('Style Number')
                             $('#inner_qty').text('No Of Cartons')
                             $('#outer_qty').text('Units Per Carton')
