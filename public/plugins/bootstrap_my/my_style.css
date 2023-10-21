@@ -571,3 +571,31 @@ table.dataTable td {
         background-color: #fff;
     }
 }
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+
+    /* background-color: var(--bs-nav-pills-link-active-bg); */
+    background-color: transparent !important;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+
+    background-color: gray;
+}
+
+[class*="sidebar-light-"] .nav-sidebar>.nav-item>.nav-link.active {
+
+    box-shadow: none;
+}
+
+[class*="sidebar-light-"] .sidebar a {
+    color: #16452A;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+[class*="sidebar-light-"] .nav-sidebar>.nav-item>.nav-link.active {
+    color: #16452A;
+}
