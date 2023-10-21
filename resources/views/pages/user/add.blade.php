@@ -91,9 +91,13 @@
                             <div class="form-group" id="buyerSelectBox" style="display: none;">
                                 <label>Select Buyer Role</label>
                                 <select class="form-control select2" name="buyer_role" data-placeholder="@lang('pleaseSelect')"
-                                    style="width: 100%;">
-                                    <!-- Add options for buyer roles here -->
+                                    style="width: 100%">
+                                    <option value="">Select Buyer </option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->buidr_id }}">{{ $user->name }}</option>
+                                    @endforeach
                                 </select>
+
                             </div>
                             <div class="form-group" id="vendorSelectBox" style="display: none;">
                                 <label>Select Vendor Role</label>
