@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Blade;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Buyer;
+use App\Models\Vendor;
 use App\Services\LogWriter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,13 +29,14 @@ class UserController extends Controller
         if (auth()->user()->hasRole('Super Admin')) {
             $roles = Role::all();
             //$buyerIds = User::distinct()->pluck('buyer_id');
-            $users = User::all();
+            $buyers = Buyer::all();
+            $vendors = Vendor::all();
             //dd($buyerIds);
         } else {
             $roles = Role::where('name', '!=', 'Super Admin')->get();
         }
 
-        return view('pages.user.add', compact('roles', 'users'));
+        return view('pages.user.add', compact('roles', 'buyers', 'vendors'));
     }
 
     // user create
@@ -46,11 +49,20 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
+        $selectedBuyerId = $request->get('buyer_id');
+        $selectedVendorId = $request->get('vendor_id');
+
+
         $user = User::create([
-            'name' => $request->get('name'),
+            'name' =>  $request->get('name'),
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
+            'buyer_id' => $selectedBuyerId,
+            'vendor_id' => $selectedVendorId,
         ]);
+
+
+        //dd($request->all());
 
         $user->assignRole($request->get('roles'));
 
