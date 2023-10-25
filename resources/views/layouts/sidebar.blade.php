@@ -165,9 +165,9 @@
     <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
         data-accordion="false">
         <li
-            class="nav-item has-treeview {{ Request::is('vendor-manage') || Request::is('manufacturer-manage') || Request::is('vendor_contact-manage') ? 'menu-open' : '' }}">
+            class="nav-item has-treeview {{ Request::is('vendor-manage') || Request::is('manufacturer-manage') || Request::is('vendor_contact-manage') || Request::is('manufacturer-certificate') ? 'menu-open' : '' }}">
             <a href="#"
-                class="nav-link {{ Request::is('vendor-manage') || Request::is('vendor_contact-manage') || Request::is('manufacturer-manage') ? 'active' : '' }}">
+                class="nav-link {{ Request::is('vendor-manage') || Request::is('vendor_contact-manage') || Request::is('manufacturer-manage') || Request::is('manufacturer-certificate') ? 'active' : '' }}">
                 <i class="fas fa-recycle"></i>
                 <p>
                     Vendor Manage
@@ -184,6 +184,12 @@
                 <li class="nav-item">
                     <a href="{{ route('manufacturer-manage') }}"
                         class="nav-link  {{ Request::is('manufacturer-manage') ? 'active' : '' }}">Manufacturers</a>
+                </li>
+            </ul>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a href="{{ route('manufacturer-certificate') }}"
+                        class="nav-link  {{ Request::is('manufacturer-certificate') ? 'active' : '' }}">Certificates</a>
                 </li>
             </ul>
             <ul class="nav nav-treeview">

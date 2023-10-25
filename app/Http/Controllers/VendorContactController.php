@@ -62,9 +62,18 @@ class VendorContactController extends Controller
 
         $contact = new Contact();
 
+        //image process
+        $destinationPath = 'public/logos';
+        $mainName = pathinfo($request->file('profile_image')->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $request->file('profile_image')->getClientOriginalExtension();
+        $newFileName = $mainName . '_' . time() . '.' . $extension;
+        $logoPath = $request->file('profile_image')->storeAs($destinationPath, $newFileName);
+
+
         $contact->name = $data['name'];
         $contact->email = $data['email'];
         $contact->phone = $data['phone'];
+        $contact->profile_image = 'storage/logos/' . $newFileName;
         $contact->department = $data['department'];
         $contact->designation = $data['designation'];
         $contact->vendor_manufacturer_id = $data['maufacturer'];
@@ -108,9 +117,17 @@ class VendorContactController extends Controller
         $data = $request->all();
         $contact = Contact::where('id', $id)->first();
 
+        //image process
+        $destinationPath = 'public/logos';
+        $mainName = pathinfo($request->file('profile_image')->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = $request->file('profile_image')->getClientOriginalExtension();
+        $newFileName = $mainName . '_' . time() . '.' . $extension;
+        $logoPath = $request->file('profile_image')->storeAs($destinationPath, $newFileName);
+
         $contact->name = $data['name'];
         $contact->email = $data['email'];
         $contact->phone = $data['phone'];
+        $contact->profile_image = 'storage/logos/' . $newFileName;
         $contact->department = $data['department'];
         $contact->designation = $data['designation'];
 

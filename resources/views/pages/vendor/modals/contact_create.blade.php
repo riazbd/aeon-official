@@ -28,6 +28,11 @@
                             placeholder="Enter Phone">
                     </div>
                     <div class="form-group">
+                        <label for="phone">Profile Image</label>
+                        <input type="file" class="form-control form-control-sm" id="profile_image" name="profile_image"
+                            placeholder="Upload Image">
+                    </div>
+                    <div class="form-group">
                         <label for="department">Department</label>
                         <input type="text" class="form-control form-control-sm" id="department" name="department"
                             placeholder="Enter Department">

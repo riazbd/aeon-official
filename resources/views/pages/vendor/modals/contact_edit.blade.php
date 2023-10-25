@@ -30,6 +30,16 @@
                             placeholder="Enter Phone" value="{{ $contact->phone }}">
                     </div>
                     <div class="form-group">
+                        <label for="name">Profile Image</label>
+                        @if($contact->profile_image)
+                            <img src="{{ asset($contact->profile_image) }}" alt="Profile Image" width="50" height="50">
+                        @else
+                            <p>No image uploaded</p>
+                        @endif
+                        <input type="file" class="form-control form-control-sm" id="profile_image" name="profile_image" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
                         <label for="department">Department</label>
                         <input type="text" class="form-control form-control-sm" id="department" name="department"
                             placeholder="Enter Department" value="{{ $contact->department }}">

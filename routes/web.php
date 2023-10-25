@@ -131,6 +131,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/manufacturer-delete/{id}', [manufacturerController::class, 'destroy'])->name('delete-manufacturer');
     Route::put('manufacturer-manage/{id}', [manufacturerController::class, 'update'])->name('update-manufacturer');
 
+    Route::get('manufacturer-certificate', [ManufacturerController::class, 'add_certificate'])->name('manufacturer-certificate');
+    Route::post('manufacturer-certificate-store', [manufacturerController::class, 'certicicate_store'])->name('manufacturer-certificate-store');
+
+
     //Vendor Contacts
     Route::get('vendor_contact-manage', [VendorContactController::class, 'manageIndex'])->name('vendor_contact-manage');
     Route::get('vendor_contact-index/{id}', [VendorContactController::class, 'index'])->name('vendor_contact_index');

@@ -8,9 +8,9 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Contacts</h3>
+                        <h3 class="card-title">Manufacturers Certificate</h3>
                         @can('user.add')
-                            <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#create-contact">
+                            <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#manufacturer-certificate">
                                 <span class="fas fa-plus-circle"></span>
                                 @lang('global.add')
                             </p>
@@ -25,28 +25,23 @@
                             <thead>
                                 <tr>
                                     <th class="w-25">@lang('global.actions')</th>
-                                    <th>Id</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Profile Image</th>
-                                    <th>Manufacturer</th>
-                                    <th>Department</th>
-                                    <th>Designation</th>
+                                    <th>Vendor</th>
+                                    <th>@lang('cruds.user.fields.name')</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($contacts as $contact)
+                                @foreach ($manufacturers as $manufacturer)
                                     <tr>
                                         <td class="text-center">
                                             @can('user.delete')
                                                 <div class="btn-group">
                                                     @can('user.edit')
                                                         <p class="btn btn-info btn-sm" data-toggle="modal"
-                                                            data-target="{{ '#edit-contact-' . $contact->id }}">
+                                                            data-target="{{ '#edit-manufacturer-' . $manufacturer->id }}">
                                                             @lang('global.edit')</p>
                                                     @endcan
-                                                    <form action="{{ route('delete-vendor_contact', ['id' => $contact->id]) }}"
+                                                    <form
+                                                        action="{{ route('delete-manufacturer', ['id' => $manufacturer->id]) }}"
                                                         method="POST">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
@@ -58,20 +53,14 @@
                                                 </div>
                                             @endcan
                                         </td>
-                                        <td>{{ $contact->id }}</td>
-                                        <td>{{ $contact->name }}</td>
-                                        <td>{{ $contact->email }}</td>
-                                        <td>{{ $contact->phone }}</td>
-                                        <td><img src="{{ asset($contact->profile_image) }}"></td>
-                                        <td>{{ App\Models\Manufacturer::where('id', $contact->vendor_manufacturer_id)->first()->name }}
+                                        <td>{{ App\Models\Vendor::where('id', $manufacturer->vendor_id)->first()->name }}
                                         </td>
-                                        <td>{{ $contact->department }}</td>
-                                        <td>{{ $contact->designation }}</td>
+                                        <td>{{ $manufacturer->name }}</td>
+
 
                                     </tr>
-                                    @include('pages.vendor.modals.contact_edit')
+                                    @include('pages.vendor.modals.manufacturer_edit')
                                 @endforeach
-
 
                             </tbody>
                         </table>
@@ -86,38 +75,5 @@
     </section>
     <!-- /.content -->
 
-    @include('pages.vendor.modals.contact_create')
-@endsection
-
-@section('scripts')
-    <script>
-        // Add an event listener to the "Vendor" dropdown
-        $('#vendor').on('change', function() {
-            // Get the selected vendor ID
-            var vendorId = $(this).val();
-
-            // Make an AJAX request to fetch the manufacturers for the selected vendor
-            $.ajax({
-                url: '/get-manufacturers/' + vendorId,
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    // Get the "Manufacturer" dropdown element
-                    var manufacturerDropdown = $('#maufacturer');
-
-                    // Clear existing options
-                    manufacturerDropdown.empty();
-
-                    // Populate the "Manufacturer" dropdown with the fetched data
-                    $.each(data, function(index, manufacturer) {
-                        manufacturerDropdown.append('<option value="' + manufacturer.id + '">' +
-                            manufacturer.name + '</option>');
-                    });
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching manufacturers:', error);
-                }
-            });
-        });
-    </script>
+    @include('pages.vendor.modals.certificate_create')
 @endsection

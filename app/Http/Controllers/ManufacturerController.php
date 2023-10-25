@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manufacturer;
+use App\Models\Certificate;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -149,5 +150,50 @@ class ManufacturerController extends Controller
         $manufacturer->delete();
 
         return redirect()->back()->with('success', 'Data successfully deleted!');
+    }
+
+    // add certificates 
+
+    public function add_certificate(){
+        if (Auth::user()->hasRole('Super Admin')) {
+            $vendors = Vendor::all();
+            $manufacturers = Manufacturer::all();
+        } else {
+            $vendors = Vendor::where('id', Auth::User()->vendor_id)->get();
+            $manufacturers = Manufacturer::where('vendor_id', Auth::User()->vendor()->first()->id)->get();
+        }
+
+
+        return view('pages.vendor.manufacturer_certificate', compact('vendors', 'manufacturers'));
+    }
+
+    public function certicicate_store(Request $request){
+        $data = $request->all();
+//dd($data);
+        // Save the data to the database using the vendor model (replace 'Buyer' with your actual model)
+        $certificate = new Certificate();
+        $certificate->name = $data['certicicate_name'];
+        $certificate->manufacturer_id = $data['maufacturer_id'];
+
+        // $destinationPath = 'public/logos';
+
+        // $mainName = pathinfo($request->file('logo')->getClientOriginalName(), PATHINFO_FILENAME);
+
+        // // Get the file extension from the uploaded logo
+        // $extension = $request->file('logo')->getClientOriginalExtension();
+
+        // // Generate a unique file name with the main name, current timestamp, and extension
+        // $newFileName = $mainName . '_' . time() . '.' . $extension;
+
+        // // Move the logo file to the specified destination path
+        // $logoPath = $request->file('logo')->storeAs($destinationPath, $newFileName);
+
+        // // Set the logo path to the vendor model attribute
+        // $department->logo = 'storage/logos/' . $newFileName;
+
+        $certificate->save();
+
+        // Redirect back to the previous page or any other page after successful form submission
+        return redirect()->back()->with('success', 'Data saved successfully!');
     }
 }
