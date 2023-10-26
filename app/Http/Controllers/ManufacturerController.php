@@ -153,7 +153,7 @@ class ManufacturerController extends Controller
         return redirect()->back()->with('success', 'Data successfully deleted!');
     }
 
-    // add certificates 
+    // add certificates
 
     public function add_certificate(){
         if (Auth::user()->hasRole('Super Admin')) {
@@ -173,8 +173,8 @@ class ManufacturerController extends Controller
     public function certicicate_store(Request $request){
         $data = $request->all();
         //dd($data);
-        
-        
+
+
         $certificate = new Certificate();
         $certificate->manufacturer_id = $data['maufacturer_id'];
         $certificate->name = $data['certicicate_name'];
@@ -227,7 +227,7 @@ class ManufacturerController extends Controller
             //end
             $certificate->logo = 'storage/logos/' . $newFileName;
         }
-        
+
 
         $certificate->issue_date = $data['issue_date'];
         $certificate->valid_from = $data['valid_from'];
@@ -267,5 +267,5 @@ class ManufacturerController extends Controller
         $certificates = Certificate::all();
         return view('pages.vendor.manufacturers_certificate_index', compact('certificates'));
     }
-    
+
 }
