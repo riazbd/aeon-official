@@ -16,7 +16,7 @@
                 {{-- </div> --}}
             </a>
 
-            <a href="{{ route('manufacturer-interface', ['id' => $id]) }}" class="card-box">
+            <a href="{{ route('manufecturer_certicicate_index', ['id' => $id]) }}" class="card-box">
                 {{-- <div class="card-box"> --}}
 
                 <div class="card-element-first">

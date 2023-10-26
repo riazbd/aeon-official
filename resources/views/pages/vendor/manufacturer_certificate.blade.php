@@ -25,23 +25,36 @@
                             <thead>
                                 <tr>
                                     <th class="w-25">@lang('global.actions')</th>
-                                    <th>Vendor</th>
-                                    <th>@lang('cruds.user.fields.name')</th>
+
+                                    <th>Manufacturer Id</th>
+                                    <th>Cer. Name</th>
+                                    <th>Cer. Image</th>
+                                    <th>Issue Date</th>
+                                    <th>Valid From</th>
+                                    <th>Valid To</th>
+                                    <th>PDF File</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($manufacturers as $manufacturer)
+                                @foreach ($certificates as $certificate)
+                                    @php
+                                        $file = $certificate->pdf_file;
+                                        $file = substr($file, 14);
+                                        $file = preg_replace('/_.*\.pdf$/', '.pdf', $file);
+
+                                    @endphp
+
                                     <tr>
                                         <td class="text-center">
                                             @can('user.delete')
                                                 <div class="btn-group">
                                                     @can('user.edit')
                                                         <p class="btn btn-info btn-sm" data-toggle="modal"
-                                                            data-target="{{ '#edit-manufacturer-' . $manufacturer->id }}">
+                                                            data-target="{{ '#edit-manufacturer-' . $certificate->id }}">
                                                             @lang('global.edit')</p>
                                                     @endcan
                                                     <form
-                                                        action="{{ route('delete-manufacturer', ['id' => $manufacturer->id]) }}"
+                                                        action="{{ route('delete-manufacturer', ['id' => $certificate->id]) }}"
                                                         method="POST">
                                                         @csrf
                                                         <input name="_method" type="hidden" value="DELETE">
@@ -53,13 +66,19 @@
                                                 </div>
                                             @endcan
                                         </td>
-                                        <td>{{ App\Models\Vendor::where('id', $manufacturer->vendor_id)->first()->name }}
-                                        </td>
-                                        <td>{{ $manufacturer->name }}</td>
+
+                                        <td>{{ $certificate->manufacturer_id }}</td>
+                                        <td>{{ $certificate->name }}</td>
+                                        <td><img src="{{ asset($certificate->logo) }}" width="40" height="40" style="width:50px !important;"></td>
+                                        <td>{{ $certificate->issue_date }}</td>
+                                        <td>{{ $certificate->valid_from }}</td>
+                                        <td>{{ $certificate->valid_to }}</td>
+                                        <td><a href="{{ asset($certificate->pdf_file) }}" target=”_blank”>{{ $file}}</a></td>
+
 
 
                                     </tr>
-                                    @include('pages.vendor.modals.manufacturer_edit')
+                                    @include('pages.vendor.modals.manufacturer_certificate_edit')
                                 @endforeach
 
                             </tbody>

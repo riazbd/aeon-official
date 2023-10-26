@@ -132,8 +132,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('manufacturer-manage/{id}', [manufacturerController::class, 'update'])->name('update-manufacturer');
 
     Route::get('manufacturer-certificate', [ManufacturerController::class, 'add_certificate'])->name('manufacturer-certificate');
-    Route::post('manufacturer-certificate-store', [manufacturerController::class, 'certicicate_store'])->name('manufacturer-certificate-store');
-
+    Route::post('manufacturer-certificate-store', [manufacturerController::class, 'certicicatecertificate_index_store'])->name('manufacturer-certificate-store');
+    Route::put('manufacturer-certificate-update/{id}', [manufacturerController::class, 'certificate_update'])->name('update-manufacturer-certificate');
+    Route::get('manufecturer_certicicate_index/{id}', [manufacturerController::class, 'certificate_index'])->name('manufecturer_certicicate_index');
 
     //Vendor Contacts
     Route::get('vendor_contact-manage', [VendorContactController::class, 'manageIndex'])->name('vendor_contact-manage');
