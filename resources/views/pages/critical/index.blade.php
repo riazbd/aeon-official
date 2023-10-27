@@ -129,7 +129,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-    
+
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -384,6 +384,9 @@
                     </tr>
                 </thead>
                 <tbody id="">
+{{-- @php
+    dd($criticalPath);
+@endphp --}}
                     @foreach ($criticalPath as $data)
                         <tr>
                             <th>
@@ -1075,7 +1078,7 @@
 
     <!-- <div class="container"> -->
     <?php
-    
+
     ?>
     <!-- </div> -->
 @endsection
