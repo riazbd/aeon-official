@@ -22,10 +22,16 @@
                         <input type="email" class="form-control form-control-sm" id="email" name="email"
                             placeholder="Enter Email">
                     </div>
+
                     <div class="form-group">
                         <label for="phone">Phone</label>
                         <input type="text" class="form-control form-control-sm" id="phone" name="phone"
                             placeholder="Enter Phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Profile Image</label>
+                        <input type="file" class="form-control form-control-sm" id="profile_image" name="profile_image"
+                            placeholder="Upload Image">
                     </div>
                     <div class="form-group">
                         <label for="department">Department</label>

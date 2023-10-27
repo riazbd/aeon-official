@@ -10,8 +10,11 @@
 
                         <div class="card-body p-0">
                             <h5 class="text-center" style="background-color: green; color:white">CONTACT</h5>
-
+                            <div class="card_img">
+                                <img src="{{ asset($contact->profile_image) }}" width="70">
+                            </div>
                             <div class="d-flex justify-content-between p-5">
+                                
                                 <div>
                                     <strong>
                                         <p>Name:</p>

@@ -29,6 +29,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
+                                    <th>Profile Image</th>
                                     <th>Buyer Department</th>
                                     <th>Department</th>
                                     <th>Designation</th>
@@ -61,6 +62,7 @@
                                         <td>{{ $contact->name }}</td>
                                         <td>{{ $contact->email }}</td>
                                         <td>{{ $contact->phone }}</td>
+                                        <td><img src="{{ asset($contact->profile_image) }}"></td>
                                         <td>{{ App\Models\Department::where('id', $contact->buyer_department_id)->first()->name }}
                                         </td>
                                         <td>{{ $contact->department }}</td>

@@ -323,7 +323,7 @@
 
 
 
-
+                        {{-- inspection information --}}
 
                         <th>Sewing Inline Inspection date (Plan)</th>
                         <th>Sewing Inline Inspection date (actual)</th>
@@ -384,6 +384,9 @@
                     </tr>
                 </thead>
                 <tbody id="">
+{{-- @php
+    dd($criticalPath);
+@endphp --}}
                     @foreach ($criticalPath as $data)
                         <tr>
                             <th>
@@ -497,7 +500,7 @@
 
 
                             <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->lab_dip_approval_actual_date) && $data->lab_dip_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date, $data->lab_dip_approval_actual_date) : ($data->lab_dip_approval_actual_date == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date"
+                                    type="date" id="lab_dip_approval_actual_date" class="lab_dip_approval_actual_date"
                                     name="lab_dip_approval_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->lab_dip_approval_actual_date }}" /></th>
 
@@ -523,7 +526,7 @@
                             <th>{{ $data->embellishment_s_o_approval_plan_date }}</th>
 
                             <th style="background-color: <?php echo empty($data->embellishment_s_o_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->embellishment_s_o_approval_actual_date) && $data->embellishment_s_o_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->embellishment_s_o_approval_plan_date, $data->embellishment_s_o_approval_actual_date) : ($data->embellishment_s_o_approval_actual_date == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="embellishment_s_o_approval_actual_date"
+                                    type="date" id="embellishment_s_o_approval_actual_date"
                                     class="embellishment_s_o_approval_actual_date"
                                     name="embellishment_s_o_approval_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->embellishment_s_o_approval_actual_date }}" /></th>
@@ -555,14 +558,14 @@
 
 
                             <th style="background-color: <?php echo empty($data->fabric_ordered_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->fabric_ordered_actual_date) && $data->fabric_ordered_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->fabric_ordered_plan_date, $data->fabric_ordered_actual_date) : ($data->fabric_ordered_actual_date == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date"
+                                    type="date" id="fabric_ordered_actual_date" class="fabric_ordered_actual_date"
                                     name="fabric_ordered_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->fabric_ordered_actual_date }}" />
                             </th>
                             <th>{{ $data->fabric_ordered_plan_date }}</th>
                             <th>{{ $data->bulk_fabric_knit_down_approval_plan_date }}</th>
                             <th style="background-color: <?php echo empty($data->bulk_fabric_knit_down_approval_actual_date) ? 'red' : ''; ?>">
-                                <input style="color: <?php echo !empty($data->bulk_fabric_knit_down_approval_actual_date) && $data->bulk_fabric_knit_down_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->bulk_fabric_knit_down_approval_plan_date, $data->bulk_fabric_knit_down_approval_actual_date) : ($data->bulk_fabric_knit_down_approval_actual_date == 'NA' ? 'RED' : ''); ?>" type="text"
+                                <input style="color: <?php echo !empty($data->bulk_fabric_knit_down_approval_actual_date) && $data->bulk_fabric_knit_down_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->bulk_fabric_knit_down_approval_plan_date, $data->bulk_fabric_knit_down_approval_actual_date) : ($data->bulk_fabric_knit_down_approval_actual_date == 'NA' ? 'RED' : ''); ?>" type="date"
                                     id="bulk_fabric_knit_down_approval_actual_date"
                                     class="bulk_fabric_knit_down_approval_actual_date"
                                     name="bulk_fabric_knit_down_approval_actual_date" data-c-id={{ $data->c_id }}
@@ -591,7 +594,7 @@
 
                             <th>{{ $data->bulk_yarn_fabric_plan_date }}</th>
                             <th style="background-color: <?php echo empty($data->bulk_yarn_fabric_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->bulk_yarn_fabric_actual_date) && $data->bulk_yarn_fabric_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->bulk_yarn_fabric_plan_date, $data->bulk_yarn_fabric_actual_date) : ($data->bulk_yarn_fabric_actual_date == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="bulk_yarn_fabric_actual_date" class="bulk_yarn_fabric_actual_date"
+                                    type="date" id="bulk_yarn_fabric_actual_date" class="bulk_yarn_fabric_actual_date"
                                     name="bulk_yarn_fabric_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->bulk_yarn_fabric_actual_date }}" /></th>
 
@@ -604,7 +607,7 @@
 
                             <th>{{ $data->development_photo_sample_sent_plan_date }}</th>
                             <th style="background-color: <?php echo empty($data->development_photo_sample_sent_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->development_photo_sample_sent_actual_date) && $data->development_photo_sample_sent_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->development_photo_sample_sent_plan_date, $data->development_photo_sample_sent_actual_date) : ($data->development_photo_sample_sent_actual_date == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="development_photo_sample_sent_actual_date"
+                                    type="date" id="development_photo_sample_sent_actual_date"
                                     class="development_photo_sample_sent_actual_date"
                                     name="development_photo_sample_sent_actual_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->development_photo_sample_sent_actual_date }}" /></th>
@@ -627,7 +630,7 @@
                             </th>
                             <th>{{ $data->fit_approval_plan }}</th>
                             <th style="background-color: <?php echo empty($data->fit_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->fit_approval_actual) && $data->fit_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->fit_approval_plan, $data->fit_approval_actual) : ($data->fit_approval_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="fit_approval_actual" class="fit_approval_actual"
+                                    type="date" id="fit_approval_actual" class="fit_approval_actual"
                                     name="fit_approval_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->fit_approval_actual }}" /></th>
 
@@ -646,7 +649,7 @@
 
                             <th>{{ $data->size_set_approval }}</th>
                             <th style="background-color: <?php echo empty($data->size_set_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->size_set_actual) && $data->size_set_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->size_set_approval, $data->size_set_actual) : ($data->size_set_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="size_set_actual" class="size_set_actual" name="size_set_actual"
+                                    type="date" id="size_set_actual" class="size_set_actual" name="size_set_actual"
                                     data-c-id={{ $data->c_id }} value="{{ $data->size_set_actual }}" /></th>
 
                             <th><input type="text" value=" {{ $data->size_set_dispatch }} " name="size_set_dispatch"
@@ -666,7 +669,7 @@
 
                             <th>{{ $data->pp_approval }}</th>
                             <th style="background-color: <?php echo empty($data->pp_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pp_actual) && $data->pp_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pp_approval, $data->pp_actual) : ($data->pp_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="pp_actual" class="pp_actual" name="pp_actual"
+                                    type="date" id="pp_actual" class="pp_actual" name="pp_actual"
                                     value="{{ $data->pp_actual }}" data-c-id={{ $data->c_id }} /></th>
 
                             <th style="background-color: <?php echo empty($data->pp_dispatch) ? 'red' : ''; ?>"><input type="text"
@@ -695,20 +698,20 @@
 
                             <th style="background-color: <?php echo empty($data->care_label_actual) ? 'red' : ''; ?>">
 
-                                <input style="color: <?php echo !empty($data->care_label_actual) && $data->care_label_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_label_actual) : ($data->care_label_actual == 'NA' ? 'RED' : ''); ?>" type="text" id="care_label_actual"
+                                <input style="color: <?php echo !empty($data->care_label_actual) && $data->care_label_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->care_label_approval, $data->care_label_actual) : ($data->care_label_actual == 'NA' ? 'RED' : ''); ?>" type="date" id="care_label_actual"
                                     class="care_label_actual" name="care_label_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->care_label_actual }}" />
                             </th>
 
                             <th>{{ $data->material_inhouse_plan }}</th>
                             <th style="background-color: <?php echo empty($data->material_inhouse_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->material_inhouse_actual) && $data->material_inhouse_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->material_inhouse_plan, $data->material_inhouse_actual) : ($data->material_inhouse_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="material_inhouse_actual" class="material_inhouse_actual"
+                                    type="date" id="material_inhouse_actual" class="material_inhouse_actual"
                                     name="material_inhouse_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->material_inhouse_actual }}" /></th>
 
                             <th>{{ $data->pp_meeting_plan }}</th>
                             <th style="background-color: <?php echo empty($data->pp_meeting_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pp_meeting_actual) && $data->pp_meeting_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pp_meeting_plan, $data->pp_meeting_actual) : ($data->pp_meeting_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="pp_meeting_actual" class="pp_meeting_actual"
+                                    type="date" id="pp_meeting_actual" class="pp_meeting_actual"
                                     name="pp_meeting_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->pp_meeting_actual }}" /></th>
 
@@ -735,31 +738,31 @@
 
                             <th>{{ $data->cutting_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->cutting_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->cutting_date_actual) && $data->cutting_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->cutting_date_plan, $data->cutting_date_actual) : ($data->cutting_date_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="cutting_date_actual" class="cutting_date_actual"
+                                    type="date" id="cutting_date_actual" class="cutting_date_actual"
                                     name="cutting_date_actual" value="{{ $data->cutting_date_actual }}"
                                     data-c-id={{ $data->c_id }} /></th>
 
                             <th>{{ $data->embellishment_plan }}</th>
                             <th style="background-color: <?php echo empty($data->embellishment_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->embellishment_actual) && $data->embellishment_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->embellishment_plan, $data->embellishment_actual) : ($data->embellishment_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="embellishment_actual" class="embellishment_actual"
+                                    type="date" id="embellishment_actual" class="embellishment_actual"
                                     name="embellishment_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->embellishment_actual }}" /></th>
 
                             <th>{{ $data->Sewing_plan }}</th>
                             <th style="background-color: <?php echo empty($data->Sewing_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->Sewing_actual) && $data->Sewing_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->Sewing_plan, $data->Sewing_actual) : ($data->Sewing_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="Sewing_actual" class="Sewing_actual" name="Sewing_actual"
+                                    type="date" id="Sewing_actual" class="Sewing_actual" name="Sewing_actual"
                                     data-c-id={{ $data->c_id }} value="{{ $data->Sewing_actual }}" />
                             </th>
 
                             <th>{{ $data->washing_complete_plan }}</th>
                             <th style="background-color: <?php echo empty($data->washing_complete_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->washing_complete_actual) && $data->washing_complete_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->washing_complete_plan, $data->washing_complete_actual) : ($data->washing_complete_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="washing_complete_actual" class="washing_complete_actual"
+                                    type="date" id="washing_complete_actual" class="washing_complete_actual"
                                     name="washing_complete_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->washing_complete_actual }}" /></th>
 
                             <th>{{ $data->finishing_complete_plan }}</th>
                             <th style="background-color: <?php echo empty($data->finishing_complete_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->finishing_complete_actual) && $data->finishing_complete_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->finishing_complete_plan, $data->finishing_complete_actual) : ($data->finishing_complete_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="finishing_complete_actual" class="finishing_complete_actual"
+                                    type="date" id="finishing_complete_actual" class="finishing_complete_actual"
                                     name="finishing_complete_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->finishing_complete_actual }}" />
                             </th>
@@ -775,7 +778,7 @@
 
                             <th>{{ $data->sewing_inline_inspection_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->sewing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sewing_inline_inspection_date_actual) && $data->sewing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sewing_inline_inspection_date_plan, $data->sewing_inline_inspection_date_actual) : ($data->sewing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="sewing_inline_inspection_date_actual"
+                                    type="date" id="sewing_inline_inspection_date_actual"
                                     class="sewing_inline_inspection_date_actual"
                                     name="sewing_inline_inspection_date_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->sewing_inline_inspection_date_actual }}" /></th>
@@ -791,7 +794,7 @@
 
                             <th>{{ $data->finishing_inline_inspection_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->finishing_inline_inspection_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->finishing_inline_inspection_date_actual) && $data->finishing_inline_inspection_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->finishing_inline_inspection_date_plan, $data->finishing_inline_inspection_date_actual) : ($data->finishing_inline_inspection_date_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="finishing_inline_inspection_date_actual"
+                                    type="date" id="finishing_inline_inspection_date_actual"
                                     class="finishing_inline_inspection_date_actual"
                                     name="finishing_inline_inspection_date_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->finishing_inline_inspection_date_actual }}" /></th>
@@ -809,7 +812,7 @@
 
                             <th>{{ $data->pre_final_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->pre_final_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->pre_final_date_actual) && $data->pre_final_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->pre_final_date_plan, $data->pre_final_date_actual) : ($data->pre_final_date_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="pre_final_date_actual" class="pre_final_date_actual"
+                                    type="date" id="pre_final_date_actual" class="pre_final_date_actual"
                                     data-c-id={{ $data->c_id }} name="pre_final_date_actual"
                                     value="{{ $data->pre_final_date_actual }}" /></th>
 
@@ -824,7 +827,7 @@
                             </th>
                             <th>{{ $data->final_aql_date_plan }}</th>
                             <th style="background-color: <?php echo empty($data->final_aql_date_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->final_aql_date_actual) && $data->final_aql_date_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->final_aql_date_plan, $data->final_aql_date_actual) : ($data->final_aql_date_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="final_aql_date_actual" class="final_aql_date_actual"
+                                    type="date" id="final_aql_date_actual" class="final_aql_date_actual"
                                     name="final_aql_date_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->final_aql_date_actual }}" /></th>
                             <th></th>
@@ -848,14 +851,14 @@
 
                             <th>{{ $data->production_sample_approval_plan }}</th>
                             <th style="background-color: <?php echo empty($data->production_sample_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->production_sample_approval_actual) && $data->production_sample_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->production_sample_approval_plan, $data->production_sample_approval_actual) : ($data->production_sample_approval_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="production_sample_approval_actual"
+                                    type="date" id="production_sample_approval_actual"
                                     class="production_sample_approval_actual" name="production_sample_approval_actual"
                                     data-c-id={{ $data->c_id }}
                                     value="{{ $data->production_sample_approval_actual }}" /></th>
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -873,13 +876,13 @@
                             <th>{{ $data->shipment_booking_with_acs_plan }}</th>
 
                             <th style="background-color: <?php echo empty($data->shipment_booking_with_acs_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->shipment_booking_with_acs_actual) && $data->shipment_booking_with_acs_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->shipment_booking_with_acs_plan, $data->shipment_booking_with_acs_actual) : ($data->shipment_booking_with_acs_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="shipment_booking_with_acs_actual"
+                                    type="date" id="shipment_booking_with_acs_actual"
                                     class="shipment_booking_with_acs_actual" name="shipment_booking_with_acs_actual"
                                     data-c-id={{ $data->c_id }}
                                     value="{{ $data->shipment_booking_with_acs_actual }}" /></th>
                             <th>{{ $data->sa_approval_plan }}</th>
                             <th style="background-color: <?php echo empty($data->sa_approval_actual) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?>"
-                                    type="text" id="sa_approval_actual" class="sa_approval_actual"
+                                    type="date" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" data-c-id={{ $data->c_id }}
                                     value="{{ $data->sa_approval_actual }}" /></th>
 
@@ -913,7 +916,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
-                            <th><input type="text" id="payment_receive_date" class="payment_receive_date"
+                            <th><input type="date" id="payment_receive_date" class="payment_receive_date"
                                     name="payment_receive_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->payment_receive_date }}" /></th>
 
@@ -929,10 +932,10 @@
                             {{-- last four --}}
 
 
-                            <th><input type="text" id="aeon_comments_date" class="aeon_comments_date"
+                            <th><input type="date" id="aeon_comments_date" class="aeon_comments_date"
                                     name="aeon_comments_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->aeon_comments_date }}" /></th>
-                            <th><input type="text" id="vendor_comments_date" class="vendor_comments_date"
+                            <th><input type="date" id="vendor_comments_date" class="vendor_comments_date"
                                     name="vendor_comments_date" data-c-id={{ $data->c_id }}
                                     value="{{ $data->vendor_comments_date }}" /></th>
                             <th>{{ $data->sa_eta_5_days }}</th>

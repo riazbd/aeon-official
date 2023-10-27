@@ -27,30 +27,55 @@ class CriticalController extends Controller
         $buyerList = Buyer::orderBy('id', 'desc')->get();
         $departmentList = Department::orderBy('id', 'desc')->get();
         $vendor = Vendor::orderBy('id', 'desc')->get();
-        $criticalPath = CriticalPath::orderBy('critical_paths.id', 'desc')
-            ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
-            ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
-            ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
-            ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
-            ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-            ->select(
-                '*',
-                'critical_paths.id as c_id',
-                'manufacturers.name as manufatureName',
-                'purchage_orders.*',
-                'purchage_orders.id as p_id',
-                'purchage_orders.fabric_content as aFabriccontent',
-                'critical_paths.colour as aColor',
-                'purchage_orders.care_lavel_date as careDate',
-                'critical_paths.style_no as aStyleNo',
-                'departments.name as deptName',
-                'vendors.name as vendorName',
-                'buyers.name as buyerName',
-                DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
-            )
-            ->get();
+        // $criticalPath = CriticalPath::orderBy('critical_paths.id', 'desc')
+        //     ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+        //     ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+        //     ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+        //     ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+        //     ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+        //     ->select(
+        //         '*',
+        //         'critical_paths.id as c_id',
+        //         'manufacturers.name as manufatureName',
+        //         'purchage_orders.*',
+        //         'purchage_orders.id as p_id',
+        //         'purchage_orders.fabric_content as aFabriccontent',
+        //         'critical_paths.colour as aColor',
+        //         'purchage_orders.care_lavel_date as careDate',
+        //         'critical_paths.style_no as aStyleNo',
+        //         'departments.name as deptName',
+        //         'vendors.name as vendorName',
+        //         'buyers.name as buyerName',
+        //         DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
+        //     )
+        //     ->get();
+        $criticalPath = DB::table('critical_paths')
+        ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+        ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+        ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+        ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+        ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+        ->select(
+            'critical_paths.*',
+            'critical_paths.id as c_id',
+            DB::raw('MAX(manufacturers.name) as manufatureName'),
+            'purchage_orders.*',
+            'purchage_orders.id as p_id',
+            DB::raw('MAX(purchage_orders.fabric_content) as aFabriccontent'),
+            DB::raw('MAX(critical_paths.colour) as aColor'),
+            DB::raw('MAX(purchage_orders.care_lavel_date) as careDate'),
+            DB::raw('MAX(critical_paths.style_no) as aStyleNo'),
+            DB::raw('MAX(departments.name) as deptName'),
+            DB::raw('MAX(vendors.name) as vendorName'),
+            DB::raw('MAX(buyers.name) as buyerName')
+        )
+        ->addSelect(DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id = purchage_orders.id) as TotalItemsOrdered'))
+        ->orderBy('c_id', 'desc') // Use the alias c_id
+        ->groupBy('c_id') // Group by the alias c_id
+        ->get();
+
         // dd($criticalPath);
-        return view('pages.critical.index', compact('criticalPath', 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
+        return view('pages.critical.index', compact( 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
         //
     }
 

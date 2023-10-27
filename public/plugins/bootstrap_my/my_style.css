@@ -598,4 +598,13 @@ table.dataTable td {
 
 [class*="sidebar-light-"] .nav-sidebar>.nav-item>.nav-link.active {
     color: #16452A;
+    background: #d0d0d0 !important;
+}
+
+.sidebar {
+    overflow: scroll;
+}
+
+.card_img{
+    text-align: center;
 }

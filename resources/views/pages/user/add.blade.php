@@ -90,20 +90,24 @@
                             </div>
                             <div class="form-group" id="buyerSelectBox" style="display: none;">
                                 <label>Select Buyer Role</label>
-                                <select class="form-control select2" name="buyer_role" data-placeholder="@lang('pleaseSelect')"
+                                <select class="form-control select2" name="buyer_id" data-placeholder="@lang('pleaseSelect')"
                                     style="width: 100%">
                                     <option value="">Select Buyer </option>
-                                    @foreach ($users as $user)
-                                        <option value="{{ $user->buidr_id }}">{{ $user->name }}</option>
+                                    @foreach ($buyers as $buyer)
+                                        <option value="{{ $buyer->id }}">{{ $buyer->name }}</option>
                                     @endforeach
                                 </select>
 
                             </div>
                             <div class="form-group" id="vendorSelectBox" style="display: none;">
                                 <label>Select Vendor Role</label>
-                                <select class="form-control select2" name="vendor_role" data-placeholder="@lang('pleaseSelect')"
+                                <select class="form-control select2" name="vendor_id" data-placeholder="@lang('pleaseSelect')"
                                     style="width: 100%;">
                                     <!-- Add options for vendor roles here -->
+                                    <option value="">Select Vendor </option>
+                                    @foreach ($vendors as $vendor)
+                                        <option value="{{ $vendor->id }}">{{ $vendor->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
