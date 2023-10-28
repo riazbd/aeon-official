@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCriticalPathsTable extends Migration
+class CreateBuyerCriticalPathsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCriticalPathsTable extends Migration
      */
     public function up()
     {
-        Schema::create('critical_paths', function (Blueprint $table) {
+        Schema::create('buyer_critical_paths', function (Blueprint $table) {
             $table->id();
             $table->integer('po_id')->nullable();
             $table->integer('brand_id')->nullable();
@@ -155,6 +155,6 @@ class CreateCriticalPathsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('critical_paths');
+        Schema::dropIfExists('buyer_critical_paths');
     }
 }

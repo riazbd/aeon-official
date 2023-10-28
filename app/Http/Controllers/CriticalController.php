@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Buyer;
 use App\Models\CriticalDetails;
 use App\Models\CriticalPath;
+use App\Models\BuyerCriticalPath;
 use App\Models\Department;
 use App\Models\Manufacturer;
 use App\Models\PurchageOrder;
@@ -807,8 +808,14 @@ class CriticalController extends Controller
         $selectedDate = $request->input('enteredDate');
         $id = $request->input('po_id');
 
+
+
+        // critical path update
+
         $criticalPath = CriticalPath::where('id', $id)->orderBy('id', 'desc')->first();
+        dd($criticalPath);
         $updateData = [];
+
         if ($criticalPath) {
             if ($request->input('type') == "colour_std_print_artwork_sent_to_supplier_actual_date") {
                 $updateData['colour_std_print_artwork_sent_to_supplier_actual_date'] = $selectedDate;
@@ -998,7 +1005,213 @@ class CriticalController extends Controller
             }
 
             $criticalPath->update($updateData);
+
+
+
         }
+
+
+
+        // Buyer critical path update
+
+        $buyer_criticalPath = BuyerCriticalPath::where('id', $id)->orderBy('id', 'desc')->first();
+    dd($buyer_criticalPath);
+        $updateDataForBuyer = [];
+
+        if ($buyer_criticalPath) {
+            if ($request->input('type') == "colour_std_print_artwork_sent_to_supplier_actual_date") {
+                $updateDataForBuyer['colour_std_print_artwork_sent_to_supplier_actual_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "lab_dip_approval_actual_date") {
+                $updateDataForBuyer['lab_dip_approval_actual_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "lab_dip_dispatch_details") {
+                $updateDataForBuyer['lab_dip_dispatch_details'] = $selectedDate;
+            }
+            if ($request->input('type') == "embellishment_s_o_approval_actual_date") {
+                $updateDataForBuyer['embellishment_s_o_approval_actual_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "embellishment_s_o_dispatch_details") {
+                $updateDataForBuyer['embellishment_s_o_dispatch_details'] = $selectedDate;
+            }
+            if ($request->input('type') == "bulk_fabric_knit_down_dispatch_details") {
+                $updateDataForBuyer['bulk_fabric_knit_down_dispatch_details'] = $selectedDate;
+            }
+            if ($request->input('type') == "development_photo_sample_dispatch_details") {
+                $updateDataForBuyer['development_photo_sample_dispatch_details'] = $selectedDate;
+            }
+            if ($request->input('type') == "fit_dispatch") {
+                $updateDataForBuyer['fit_dispatch'] = $selectedDate;
+            }
+            if ($request->input('type') == "size_set_dispatch") {
+                $updateDataForBuyer['size_set_dispatch'] = $selectedDate;
+            }
+            if ($request->input('type') == "pp_dispatch") {
+                $updateDataForBuyer['pp_dispatch'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_ordered_actual_date") {
+                $updateDataForBuyer['fabric_ordered_actual_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "bulk_fabric_knit_down_approval_actual_date") {
+                $updateDataForBuyer['bulk_fabric_knit_down_approval_actual_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "bulk_yarn_fabric_actual_date") {
+                $updateDataForBuyer['bulk_yarn_fabric_actual_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "development_photo_sample_sent_actual_date") {
+                $updateDataForBuyer['development_photo_sample_sent_actual_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "fit_approval_actual") {
+                $updateDataForBuyer['fit_approval_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "size_set_actual") {
+                $updateDataForBuyer['size_set_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "pp_actual") {
+                $updateDataForBuyer['pp_actual'] = $selectedDate;
+            }
+
+            if ($request->input('type') == "care_label_actual") {
+                $updateDataForBuyer['care_label_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "material_inhouse_actual") {
+                $updateDataForBuyer['material_inhouse_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "pp_meeting_actual") {
+                $updateDataForBuyer['pp_meeting_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "cutting_date_actual") {
+                $updateDataForBuyer['cutting_date_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "embellishment_actual") {
+                $updateDataForBuyer['embellishment_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "Sewing_actual") {
+                $updateDataForBuyer['Sewing_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "washing_complete_actual") {
+                $updateDataForBuyer['washing_complete_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "finishing_complete_actual") {
+                $updateDataForBuyer['finishing_complete_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "sewing_inline_inspection_date_actual") {
+                $updateDataForBuyer['sewing_inline_inspection_date_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "finishing_inline_inspection_date_actual") {
+                $updateDataForBuyer['finishing_inline_inspection_date_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "pre_final_date_actual") {
+                $updateDataForBuyer['pre_final_date_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "final_aql_date_actual") {
+                $updateDataForBuyer['final_aql_date_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "production_sample_approval_actual") {
+                $updateDataForBuyer['production_sample_approval_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "shipment_booking_with_acs_actual") {
+                $updateDataForBuyer['shipment_booking_with_acs_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "sa_approval_actual") {
+                $updateDataForBuyer['sa_approval_actual'] = $selectedDate;
+            }
+            if ($request->input('type') == "vendor_comments_date") {
+                $updateDataForBuyer['vendor_comments_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "aeon_comments_date") {
+                $updateDataForBuyer['aeon_comments_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "reason_for_change_affect_shipment") {
+                $updateDataForBuyer['reason_for_change_affect_shipment'] = $selectedDate;
+            }
+            if ($request->input('type') == "payment_receive_date") {
+                $updateDataForBuyer['payment_receive_date'] = $selectedDate;
+            }
+
+
+
+
+            if ($request->input('type') == "care_lavel_date") {
+                $updateDataForBuyer['care_lavel_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_ref") {
+                $updateDataForBuyer['fabric_ref'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_weight") {
+                $updateDataForBuyer['fabric_weight'] = $selectedDate;
+            }
+            if ($request->input('type') == "fabric_mill") {
+                $updateDataForBuyer['fabric_mill'] = $selectedDate;
+            }
+
+
+
+
+
+
+
+            if ($request->input('type') == "revised_ex_factory_date") {
+                $updateDataForBuyer['revised_ex_factory_date'] = $selectedDate;
+                if (!empty($updateDataForBuyer['revised_ex_factory_date'])) {
+                    $updateDataForBuyer['revised_eta_sa_date'] = $this->dateAddCalculate($updateDataForBuyer['revised_ex_factory_date'], 52);
+                }
+            }
+            if ($request->input('type') == "actual_ex_factory_date") {
+                $updateDataForBuyer['actual_ex_factory_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "shipped_units") {
+                $updateDataForBuyer['shipped_units'] = $selectedDate;
+            }
+            if ($request->input('type') == "shipped_units") {
+                $updateDataForBuyer['shipped_units'] = $selectedDate;
+            }
+            if ($request->input('type') == "create_pp_meeting_schedule") {
+                $updateDataForBuyer['create_pp_meeting_schedule'] = $selectedDate;
+            }
+            if ($request->input('type') == "create_inline_inspection_schdule") {
+                $updateDataForBuyer['create_inline_inspection_schdule'] = $selectedDate;
+            }
+            if ($request->input('type') == "pre_final_aql_report_schedule") {
+                $updateDataForBuyer['pre_final_aql_report_schedule'] = $selectedDate;
+            }
+            if ($request->input('type') == "create_aql_schedule") {
+                $updateDataForBuyer['create_aql_schedule'] = $selectedDate;
+            }
+            if ($request->input('type') == "pre_final_aql_report_schedule") {
+                $updateDataForBuyer['pre_final_aql_report_schedule'] = $selectedDate;
+            }
+            if ($request->input('type') == "final_aql_report_upload") {
+                $updateDataForBuyer['final_aql_report_upload'] = $selectedDate;
+            }
+            if ($request->input('type') == "forward_ref") {
+                $updateDataForBuyer['forward_ref'] = $selectedDate;
+            }
+            if ($request->input('type') == "late_delivery_discounts_crp") {
+                $updateDataForBuyer['late_delivery_discounts_crp'] = $selectedDate;
+            }
+            if ($request->input('type') == "invoice_num") {
+                $updateDataForBuyer['invoice_num'] = $selectedDate;
+            }
+            if ($request->input('type') == "invoice_create_date") {
+                $updateDataForBuyer['invoice_create_date'] = $selectedDate;
+            }
+            if ($request->input('type') == "sa_eta_5_days") {
+                $updateDataForBuyer['sa_eta_5_days'] = $selectedDate;
+            }
+            if ($request->input('type') == "production_sample_dispatch") {
+                $updateDataForBuyer['production_sample_dispatch'] = $selectedDate;
+            }
+            if ($request->input('type') == "revised_ex_factory_date") {
+                $updateDataForBuyer['revised_ex_factory_date'] = $selectedDate;
+            }
+
+            $buyer_criticalPath->update($updateDataForBuyer);
+
+
+
+        }
+
         //dd($selectedDate,$id);
         // Perform some logic with $selectedDate
 

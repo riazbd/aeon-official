@@ -191,6 +191,7 @@
                             Payment Information</th>
                     </tr>
                     <tr>
+                        {{-- general information --}}
                         <th>Actions</th>
                         <th>PurchageOrder
                         </th>
@@ -232,7 +233,7 @@
 
 
 
-
+                    {{-- purchase order info --}}
 
                         <th>Lead Times</th>
                         <th>prio order</th>

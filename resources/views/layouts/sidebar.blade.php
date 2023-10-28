@@ -221,6 +221,7 @@
                         class="nav-link  {{ Request::is('critical-path-manage') ? 'active' : '' }}">Critical List</a>
                 </li>
             </ul>
+
         </li>
     </ul>
     {{--    @can('card.main') --}}
