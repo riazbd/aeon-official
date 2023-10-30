@@ -885,7 +885,7 @@
 
 
 
-                            <th>{{ $data->ex_factory_date }}</th>
+                            <th>{{ $data->ex_factory_date_po }}</th>
                             <th>{{ $data->revised_ex_factory_date }}</th>
                             <th>{{ $data->actual_ex_factory_date }}</th>
                             <th>{{ $data->TotalItemsOrdered }}</th>
