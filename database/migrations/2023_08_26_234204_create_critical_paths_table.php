@@ -37,10 +37,12 @@ class CreateCriticalPathsTable extends Migration
             $table->string('fabric_content')->nullable();
             $table->string('fabric_weight')->nullable();
             $table->string('fabric_mill')->nullable();
+
             $table->string('lead_times')->nullable();
             $table->string('treated_as_priority_order')->nullable();
             $table->string('official_po_sent_plan_date')->nullable();
             $table->string('official_po_sent_actual_date')->nullable();
+
             $table->string('colour_std_print_artwork_sent_to_supplier_plan_date')->nullable();
             $table->string('colour_std_print_artwork_sent_to_supplier_actual_date')->nullable();
             $table->string('lab_dip_approval_plan_date')->nullable();
@@ -51,6 +53,7 @@ class CreateCriticalPathsTable extends Migration
             $table->string('embellishment_s_o_approval_actual_date')->nullable();
             $table->string('embellishment_s_o_dispatch_details')->nullable();
             $table->string('embellishment_s_o_image')->nullable();
+
             $table->string('fabric_ordered_plan_date')->nullable();
             $table->string('fabric_ordered_actual_date')->nullable();
             $table->string('bulk_fabric_knit_down_approval_plan_date')->nullable();
@@ -59,6 +62,7 @@ class CreateCriticalPathsTable extends Migration
             $table->string('bulk_fabric_knit_down_image')->nullable();
             $table->string('bulk_yarn_fabric_plan_date')->nullable();
             $table->string('bulk_yarn_fabric_actual_date')->nullable();
+
             $table->string('development_photo_sample_sent_plan_date')->nullable();
             $table->string('development_photo_sample_sent_actual_date')->nullable();
             $table->string('development_photo_sample_dispatch_details')->nullable();
@@ -75,6 +79,7 @@ class CreateCriticalPathsTable extends Migration
             $table->string('pp_actual')->nullable();
             $table->string('pp_dispatch')->nullable();
             $table->string('pp_sample_image')->nullable();
+
             $table->string('care_label_approval')->nullable();
             $table->string('care_label_actual')->nullable();
             $table->string('material_inhouse_plan')->nullable();
@@ -92,9 +97,9 @@ class CreateCriticalPathsTable extends Migration
             $table->text('Sewing_actual')->nullable();
             $table->text('washing_complete_plan')->nullable();
             $table->text('washing_complete_actual')->nullable();
-
             $table->text('finishing_complete_plan')->nullable();
             $table->text('finishing_complete_actual')->nullable();
+
             $table->text('sewing_inline_inspection_date_plan')->nullable();
             $table->text('sewing_inline_inspection_date_actual')->nullable();
             $table->text('create_inline_inspection_schdule')->nullable();
@@ -116,9 +121,9 @@ class CreateCriticalPathsTable extends Migration
             $table->text('production_sample_upload')->nullable();
             $table->text('shipment_booking_with_acs_plan')->nullable();
             $table->text('shipment_booking_with_acs_actual')->nullable();
-
             $table->text('sa_approval_plan')->nullable();
             $table->text('sa_approval_actual')->nullable();
+
             $table->text('ex_factory_date_po')->nullable();
             $table->text('revised_ex_factory_date')->nullable();
             $table->text('actual_ex_factory_date')->nullable();

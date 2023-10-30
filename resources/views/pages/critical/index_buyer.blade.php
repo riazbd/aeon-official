@@ -192,7 +192,6 @@
                     </tr>
                     <tr>
                         {{-- general information --}}
-                        <th>Actions</th>
                         <th>PurchageOrder
                         </th>
                         <th>Brand Name</th>
@@ -390,18 +389,7 @@
 @endphp --}}
                     @foreach ($criticalPath as $data)
                         <tr>
-                            <th>
-                                {{-- {{dd($data->id)}} --}}
-                                <input class="po_id" id="po_id" type="hidden" name="po_id"
-                                    value="{{ $data->c_id }}">
 
-                                <a href="{{ route('critical.edit', $data->po_id) }}"> <i class="fas fa-edit"
-                                        style="color: #073D1C"></i></a>
-
-                                <a style="margin-left:2px;" href="#">
-                                    <i class="fas fa-trash-alt text-danger"></i>
-                                </a>
-                            </th>
                             <th>{{ $data->po_no }}</th>
                             <th>{{ $data->buyerName }}</th>
                             <th>{{ $data->deptName }}</th>
@@ -948,7 +936,6 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Actions</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -1103,20 +1090,18 @@
         // tfootTh.css('padding', '10px');
         $('table tfoot th').each(function(index) {
             console.log(index);
-            if (index != 0) {
-                var theadIndex = index + 11;
-                var title = $('table thead th').eq(theadIndex).text();
-                $(this).html('<input type="text" placeholder="Search ' + title +
-                    '" class="form-control column-search-input" />');
-                // $('.column-search-input').each(function() {
-                //     var placeholder = $(this).attr('placeholder');
-                //     var placeholderLength = placeholder.length;
+            var theadIndex = index + 10;
+            var title = $('table thead th').eq(theadIndex).text();
+            $(this).html('<input type="text" placeholder="Search ' + title +
+                '" class="form-control column-search-input" />');
+            // $('.column-search-input').each(function() {
+            //     var placeholder = $(this).attr('placeholder');
+            //     var placeholderLength = placeholder.length;
 
-                //     // Calculate the minimum width based on placeholder length
-                var maxWidth = $('table thead th').eq(theadIndex).width() + 20;
+            //     // Calculate the minimum width based on placeholder length
+            var maxWidth = $('table thead th').eq(theadIndex).width() + 20;
 
-                $(this).css('max-width', maxWidth);
-            }
+            $(this).css('max-width', maxWidth);
         });
 
 
@@ -1143,13 +1128,14 @@
             searching: true,
 
 
-            "columnDefs": [{
-                    "orderable": false,
-                    "targets": [0, 110, 111, 112, 113, 114, 115, 116, 117, 118]
-                },
+            "columnDefs": [
+                // {
+                //     "orderable": false,
+                //     "targets": [0, 110, 111, 112, 113, 114, 115, 116, 117]
+                // },
                 {
-                    "orderable": false,
-                    "targets": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
+                    "orderable": true,
+                    "targets": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
                         19,
                         20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36,
                         37,
@@ -1161,7 +1147,7 @@
                         91,
                         92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106,
                         107,
-                        108, 109
+                        108, 109, 110, 111, 112, 113, 114, 115, 116, 117
                     ]
                 } // Specify the column indices (0-based) that should be non-orderable
             ],
@@ -3052,6 +3038,25 @@
                     }
                 });
             }
+        });
+
+
+        var inputElements = document.querySelectorAll('input');
+        var footerInputElements = document.querySelectorAll('tfoot input');
+        var selectElements = document.querySelectorAll('select');
+
+        // Loop through input elements and set them as disabled
+        inputElements.forEach(function(input) {
+            input.disabled = true;
+        });
+
+        footerInputElements.forEach(function(input) {
+            input.disabled = false;
+        });
+
+        // Loop through select elements and set them as disabled
+        selectElements.forEach(function(select) {
+            select.disabled = true;
         });
 
 

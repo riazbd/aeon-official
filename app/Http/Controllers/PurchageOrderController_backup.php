@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Buyer;
 use App\Models\CriticalDetails;
 use App\Models\CriticalPath;
-use App\Models\BuyerCriticalPath;
 use App\Models\OrderItem;
 use App\Models\PurchageOrder;
 use App\Models\Vendor;
@@ -148,44 +147,36 @@ class PurchageOrderController extends Controller
         }
 
 
-        // create critical path
 
         $poFind = PurchageOrder::find($purchaseOrder->id);
         if ($poFind) {
             $crtical = new CriticalPath();
             $crtical->po_id = $purchaseOrder->id;
-
             $crtical->ex_factory_date_po = $purchaseOrder->ex_factory_date;
             // for buyer
-            // $crtical->ex_factory_date_po_buyer = $purchaseOrder->earliest_buyer_date;
-
-
+            $crtical->ex_factory_date_po_buyer = $purchaseOrder->earliest_buyer_date;
             if (!empty($purchaseOrder->ex_factory_date)) {
                 $crtical->final_aql_date_plan = $this->dateCalculate($purchaseOrder->ex_factory_date, 7);
             } else {
                 $crtical->final_aql_date_plan = "";
             }
             // for buyer
-            // if (!empty($purchaseOrder->earliest_buyer_date)) {
-            //     $crtical->final_aql_date_plan_buyer = $this->dateCalculate($purchaseOrder->earliest_buyer_date, 7);
-            // } else {
-            //     $crtical->final_aql_date_plan_buyer = "";
-            // }
-
+            if (!empty($purchaseOrder->earliest_buyer_date)) {
+                $crtical->final_aql_date_plan_buyer = $this->dateCalculate($purchaseOrder->earliest_buyer_date, 7);
+            } else {
+                $crtical->final_aql_date_plan_buyer = "";
+            }
             if (!empty($crtical->final_aql_date_plan)) {
                 $crtical->finishing_complete_plan = $this->dateCalculate($crtical->final_aql_date_plan, 2);
             } else {
                 $crtical->finishing_complete_plan = "";
             }
             //for buyer
-            // if (!empty($crtical->final_aql_date_plan_buyer)) {
-            //     $crtical->finishing_complete_plan_buyer = $this->dateCalculate($crtical->final_aql_date_plan_buyer, 2);
-            // } else {
-            //     $crtical->finishing_complete_plan_buyer = "";
-            // }
-
-
-
+            if (!empty($crtical->final_aql_date_plan_buyer)) {
+                $crtical->finishing_complete_plan_buyer = $this->dateCalculate($crtical->final_aql_date_plan_buyer, 2);
+            } else {
+                $crtical->finishing_complete_plan_buyer = "";
+            }
             if (!empty($crtical->finishing_complete_plan)) {
                 $crtical->washing_complete_plan = $this->dateCalculate($crtical->finishing_complete_plan, 5);
             } else {
@@ -361,11 +352,6 @@ class PurchageOrderController extends Controller
 
             $crtical->save();
         }
-
-
-
-
-
         if ($request->input('download_pdf') == 'yes') {
             if ($request->input('select_buyer') == 1) {
                 $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
