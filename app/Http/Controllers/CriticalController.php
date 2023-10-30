@@ -13,8 +13,10 @@ use App\Models\Vendor;
 use CreateCriticalDetailsTable;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 
 use DateTime;
+use Carbon\Carbon;
 
 class CriticalController extends Controller
 {
@@ -25,6 +27,7 @@ class CriticalController extends Controller
      */
     public function index()
     {
+
         $buyerList = Buyer::orderBy('id', 'desc')->get();
         $departmentList = Department::orderBy('id', 'desc')->get();
         $vendor = Vendor::orderBy('id', 'desc')->get();
@@ -75,9 +78,111 @@ class CriticalController extends Controller
         ->groupBy('c_id') // Group by the alias c_id
         ->get();
 
-        // dd($criticalPath);
-        return view('pages.critical.index', compact( 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
-        //
+        if(Auth::user()->hasRole('buyer')){
+            //dd($criticalPath[0]->earliest_buyer_date);
+            //dd($criticalPath);
+            foreach( $criticalPath as $data){
+
+                // if (condition) {
+                //     # code...
+                // }
+
+                $endDate = Carbon::parse($data->ex_factory_date_po );
+                $startDate = Carbon::parse($data->earliest_buyer_date );
+
+                $interval = $endDate->diff($startDate);
+                if (!empty($data->ex_factory_date_po)) {
+                    $data->ex_factory_date_po = $data->earliest_buyer_date;
+                }
+                if (!empty($data->final_aql_date_plan)) {
+                    $data->final_aql_date_plan = Carbon::parse($data->final_aql_date_plan)->sub($interval)->toDateString();
+                }
+
+                if (!empty($data->finishing_complete_plan)) {
+                    $data->finishing_complete_plan = Carbon::parse($data->finishing_complete_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->washing_complete_plan)) {
+                    $data->washing_complete_plan = Carbon::parse($data->washing_complete_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->Sewing_plan)) {
+                    $data->Sewing_plan = Carbon::parse($data->Sewing_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->embellishment_plan)) {
+                    $data->embellishment_plan = Carbon::parse($data->embellishment_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->cutting_date_plan)) {
+                    $data->cutting_date_plan = Carbon::parse($data->cutting_date_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->bulk_yarn_fabric_plan_date)) {
+                    $data->bulk_yarn_fabric_plan_date = Carbon::parse($data->bulk_yarn_fabric_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->fabric_ordered_plan_date)) {
+                    $data->fabric_ordered_plan_date = Carbon::parse($data->fabric_ordered_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->official_po_sent_plan_date)) {
+                    $data->official_po_sent_plan_date = Carbon::parse($data->official_po_sent_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->pp_meeting_plan)) {
+                    $data->pp_meeting_plan = Carbon::parse($data->pp_meeting_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->pp_approval)) {
+                    $data->pp_approval = Carbon::parse($data->pp_approval)->sub($interval)->toDateString();
+                }
+                if (!empty($data->embellishment_s_o_approval_plan_date)) {
+                    $data->embellishment_s_o_approval_plan_date = Carbon::parse($data->embellishment_s_o_approval_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->colour_std_print_artwork_sent_to_supplier_plan_date)) {
+                    $data->colour_std_print_artwork_sent_to_supplier_plan_date = Carbon::parse($data->colour_std_print_artwork_sent_to_supplier_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->lab_dip_approval_plan_date)) {
+                    $data->lab_dip_approval_plan_date = Carbon::parse($data->lab_dip_approval_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->size_set_approval)) {
+                    $data->size_set_approval = Carbon::parse($data->size_set_approval)->sub($interval)->toDateString();
+                }
+                if (!empty($data->fit_approval_plan)) {
+                    $data->fit_approval_plan = Carbon::parse($data->fit_approval_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->development_photo_sample_sent_plan_date)) {
+                    $data->development_photo_sample_sent_plan_date = Carbon::parse($data->development_photo_sample_sent_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->material_inhouse_plan)) {
+                    $data->material_inhouse_plan = Carbon::parse($data->material_inhouse_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->finishing_inline_inspection_date_plan)) {
+                    $data->finishing_inline_inspection_date_plan = Carbon::parse($data->finishing_inline_inspection_date_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->sewing_inline_inspection_date_plan)) {
+                    $data->sewing_inline_inspection_date_plan = Carbon::parse($data->sewing_inline_inspection_date_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->pre_final_date_plan)) {
+                    $data->pre_final_date_plan = Carbon::parse($data->pre_final_date_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->sa_approval_plan)) {
+                    $data->sa_approval_plan = Carbon::parse($data->sa_approval_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->production_sample_approval_plan)) {
+                    $data->production_sample_approval_plan = Carbon::parse($data->production_sample_approval_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->shipment_booking_with_acs_plan)) {
+                    $data->shipment_booking_with_acs_plan = Carbon::parse($data->shipment_booking_with_acs_plan)->sub($interval)->toDateString();
+                }
+
+
+                // dd($data->final_aql_date_plan);
+
+                //$diference = $data->earliest_buyer_date - $data->ex_factory_date_po;
+
+            }
+
+            return view('pages.critical.index_buyer', compact( 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
+
+        }else{
+            return view('pages.critical.index', compact( 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
+
+        }
+
+
     }
 
     /**
@@ -813,7 +918,6 @@ class CriticalController extends Controller
         // critical path update
 
         $criticalPath = CriticalPath::where('id', $id)->orderBy('id', 'desc')->first();
-        dd($criticalPath);
         $updateData = [];
 
         if ($criticalPath) {
@@ -1011,206 +1115,6 @@ class CriticalController extends Controller
         }
 
 
-
-        // Buyer critical path update
-
-        $buyer_criticalPath = BuyerCriticalPath::where('id', $id)->orderBy('id', 'desc')->first();
-    dd($buyer_criticalPath);
-        $updateDataForBuyer = [];
-
-        if ($buyer_criticalPath) {
-            if ($request->input('type') == "colour_std_print_artwork_sent_to_supplier_actual_date") {
-                $updateDataForBuyer['colour_std_print_artwork_sent_to_supplier_actual_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "lab_dip_approval_actual_date") {
-                $updateDataForBuyer['lab_dip_approval_actual_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "lab_dip_dispatch_details") {
-                $updateDataForBuyer['lab_dip_dispatch_details'] = $selectedDate;
-            }
-            if ($request->input('type') == "embellishment_s_o_approval_actual_date") {
-                $updateDataForBuyer['embellishment_s_o_approval_actual_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "embellishment_s_o_dispatch_details") {
-                $updateDataForBuyer['embellishment_s_o_dispatch_details'] = $selectedDate;
-            }
-            if ($request->input('type') == "bulk_fabric_knit_down_dispatch_details") {
-                $updateDataForBuyer['bulk_fabric_knit_down_dispatch_details'] = $selectedDate;
-            }
-            if ($request->input('type') == "development_photo_sample_dispatch_details") {
-                $updateDataForBuyer['development_photo_sample_dispatch_details'] = $selectedDate;
-            }
-            if ($request->input('type') == "fit_dispatch") {
-                $updateDataForBuyer['fit_dispatch'] = $selectedDate;
-            }
-            if ($request->input('type') == "size_set_dispatch") {
-                $updateDataForBuyer['size_set_dispatch'] = $selectedDate;
-            }
-            if ($request->input('type') == "pp_dispatch") {
-                $updateDataForBuyer['pp_dispatch'] = $selectedDate;
-            }
-            if ($request->input('type') == "fabric_ordered_actual_date") {
-                $updateDataForBuyer['fabric_ordered_actual_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "bulk_fabric_knit_down_approval_actual_date") {
-                $updateDataForBuyer['bulk_fabric_knit_down_approval_actual_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "bulk_yarn_fabric_actual_date") {
-                $updateDataForBuyer['bulk_yarn_fabric_actual_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "development_photo_sample_sent_actual_date") {
-                $updateDataForBuyer['development_photo_sample_sent_actual_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "fit_approval_actual") {
-                $updateDataForBuyer['fit_approval_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "size_set_actual") {
-                $updateDataForBuyer['size_set_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "pp_actual") {
-                $updateDataForBuyer['pp_actual'] = $selectedDate;
-            }
-
-            if ($request->input('type') == "care_label_actual") {
-                $updateDataForBuyer['care_label_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "material_inhouse_actual") {
-                $updateDataForBuyer['material_inhouse_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "pp_meeting_actual") {
-                $updateDataForBuyer['pp_meeting_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "cutting_date_actual") {
-                $updateDataForBuyer['cutting_date_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "embellishment_actual") {
-                $updateDataForBuyer['embellishment_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "Sewing_actual") {
-                $updateDataForBuyer['Sewing_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "washing_complete_actual") {
-                $updateDataForBuyer['washing_complete_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "finishing_complete_actual") {
-                $updateDataForBuyer['finishing_complete_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "sewing_inline_inspection_date_actual") {
-                $updateDataForBuyer['sewing_inline_inspection_date_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "finishing_inline_inspection_date_actual") {
-                $updateDataForBuyer['finishing_inline_inspection_date_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "pre_final_date_actual") {
-                $updateDataForBuyer['pre_final_date_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "final_aql_date_actual") {
-                $updateDataForBuyer['final_aql_date_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "production_sample_approval_actual") {
-                $updateDataForBuyer['production_sample_approval_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "shipment_booking_with_acs_actual") {
-                $updateDataForBuyer['shipment_booking_with_acs_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "sa_approval_actual") {
-                $updateDataForBuyer['sa_approval_actual'] = $selectedDate;
-            }
-            if ($request->input('type') == "vendor_comments_date") {
-                $updateDataForBuyer['vendor_comments_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "aeon_comments_date") {
-                $updateDataForBuyer['aeon_comments_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "reason_for_change_affect_shipment") {
-                $updateDataForBuyer['reason_for_change_affect_shipment'] = $selectedDate;
-            }
-            if ($request->input('type') == "payment_receive_date") {
-                $updateDataForBuyer['payment_receive_date'] = $selectedDate;
-            }
-
-
-
-
-            if ($request->input('type') == "care_lavel_date") {
-                $updateDataForBuyer['care_lavel_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "fabric_ref") {
-                $updateDataForBuyer['fabric_ref'] = $selectedDate;
-            }
-            if ($request->input('type') == "fabric_weight") {
-                $updateDataForBuyer['fabric_weight'] = $selectedDate;
-            }
-            if ($request->input('type') == "fabric_mill") {
-                $updateDataForBuyer['fabric_mill'] = $selectedDate;
-            }
-
-
-
-
-
-
-
-            if ($request->input('type') == "revised_ex_factory_date") {
-                $updateDataForBuyer['revised_ex_factory_date'] = $selectedDate;
-                if (!empty($updateDataForBuyer['revised_ex_factory_date'])) {
-                    $updateDataForBuyer['revised_eta_sa_date'] = $this->dateAddCalculate($updateDataForBuyer['revised_ex_factory_date'], 52);
-                }
-            }
-            if ($request->input('type') == "actual_ex_factory_date") {
-                $updateDataForBuyer['actual_ex_factory_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "shipped_units") {
-                $updateDataForBuyer['shipped_units'] = $selectedDate;
-            }
-            if ($request->input('type') == "shipped_units") {
-                $updateDataForBuyer['shipped_units'] = $selectedDate;
-            }
-            if ($request->input('type') == "create_pp_meeting_schedule") {
-                $updateDataForBuyer['create_pp_meeting_schedule'] = $selectedDate;
-            }
-            if ($request->input('type') == "create_inline_inspection_schdule") {
-                $updateDataForBuyer['create_inline_inspection_schdule'] = $selectedDate;
-            }
-            if ($request->input('type') == "pre_final_aql_report_schedule") {
-                $updateDataForBuyer['pre_final_aql_report_schedule'] = $selectedDate;
-            }
-            if ($request->input('type') == "create_aql_schedule") {
-                $updateDataForBuyer['create_aql_schedule'] = $selectedDate;
-            }
-            if ($request->input('type') == "pre_final_aql_report_schedule") {
-                $updateDataForBuyer['pre_final_aql_report_schedule'] = $selectedDate;
-            }
-            if ($request->input('type') == "final_aql_report_upload") {
-                $updateDataForBuyer['final_aql_report_upload'] = $selectedDate;
-            }
-            if ($request->input('type') == "forward_ref") {
-                $updateDataForBuyer['forward_ref'] = $selectedDate;
-            }
-            if ($request->input('type') == "late_delivery_discounts_crp") {
-                $updateDataForBuyer['late_delivery_discounts_crp'] = $selectedDate;
-            }
-            if ($request->input('type') == "invoice_num") {
-                $updateDataForBuyer['invoice_num'] = $selectedDate;
-            }
-            if ($request->input('type') == "invoice_create_date") {
-                $updateDataForBuyer['invoice_create_date'] = $selectedDate;
-            }
-            if ($request->input('type') == "sa_eta_5_days") {
-                $updateDataForBuyer['sa_eta_5_days'] = $selectedDate;
-            }
-            if ($request->input('type') == "production_sample_dispatch") {
-                $updateDataForBuyer['production_sample_dispatch'] = $selectedDate;
-            }
-            if ($request->input('type') == "revised_ex_factory_date") {
-                $updateDataForBuyer['revised_ex_factory_date'] = $selectedDate;
-            }
-
-            $buyer_criticalPath->update($updateDataForBuyer);
-
-
-
-        }
 
         //dd($selectedDate,$id);
         // Perform some logic with $selectedDate
