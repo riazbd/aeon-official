@@ -64,7 +64,7 @@
             </ul> --}}
 
             <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto mr-3">
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false" class="nav-link dropdown-toggle"><i class="fas fa-user"></i>
@@ -76,7 +76,7 @@
                         style="left: 0px; right: inherit;">
                         <li>
                             @if (auth()->user())
-                                <a href="{{ route('userEdit', auth()->user()->id) }}" class="dropdown-item">
+                                <a href="{{ route('userEdit', auth()->user()->id) }}" class="nav-link">
                                     <i class="fas fa-cogs"></i> @lang('global.settings')
                                 </a>
                             @endif

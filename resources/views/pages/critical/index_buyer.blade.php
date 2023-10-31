@@ -129,7 +129,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-
+    
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -168,7 +168,7 @@
                         <th style=" background-color: rgba(0, 0, 0, 0.05);">1000</th>
                     </tr> --}}
                     <tr>
-                        <th style=" background-color: rgba(0, 0, 0, 0.05); font-style:italic;" colspan="22">
+                        <th style=" background-color: rgba(0, 0, 0, 0.05); font-style:italic;" colspan="21">
                             General Information</th>
                         <th style="font-style:italic; " colspan="4">Purchase Order
                             information</th>
@@ -232,7 +232,7 @@
 
 
 
-                    {{-- purchase order info --}}
+                        {{-- purchase order info --}}
 
                         <th>Lead Times</th>
                         <th>prio order</th>
@@ -384,7 +384,7 @@
                     </tr>
                 </thead>
                 <tbody id="">
-{{-- @php
+                    {{-- @php
     dd($criticalPath);
 @endphp --}}
                     @foreach ($criticalPath as $data)
@@ -847,7 +847,7 @@
                             <th>{{ $data->sa_approval_plan }}</th>
 
 
-                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
+                            {{-- <th style="background-color: <?php// echo empty($data->sa_approval_actual) ? 'red' : ''; ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"><input style="color: <?php// echo !empty($data->sa_approval_actual) && $data->sa_approval_actual !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->sa_approval_plan, $data->sa_approval_actual) : ($data->sa_approval_actual == 'NA' ? 'RED' : ''); ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?> ?>"
                                     type="text" id="sa_approval_actual" class="sa_approval_actual"
                                     name="sa_approval_actual" value="{{ $data->sa_approval_actual }}" /></th> --}}
 
@@ -1066,7 +1066,7 @@
 
     <!-- <div class="container"> -->
     <?php
-
+    
     ?>
     <!-- </div> -->
 @endsection
@@ -1084,13 +1084,53 @@
 
         // Get the width of the thead th
         var theadThWidth = theadTh.width() + 20;
+        var inputElements = document.querySelectorAll('input');
+
+        var selectElements = document.querySelectorAll('select');
+
+        const dateInputs = document.querySelectorAll('input[type="date"]');
+
+        // dateInput.addEventListener('focus', function() {
+        //     this.style.color = 'black';
+        // });
+        dateInputs.forEach(dateInput => {
+            if (!dateInput.value) {
+                dateInput.style.color = 'transparent';
+                dateInput.style.border = 'none';
+                dateInput.style.boxShadow = 'none';
+                const parentElement = dateInput.parentElement;
+                if (parentElement) {
+                    dateInput.style.backgroundColor = parentElement.style.backgroundColor;
+                }
+            }
+
+
+        });
+
+        // Loop through input elements and set them as disabled
+        inputElements.forEach(function(input) {
+            input.disabled = true;
+            input.style.border = 'none';
+            input.style.boxShadow = 'none';
+            const parentElement = input.parentElement;
+            if (parentElement) {
+                input.style.backgroundColor = window.getComputedStyle(parentElement).backgroundColor;
+            }
+        });
+
+
+
+        // Loop through select elements and set them as disabled
+        selectElements.forEach(function(select) {
+            select.disabled = true;
+        });
 
         // Set the width of the tfoot th to match the thead th
         tfootTh.css('min-width', theadThWidth);
         // tfootTh.css('padding', '10px');
         $('table tfoot th').each(function(index) {
             console.log(index);
-            var theadIndex = index + 10;
+            var theadIndex = index + 11;
             var title = $('table thead th').eq(theadIndex).text();
             $(this).html('<input type="text" placeholder="Search ' + title +
                 '" class="form-control column-search-input" />');
@@ -1103,6 +1143,14 @@
 
             $(this).css('max-width', maxWidth);
         });
+
+        var footerInputElements = document.querySelectorAll('tfoot input');
+
+        footerInputElements.forEach(function(input) {
+            input.disabled = false;
+        });
+
+
 
 
 
@@ -3041,23 +3089,7 @@
         });
 
 
-        var inputElements = document.querySelectorAll('input');
-        var footerInputElements = document.querySelectorAll('tfoot input');
-        var selectElements = document.querySelectorAll('select');
 
-        // Loop through input elements and set them as disabled
-        inputElements.forEach(function(input) {
-            input.disabled = true;
-        });
-
-        footerInputElements.forEach(function(input) {
-            input.disabled = false;
-        });
-
-        // Loop through select elements and set them as disabled
-        selectElements.forEach(function(select) {
-            select.disabled = true;
-        });
 
 
 

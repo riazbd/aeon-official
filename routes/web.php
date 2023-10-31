@@ -152,11 +152,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('vendor_certificate-manage/{id}', [VendorContactController::class, 'update'])->name('update-vendor_certificate');
     //Crtical Path
     Route::get('critical-path-manage', [CriticalController::class, 'index'])->name('critical-path');
+    Route::get('buyer-critical-path-manage', [CriticalController::class, 'buyerindex'])->name('buyer-critical-path');
     Route::get('add-critical-path', [CriticalController::class, 'create'])->name('add-critical-path');
-    Route::get('/critical/edit/{id}',[CriticalController::class, 'edit'])->name('critical.edit');
-    Route::post('/critical-update/{id}', [CriticalController::class,'update'])->name('criticalUpdate');
-    Route::post('/process-date', [CriticalController::class,'processDate'])->name('process.date');
-
+    Route::get('/critical/edit/{id}', [CriticalController::class, 'edit'])->name('critical.edit');
+    Route::post('/critical-update/{id}', [CriticalController::class, 'update'])->name('criticalUpdate');
+    Route::post('/process-date', [CriticalController::class, 'processDate'])->name('process.date');
 });
 
 // Change language session condition

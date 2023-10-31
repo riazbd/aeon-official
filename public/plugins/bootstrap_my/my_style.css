@@ -618,3 +618,17 @@ table.dataTable thead > tr > th.sorting::after, table.dataTable thead > tr > th.
     bottom: 50% !important;
     content: "" !important;
 }
+
+.nav-item a {
+    font-size: 14px !important;
+}
+
+.row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+table.dataTable tr.odd td.sorting_1,
+table.dataTable tr.even td.sorting_1 {
+    background-color: transparent !important;
+}

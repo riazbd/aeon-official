@@ -53,42 +53,93 @@ class CriticalController extends Controller
         //         DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
         //     )
         //     ->get();
-        $criticalPath = DB::table('critical_paths')
-        ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
-        ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
-        ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
-        ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
-        ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
-        ->select(
-            'critical_paths.*',
-            'critical_paths.id as c_id',
-            DB::raw('MAX(manufacturers.name) as manufatureName'),
-            'purchage_orders.*',
-            'purchage_orders.id as p_id',
-            DB::raw('MAX(purchage_orders.fabric_content) as aFabriccontent'),
-            DB::raw('MAX(critical_paths.colour) as aColor'),
-            DB::raw('MAX(purchage_orders.care_lavel_date) as careDate'),
-            DB::raw('MAX(critical_paths.style_no) as aStyleNo'),
-            DB::raw('MAX(departments.name) as deptName'),
-            DB::raw('MAX(vendors.name) as vendorName'),
-            DB::raw('MAX(buyers.name) as buyerName')
-        )
-        ->addSelect(DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id = purchage_orders.id) as TotalItemsOrdered'))
-        ->orderBy('c_id', 'desc') // Use the alias c_id
-        ->groupBy('c_id') // Group by the alias c_id
-        ->get();
+        if (Auth::user()->buyer_id != null) {
+            $criticalPath = DB::table('critical_paths')
+                ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+                ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+                ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+                ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+                ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+                ->select(
+                    'critical_paths.*',
+                    'critical_paths.id as c_id',
+                    DB::raw('(SELECT MAX(name) FROM manufacturers WHERE vendor_id = purchage_orders.vendor_id) as manufatureName'),
+                    'purchage_orders.*',
+                    'purchage_orders.id as p_id',
+                    DB::raw('(SELECT MAX(fabric_content) FROM purchage_orders WHERE id = purchage_orders.id) as aFabriccontent'),
+                    DB::raw('(SELECT MAX(colour) FROM critical_paths WHERE po_id = purchage_orders.id) as aColor'),
+                    DB::raw('(SELECT MAX(care_lavel_date) FROM purchage_orders WHERE id = purchage_orders.id) as careDate'),
+                    DB::raw('(SELECT MAX(style_no) FROM critical_paths WHERE po_id = purchage_orders.id) as aStyleNo'),
+                    DB::raw('(SELECT MAX(name) FROM departments WHERE id = purchage_orders.department_id) as deptName'),
+                    DB::raw('(SELECT MAX(name) FROM vendors WHERE id = purchage_orders.vendor_id) as vendorName'),
+                    DB::raw('(SELECT MAX(name) FROM buyers WHERE id = purchage_orders.buyer_id) as buyerName'),
+                    DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id = purchage_orders.id) as TotalItemsOrdered')
+                )
+                ->where('purchage_orders.buyer_id', Auth::user()->buyer_id) // Add the condition to filter by buyer_id
+                ->orderBy('c_id', 'desc')
+                ->get();
+        } elseif (Auth::user()->vendor_id != null) {
+            $criticalPath = DB::table('critical_paths')
+                ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+                ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+                ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+                ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+                ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+                ->select(
+                    'critical_paths.*',
+                    'critical_paths.id as c_id',
+                    DB::raw('(SELECT MAX(name) FROM manufacturers WHERE vendor_id = purchage_orders.vendor_id) as manufatureName'),
+                    'purchage_orders.*',
+                    'purchage_orders.id as p_id',
+                    DB::raw('(SELECT MAX(fabric_content) FROM purchage_orders WHERE id = purchage_orders.id) as aFabriccontent'),
+                    DB::raw('(SELECT MAX(colour) FROM critical_paths WHERE po_id = purchage_orders.id) as aColor'),
+                    DB::raw('(SELECT MAX(care_lavel_date) FROM purchage_orders WHERE id = purchage_orders.id) as careDate'),
+                    DB::raw('(SELECT MAX(style_no) FROM critical_paths WHERE po_id = purchage_orders.id) as aStyleNo'),
+                    DB::raw('(SELECT MAX(name) FROM departments WHERE id = purchage_orders.department_id) as deptName'),
+                    DB::raw('(SELECT MAX(name) FROM vendors WHERE id = purchage_orders.vendor_id) as vendorName'),
+                    DB::raw('(SELECT MAX(name) FROM buyers WHERE id = purchage_orders.buyer_id) as buyerName'),
+                    DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id = purchage_orders.id) as TotalItemsOrdered')
+                )
+                ->where('purchage_orders.vendor_id', Auth::user()->buyer_id) // Add the condition to filter by buyer_id
+                ->orderBy('c_id', 'desc')
+                ->get();
+        } else {
+            $criticalPath = DB::table('critical_paths')
+                ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+                ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+                ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+                ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+                ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+                ->select(
+                    'critical_paths.*',
+                    'critical_paths.id as c_id',
+                    DB::raw('(SELECT MAX(name) FROM manufacturers WHERE vendor_id = purchage_orders.vendor_id) as manufatureName'),
+                    'purchage_orders.*',
+                    'purchage_orders.id as p_id',
+                    DB::raw('(SELECT MAX(fabric_content) FROM purchage_orders WHERE id = purchage_orders.id) as aFabriccontent'),
+                    DB::raw('(SELECT MAX(colour) FROM critical_paths WHERE po_id = purchage_orders.id) as aColor'),
+                    DB::raw('(SELECT MAX(care_lavel_date) FROM purchage_orders WHERE id = purchage_orders.id) as careDate'),
+                    DB::raw('(SELECT MAX(style_no) FROM critical_paths WHERE po_id = purchage_orders.id) as aStyleNo'),
+                    DB::raw('(SELECT MAX(name) FROM departments WHERE id = purchage_orders.department_id) as deptName'),
+                    DB::raw('(SELECT MAX(name) FROM vendors WHERE id = purchage_orders.vendor_id) as vendorName'),
+                    DB::raw('(SELECT MAX(name) FROM buyers WHERE id = purchage_orders.buyer_id) as buyerName'),
+                    DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id = purchage_orders.id) as TotalItemsOrdered')
+                )
+                ->orderBy('c_id', 'desc')
+                ->get();
+        }
 
-        if(Auth::user()->hasRole('buyer')){
+        if (Auth::user()->hasRole('buyer')) {
             //dd($criticalPath[0]->earliest_buyer_date);
             //dd($criticalPath);
-            foreach( $criticalPath as $data){
+            foreach ($criticalPath as $data) {
 
                 // if (condition) {
                 //     # code...
                 // }
 
-                $endDate = Carbon::parse($data->ex_factory_date_po );
-                $startDate = Carbon::parse($data->earliest_buyer_date );
+                $endDate = Carbon::parse($data->ex_factory_date_po);
+                $startDate = Carbon::parse($data->earliest_buyer_date);
 
                 $interval = $endDate->diff($startDate);
                 if (!empty($data->ex_factory_date_po)) {
@@ -175,14 +226,218 @@ class CriticalController extends Controller
 
             }
 
-            return view('pages.critical.index_buyer', compact( 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
+            return view('pages.critical.index_buyer', compact('buyerList', 'departmentList', 'vendor', 'criticalPath'));
+        } else {
+            return view('pages.critical.index', compact('buyerList', 'departmentList', 'vendor', 'criticalPath'));
+        }
+    }
 
-        }else{
-            return view('pages.critical.index', compact( 'buyerList', 'departmentList', 'vendor', 'criticalPath'));
+    public function buyerindex()
+    {
+        $buyerList = Buyer::orderBy('id', 'desc')->get();
+        $departmentList = Department::orderBy('id', 'desc')->get();
+        $vendor = Vendor::orderBy('id', 'desc')->get();
+        // $criticalPath = CriticalPath::orderBy('critical_paths.id', 'desc')
+        //     ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+        //     ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+        //     ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+        //     ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+        //     ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+        //     ->select(
+        //         '*',
+        //         'critical_paths.id as c_id',
+        //         'manufacturers.name as manufatureName',
+        //         'purchage_orders.*',
+        //         'purchage_orders.id as p_id',
+        //         'purchage_orders.fabric_content as aFabriccontent',
+        //         'critical_paths.colour as aColor',
+        //         'purchage_orders.care_lavel_date as careDate',
+        //         'critical_paths.style_no as aStyleNo',
+        //         'departments.name as deptName',
+        //         'vendors.name as vendorName',
+        //         'buyers.name as buyerName',
+        //         DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id=critical_paths.po_id) as TotalItemsOrdered')
+        //     )
+        //     ->get();
 
+
+        if (Auth::user()->buyer_id != null) {
+            $criticalPath = DB::table('critical_paths')
+                ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+                ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+                ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+                ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+                ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+                ->select(
+                    'critical_paths.*',
+                    'critical_paths.id as c_id',
+                    DB::raw('(SELECT MAX(name) FROM manufacturers WHERE vendor_id = purchage_orders.vendor_id) as manufatureName'),
+                    'purchage_orders.*',
+                    'purchage_orders.id as p_id',
+                    DB::raw('(SELECT MAX(fabric_content) FROM purchage_orders WHERE id = purchage_orders.id) as aFabriccontent'),
+                    DB::raw('(SELECT MAX(colour) FROM critical_paths WHERE po_id = purchage_orders.id) as aColor'),
+                    DB::raw('(SELECT MAX(care_lavel_date) FROM purchage_orders WHERE id = purchage_orders.id) as careDate'),
+                    DB::raw('(SELECT MAX(style_no) FROM critical_paths WHERE po_id = purchage_orders.id) as aStyleNo'),
+                    DB::raw('(SELECT MAX(name) FROM departments WHERE id = purchage_orders.department_id) as deptName'),
+                    DB::raw('(SELECT MAX(name) FROM vendors WHERE id = purchage_orders.vendor_id) as vendorName'),
+                    DB::raw('(SELECT MAX(name) FROM buyers WHERE id = purchage_orders.buyer_id) as buyerName'),
+                    DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id = purchage_orders.id) as TotalItemsOrdered')
+                )
+                ->where('purchage_orders.buyer_id', Auth::user()->buyer_id) // Add the condition to filter by buyer_id
+                ->orderBy('c_id', 'desc')
+                ->get();
+        } elseif (Auth::user()->vendor_id != null) {
+            $criticalPath = DB::table('critical_paths')
+                ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+                ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+                ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+                ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+                ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+                ->select(
+                    'critical_paths.*',
+                    'critical_paths.id as c_id',
+                    DB::raw('(SELECT MAX(name) FROM manufacturers WHERE vendor_id = purchage_orders.vendor_id) as manufatureName'),
+                    'purchage_orders.*',
+                    'purchage_orders.id as p_id',
+                    DB::raw('(SELECT MAX(fabric_content) FROM purchage_orders WHERE id = purchage_orders.id) as aFabriccontent'),
+                    DB::raw('(SELECT MAX(colour) FROM critical_paths WHERE po_id = purchage_orders.id) as aColor'),
+                    DB::raw('(SELECT MAX(care_lavel_date) FROM purchage_orders WHERE id = purchage_orders.id) as careDate'),
+                    DB::raw('(SELECT MAX(style_no) FROM critical_paths WHERE po_id = purchage_orders.id) as aStyleNo'),
+                    DB::raw('(SELECT MAX(name) FROM departments WHERE id = purchage_orders.department_id) as deptName'),
+                    DB::raw('(SELECT MAX(name) FROM vendors WHERE id = purchage_orders.vendor_id) as vendorName'),
+                    DB::raw('(SELECT MAX(name) FROM buyers WHERE id = purchage_orders.buyer_id) as buyerName'),
+                    DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id = purchage_orders.id) as TotalItemsOrdered')
+                )
+                ->where('purchage_orders.vendor_id', Auth::user()->buyer_id) // Add the condition to filter by buyer_id
+                ->orderBy('c_id', 'desc')
+                ->get();
+        } else {
+            $criticalPath = DB::table('critical_paths')
+                ->join('purchage_orders', 'purchage_orders.id', '=', 'critical_paths.po_id')
+                ->join('departments', 'departments.id', '=', 'purchage_orders.department_id')
+                ->join('buyers', 'buyers.id', '=', 'purchage_orders.buyer_id')
+                ->join('vendors', 'vendors.id', '=', 'purchage_orders.vendor_id')
+                ->join('manufacturers', 'purchage_orders.vendor_id', '=', 'manufacturers.vendor_id')
+                ->select(
+                    'critical_paths.*',
+                    'critical_paths.id as c_id',
+                    DB::raw('(SELECT MAX(name) FROM manufacturers WHERE vendor_id = purchage_orders.vendor_id) as manufatureName'),
+                    'purchage_orders.*',
+                    'purchage_orders.id as p_id',
+                    DB::raw('(SELECT MAX(fabric_content) FROM purchage_orders WHERE id = purchage_orders.id) as aFabriccontent'),
+                    DB::raw('(SELECT MAX(colour) FROM critical_paths WHERE po_id = purchage_orders.id) as aColor'),
+                    DB::raw('(SELECT MAX(care_lavel_date) FROM purchage_orders WHERE id = purchage_orders.id) as careDate'),
+                    DB::raw('(SELECT MAX(style_no) FROM critical_paths WHERE po_id = purchage_orders.id) as aStyleNo'),
+                    DB::raw('(SELECT MAX(name) FROM departments WHERE id = purchage_orders.department_id) as deptName'),
+                    DB::raw('(SELECT MAX(name) FROM vendors WHERE id = purchage_orders.vendor_id) as vendorName'),
+                    DB::raw('(SELECT MAX(name) FROM buyers WHERE id = purchage_orders.buyer_id) as buyerName'),
+                    DB::raw('(SELECT SUM(qty_ordered) FROM order_items WHERE po_id = purchage_orders.id) as TotalItemsOrdered')
+                )
+                ->orderBy('c_id', 'desc')
+                ->get();
         }
 
+        if (Auth::user()->hasRole('Super Admin')) {
+            //dd($criticalPath[0]->earliest_buyer_date);
+            //dd($criticalPath);
+            foreach ($criticalPath as $data) {
 
+                // if (condition) {
+                //     # code...
+                // }
+
+                $endDate = Carbon::parse($data->ex_factory_date_po);
+                $startDate = Carbon::parse($data->earliest_buyer_date);
+
+                $interval = $endDate->diff($startDate);
+                if (!empty($data->ex_factory_date_po)) {
+                    $data->ex_factory_date_po = $data->earliest_buyer_date;
+                }
+                if (!empty($data->final_aql_date_plan)) {
+                    $data->final_aql_date_plan = Carbon::parse($data->final_aql_date_plan)->sub($interval)->toDateString();
+                }
+
+                if (!empty($data->finishing_complete_plan)) {
+                    $data->finishing_complete_plan = Carbon::parse($data->finishing_complete_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->washing_complete_plan)) {
+                    $data->washing_complete_plan = Carbon::parse($data->washing_complete_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->Sewing_plan)) {
+                    $data->Sewing_plan = Carbon::parse($data->Sewing_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->embellishment_plan)) {
+                    $data->embellishment_plan = Carbon::parse($data->embellishment_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->cutting_date_plan)) {
+                    $data->cutting_date_plan = Carbon::parse($data->cutting_date_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->bulk_yarn_fabric_plan_date)) {
+                    $data->bulk_yarn_fabric_plan_date = Carbon::parse($data->bulk_yarn_fabric_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->fabric_ordered_plan_date)) {
+                    $data->fabric_ordered_plan_date = Carbon::parse($data->fabric_ordered_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->official_po_sent_plan_date)) {
+                    $data->official_po_sent_plan_date = Carbon::parse($data->official_po_sent_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->pp_meeting_plan)) {
+                    $data->pp_meeting_plan = Carbon::parse($data->pp_meeting_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->pp_approval)) {
+                    $data->pp_approval = Carbon::parse($data->pp_approval)->sub($interval)->toDateString();
+                }
+                if (!empty($data->embellishment_s_o_approval_plan_date)) {
+                    $data->embellishment_s_o_approval_plan_date = Carbon::parse($data->embellishment_s_o_approval_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->colour_std_print_artwork_sent_to_supplier_plan_date)) {
+                    $data->colour_std_print_artwork_sent_to_supplier_plan_date = Carbon::parse($data->colour_std_print_artwork_sent_to_supplier_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->lab_dip_approval_plan_date)) {
+                    $data->lab_dip_approval_plan_date = Carbon::parse($data->lab_dip_approval_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->size_set_approval)) {
+                    $data->size_set_approval = Carbon::parse($data->size_set_approval)->sub($interval)->toDateString();
+                }
+                if (!empty($data->fit_approval_plan)) {
+                    $data->fit_approval_plan = Carbon::parse($data->fit_approval_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->development_photo_sample_sent_plan_date)) {
+                    $data->development_photo_sample_sent_plan_date = Carbon::parse($data->development_photo_sample_sent_plan_date)->sub($interval)->toDateString();
+                }
+                if (!empty($data->material_inhouse_plan)) {
+                    $data->material_inhouse_plan = Carbon::parse($data->material_inhouse_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->finishing_inline_inspection_date_plan)) {
+                    $data->finishing_inline_inspection_date_plan = Carbon::parse($data->finishing_inline_inspection_date_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->sewing_inline_inspection_date_plan)) {
+                    $data->sewing_inline_inspection_date_plan = Carbon::parse($data->sewing_inline_inspection_date_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->pre_final_date_plan)) {
+                    $data->pre_final_date_plan = Carbon::parse($data->pre_final_date_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->sa_approval_plan)) {
+                    $data->sa_approval_plan = Carbon::parse($data->sa_approval_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->production_sample_approval_plan)) {
+                    $data->production_sample_approval_plan = Carbon::parse($data->production_sample_approval_plan)->sub($interval)->toDateString();
+                }
+                if (!empty($data->shipment_booking_with_acs_plan)) {
+                    $data->shipment_booking_with_acs_plan = Carbon::parse($data->shipment_booking_with_acs_plan)->sub($interval)->toDateString();
+                }
+
+
+                // dd($data->final_aql_date_plan);
+
+                //$diference = $data->earliest_buyer_date - $data->ex_factory_date_po;
+
+            }
+
+            return view('pages.critical.index_buyer', compact('buyerList', 'departmentList', 'vendor', 'criticalPath'));
+        } else {
+            return view('pages.critical.index', compact('buyerList', 'departmentList', 'vendor', 'criticalPath'));
+        }
     }
 
     /**
@@ -1109,9 +1364,6 @@ class CriticalController extends Controller
             }
 
             $criticalPath->update($updateData);
-
-
-
         }
 
 

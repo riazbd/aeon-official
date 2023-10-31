@@ -11,6 +11,7 @@ use App\Models\PurchageOrder;
 use App\Models\Vendor;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class PurchageOrderController extends Controller
@@ -22,7 +23,14 @@ class PurchageOrderController extends Controller
      */
     public function index()
     {
-        $pos = PurchageOrder::all();
+        if (Auth::user()->buyer_id != null) {
+            $pos = PurchageOrder::where('buyer_id', Auth::user()->buyer_id)->get();
+        } elseif (Auth::user()->vendor_id != null) {
+            $pos = PurchageOrder::where('vendor_id', Auth::user()->vendor_id)->get();
+        } else {
+            $pos = PurchageOrder::all();
+        }
+
         return view('pages.poManagement', compact('pos'));
     }
 

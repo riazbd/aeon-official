@@ -7,7 +7,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Buyers</h3>
+                        <h3 class="card-title">Purchase Orders</h3>
                         @can('user.add')
                             <p class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#create-buyer">
                                 <span class="fas fa-plus-circle"></span>
@@ -23,7 +23,10 @@
                             user="grid" aria-describedby="dataTable_info">
                             <thead>
                                 <tr>
-                                    <th class="w-25">@lang('global.actions')</th>
+                                    @can('user.edit')
+                                        <th class="w-25">@lang('global.actions')</th>
+                                    @endcan
+
                                     <th>@lang('cruds.user.fields.id')</th>
                                     <th>PO No</th>
                                     <th>Buyer</th>
@@ -34,8 +37,9 @@
                             <tbody>
                                 @foreach ($pos as $key => $po)
                                     <tr>
-                                        <td class="text-center">
-                                            @can('user.delete')
+                                        @can('user.delete')
+                                            <td class="text-center">
+
                                                 <div class="btn-group">
                                                     @can('user.edit')
                                                         {{-- <p class="btn btn-info btn-sm" data-id="{{ $buyer->id }}"
@@ -54,8 +58,9 @@
                                                         </p>
                                                     </form>
                                                 </div>
-                                            @endcan
-                                        </td>
+
+                                            </td>
+                                        @endcan
                                         <td>{{ $key + 1 }}</td>
                                         <td>{{ $po->po_no }}</td>
                                         <td>{{ \App\Models\Buyer::where('id', $po->buyer_id)->first()->name }}</td>
