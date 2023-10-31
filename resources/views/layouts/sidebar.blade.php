@@ -1,9 +1,9 @@
 {{-- Left sidebar --}}
 <nav class="mt-2">
+    @canany(['permission.show', 'roles.show', 'user.show'])
+        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
+            data-accordion="false">
 
-    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu"
-        data-accordion="false">
-        @canany(['permission.show', 'roles.show', 'user.show'])
             <li
                 class="nav-item has-treeview {{ Request::is('role/add') || Request::is('roles') || Request::is('permissions') || Request::is('users') ? 'menu-open' : '' }}">
                 <a href="#"
@@ -45,8 +45,8 @@
                     @endcan
                 </ul>
             </li>
-        @endcanany
-        {{-- @can('api-user.view')
+
+            {{-- @can('api-user.view')
             <li class="nav-item">
                 <a href="{{ route('api-userIndex') }}" class="nav-link {{ Request::is('api-users*') ? "active":'' }}">
                     <i class="fas fa-cog"></i>
@@ -55,7 +55,8 @@
                 </a>
             </li>
         @endcan --}}
-    </ul>
+        </ul>
+    @endcanany
 
     {{-- <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item has-treeview">
