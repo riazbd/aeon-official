@@ -345,8 +345,11 @@
                     </div>
                     <hr>
                     <input type="hidden" id="download_pdf" name="download_pdf" value="no" required>
+                    <input type="hidden" id="send_pdf" name="send_pdf" value="no" required>
                     <button type="submit" class="btn btn-primary btn-sm" id="save-po">Save PO</button>
                     <button type="submit" class="btn btn-info btn-sm" id="save_and_download">Save and download
+                        PO</button>
+                    <button type="submit" class="btn btn-info btn-sm" id="save_and_send">Save and send
                         PO</button>
                     {{-- <a href="{{ route('pdf-view') }}" class="btn btn-info btn-sm">Download PO</a> --}}
                 </form>
@@ -437,6 +440,10 @@
             // save and download
             $('#save_and_download').on('click', function() {
                 $('#download_pdf').val('yes')
+            })
+
+            $('#save_and_send').on('click', function() {
+                $('#send_pdf').val('yes')
             })
 
             // Function to add a new row when the "Add row" button is clicked
@@ -814,7 +821,7 @@
                                         .val())) +
                                     " " + "+" + " " + newAccessPrice + ' ' + '=' +
                                     " " + parseFloat(parseFloat($('#vendor_price')
-                                        .val()) +
+                                            .val()) +
                                         newAccessPrice).toFixed(2)
 
                                 $('#style_note').val(newStyleNote);

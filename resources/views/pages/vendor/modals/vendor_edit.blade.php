@@ -10,14 +10,20 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('update-vendor', ['id' => $vendor->id]) }}" method="POST" id="vendor-create-form"
-                    enctype="multipart/form-data">
+                <form action="{{ route('update-vendor', ['id' => $vendor->id]) }}" method="POST"
+                    id="vendor-create-form" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="name">Vendor Name</label>
                         <input type="text" class="form-control form-control-sm" id="name" name="name"
                             placeholder="Enter Name" value="{{ $vendor->name }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Vendor Email</label>
+                        <input type="text" class="form-control form-control-sm" id="email" name="email"
+                            placeholder="Enter Email" value="{{ $vendor->email }}">
                     </div>
                     {{-- <div class="form-group">
                         <label for="logo">Logo</label>

@@ -48,6 +48,7 @@ class VendorController extends Controller
         // Save the data to the database using the vendor model (replace 'vendor' with your actual model)
         $vendor = new Vendor();
         $vendor->name = $data['name'];
+        $vendor->email = $data['email'];
 
         $destinationPath = 'public/logos';
 
@@ -107,6 +108,7 @@ class VendorController extends Controller
         $vendor = Vendor::where('id', $id)->first();
 
         $vendor->name = $data['name'];
+        $vendor->email = $data['email'];
 
         $oldLogoPath = $vendor->logo;
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendPOPDF;
 use App\Models\Buyer;
 use App\Models\CriticalDetails;
 use App\Models\CriticalPath;
@@ -12,6 +13,7 @@ use App\Models\Vendor;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use PDF;
 
 class PurchageOrderController extends Controller
@@ -392,6 +394,53 @@ class PurchageOrderController extends Controller
             if ($request->input('select_buyer') == 3) {
                 $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
                 $pdf = PDF::loadView('pages.po.ack_pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+                return $pdf->stream(time() . 'po.pdf');
+            }
+
+            // $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
+            // $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+            // return $pdf->stream(time() . 'po.pdf');
+        }
+
+        if ($request->input('send_pdf') == 'yes') {
+
+            if ($request->input('select_buyer') == 1) {
+                $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
+                $pdf = PDF::loadView('pages.po.pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+                $pdfContent = $pdf->output();
+
+                $mailable = new SendPOPDF($pdfContent);
+
+
+                Mail::to($purchaseOrder->vendor()->first()->email)->send($mailable);
+                return $pdf->stream(time() . 'po.pdf');
+            }
+
+            if ($request->input('select_buyer') == 2) {
+                $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
+                $pdf = PDF::loadView('pages.po.mrp_pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+                $pdfContent = $pdf->output();
+
+                $mailable = new SendPOPDF($pdfContent);
+
+                Mail::to($purchaseOrder->vendor()->first()->email)->send($mailable);
+
+                return $pdf->stream(time() . 'po.pdf');
+            }
+
+            if ($request->input('select_buyer') == 3) {
+                $tableDatas = OrderItem::where('po_id', $purchaseOrder->id)->get();
+                $pdf = PDF::loadView('pages.po.ack_pdf', ['purchaseOrder' => $purchaseOrder, 'tableDatas' => $tableDatas])->setPaper('b4', 'landscape');
+
+                $pdfContent = $pdf->output();
+
+                $mailable = new SendPOPDF($pdfContent);
+
+                Mail::to($purchaseOrder->vendor()->first()->email)->send($mailable);
 
                 return $pdf->stream(time() . 'po.pdf');
             }

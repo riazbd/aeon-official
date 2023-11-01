@@ -17,6 +17,12 @@
                         <input type="text" class="form-control form-control-sm" id="name" name="name"
                             placeholder="Enter Name">
                     </div>
+
+                    <div class="form-group">
+                        <label for="name">Vendor Email</label>
+                        <input type="text" class="form-control form-control-sm" id="email" name="email"
+                            placeholder="Enter Email">
+                    </div>
                     <div class="form-group">
                         <label for="logo">Logo</label>
                         <input type="file" class="file-input" id="logo" name="logo">
