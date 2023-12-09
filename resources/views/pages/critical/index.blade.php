@@ -143,6 +143,14 @@
             // return 'yellow'; // Other differences
         }
     }
+
+    function change_date_formate($dateString){
+        $originalDate = new DateTime($dateString);
+        $formattedDate = $originalDate->format('d-m-Y');
+        echo $formattedDate;
+
+    }
+
     ?>
 
     <?php //dd(setBackgroundColorBasedOnDateDifference(2023-03-13,2023-03-23));
@@ -168,7 +176,7 @@
                         <th style=" background-color: rgba(0, 0, 0, 0.05);">1000</th>
                     </tr> --}}
                     <tr>
-                        <th style=" background-color: rgba(0, 0, 0, 0.05); font-style:italic;" colspan="22">
+                        <th style=" background-color: rgba(0, 0, 0, 0.05); font-style:italic;" colspan="20">
                             General Information</th>
                         <th style="font-style:italic; " colspan="4">Purchase Order
                             information</th>
@@ -211,12 +219,12 @@
                         <th>Mfacture</th>
                         <th>PLM</th>
                         <th>Style </th>
-                        <th>Order </th>
-                        <th>Sup/pro cost</th>
-                        <th>Total Value</th>
+                        <th>Order Quantity </th>
+                        {{-- <th>Sup/pro cost</th>
+                        <th>Total Value</th> --}}
                         <th>Style Defs</th>
                         <th>Colour</th>
-                        <th>Care Date </th>
+                        <th>Care Label Date </th>
                         <th>Fab Ref</th>
                         <th>Fab Con</th>
                         <th>Fab Wei</th>
@@ -452,8 +460,12 @@
                             <th>{{ $data->plm }}</th>
                             <th>{{ isset($aStyleNo) ? $aStyleNo : null }}</th>
                             <th>{{ $data->TotalItemsOrdered }}</th>
-                            <th>{{ $data->style_note }}</th>
-                            <th>{{ intval($sumValue) }}</th>
+
+                            {{-- <th>{{ $data->style_note }}</th>
+                            <th>{{ intval($sumValue) }}</th> --}}
+
+
+
                             <th>{{ $data->description }}</th>
                             <th>{{ $orderItem ? $orderItem->colour : null }}</th>
                             <th>{{ $data->careDate }}</th>
@@ -470,8 +482,7 @@
                             <th><input class="fabric_mill" id="fabric_mill" type="text" value="{{ $data->fabric_mill }}"
                                     name="fabric_mill" data-c-id={{ $data->c_id }} /></th>
 
-                            {{-- <th><input type="text" id="payment_receive_date" class="payment_receive_date"
-                                        name="payment_receive_date" value="{{ $data->payment_receive_date }}" /></th> --}}
+
 
 
 
@@ -487,7 +498,12 @@
                             <th>{{ $data->treated_as_priority_order }}
                             </th>
                             <th>{{ $data->official_po_sent_plan_date }}</th>
-                            <th>{{ $data->official_po_sent_actual_date }}</th>
+
+                            {{-- <th>{{ $data->official_po_sent_actual_date }}</th> --}}
+                            <th >
+                                <input  type="date" id="official_po_sent_plan_date" class="official_po_sent_plan_date"
+                                name="official_po_sent_plan_date" data-c-id={{ $data->c_id }}
+                                value="{{ $data->official_po_sent_plan_date }}" /></th>
 
 
 
@@ -495,9 +511,15 @@
                             {{-- lab --}}
 
 
-                            <th>{{ $data->colour_std_print_artwork_sent_to_supplier_plan_date }}</th>
-                            <th>{{ $data->colour_std_print_artwork_sent_to_supplier_actual_date }}</th>
-                            <th>{{ $data->lab_dip_approval_plan_date }}</th>
+                            <th>{{ change_date_formate($data->colour_std_print_artwork_sent_to_supplier_plan_date) }}</th>
+
+                            {{-- <th>{{ $data->colour_std_print_artwork_sent_to_supplier_actual_date }}</th> --}}
+                            <th >
+                                <input  type="date" id="colour_std_print_artwork_sent_to_supplier_actual_date" class="colour_std_print_artwork_sent_to_supplier_actual_date"
+                                name="colour_std_print_artwork_sent_to_supplier_actual_date" data-c-id={{ $data->c_id }}
+                                value="{{ $data->colour_std_print_artwork_sent_to_supplier_actual_date }}" /></th>
+
+                            <th>{{ change_date_formate($data->colour_std_print_artwork_sent_to_supplier_actual_date) }}</th>
 
 
                             <th style="background-color: <?php echo empty($data->lab_dip_approval_actual_date) ? 'red' : ''; ?>"><input style="color: <?php echo !empty($data->lab_dip_approval_actual_date) && $data->lab_dip_approval_actual_date !== 'NA' ? setBackgroundColorBasedOnDateDifference($data->lab_dip_approval_plan_date, $data->lab_dip_approval_actual_date) : ($data->lab_dip_approval_actual_date == 'NA' ? 'RED' : ''); ?>"
@@ -960,8 +982,8 @@
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th></th>
-                        <th></th>
+                        {{-- <th></th>
+                        <th></th> --}}
                         <th></th>
                         <th></th>
                         <th></th>
@@ -1282,6 +1304,42 @@
                 });
             }
         });
+
+        $(".official_po_sent_plan_date").on("keyup", function(e) {
+            // Check if the Enter key (key code 13) is pressed
+            if (e.keyCode === 13) {
+
+                //var enteredDate = $(this).val();
+
+                // Get the hidden po_id value
+                var po_id = $(this).data('c-id');
+                // Get the entered date
+                var enteredDate = $(this).val();
+                // Perform the AJAX call here
+                $.ajax({
+                    url: "{{ route('process.date') }}", // Replace with your server-side endpoint
+                    method: 'POST', // You can use GET or POST depending on your server-side handling
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        enteredDate: enteredDate,
+                        po_id: po_id,
+                        type: 'official_po_sent_plan_date'
+                    },
+                    success: function(response) {
+                        // Handle the response from the server
+                        console.log(response);
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle errors here
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+        });
+
+
+
         $(".lab_dip_approval_actual_date").on("keyup", function(e) {
             // Check if the Enter key (key code 13) is pressed
             if (e.keyCode === 13) {

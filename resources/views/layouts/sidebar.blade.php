@@ -233,10 +233,18 @@
                         class="nav-link  {{ Request::is('critical-path-manage') ? 'active' : '' }}">Critical Paths</a>
                 </li>
 
-                @if (Auth::user()->hasRole('Super Admin'))
+                {{-- @if (Auth::user()->hasRole('Super Admin'))
                     <li class="nav-item">
                         <a href="{{ route('buyer-critical-path') }}"
                             class="nav-link  {{ Request::is('buyer-critical-path-manage') ? 'active' : '' }}">Buyer
+                            Critical Paths</a>
+                    </li>
+                @endif --}}
+
+                @if (Auth::user()->hasRole('Super Admin'))
+                    <li class="nav-item">
+                        <a href="{{ route('buyer-critical-path') }}"
+                            class="nav-link  {{ Request::is('buyer-critical-path') ? 'active' : '' }}">Buyer
                             Critical Paths</a>
                     </li>
                 @endif

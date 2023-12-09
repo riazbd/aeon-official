@@ -129,7 +129,7 @@
         // Convert the date strings to DateTime objects
         $planDate = new DateTime($planDateStr);
         $actualDate = new DateTime($actualDateStr);
-    
+
         // Calculate the difference in days
         $dateDifference = $planDate->diff($actualDate)->days;
         // Define the background color based on the date difference
@@ -210,12 +210,12 @@
                         <th>Mfacture</th>
                         <th>PLM</th>
                         <th>Style </th>
-                        <th>Order </th>
+                        <th>Order Quantity </th>
                         <th>Sup/pro cost</th>
                         <th>Total Value</th>
                         <th>Style Defs</th>
                         <th>Colour</th>
-                        <th>Care Date </th>
+                        <th>Care Label Date </th>
                         <th>Fab Ref</th>
                         <th>Fab Con</th>
                         <th>Fab Wei</th>
@@ -1066,7 +1066,7 @@
 
     <!-- <div class="container"> -->
     <?php
-    
+
     ?>
     <!-- </div> -->
 @endsection
